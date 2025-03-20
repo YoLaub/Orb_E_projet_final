@@ -1,0 +1,1 @@
+<h1>Redirection ok</h1>
