@@ -3,7 +3,7 @@
 class RoutesPrive {
     private array $adminActions; // Tableau associatif des actions du back-office
     private string $action;
-    private const ERROR_ROUTE = "page404.php"; // Route d'erreur
+    private const ERROR_ROUTE = "page404_ctrl.php"; // Route d'erreur
 
     public function __construct() {
         // Liste des actions disponibles uniquement pour les administrateurs
@@ -21,7 +21,7 @@ class RoutesPrive {
 
         // Vérifie si l'utilisateur est bien un administrateur
         if (!$this->isAdmin()) {
-            header("Location: /App/controleur/" . self::ERROR_ROUTE);
+            header("Location: app/controleurs/" . self::ERROR_ROUTE);
             exit;
         }
 
@@ -40,7 +40,7 @@ class RoutesPrive {
 
     private function getFilePath(string $file): string {
         // Chemin vers les fichiers du back-office
-        $path = RACINE . "/App/controleur/admin/" . $file;
+        $path = RACINE . "app/controleurs/admin/" . $file; 
 
         // Vérifie si le fichier existe avant de l'inclure
         if (!file_exists($path)) {

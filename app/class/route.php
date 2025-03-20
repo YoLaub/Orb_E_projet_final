@@ -3,8 +3,8 @@ class Routes
 {
     private array $lesActions; // Tableau associatif des actions et fichiers correspondants
     private string $action;
-    private const DEFAULT_ROUTE = "accueil_ctl.php"; // Définition d'une constante pour la route par défaut
-    private const ERROR_ROUTE = "page404.php"; // Route en cas d'erreur ou de page introuvable
+    private const DEFAULT_ROUTE = "accueil_ctrl.php"; // Définition d'une constante pour la route par défaut
+    private const ERROR_ROUTE = "page404_ctrl.php"; // Route en cas d'erreur ou de page introuvable
 
     public function __construct()
     {
@@ -24,7 +24,7 @@ class Routes
         ];
     }
 
-    public function redirection(string $action = "defaut"): void
+    public function redirection(string $action = "defaut"): void 
     {
         $this->action = $action;
 
@@ -42,7 +42,7 @@ class Routes
     private function getFilePath(string $file): string
     {
         // Génère le chemin du fichier de contrôle
-        $path = RACINE . "/App/controleur/" . $file;
+        $path = RACINE . "app/controleurs/" . $file;
 
         // Vérifie si le fichier existe, sinon, lève une exception
         if (!file_exists($path)) {
