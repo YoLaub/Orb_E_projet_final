@@ -12,14 +12,15 @@ class Routes
         $this->lesActions = [
             "defaut"  => self::DEFAULT_ROUTE,
             "accueil" => self::DEFAULT_ROUTE,
-            "produit" => "#",
-            "commande" => "#",
-            "jeu" => "#",
-            "connexion" => "#",
-            "profile" => "#",
-            "mentions" => "#",
-            "qui" => "#",
-            "contact" => "#",
+            "produit" => "produit_ctrl.php",
+            "commande" => "commande_ctrl.php",
+            "jeu" => "jeu_ctrl.php",
+            "connexion" => "connexion_ctrl.php",
+            "inscription" => "inscription_ctrl.php",
+            "profile" => "profile_ctrl.php",
+            "mentions" => "mention_ctrl.php",
+            "qui" => "qui_ctrl.php",
+            "contact" => "contact_ctrl.php",
             "page404" => self::ERROR_ROUTE,
         ];
     }

@@ -8,10 +8,10 @@ class RoutesPrive {
     public function __construct() {
         // Liste des actions disponibles uniquement pour les administrateurs
         $this->adminActions = [
-            "accueilBo" => "#",
-            "utilisateur" => "#",
-            "produit" => "#",
-            "fiche" => "#",
+            "accueilBo" => "accueil_bo_ctrl.php",
+            "utilisateur" => "utilisateur_bo_ctrl.php",
+            "produit" => "produit_bo_ctrl.php",
+            "fiche" => "fiche_p_bo_ctrl.php",
             "page404" => self::ERROR_ROUTE,
         ];
     }
