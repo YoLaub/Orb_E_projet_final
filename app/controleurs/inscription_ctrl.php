@@ -1,44 +1,42 @@
 <?php
+require RACINE."app/controleurs/navigation_ctrl.php";
+include_once RACINE . "app/modeles/bddUtilisateur.php";
 
-include_once RACINE . "modeles/bddUtilisateur.php";
-
-session_start();
-
-$inscrit = false;
-$msg=null;
-
-// recuperation des donnees GET, POST, et SESSION
-if (isset($_POST["mailU"]) && isset($_POST["mdpU"]) && isset($_POST["pseudoU"])) {
-
-    if ($_POST["mailU"] != "" && $_POST["mdpU"] != "" && $_POST["pseudoU"] != "") {
-        $mailU = $_POST["mailU"];
-        $mdpU = $_POST["mdpU"];
-        $pseudoU = $_POST["pseudoU"];
-
-        // enregistrement des donnees
-        $ret = ajouter_utilisateur($mailU, $mdpU, $pseudoU);
-        if ($ret) {
-            $inscrit = true;
-        } else {
-            $msg = "l'utilisateur n'a pas été enregistré.";
-        }
-    }
- else {
-    $msg="Renseigner tous les champs...";    
-    }
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
 }
 
-if ($inscrit) {
+if(isset($_POST["prenom"]) && isset($_POST["nom"]) && isset($_POST["email"]) && isset($_POST["mdp"])){
+
+
+    if($_POST["email"] != "" && $_POST["nom"] != "" && $_POST["mdp"] != "" && $_POST["prenom"] != ""){
+        $email = $_POST["email"];
+        $prenom = $_POST["prenom"];
+        $nom = $_POST["nom"];
+        $mdp = $_POST["mdp"];
+
+        $connexion = new GestionConnexion();
+
+        $etat = $connexion->inscription($nom, $prenom, $email, $mdp);
+
+        if($etat){
+            include RACINE . "app/vues/page_header.php";
+            include RACINE . "app/vues/page_accueil.php";
+            include RACINE . "app/vues/page_footer.php";
+        }else{
+            $validation = $etat;
+            include RACINE . "app/vues/page_header.html.php";
+            include RACINE . "app/vues/page_inscription.php";
+            include RACINE . "app/vues/page_footer.html.php";
+        }
+        
+    }
+}
+ else {
     // appel du script de vue qui permet de gerer l'affichage des donnees
-    $titre = "Inscription confirmée";
-    include RACINE . "/vues/entete.html.php";
-    include RACINE . "/vues/vueConfirmationInscription.php";
-    include RACINE . "/vues/pied.html.php";
-} else {
-    // appel du script de vue qui permet de gerer l'affichage des donnees
-    $titre = "Inscription pb";
-    include RACINE . "/vues/entete.html.php";
-    include RACINE . "/vues/vueInscription.php";
-    include RACINE . "/vues/pied.html.php";
+    $validation = "*";
+    include RACINE . "app/vues/page_header.php";
+    include RACINE . "app/vues/page_inscription.php";
+    include RACINE . "app/vues/page_footer.php";
 }
 ?>

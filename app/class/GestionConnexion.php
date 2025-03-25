@@ -53,6 +53,7 @@ class GestionConnexion
             } else {
                 $mdpHache = password_hash($mdp, PASSWORD_DEFAULT);
                 $this->connectDB::addUser($nom, $prenom, $email, $mdpHache);
+                return true;
             }
         } catch (Exception $e) {
             return $e->getMessage();
