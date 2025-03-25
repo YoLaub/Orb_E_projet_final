@@ -1,0 +1,60 @@
+afficher commande:
+
+SELECT Id_Commande, commande.date_commande, commande.montant_total, utilisateur.nom, utilisateur.prenom 
+FROM commande
+JOIN utilisateur ON commande.id_utilisateur = utilisateur.Id_utilisateur;
+
+
+
+detail commande:
+
+SELECT detail_commande.id_commande, produit.nom AS Produit, detail_commande.quantité, produit.prix, (detail_commande.quantité * produit.prix) AS total
+FROM detail_commande
+JOIN produit ON detail_commande.id_produit = produit.id_Produit;
+
+
+Voir tout les scores:
+
+SELECT partie.Id_score, partie.score, partie.date_heure, utilisateur.nom, utilisateur.prenom
+FROM partie
+JOIN utilisateur ON partie.id_utilisateur = utilisateur.id_utilisateur
+ORDER BY partie.score DESC;
+
+
+
+-- Insérer des utilisateurs
+INSERT INTO utilisateurs (date_inscription, rôle, nom, prenom, email, password)
+VALUES 
+('2025-03-01', 'utilisateur', 'Doe', 'John', 'john.doe@example.com', 'mdp123'),
+('2025-03-02', 'utilisateur', 'Smith', 'Alice', 'alice.smith@example.com', 'mdp456'),
+('2025-03-03', 'admin', 'Admin', 'Super', 'admin@example.com', 'adminpass');
+
+-- Insérer des produits
+INSERT INTO produits (nom, description, prix, photo)
+VALUES 
+('Drone Orbe', 'Un drone en forme de sphère avec IA intégrée', 199.99,"img1.jpg"),
+('Batterie longue durée', 'Batterie additionnelle pour le drone Orbe', 49.99, "img2.jpg"),
+('Kit de réparation', 'Kit pour réparer les dommages légers du drone', 29.99, "img3.jpg");
+
+-- Insérer des commandes
+INSERT INTO commandes (date_commande, montant_total, id_utilisateur)
+VALUES 
+('2025-03-10', 249.98, 1), -- John Doe achète 2 produits
+('2025-03-12', 49.99, 2);  -- Alice Smith achète 1 produit
+
+-- Associer les produits aux commandes (détails de commande)
+INSERT INTO detail_commande (id_commande, id_produit, quantité)
+VALUES 
+(1, 1, 1), -- John achète 1 Drone Orbe
+(1, 2, 1), -- John achète 1 Batterie
+(2, 2, 1); -- Alice achète 1 Batterie
+
+-- Insérer des scores de partie
+INSERT INTO parties (score, date_heure, id_utilisateur)
+VALUES 
+(1200, '2025-03-11 14:30:00', 1), 
+(850, '2025-03-12 16:45:00', 2), 
+(1500, '2025-03-13 18:20:00', 1);
+
+
+

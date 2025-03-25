@@ -24,8 +24,9 @@
 <body>
 
     <header>
-        
+
         <?= $navContent ?>
-        <a href="./action=connexion">Connexion</a>
-        <a href="./action=profile">Mon profile</a>
+       
+        <a href="./?action=connexion">Connexion</a>
+        <a href="./?action=profile">Mon profile</a>
     </header>
