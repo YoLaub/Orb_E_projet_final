@@ -10,16 +10,16 @@ class DBUser extends DbConnect
     public static function getUser()
     {
 
-        $sql = "select * from utilisateur";
+        $sql = "select * from utilisateurs";
 
         $req = self::executerRequete($sql);
-
-        /* Remplacer ??? par la méthode fetchAll() */
+        
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
 
         if (!empty($data)) return $data;
     }
+
     public static function getUserPerEmail($email)
     {
 

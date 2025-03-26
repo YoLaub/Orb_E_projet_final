@@ -21,10 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Redirection vers l'accueil si connexion réussie
             header("Location: ?action=accueil");
         }elseif($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "admin"){
-            header("Location: ?action=accueilBo");;
+            header("Location: ?action=accueilBo");
         } 
         exit(); // Assure que le script s'arrête ici
+    }else{
+        header("Location: ?action=connexion");
     }
+
 }else{
 
     $connexion = new GestionConnexion();

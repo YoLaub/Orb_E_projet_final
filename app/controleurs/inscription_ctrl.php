@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $connexion = new GestionConnexion();
         $etat = $connexion->inscription($email, $mdp);
 
-        if ($etat) {
+        if ($etat == true) {
             $connexion->connexion($email, $mdp);
             // Redirection vers l'accueil si connexion réussie
             header("Location: ?action=accueil");

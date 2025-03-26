@@ -1,0 +1,5 @@
+Ne pas oublié:
+
+pensez à ajouter la selection de ville  et addresse automatiqquement via API
+pensez à ajouter la suppression du profile
+retirer l'affichage session 
