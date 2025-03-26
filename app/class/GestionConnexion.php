@@ -37,7 +37,7 @@ class GestionConnexion
     public function estConnecte()
     {
         $etat = false;
-        if (isset($_SESSION["email"]) && isset($_SESSION["id_utilisateur"])) {
+        if (isset($_SESSION["email"]) && isset($_SESSION["id"])) {
             $etat = true;
             return $etat;
         } else {
