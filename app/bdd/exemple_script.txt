@@ -20,14 +20,61 @@ FROM partie
 JOIN utilisateur ON partie.id_utilisateur = utilisateur.id_utilisateur
 ORDER BY partie.score DESC;
 
+detail profil
+SELECT c.* 
+FROM commerce AS c
+INNER JOIN utilisateurs AS u ON c.id_utilisateur = u.id_utilisateur
+WHERE BINARY u.email = "john.doe@example.com"
+
+UPDATE commerce 
+JOIN utilisateurs ON commerce.id_utilisateur = utilisateurs.id_utilisateur
+SET commerce.adresse_livraison = 'Nouvelle adresse 123',
+    commerce.telephone = '0612345678'
+WHERE utilisateurs.email = 'email@example.com';
+
+DELETE commerce 
+FROM commerce
+JOIN utilisateurs ON commerce.id_utilisateur = utilisateurs.id_utilisateur
+WHERE utilisateurs.email = 'email@example.com';
+
+SELECT 
+                commandes.id_commande,
+                commandes.date_heure,
+                commandes.montant_total,
+                produits.id_produit,
+                produits.nom AS nom_produit,
+                produits.description,
+                produits.prix,
+                detail_commande.quantité,
+                (produits.prix * detail_commande.quantité) AS total_produit
+            FROM commandes
+            JOIN detail_commande ON commandes.id_commande = detail_commande.id_commande
+            JOIN produits ON detail_commande.id_produit = produits.id_produit
+            WHERE commandes.id_utilisateur = (SELECT id_utilisateur FROM utilisateurs WHERE email = :email)
+            ORDER BY commandes.date_heure DESC;
+
+
+SELECT 
+    parties.id_partie,
+    parties.score,
+    parties.date_heure,
+    (SELECT MAX(score) FROM parties WHERE id_utilisateur = utilisateurs.id_utilisateur) AS meilleur_score,
+    (SELECT AVG(score) FROM parties WHERE id_utilisateur = utilisateurs.id_utilisateur) AS score_moyen,
+    (SELECT COUNT(*) FROM parties WHERE id_utilisateur = utilisateurs.id_utilisateur) AS nombre_parties
+FROM parties
+JOIN utilisateurs ON parties.id_utilisateur = utilisateurs.id_utilisateur
+WHERE utilisateurs.email = :email
+ORDER BY parties.date_heure DESC;
+
+
 
 
 -- Insérer des utilisateurs
-INSERT INTO utilisateurs (date_inscription, rôle, nom, prenom, email, password)
+INSERT INTO utilisateurs (date_inscription, rôle, email, password)
 VALUES 
-('2025-03-01', 'utilisateur', 'Doe', 'John', 'john.doe@example.com', 'mdp123'),
-('2025-03-02', 'utilisateur', 'Smith', 'Alice', 'alice.smith@example.com', 'mdp456'),
-('2025-03-03', 'admin', 'Admin', 'Super', 'admin@example.com', 'adminpass');
+('2025-03-01', 'utilisateur','john.doe@example.com', 'mdp123'),
+('2025-03-02', 'utilisateur','alice.smith@example.com', 'mdp456'),
+('2025-03-03', 'admin', 'admin@example.com', 'adminpass');
 
 -- Insérer des produits
 INSERT INTO produits (nom, description, prix, photo)
@@ -37,7 +84,7 @@ VALUES
 ('Kit de réparation', 'Kit pour réparer les dommages légers du drone', 29.99, "img3.jpg");
 
 -- Insérer des commandes
-INSERT INTO commandes (date_commande, montant_total, id_utilisateur)
+INSERT INTO commandes (date_heure, montant_total, id_utilisateur)
 VALUES 
 ('2025-03-10', 249.98, 1), -- John Doe achète 2 produits
 ('2025-03-12', 49.99, 2);  -- Alice Smith achète 1 produit
@@ -56,5 +103,11 @@ VALUES
 (850, '2025-03-12 16:45:00', 2), 
 (1500, '2025-03-13 18:20:00', 1);
 
+-- Insérer des profils
+INSERT INTO commerce (id_utilisateur, nom, prenom, adresse_livraison, ville, code_postal, pays, telephone, mode_paiement)
+VALUES
+(1, 'john', 'doe', '123 Rue de Paris', 'Paris', '75001', 'France', '0123456789', 'carte'),
+(2, 'peter', 'doe' '456 Boulevard Saint-Germain', 'Paris', '75005', 'France', '0987654321', 'paypal'),
+(3, 'dane', 'joe','789 Avenue de la République', 'Marseille', '13001', 'France', '0147253654', 'virement');
 
 

@@ -10,7 +10,7 @@ class GestionConnexion
         if (!isset($_SESSION)) {
             session_start();
         }
-        $this->connectDB = new DBPage2;
+        $this->connectDB = new DBUser;
     }
 
     public function connexion($email, $mdp)
@@ -46,9 +46,9 @@ class GestionConnexion
     }
 
 
-    public function inscription($nom, $prenom, $email, $mdp)
+    public function inscription($email, $mdp)
     {
-        $regexMdp = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/";
+        $regexMdp = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/";
 
         try {
             if (preg_match($regexMdp, $mdp)) {
@@ -57,8 +57,7 @@ class GestionConnexion
                 throw new Exception("Email invalid, respecter le format demandé");
             } else {
                 $mdpHache = password_hash($mdp, PASSWORD_DEFAULT);
-                $this->connectDB::addUser($nom, $prenom, $email, $mdpHache);
-                return true;
+                $this->connectDB::addUser($email, $mdpHache);
             }
         } catch (Exception $e) {
             return $e->getMessage();
@@ -68,7 +67,7 @@ class GestionConnexion
 
     public function deconnexion()
     {
-        if (isset($_SESSION["email"])) {
+        if (isset($_SESSION["id"])) {
             unset($_SESSION["email"]);
             unset($_SESSION["id"]);
             unset($_SESSION["role"]);

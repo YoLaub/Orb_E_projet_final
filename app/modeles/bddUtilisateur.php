@@ -4,7 +4,7 @@
  *  dao : Page1
  */
 
-class DBPage2 extends DbConnect
+class DBUser extends DbConnect
 {
 
     public static function getUser()
@@ -25,6 +25,7 @@ class DBPage2 extends DbConnect
 
         $value= array();
         $value["email"] = $email;
+
         $sql = "select * from utilisateurs where email like :email";
         $req = self::executerRequete($sql, $value);
 
@@ -36,21 +37,20 @@ class DBPage2 extends DbConnect
     }
 
 
-    public static function addUser($nom, $prenom, $email, $mdp)
+    public static function addUser($email, $mdp)
     {
 
         $value = array();
-        $value["nom"] =  $nom;
-        $value["prenom"] = $prenom;
         $value["email"] = $email;
-        $value["mdp"] = $mdp;
+        $value["password"] = $mdp;
 
         try {
 
             $utilisateur = self::getUserPerEmail($email);
             if($utilisateur==""){
-                $sql = "insert into utilisateurs (nom, prenom, email, password) values (:nom, :prenom, :email, :mdp)";
+                $sql = "insert into utilisateurs (email, password) values (:email, :password)";
                 self::executerRequete($sql, $value);
+                return true;
             }
              else {
                 throw new Exception("Adresse Email déjà utilisée");
@@ -59,4 +59,141 @@ class DBPage2 extends DbConnect
             return $e->getMessage();
         }
     }
+
+    public static function infoUser($email)
+    {
+
+        $value = array();
+        $value["email"] = $email;
+        
+        $sql = "select c.* from commerce as c inner join utilisateurs as u on c.id_utilisateur = u.id_utilisateur where binary u.email like :email";
+        $req = self::executerRequete($sql, $value);
+
+        /* Remplacer ??? par la méthode fetchAll() */
+        $data = $req->fetchAll(PDO::FETCH_ASSOC);
+
+
+        if (!empty($data)) return $data;
+    }
+
+    public static function updateInfoUser($email, $prenom, $nom, $adresse, $ville, $cp, $tel, $paiement)
+    {
+        $value = [
+            "email" => $email,
+            "prenom" => $prenom,
+            "nom" => $nom,
+            "adresse" => $adresse,
+            "ville" => $ville,
+            "cp" => $cp,
+            "tel" => $tel,
+            "paiement" => $paiement
+        ];
+    
+        try {
+            $sql = "update commerce 
+                    join utilisateurs on commerce.id_utilisateur = utilisateurs.id_utilisateur 
+                    set commerce.prenom = :prenom, 
+                        commerce.nom = :nom, 
+                        commerce.adresse_livraison = :adresse, 
+                        commerce.ville = :ville, 
+                        commerce.code_postal = :cp, 
+                        commerce.telephone = :tel, 
+                        commerce.mode_paiement = :paiement 
+                    where utilisateurs.email = :email";
+    
+            $req = self::executerRequete($sql, $value);
+            
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public static function getUserOrders($email)
+    {
+    $value = ["email" => $email];
+
+    $sql = "select 
+                commandes.id_commande,
+                commandes.date_heure,
+                commandes.montant_total,
+                produits.id_produit,
+                produits.nom AS nom_produit,
+                produits.description,
+                produits.prix,
+                detail_commande.quantité,
+                (produits.prix * detail_commande.quantité) as total_produit
+            from commandes
+            join detail_commande on commandes.id_commande = detail_commande.id_commande
+            join produits on detail_commande.id_produit = produits.id_produit
+            where commandes.id_utilisateur = (select id_utilisateur from utilisateurs where email = :email)
+            order by commandes.date_heure desc";
+
+    try {
+        return self::executerRequete($sql, $value)->fetchAll();
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
+    public static function getUserScores($email)
+    {
+    $value = ["email" => $email];
+
+    $sql = "select 
+                parties.id_partie,
+                parties.score,
+                parties.date_heure,
+                (select max(score) from parties where id_utilisateur = utilisateurs.id_utilisateur) as meilleur_score,
+                (select avg(score) from parties where id_utilisateur = utilisateurs.id_utilisateur) as score_moyen,
+                (select count(*) FROM parties WHERE id_utilisateur = utilisateurs.id_utilisateur) as nombre_parties
+            from parties
+            join utilisateurs on parties.id_utilisateur = utilisateurs.id_utilisateur
+            where utilisateurs.email = :email
+            order by parties.date_heure desc";
+
+    try {
+        return self::executerRequete($sql, $value)->fetchAll();
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
+    
+
+          
+
+    public static function deleteInfoUser($email)
+    {
+
+        $value = array();
+        $value["email"] = $email;
+
+        try {
+            $sql = "delete commerce from commerce join utilisateurs on commerce.id_utilisateur = utilisateurs.id_utilisateur where utilisateurs.email like :email";
+    
+            $req = self::executerRequete($sql, $value);
+            
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+        
+}
+    public static function deleteUser($email)
+    {
+
+        $value = array();
+        $value["email"] = $email;
+
+        try {
+            $sql = "delete from utilisateurs where utilisateurs.email like :email";
+    
+            $req = self::executerRequete($sql, $value);
+            
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+        
+}
+
 }

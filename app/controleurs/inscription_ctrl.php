@@ -7,13 +7,11 @@ $validation = "*";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"] ?? '');
-    $prenom = trim($_POST["prenom"] ?? '');
-    $nom = trim($_POST["nom"] ?? '');
     $mdp = trim($_POST["mdp"] ?? '');
 
-    if ($email && $prenom && $nom && $mdp) {
+    if ($email && $mdp) {
         $connexion = new GestionConnexion();
-        $etat = $connexion->inscription($nom, $prenom, $email, $mdp);
+        $etat = $connexion->inscription($email, $mdp);
 
         if ($etat) {
             $connexion->connexion($email, $mdp);
