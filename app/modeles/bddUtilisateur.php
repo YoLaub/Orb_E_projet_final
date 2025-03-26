@@ -23,8 +23,10 @@ class DBPage2 extends DbConnect
     public static function getUserPerEmail($email)
     {
 
+        $value= array();
+        $value["email"] = $email;
         $sql = "select * from utilisateurs where email like :email";
-        $req = self::executerRequete($sql, $email);
+        $req = self::executerRequete($sql, $value);
 
         /* Remplacer ??? par la méthode fetchAll() */
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -33,18 +35,6 @@ class DBPage2 extends DbConnect
         if (!empty($data)) return $data;
     }
 
-    public static function getUserPerName($prenom)
-    {
-
-        $sql = "select * from user where prenom like :prenom";
-        $req = self::executerRequete($sql, $prenom);
-
-        /* Remplacer ??? par la méthode fetchAll() */
-        $data = $req->fetchAll(PDO::FETCH_ASSOC);
-
-
-        if (!empty($data)) return $data;
-    }
 
     public static function addUser($nom, $prenom, $email, $mdp)
     {
@@ -58,11 +48,12 @@ class DBPage2 extends DbConnect
         try {
 
             $utilisateur = self::getUserPerEmail($email);
-            if ($email == $utilisateur["email"]) {
-                throw new Exception("Adresse Email déjà utilisée");
-            } else {
+            if($utilisateur==""){
                 $sql = "insert into utilisateurs (nom, prenom, email, password) values (:nom, :prenom, :email, :mdp)";
                 self::executerRequete($sql, $value);
+            }
+             else {
+                throw new Exception("Adresse Email déjà utilisée");
             }
         } catch (Exception $e) {
             return $e->getMessage();

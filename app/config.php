@@ -12,4 +12,5 @@ const DB_HOST = 'localhost'; //adresse du SGBDR
 //Chemin absolu de l'application :
 define("RACINE", dirname(__DIR__)."/");
 
+
 ?>

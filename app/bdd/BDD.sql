@@ -3,7 +3,7 @@ USE orbe;
 
 CREATE TABLE utilisateurs(
    id_utilisateur INT AUTO_INCREMENT,
-   date_inscription DATE NOT NULL,
+   date_inscription timestamp NOT NULL CURRENT_TIMESTAMP,
    rôle ENUM('utilisateur', 'admin') NOT NULL DEFAULT 'utilisateur',
    nom VARCHAR(50) NOT NULL,
    prenom VARCHAR(50) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE utilisateurs(
 
 CREATE TABLE commandes (
    id_commande INT AUTO_INCREMENT PRIMARY KEY,
-   date_commande DATE NOT NULL,
+   date_commande timestamp NOT NULL CURRENT_TIMESTAMP,
    montant_total DECIMAL(15,2) NOT NULL,
    id_utilisateur INT NOT NULL,
    FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE
@@ -23,7 +23,7 @@ CREATE TABLE commandes (
 CREATE TABLE parties(
    id_partie INT AUTO_INCREMENT,
    score BIGINT NOT NULL,
-   date_heure DATETIME NOT NULL,
+   date_heure timestamp NOT NULL CURRENT_TIMESTAMP,
    id_utilisateur INT NOT NULL,
    PRIMARY KEY(id_partie),
    FOREIGN KEY(id_utilisateur) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE

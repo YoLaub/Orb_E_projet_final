@@ -11,7 +11,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // Vérifier si on est sur une route admin
-if (isset($_GET["admin"]) && $_GET["admin"] === "1") {
+if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
     $route = new RoutesPrive();
 } else {
     $route = new Routes();

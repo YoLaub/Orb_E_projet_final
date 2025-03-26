@@ -1,35 +1,41 @@
 <?php
+require_once RACINE . "app/class/gestionConnexion.php";
 require_once RACINE . "app/modeles/bddUtilisateur.php";
-require RACINE."app/controleurs/navigation_ctrl.php";
+require RACINE . "app/controleurs/navigation_ctrl.php";
 
 
-// recuperation des donnees GET, POST, et SESSION
-if (isset($_POST["email"]) && isset($_POST["mdp"])){
-    $mailU=$_POST["email"];
-    $mdpU=$_POST["mdp"];
 
-    // traitement si necessaire des donnees recuperees
-    $connexion = new GestionConnexion;
-    $connexion->connexion($email, $mdp);
-}
-else
-{
-    $email=null;
-    $mdp=null;
-}
 
-if(isset($connexion)){
-    $etat = false;
-    $etat = $connexion->estConnecte();
+// Vérification de la requête POST
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $email = trim($_POST["email"] ?? '');
+    $mdp = trim($_POST["password"] ?? '');
 
-    if ($etat){ // si l'utilisateur est connecté on redirige vers le controleur monProfil
-        include RACINE . "app/controleurs/profil_ctrl.php";
+
+    if (!empty($email) && !empty($mdp)) {
+ 
+        $connexion = new GestionConnexion();
+        $estConnecte = $connexion->connexion($email, $mdp);
+
+        if ($estConnecte==true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
+            // Redirection vers l'accueil si connexion réussie
+            header("Location: ?action=accueil");
+        }elseif($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "admin"){
+            header("Location: ?action=accueilBo");;
+        } 
+        exit(); // Assure que le script s'arrête ici
     }
-}else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion
-    // appel du script de vue 
+}else{
+
+    $connexion = new GestionConnexion();
+    $connexion->deconnexion();
+    
+    // Inclusion de la page connexion avec un message d'erreur si nécessaire
     include RACINE . "app/vues/page_header.php";
     include RACINE . "app/vues/page_connexion.php";
     include RACINE . "app/vues/page_footer.php";
+
 }
+
 
 ?>

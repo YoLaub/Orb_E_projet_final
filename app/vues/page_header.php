@@ -9,8 +9,8 @@
     <meta name="language" content="fr">
     <meta name="Geography" content="Vannes, FR, 56000">
     <meta name="customer" content="FR-USER-<?php
-                                            if (isset($_SESSION['user_id'])) {
-                                                echo $_SESSION['user_id'];
+                                            if (isset($_SESSION['id'])) {
+                                                echo $_SESSION['id'];
                                             } else {
                                                 echo "00";
                                             } ?> ">
@@ -26,7 +26,17 @@
     <header>
 
         <?= $navContent ?>
-       
-        <a href="./?action=connexion">Connexion</a>
-        <a href="./?action=profile">Mon profile</a>
+        <?=var_dump($_SESSION)  ?>
+       <?php
+       if(isset($_SESSION["id"])){?>
+            <a href="./?action=profile">Mon profile</a>
+            <a href="./?action=connexion">Deconnexion</a>
+            
+            <?php
+       }else{
+        ?><a href="./?action=connexion">Connexion</a><?php
+       }
+       ?>
+        
+        
     </header>

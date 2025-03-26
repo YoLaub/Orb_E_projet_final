@@ -8,17 +8,17 @@ class RoutesPrive {
     public function __construct() {
         // Liste des actions disponibles uniquement pour les administrateurs
         $this->adminActions = [
-            "accueilBo" => "accueil_bo_ctrl.php",
-            "utilisateur" => "utilisateur_bo_ctrl.php",
-            "produit" => "produit_bo_ctrl.php",
-            "fiche" => "fiche_p_bo_ctrl.php",
+            "accueilBo" => "admin/accueil_bo_ctrl.php",
+            "utilisateur" => "admin/utilisateur_bo_ctrl.php",
+            "produit" => "admin/produit_bo_ctrl.php",
+            "fiche" => "admin/fiche_p_bo_ctrl.php",
+            "connexion" => "connexion_ctrl.php",
             "page404" => self::ERROR_ROUTE,
         ];
     }
 
     public function redirection(string $action = "accueilBo"): void {
-        session_start(); // Démarre la session (nécessaire pour vérifier le rôle de l'utilisateur)
-
+    
         // Vérifie si l'utilisateur est bien un administrateur
         if (!$this->isAdmin()) {
             header("Location: app/controleurs/" . self::ERROR_ROUTE);
@@ -40,7 +40,7 @@ class RoutesPrive {
 
     private function getFilePath(string $file): string {
         // Chemin vers les fichiers du back-office
-        $path = RACINE . "app/controleurs/admin/" . $file; 
+        $path = RACINE . "app/controleurs/" . $file; 
 
         // Vérifie si le fichier existe avant de l'inclure
         if (!file_exists($path)) {

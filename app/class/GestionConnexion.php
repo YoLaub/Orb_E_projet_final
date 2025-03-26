@@ -17,12 +17,20 @@ class GestionConnexion
     {
         $utilisateur =  $this->connectDB::getUserPerEmail($email);
 
-        if ($utilisateur && isset($utilisateur["mdp"])) {
-            $mdpBdd = $utilisateur["mdp"];
+        if (!empty($utilisateur)) {
+            $mdpBdd = $utilisateur[0]["password"];
             if (password_verify($mdp, $mdpBdd)) {
                 $_SESSION["email"] = $email;
-                $_SESSION["id"] =  $utilisateur["id_utilisateur"];
+                $_SESSION["id"] =  $utilisateur[0]["id_utilisateur"];
+                $_SESSION["role"] =  $utilisateur[0]["rôle"];
+                return true;
+            }else{
+                $erreur = "password invalid";
+                return $erreur;
             }
+        }else{
+            $erreur = "email invalid";
+            return $erreur;
         }
     }
 
@@ -41,14 +49,11 @@ class GestionConnexion
     public function inscription($nom, $prenom, $email, $mdp)
     {
         $regexMdp = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/";
-        $regexEmail = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
 
         try {
-            if (!isset($nom) && !isset($prenom) && !isset($email) && !isset($mdp)) {
-                throw new Exception("Aucune valeur");
-            } elseif (preg_match($regexMdp, $mdp)) {
+            if (preg_match($regexMdp, $mdp)) {
                 throw new Exception("Mot de passe invalid, respecter le format demandé");
-            } elseif (preg_match($regexEmail, $email)) {
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 throw new Exception("Email invalid, respecter le format demandé");
             } else {
                 $mdpHache = password_hash($mdp, PASSWORD_DEFAULT);
@@ -61,10 +66,12 @@ class GestionConnexion
     }
 
 
-    public function Deconnexion()
+    public function deconnexion()
     {
         if (isset($_SESSION["email"])) {
             unset($_SESSION["email"]);
+            unset($_SESSION["id"]);
+            unset($_SESSION["role"]);
             session_destroy();
         }
     }
