@@ -6,7 +6,6 @@
     $gestionProfil = new DBUser();
     $listeUtilisateur = $gestionProfil->getUser();
 
-    var_dump($_POST);
     //Affichage des vues
     include_once RACINE . "app/vues/page_header.php";
     include_once RACINE . "app/vues/admin/page_Ubo.php";

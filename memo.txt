@@ -4,3 +4,4 @@ pensez à ajouter la selection de ville  et addresse automatiqquement via API
 pensez à ajouter la suppression du profile
 retirer l'affichage session 
 Mettre à jour le modèle conceptuel de donné (E/A)
+Redistribuer les modeles

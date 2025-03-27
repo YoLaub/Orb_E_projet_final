@@ -43,6 +43,18 @@ class DBUser extends DbConnect
         if (!empty($data)) return $data;
     }
 
+    public static function numberOfUser()
+    {
+
+        $sql = "select count(*) from utilisateurs where utilisateurs.rôle = 'utilisateur'";
+        $req = self::executerRequete($sql);
+
+        /* Remplacer ??? par la méthode fetchAll() */
+        $data = $req->fetchAll(PDO::FETCH_ASSOC);
+
+
+        if (!empty($data)) return $data;
+    }
 
 
     public static function getUserPerEmail($email)
