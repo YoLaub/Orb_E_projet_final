@@ -204,14 +204,14 @@ class DBUser extends DbConnect
         }
         
 }
-    public static function deleteUser($email)
+    public static function deleteUser($id_utilisateur)
     {
 
         $value = array();
-        $value["email"] = $email;
+        $value["id_utilisateur"] = $id_utilisateur;
 
         try {
-            $sql = "delete from utilisateurs where utilisateurs.email like :email";
+            $sql = "delete from utilisateurs where utilisateurs.id_utilisateur like :id_utilisateur";
     
             $req = self::executerRequete($sql, $value);
             

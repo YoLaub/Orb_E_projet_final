@@ -104,7 +104,7 @@ class DBProduct extends DbConnect
 
             self::executerRequete($sql, $value);
 
-            return true;
+            return $value;
         } catch (Exception $e) {
             return "Erreur lors de la suppression : " . $e->getMessage();
         }
