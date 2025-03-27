@@ -1,6 +1,17 @@
 <?php
 
+require_once RACINE . "app/modeles/bddProduit.php";
 require RACINE."app/controleurs/navigation_ctrl.php";
+
+
+$produit = new DBProduct();
+$detailsProduit = $produit->getProduct();
+$commandeBouton = "Commandez!";
+if(!$detailsProduit[0]["disponibilite"] == "en_stock"){
+    $commandeBouton = "Reservez !";
+}
+
+$_SESSION["id_produit"] = $detailsProduit[0]["id_produit"];
 
 //Affichage des vues
     include_once RACINE . "app/vues/page_header.php";

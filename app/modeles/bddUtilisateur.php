@@ -1,13 +1,10 @@
 <?php
 
-/**
- *  dao : Page1
- */
 
 class DBUser extends DbConnect
 {
 
-    public static function getUser()
+    public static function getAllUser()
     {
 
         $sql = "select * from utilisateurs";
@@ -19,6 +16,34 @@ class DBUser extends DbConnect
 
         if (!empty($data)) return $data;
     }
+
+    public static function getUser()
+    {
+
+        $sql = "select 
+                u.email, 
+                c.nom, 
+                c.prenom, 
+                c.id_commerce, 
+                c.adresse_livraison,
+                c.ville,
+                c.code_postal,
+                c.pays,
+                c.telephone, 
+                c.mode_paiement
+            from utilisateurs as u
+            left join commerce as c on u.id_utilisateur = c.id_utilisateur
+            where u.rôle != 'admin'";
+
+        $req = self::executerRequete($sql);
+        
+        $data = $req->fetchAll(PDO::FETCH_ASSOC);
+
+
+        if (!empty($data)) return $data;
+    }
+
+
 
     public static function getUserPerEmail($email)
     {
@@ -117,8 +142,9 @@ class DBUser extends DbConnect
                 commandes.id_commande,
                 commandes.date_heure,
                 commandes.montant_total,
+                commandes.statut,
                 produits.id_produit,
-                produits.nom AS nom_produit,
+                produits.nom as nom_produit,
                 produits.description,
                 produits.prix,
                 detail_commande.quantité,

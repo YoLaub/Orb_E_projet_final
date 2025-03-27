@@ -1,3 +1,6 @@
 <h1>Produit</h1>
 
-<a href="./?action=commande">Commandez !</a>
+<?=var_dump($detailsProduit)?>
+
+
+<a href="./?action=commande"><?=$commandeBouton?></a>

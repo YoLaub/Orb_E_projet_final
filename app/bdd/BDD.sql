@@ -13,6 +13,23 @@ CREATE TABLE utilisateurs(
 CREATE TABLE commandes (
    id_commande INT AUTO_INCREMENT PRIMARY KEY,
    date_heure TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+   statut ENUM(
+        'en_attente_paiement',
+        'paiement_accepte',
+        'en_validation',
+        'en_preparation',
+        'prete_a_expedier',
+        'expediee',
+        'en_cours_de_livraison',
+        'livree',
+        'annulee',
+        'remboursee',
+        'en_retour',
+        'retour_recu',
+        'echec_paiement',
+        'litige_en_cours',
+        'partiellement_expediee'
+    ) NOT NULL DEFAULT 'en_attente_paiement',
    montant_total DECIMAL(15,2) NOT NULL,
    id_utilisateur INT NOT NULL,
    FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE
@@ -33,6 +50,7 @@ CREATE TABLE produits(
    description TEXT NOT NULL,
    prix DECIMAL(10,2) NOT NULL,
    photo VARCHAR(255) NOT NULL,
+   disponibilité ENUM("en_stock", "epuise")  NOT NULL DEFAULT 'en_stock';
    PRIMARY KEY(id_produit)
 );
 

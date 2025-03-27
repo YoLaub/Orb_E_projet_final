@@ -21,10 +21,11 @@
 </form>
 
 <h2>Historique des commandes</h2>
+
 <?php if (!empty($commandes)) : ?>
     <ul>
         <?php foreach ($commandes as $commande) : ?>
-            <li>Commande #<?php echo $commande["id_commande"]; ?> - Montant : <?php echo $commande["montant_total"]; ?> € - Date : <?php echo $commande["date_heure"]; ?></li>
+            <li>Commande #<?php echo $commande["id_commande"]; ?> - Montant : <?php echo $commande["montant_total"]; ?> € - Date : <?php echo $commande["date_heure"]; ?>- Status : <?php echo $commande["statut"]; ?></li>
         <?php endforeach; ?>
     </ul>
 <?php else : ?>
