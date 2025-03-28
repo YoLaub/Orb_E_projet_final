@@ -21,6 +21,12 @@
                 $validation = $etat ? "Utilisateur supprimé !" : "Une erreur s'est produite";
                 header("Location: ?action=utilisateur");
                 exit;
+            case isset($_POST["id_admin"]):
+                $connexion = new DBUser();
+                $etat = $connexion->deleteUser(intval($_POST["id_admin"]));
+                $validation = $etat ? "Administrateur supprimé !" : "Une erreur s'est produite";
+                header("Location: ?action=utilisateur");
+                exit;
     
             default:
                 header("Location: ?action=utilisateur");

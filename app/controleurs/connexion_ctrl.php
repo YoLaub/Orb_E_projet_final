@@ -22,16 +22,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: ?action=accueil");
         }elseif($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "admin"){
             header("Location: ?action=accueilBo");
-        } 
+        }else{
+            header("Location: ?action=connexion");
+        }   
         exit(); // Assure que le script s'arrête ici
     }else{
         header("Location: ?action=connexion");
     }
-
 }else{
 
-    $connexion = new GestionConnexion();
-    $connexion->deconnexion();
+    if(isset($_SESSION)){
+        $connexion = new GestionConnexion();
+        $connexion->deconnexion();
+    }
+    
     
     // Inclusion de la page connexion avec un message d'erreur si nécessaire
     include RACINE . "app/vues/page_header.php";

@@ -77,3 +77,23 @@ CREATE TABLE commerce (
     mode_paiement ENUM('carte', 'paypal', 'virement', 'autre') NOT NULL DEFAULT 'carte',
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE
 );
+
+CREATE TABLE contacts (
+    id_contact INT AUTO_INCREMENT PRIMARY KEY,
+    id_utilisateur INT NULL,
+    nom VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE
+);
+
+CREATE TABLE reponses_contacts (
+    id_reponse INT AUTO_INCREMENT PRIMARY KEY,
+    id_contact INT NOT NULL,             -- Référence au message de contact
+    id_admin INT NOT NULL,               -- L'ID de l'administrateur qui répond
+    reponse TEXT NOT NULL,               -- Le contenu de la réponse
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Date de la réponse
+    CONSTRAINT fk_contact FOREIGN KEY (id_contact) REFERENCES contacts(id_contact) ON DELETE CASCADE,  -- Lien vers le message de contact
+    CONSTRAINT fk_admin FOREIGN KEY (id_admin) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE  -- Lien vers l'administrateur (assuré par la table utilisateurs)
+);

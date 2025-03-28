@@ -9,16 +9,18 @@ class DBUser extends DbConnect
 
         $sql = "select * from utilisateurs";
 
-        $req = self::executerRequete($sql);
-        
-        $data = $req->fetchAll(PDO::FETCH_ASSOC);
-
-
-        if (!empty($data)) return $data;
+        try {
+            return self::executerRequete($sql)->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 
-    public static function getUser()
+    public static function getUser($role)
     {
+
+        $value= array();
+        $value["role"] = $role;
 
         $sql = "select 
                 u.email, 
@@ -33,9 +35,9 @@ class DBUser extends DbConnect
                 c.mode_paiement
             from utilisateurs as u
             left join commerce as c on u.id_utilisateur = c.id_utilisateur
-            where u.rôle != 'admin'";
+            where u.rôle != :role";
 
-        $req = self::executerRequete($sql);
+        $req = self::executerRequete($sql, $value);
         
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -74,18 +76,19 @@ class DBUser extends DbConnect
     }
 
 
-    public static function addUser($email, $mdp)
+    public static function addUser($email, $mdp, $role)
     {
 
         $value = array();
         $value["email"] = $email;
         $value["password"] = $mdp;
+        $value["role"] = $role;
 
         try {
 
             $utilisateur = self::getUserPerEmail($email);
             if($utilisateur==""){
-                $sql = "insert into utilisateurs (email, password) values (:email, :password)";
+                $sql = "insert into utilisateurs (rôle, email, password) values (:role, :email, :password)";
                 self::executerRequete($sql, $value);
                 return true;
             }

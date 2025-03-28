@@ -1,3 +1,8 @@
+==========///////////////////////============
+=========//////REQUETE TEST//////============
+=========////////////////////////============
+
+
 afficher commande:
 
 SELECT Id_Commande, commande.date_commande, commande.montant_total, utilisateur.nom, utilisateur.prenom 
@@ -66,8 +71,9 @@ JOIN utilisateurs ON parties.id_utilisateur = utilisateurs.id_utilisateur
 WHERE utilisateurs.email = :email
 ORDER BY parties.date_heure DESC;
 
-
-
+==============///////////////////////////=============
+    ==========////////DONNE TEST/////////==============
+==============///////////////////////////=============
 
 -- Insérer des utilisateurs
 INSERT INTO utilisateurs (date_inscription, rôle, email, password)
@@ -109,5 +115,14 @@ VALUES
 (1, 'john', 'doe', '123 Rue de Paris', 'Paris', '75001', 'France', '0123456789', 'carte'),
 (2, 'peter', 'doe' '456 Boulevard Saint-Germain', 'Paris', '75005', 'France', '0987654321', 'paypal'),
 (3, 'dane', 'joe','789 Avenue de la République', 'Marseille', '13001', 'France', '0147253654', 'virement');
+
+--inserer des messages--
+INSERT INTO contacts (id_utilisateur, nom, email, message, created_at) 
+VALUES 
+(NULL, 'Jean Dupont', 'jean.dupont@example.com', 'Bonjour, j’aimerais avoir plus d’informations sur votre service.', NOW()),
+(2, 'Alice Martin', 'alice.martin@example.com', 'J’ai rencontré un problème lors de l’inscription.', NOW()),
+(NULL, 'Sophie Lemoine', 'sophie.lemoine@example.com', 'Je vous remercie pour votre travail, c’est super !', NOW()),
+(4, 'Thomas Bernard', 'thomas.bernard@example.com', 'Est-il possible de modifier mon adresse e-mail ?', NOW()),
+(NULL, 'David Moreau', 'david.moreau@example.com', 'Je ne parviens pas à accéder à mon compte.', NOW());
 
 

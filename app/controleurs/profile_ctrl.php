@@ -1,13 +1,19 @@
 <?php
 require_once RACINE . "app/modeles/bddUtilisateur.php";
+require_once RACINE . "app/modeles/bddContact.php";
+require_once RACINE . "app/modeles/bddReponse.php";
 require RACINE."app/controleurs/navigation_ctrl.php";
 
-
+$id_contact =12;
 $email = $_SESSION["email"];
 $gestionProfil = new DBUser();
+$connexionContact = new DBContacts();
+$connexionReponses = new DBResponse();
 $informations = $gestionProfil->infoUser($email);
 $commandes = $gestionProfil->getUserOrders($email);
 $score = $gestionProfil->getUserScores($email);
+$mesMessages = $connexionContact->getMessagePerEmail($email);
+$mesReponses = $connexionReponses->getReponsesPerEmail($id_contact);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $prenom = trim($_POST["prenom"] ?? '');

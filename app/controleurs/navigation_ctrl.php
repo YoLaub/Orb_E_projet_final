@@ -8,6 +8,7 @@ if(isset($_SESSION["role"]) && $_SESSION["role"] == "admin"){
     $nav->addItem("./?action=accueilBo","Tableau de bord");
     $nav->addItem("./?action=utilisateur","Gestion utilisateur");
     $nav->addItem("./?action=produit","Gestion de produit");
+    $nav->addItem("./?action=messagerie","Messagerie");
 
     $navContent = $nav->getNav();
 }else{

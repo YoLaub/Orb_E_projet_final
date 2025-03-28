@@ -46,7 +46,7 @@ class GestionConnexion
     }
 
 
-    public function inscription($email, $mdp)
+    public function inscription($email, $mdp, $role="utilisateur")
     {
         $regexMdp = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/";
 
@@ -57,7 +57,7 @@ class GestionConnexion
                 throw new Exception("Email invalid, respecter le format demandé");
             } else {
                 $mdpHache = password_hash($mdp, PASSWORD_DEFAULT);
-                $this->connectDB::addUser($email, $mdpHache);
+                $this->connectDB::addUser($email, $mdpHache, $role);
             }
         } catch (Exception $e) {
             return $e->getMessage();

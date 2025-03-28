@@ -32,6 +32,12 @@
     <p>Aucune commande enregistrée.</p>
 <?php endif; ?>
 
+<h2>Mes échanges</h2>
+<?=var_dump($mesMessages)?>
+
+<h2>Les réponses</h2>
+<?=var_dump($mesReponses)?>
+
 <h2>Scores</h2>
 <?php if (!empty($score)) : ?>
     <ul>
