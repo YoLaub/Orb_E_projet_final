@@ -1,6 +1,6 @@
 <?php
 
-namespace app\class ;
+namespace app\controleurs\class ;
 use \Exception;
 
 use app\modeles\DBUser;
@@ -12,9 +12,6 @@ class GestionConnexion
 
     public function __construct()
     {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
         $this->connectDB = new DBUser;
     }
 
@@ -62,13 +59,12 @@ class GestionConnexion
                 throw new Exception("Email invalid, respecter le format demandé");
             } else {
                 $mdpHache = password_hash($mdp, PASSWORD_DEFAULT);
-                $this->connectDB::addUser($email, $mdpHache, $role);
+                return $this->connectDB::addUser($email, $mdpHache, $role);;
             }
         } catch (Exception $e) {
             return $e->getMessage();
         }
     }
-
 
     public function deconnexion()
     {

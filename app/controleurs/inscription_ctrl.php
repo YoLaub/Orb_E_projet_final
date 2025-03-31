@@ -2,9 +2,7 @@
 require_once RACINE . "app/controleurs/navigation_ctrl.php";
 
 
-use app\class\GestionConnexion;
-
-$validation = "*";
+use app\controleurs\class\GestionConnexion;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"] ?? '');
@@ -14,17 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $connexion = new GestionConnexion();
         $etat = $connexion->inscription($email, $mdp);
 
-        if ($etat == true) {
+        if ($etat) {
             $connexion->connexion($email, $mdp);
             // Redirection vers l'accueil si connexion réussie
             header("Location: ?action=accueil");
         } else {
-            $validation = "Erreur lors de l'inscription.";
             // Redirection vers l'accueil si connexion réussie
             header("Location: ?action=inscription");
         }
     } else {
-        $validation = "Tous les champs sont requis.";
         header("Location: ?action=inscription");
     }
 } else {

@@ -3,7 +3,7 @@ require RACINE."app/controleurs/navigation_ctrl.php";
 
 use app\modeles\DBUser;
 use app\modeles\DBProduct;
-use app\class\GestionConnexion;
+use app\controleurs\class\GestionConnexion;
 
 
 

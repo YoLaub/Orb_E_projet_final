@@ -1,6 +1,6 @@
 <?php
 
-namespace app\class;
+namespace app\controleurs\class;
 
 use \Exception;
 
@@ -30,7 +30,7 @@ class Routes
         ];
     }
 
-    public function redirection(string $action = "defaut"): string
+    public function redirection(string $action = "defaut")
     {
         $this->action = $action;
 
@@ -38,23 +38,23 @@ class Routes
         $controller_id = $this->lesActions[$this->action] ?? self::ERROR_ROUTE;
 
         try {
-        $path = $this->getFilePath($controller_id); // Inclusion sécurisée du fichier correspondant          
-            return $path;
+            return $this->getFilePath($controller_id);
         } catch (Exception $e) {
-            error_log($e->getMessage()); // Log de l'erreur dans le fichier de logs
-            return $this->getFilePath(self::ERROR_ROUTE); // Redirection vers la page d'erreur
+            error_log($e->getMessage()); // Log l'erreur dans un fichier
+            return $this->getFilePath(self::ERROR_ROUTE);
         }
     }
 
-    private function getFilePath(string $file): string
-    {
-        // Génère le chemin du fichier de contrôle
-        $path = RACINE . "app/controleurs/" . $file;
+    private function getFilePath(string $file): string {
+        // Chemin vers les fichiers du back-office
+        $path = RACINE . "app/controleurs/" . $file; 
 
-        // Vérifie si le fichier existe, sinon, lève une exception
+        // Vérifie si le fichier existe avant de l'inclure
         if (!file_exists($path)) {
             throw new Exception("Le fichier de contrôle '$file' est introuvable.");
         }
         return $path;
     }
+
+  
 }

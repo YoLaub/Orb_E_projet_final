@@ -1,6 +1,6 @@
 <?php
 
-namespace app\class;
+namespace app\controleurs\class;
 
 use \Exception;
 
@@ -18,7 +18,7 @@ class RoutesPrive {
             "fiche" => "admin/fiche_p_bo_ctrl.php",
             "messagerie" => "admin/messagerie_ctrl.php",
             "connexion" => "connexion_ctrl.php",
-            "suppression" => "composant/suppression_ctrl.php",
+            "suppression" => "suppression_ctrl.php",
             "page404" => self::ERROR_ROUTE,
         ];
     }

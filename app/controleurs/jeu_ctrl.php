@@ -3,7 +3,7 @@
 require RACINE."app/controleurs/navigation_ctrl.php";
 
 
-use app\class\GestionConnexion;
+use app\controleurs\class\GestionConnexion;
 
 $connexion = new GestionConnexion();
 

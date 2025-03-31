@@ -6,11 +6,12 @@ use app\modeles\DBUser;
 use app\modeles\DBContacts;
 use app\modeles\DBResponse;
 
-$id_contact =12;
-$email = $_SESSION["email"];
 $gestionProfil = new DBUser();
 $connexionContact = new DBContacts();
 $connexionReponses = new DBResponse();
+
+$id_contact = 12;
+$email = $_SESSION["email"];
 $informations = $gestionProfil->infoUser($email);
 $commandes = $gestionProfil->getUserOrders($email);
 $score = $gestionProfil->getUserScores($email);

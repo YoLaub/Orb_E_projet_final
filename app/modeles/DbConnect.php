@@ -2,51 +2,44 @@
 
 namespace app\modeles;
 
-use \PDO;
-use \PDOException;
-use \Exception;
+use PDO;
+use PDOException;
+use Exception;
 
- //Singleton - Connexion base de donnée
-	abstract class DbConnect {
-		
-		public static function connexion() {
-			
-			try {
-				$dsn = 'mysql:host=' . $_ENV['DB_HOST'] .';dbname=' . $_ENV['DB_NAME'];
-				$pdo = new PDO($dsn, $_ENV['USERNAME'], $_ENV['PASSWORD'], array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
-				$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				return $pdo;
-			} catch (PDOException $e) {
-				return $e->getMessage()."<br />Erreur de connexion PDO !";
-			}		
-		}
-		
-		// Exécute une requête SQL éventuellement paramétrée
-		protected static function executerRequete($sql, $values = []) {
+// Singleton - Connexion base de données
+abstract class DbConnect {
+    private static ?PDO $instance = null; // Stocke l'instance unique de PDO
 
-			try {
+    private static function connexion(): PDO {
+        if (self::$instance === null) {
+            try {
+                $dsn = 'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'];
+                self::$instance = new PDO($dsn, $_ENV['USERNAME'], $_ENV['PASSWORD'], [
+                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'',
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ]);
+            } catch (PDOException $e) {
+                die("Erreur de connexion PDO : " . $e->getMessage());
+            }
+        }
+        return self::$instance;
+    }
 
-				$query = self::connexion()->prepare($sql); // requête préparée
+    // Exécute une requête SQL éventuellement paramétrée
+    protected static function executerRequete(string $sql, array $values = []) {
+        try {
+            $query = self::connexion()->prepare($sql);
 
-				//Binding des valeurs
-				if(!empty($values)){
-					foreach ($values as $key => $value){
-						$param = (strpos($key,":")===0) ? $key : ":". $key;
-						if(is_int($value)){
-							$query->bindValue($param,$value,PDO::PARAM_INT);
-						}else{
-							$query->bindValue($param,$value,PDO::PARAM_STR);
-						}
-						}
-				
-					
-				}
-				$query->execute();
-				return $query;
-			}
-			catch(Exception $e) {
-				return $e->getMessage()."<br />Impossible d'envoyer les données dans la base de données' !";
-			}
-		}	
-	}
-	
+            // Binding des valeurs
+            foreach ($values as $key => $value) {
+                $param = (strpos($key, ":") === 0) ? $key : ":" . $key;
+                $query->bindValue($param, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+            }
+
+            $query->execute();
+            return $query;
+        } catch (Exception $e) {
+            die("Erreur SQL : " . $e->getMessage());
+        }
+    }
+}
