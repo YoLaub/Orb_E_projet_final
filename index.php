@@ -1,9 +1,22 @@
 <?php
 // Inclusion des fichiers de configuration et des classes principales
-require dirname(__FILE__) . "/app/config.php";
-require RACINE . "app/class/route.php";
-require RACINE . "app/class/routePrive.php";
-require RACINE . "app/modeles/connect.php";
+define("RACINE", __DIR__. "/");
+
+require __DIR__.'/vendor/autoload.php';
+
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable((__DIR__ . "/"));
+$dotenv->load();
+
+
+use app\modeles\DbConnect;
+use app\class\Routes;
+use app\class\RoutesPrive;
+
+
+
 
 // Démarrer la session si elle n'est pas déjà active
 if (session_status() == PHP_SESSION_NONE) {
@@ -19,7 +32,7 @@ if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
 
 // Récupérer l'action demandée, sinon utiliser la valeur par défaut
 $action = $_GET["action"] ?? "defaut";
-$route->redirection($action); 
+require $route->redirection($action); 
 
 ?>
 

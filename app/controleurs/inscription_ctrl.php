@@ -1,7 +1,8 @@
 <?php
 require_once RACINE . "app/controleurs/navigation_ctrl.php";
-require_once RACINE . "app/class/gestionConnexion.php";
-require_once RACINE . "app/modeles/bddUtilisateur.php";
+
+
+use app\class\GestionConnexion;
 
 $validation = "*";
 

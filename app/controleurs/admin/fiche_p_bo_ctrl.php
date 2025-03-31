@@ -1,7 +1,7 @@
 <?php
     require RACINE."app/controleurs/navigation_ctrl.php";
-    require_once RACINE . "app/modeles/bddProduit.php";
 
+    use app\modeles\DBProduct;
 
     $id_produit = $_SESSION["id_produit"];
     $connexion = new DBProduct();

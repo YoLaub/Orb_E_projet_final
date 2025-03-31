@@ -1,5 +1,9 @@
 <?php
 
+namespace app\class;
+
+use \Exception;
+
 class RoutesPrive {
     private array $adminActions; // Tableau associatif des actions du back-office
     private string $action;
@@ -19,12 +23,11 @@ class RoutesPrive {
         ];
     }
 
-    public function redirection(string $action = "accueilBo"): void {
+    public function redirection(string $action = "accueilBo"): string {
     
         // Vérifie si l'utilisateur est bien un administrateur
         if (!$this->isAdmin()) {
-            header("Location: app/controleurs/" . self::ERROR_ROUTE);
-            exit;
+            return $this->getFilePath("connexion_ctrl.php");
         }
 
         $this->action = $action;
@@ -33,10 +36,10 @@ class RoutesPrive {
         $controller_id = $this->adminActions[$this->action] ?? self::ERROR_ROUTE;
 
         try {
-            require $this->getFilePath($controller_id);
+            return $this->getFilePath($controller_id);
         } catch (Exception $e) {
             error_log($e->getMessage()); // Log l'erreur dans un fichier
-            require $this->getFilePath(self::ERROR_ROUTE);
+            return $this->getFilePath(self::ERROR_ROUTE);
         }
     }
 

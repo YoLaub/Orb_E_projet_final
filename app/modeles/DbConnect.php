@@ -1,13 +1,19 @@
 <?php
 
+namespace app\modeles;
+
+use \PDO;
+use \PDOException;
+use \Exception;
+
  //Singleton - Connexion base de donnée
 	abstract class DbConnect {
 		
 		public static function connexion() {
 			
 			try {
-				$dsn = 'mysql:host=' . DB_HOST .';dbname=' . DB_DATABASE;
-				$pdo = new PDO($dsn, DB_USERNAME, DB_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
+				$dsn = 'mysql:host=' . $_ENV['DB_HOST'] .';dbname=' . $_ENV['DB_NAME'];
+				$pdo = new PDO($dsn, $_ENV['USERNAME'], $_ENV['PASSWORD'], array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
 				$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				return $pdo;
 			} catch (PDOException $e) {

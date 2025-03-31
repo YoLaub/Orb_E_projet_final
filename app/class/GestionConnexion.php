@@ -1,5 +1,10 @@
 <?php
 
+namespace app\class ;
+use \Exception;
+
+use app\modeles\DBUser;
+ 
 class GestionConnexion
 {
 

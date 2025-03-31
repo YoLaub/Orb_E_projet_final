@@ -1,6 +1,8 @@
 <?php
     require RACINE."app/controleurs/navigation_ctrl.php";
-    require RACINE."app/modeles/bddContact.php";
+
+
+    use app\modeles\DBContacts;
 
     $validation = "* veuillez remplir tout les champs";
     

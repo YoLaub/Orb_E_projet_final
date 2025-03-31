@@ -1,5 +1,9 @@
 <?php
 
+namespace app\modeles;
+
+use \PDO;
+use \Exception;
 
 class DBUser extends DbConnect
 {

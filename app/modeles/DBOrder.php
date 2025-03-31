@@ -1,5 +1,10 @@
 <?php
 
+namespace app\modeles;
+
+use \PDO;
+use \Exception;
+
 
 class DBOrder extends DbConnect
 {

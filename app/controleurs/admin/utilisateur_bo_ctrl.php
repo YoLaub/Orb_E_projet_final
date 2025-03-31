@@ -1,8 +1,8 @@
 <?php
-
-    require_once RACINE . "app/modeles/bddUtilisateur.php";
     require RACINE."app/controleurs/navigation_ctrl.php";
-    require RACINE."app/class/gestionConnexion.php";
+
+    use app\modeles\DBUser;
+    use app\class\GestionConnexion;
 
     $gestionProfil = new DBUser();
     $listeUtilisateur = $gestionProfil->getUser("admin");

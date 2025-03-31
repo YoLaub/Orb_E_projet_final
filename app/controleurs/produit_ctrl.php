@@ -1,8 +1,8 @@
 <?php
 
-require_once RACINE . "app/modeles/bddProduit.php";
 require RACINE."app/controleurs/navigation_ctrl.php";
 
+use app\modeles\DBProduct;
 
 $produit = new DBProduct();
 $detailsProduit = $produit->getProduct();

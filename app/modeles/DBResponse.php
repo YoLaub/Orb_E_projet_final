@@ -1,4 +1,10 @@
 <?php
+
+namespace app\modeles;
+
+use \PDO;
+use \Exception;
+
 class DBResponse extends DbConnect
 {
     public static function getReponse()

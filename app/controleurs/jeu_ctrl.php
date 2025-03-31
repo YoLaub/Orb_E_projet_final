@@ -1,7 +1,9 @@
 <?php
-require_once RACINE . "app/modeles/bddUtilisateur.php";
+
 require RACINE."app/controleurs/navigation_ctrl.php";
-require_once RACINE . "app/class/gestionConnexion.php";
+
+
+use app\class\GestionConnexion;
 
 $connexion = new GestionConnexion();
 

@@ -1,8 +1,9 @@
 <?php
     require RACINE."app/controleurs/navigation_ctrl.php";
-    require RACINE."app/modeles/bddContact.php";
-    require RACINE."app/modeles/bddReponse.php";
 
+    use app\modeles\DBContacts;
+    use app\modeles\DBResponse;
+  
     $connexionContact = new DBContacts();
     $connexionReponse = new DBResponse();
 

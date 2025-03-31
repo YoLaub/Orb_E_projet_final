@@ -1,4 +1,10 @@
 <?php
+
+namespace app\modeles;
+
+use \PDO;
+use \Exception;
+
 class DBContacts extends DbConnect
 {
     public static function getMessage()

@@ -1,9 +1,11 @@
 <?php
     require RACINE."app/controleurs/navigation_ctrl.php";
-    require RACINE."app/modeles/bddUtilisateur.php";
-    require RACINE."app/modeles/bddProduit.php";
-    require RACINE."app/modeles/bddCommande.php";
-    require RACINE."app/modeles/bddJeu.php";
+
+
+    use app\modeles\DBUser;
+    use app\modeles\DBProduct;
+    use app\modeles\DBOrder;
+    use app\modeles\DBParty;
 
     $connexionUtilisateur = new DBUser();
     $connexionProduit = new DBProduct();

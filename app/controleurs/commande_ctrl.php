@@ -1,8 +1,12 @@
 <?php
-require_once RACINE . "app/modeles/bddProduit.php";
-require_once RACINE . "app/modeles/bddUtilisateur.php";
 require RACINE."app/controleurs/navigation_ctrl.php";
-require_once RACINE . "app/class/gestionConnexion.php";
+
+use app\modeles\DBUser;
+use app\modeles\DBProduct;
+use app\class\GestionConnexion;
+
+
+
 
 $connexion = new GestionConnexion();
 $connexionDBUser = new DBUser();

@@ -1,8 +1,10 @@
 <?php
-require_once RACINE . "app/modeles/bddUtilisateur.php";
-require_once RACINE . "app/modeles/bddContact.php";
-require_once RACINE . "app/modeles/bddReponse.php";
+
 require RACINE."app/controleurs/navigation_ctrl.php";
+
+use app\modeles\DBUser;
+use app\modeles\DBContacts;
+use app\modeles\DBResponse;
 
 $id_contact =12;
 $email = $_SESSION["email"];

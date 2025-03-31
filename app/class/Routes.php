@@ -1,4 +1,9 @@
 <?php
+
+namespace app\class;
+
+use \Exception;
+
 class Routes
 {
     private array $lesActions; // Tableau associatif des actions et fichiers correspondants
@@ -25,7 +30,7 @@ class Routes
         ];
     }
 
-    public function redirection(string $action = "defaut"): void 
+    public function redirection(string $action = "defaut"): string
     {
         $this->action = $action;
 
@@ -33,10 +38,11 @@ class Routes
         $controller_id = $this->lesActions[$this->action] ?? self::ERROR_ROUTE;
 
         try {
-            require $this->getFilePath($controller_id); // Inclusion sécurisée du fichier correspondant
+        $path = $this->getFilePath($controller_id); // Inclusion sécurisée du fichier correspondant          
+            return $path;
         } catch (Exception $e) {
             error_log($e->getMessage()); // Log de l'erreur dans le fichier de logs
-            require $this->getFilePath(self::ERROR_ROUTE); // Redirection vers la page d'erreur
+            return $this->getFilePath(self::ERROR_ROUTE); // Redirection vers la page d'erreur
         }
     }
 
