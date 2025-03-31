@@ -50,7 +50,7 @@ CREATE TABLE produits(
    description TEXT NOT NULL,
    prix DECIMAL(10,2) NOT NULL,
    photo VARCHAR(255) NOT NULL,
-   disponibilité ENUM("en_stock", "epuise")  NOT NULL DEFAULT 'en_stock';
+   disponibilité ENUM("en_stock", "epuise")  NOT NULL DEFAULT 'en_stock',
    PRIMARY KEY(id_produit)
 );
 
