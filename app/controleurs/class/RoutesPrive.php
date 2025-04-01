@@ -2,61 +2,50 @@
 
 namespace app\controleurs\class;
 
-use \Exception;
+use app\controleurs\class\Connexion;
 
 class RoutesPrive {
     private array $adminActions; // Tableau associatif des actions du back-office
     private string $action;
+    private $params;
+    private const DEFAULT_ROUTE = "accueilControleur:accueil"; // Définition d'une constante pour la route par défaut
     private const ERROR_ROUTE = "page404_ctrl.php"; // Route d'erreur
 
     public function __construct() {
         // Liste des actions disponibles uniquement pour les administrateurs
         $this->adminActions = [
-            "accueilBo" => "admin/accueil_bo_ctrl.php",
+            "defaut"  => self::DEFAULT_ROUTE,
+            "accueil" => self::DEFAULT_ROUTE,
+            "accueilBo" => "accueilControleur:accueil",
             "utilisateur" => "admin/utilisateur_bo_ctrl.php",
             "produit" => "admin/produit_bo_ctrl.php",
             "fiche" => "admin/fiche_p_bo_ctrl.php",
             "messagerie" => "admin/messagerie_ctrl.php",
-            "connexion" => "connexion_ctrl.php",
+            "connexion" => "Connexion:connexionUtilisateur",
             "suppression" => "suppression_ctrl.php",
+            "deconnexion" => "Connexion:deconnexion",
             "page404" => self::ERROR_ROUTE,
         ];
     }
 
-    public function redirection(string $action = "accueilBo"): string {
-    
-        // Vérifie si l'utilisateur est bien un administrateur
-        if (!$this->isAdmin()) {
-            return $this->getFilePath("connexion_ctrl.php");
-        }
+    public function redirection(string $action = "defaut", array $params = []){
 
         $this->action = $action;
+        $this->params = $params;
 
-        // Vérifie si l'action demandée existe, sinon, redirige vers la page 404
-        $controller_id = $this->adminActions[$this->action] ?? self::ERROR_ROUTE;
+            // Vérifie si l'action existe, sinon, renvoie vers la page 404
+        $controllerAction = explode(":", $this->adminActions[$this->action]);
+        // $controller = new $controllerAction[0]();
+        $fullPathClass =  __NAMESPACE__ . "\\" . $controllerAction[0];
+        
+        $controller = new $fullPathClass(); 
+        $method = $controllerAction[1]; 
 
-        try {
-            return $this->getFilePath($controller_id);
-        } catch (Exception $e) {
-            error_log($e->getMessage()); // Log l'erreur dans un fichier
-            return $this->getFilePath(self::ERROR_ROUTE);
-        }
+        $controller->$method($params);
+
+        exit();
+
     }
 
-    private function getFilePath(string $file): string {
-        // Chemin vers les fichiers du back-office
-        $path = RACINE . "app/controleurs/" . $file; 
-
-        // Vérifie si le fichier existe avant de l'inclure
-        if (!file_exists($path)) {
-            throw new Exception("Le fichier de contrôle '$file' est introuvable.");
-        }
-        return $path;
-    }
-
-    private function isAdmin(): bool {
-        // Vérifie si la session contient un rôle administrateur
-        return isset($_SESSION['role']) && $_SESSION['role'] === "admin";
-    }
 }
 

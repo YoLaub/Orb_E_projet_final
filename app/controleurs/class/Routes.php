@@ -19,12 +19,14 @@ class Routes
         $this->lesActions = [
             "defaut"  => self::DEFAULT_ROUTE,
             "accueil" => self::DEFAULT_ROUTE,
-            "produit" => "produit_ctrl.php",
+            "produit" => "produitControleur:pageProduit",
             "commande" => "commande_ctrl.php",
-            "jeu" => "jeu_ctrl.php",
+            "jeu" => "jeuControleur:pageJeu",
             "connexion" => "Connexion:connexionUtilisateur",
+            "deconnexion" => "Connexion:deconnexion",
             "inscription" => "Connexion:inscription",
-            "profile" => "profile_ctrl.php",
+            "formulaire" => "profilControleur:modifierInformationPerso",
+            "profile" => "profilControleur:pageProfil",
             "mentions" => "mention_ctrl.php",
             "qui" => "qui_ctrl.php",
             "contact" => "contact_ctrl.php",
@@ -47,12 +49,7 @@ class Routes
 
         $controller->$method($params);
 
-        // call_user_func_array([$controller, $method], $this->params);
-
-        exit();
-
-
-
+          exit();
     }
 
 }

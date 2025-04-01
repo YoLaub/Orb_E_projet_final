@@ -36,9 +36,9 @@ class Connexion
         
                 if ($estConnecte==true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
                     // Redirection vers l'accueil si connexion réussie
-                    $this->home->accueil($_SESSION["role"]);
+                    $this->home->accueil();
                 }elseif($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "admin"){
-                    $this->home->accueil($_SESSION["role"]);
+                    $this->home->accueil();
                 }else{
                     $content = "page_connexion.php";
                     $this->pageLayout->render($content);
@@ -51,8 +51,7 @@ class Connexion
         }else{
         
             if(isset($_SESSION)){
-                $connexion = new GestionConnexion();
-                $connexion->deconnexion();
+                self::deconnexion();
             }
             
             
@@ -115,6 +114,10 @@ class Connexion
             unset($_SESSION["id"]);
             unset($_SESSION["role"]);
             session_destroy();
+
+            $content = "page_accueil.php";
+            $this->pageLayout->render($content);
+            
         }
     }
 

@@ -14,11 +14,10 @@ class accueilControleur{
     public function accueil(){
 
         if(isset($_SESSION["role"])){
-            $role = $_SESSION["role"];
-            if($role == "utilisateur"){
+            if($_SESSION["role"] == "utilisateur"){
                 $content = "page_accueil.php";
                 $this->pageLayout->render($content);
-            }else{
+            }elseif($_SESSION["role"] == "admin"){
                 $content = "admin/page_accueil_bo.php";
                 $this->pageLayout->render($content);
             }

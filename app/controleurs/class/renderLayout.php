@@ -10,22 +10,22 @@ class renderLayout
         
     }
 
-    public function render($target){
+    public function render($target, $params = []){
 
-        $pageLayout = null;
+        
 
         ob_start();
+
+        $commande = $params;
+        $keys = array_keys($params);
 
         require_once RACINE . 'app/vues/' . $target;
 
         $pageContent = ob_get_clean();
 
-        if ($pageLayout !== null) {
-            require_once $pageLayout;
-        }
-        else {
-            echo $pageContent;
-        }
+        
+        echo $pageContent;
+        
 
     }
 
