@@ -1,3 +1,9 @@
+<?php
+require_once RACINE . "app/controleurs/navigation_ctrl.php";
+include RACINE . "app/vues/page_header.php";
+
+?>
+
 <h1>accès BO ok</h1>
 
 <h2>
@@ -15,3 +21,10 @@
 </h2>
 
 <?=var_dump($meilleurJoueur)?>
+
+
+<?php
+
+include RACINE . "app/vues/page_footer.php";
+
+?>

@@ -1,3 +1,9 @@
+<?php
+require_once RACINE . "app/controleurs/navigation_ctrl.php";
+include RACINE . "app/vues/page_header.php";
+
+?>
+
 <section id="connexion">
     <h2>
         Connexion
@@ -11,3 +17,9 @@
     <a href="./?action=inscription">S'inscrire</a>
 
 </section>
+
+<?php
+
+include RACINE . "app/vues/page_footer.php";
+
+?>
