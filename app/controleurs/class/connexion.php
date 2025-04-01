@@ -12,11 +12,13 @@ class Connexion
 
     private $connectDB;
     private $pageLayout;
+    private $home;
 
     public function __construct()
     {
         $this->connectDB = new DBUser;
         $this->pageLayout = new renderLayout;
+        $this->home = new accueilControleur;
     }
 
     public function connexionUtilisateur()
@@ -34,11 +36,9 @@ class Connexion
         
                 if ($estConnecte==true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
                     // Redirection vers l'accueil si connexion réussie
-                    $content = "page_accueil.php";
-                    $this->pageLayout->render($content);
+                    $this->home->accueil($_SESSION["role"]);
                 }elseif($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "admin"){
-                    $content = "page_accueil_bo.php";
-                    $this->pageLayout->render($content);
+                    $this->home->accueil($_SESSION["role"]);
                 }else{
                     $content = "page_connexion.php";
                     $this->pageLayout->render($content);

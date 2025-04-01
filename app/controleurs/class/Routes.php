@@ -10,7 +10,7 @@ class Routes
     private array $lesActions; // Tableau associatif des actions et fichiers correspondants
     private string $action;
     private $params;
-    private const DEFAULT_ROUTE = "accueil_ctrl.php"; // Définition d'une constante pour la route par défaut
+    private const DEFAULT_ROUTE = "accueilControleur:accueil"; // Définition d'une constante pour la route par défaut
     private const ERROR_ROUTE = "page404_ctrl.php"; // Route en cas d'erreur ou de page introuvable
 
     public function __construct()
@@ -32,9 +32,10 @@ class Routes
         ];
     }
 
-    public function redirection(string $action = "defaut"){
+    public function redirection(string $action = "defaut", array $params = []){
 
         $this->action = $action;
+        $this->params = $params;
 
         // Vérifie si l'action existe, sinon, renvoie vers la page 404
         $controllerAction = explode(":", $this->lesActions[$this->action]);
@@ -44,7 +45,7 @@ class Routes
         $controller = new $fullPathClass(); 
         $method = $controllerAction[1]; 
 
-        $controller->$method();
+        $controller->$method($params);
 
         // call_user_func_array([$controller, $method], $this->params);
 
