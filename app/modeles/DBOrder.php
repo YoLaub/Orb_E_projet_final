@@ -139,4 +139,20 @@ class DBOrder extends DbConnect
         
 }
 
+    public static function showEnum(){
+
+        // Récupérer les valeurs de l'ENUM
+        $sql = "SHOW COLUMNS FROM commerce LIKE 'mode_paiement'";
+        $req = self::executerRequete($sql);
+
+        /* Remplacer ??? par la méthode fetchAll() */
+        $data = $req->fetchAll(PDO::FETCH_ASSOC);
+        
+        preg_match("/^enum\((.+)\)$/i",  $data[0]["Type"], $matches);
+        $enumValues = str_getcsv($matches[1], ",", "'");
+
+        if (!empty($data)) return $enumValues;
+
+    }
+
 }

@@ -80,7 +80,7 @@ class DBUser extends DbConnect
     }
 
 
-    public static function addUser($email, $mdp, $role)
+    public static function addUser($email, $mdp, $role = "utilisateur")
     {
 
         $value = array();
