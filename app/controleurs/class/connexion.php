@@ -6,17 +6,20 @@ use \Exception;
 
 use app\modeles\DBUser;
 use app\controleurs\class\renderLayout;
+use app\modeles\DBProduct;
 
 class Connexion
 {
 
     private $connectDB;
+    private $connexionProduct;
     private $pageLayout;
     private $home;
 
     public function __construct()
     {
         $this->connectDB = new DBUser;
+        $this->connexionProduct = new DBProduct();
         $this->pageLayout = new renderLayout;
         $this->home = new accueilControleur;
     }
@@ -77,8 +80,6 @@ class Connexion
 
     public function inscription()
     {
-        
-
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $email = trim($_POST["email"] ?? '');
             $mdp = trim($_POST["mdp"] ?? '');
@@ -121,7 +122,36 @@ class Connexion
         }
     }
 
-    private function verifInfoAuth($email, $mdp){
+    public function suppressionUtilisateur()
+    {
+       
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            
+            switch (true) {
+                case isset($_POST["id_produit"]):
+                    $etat = $this->connexionProduct->deleteProduct(intval($_POST["id_produit"]));
+                    header("Location: ?action=produit");
+                exit();
+        
+                case isset($_POST["id_utilisateur"]):
+                    $etat = $this->connectDB->deleteUser(intval($_POST["id_utilisateur"]));
+                    header("Location: ?action=utilisateur");
+                exit();
+                case isset($_POST["id_admin"]):
+                    $etat =  $this->connectDB->deleteUser(intval($_POST["id_admin"]));
+                    header("Location: ?action=utilisateur");
+                exit();
+        
+                default:
+                    $this->pageLayout->render($content);
+            }
+        } else {
+            $content = "admin/page_Ubo.php";
+            $this->pageLayout->render($content);
+        }
+    }
+
+    public function verifInfoAuth($email, $mdp){
 
         $regexMdp = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/";
 

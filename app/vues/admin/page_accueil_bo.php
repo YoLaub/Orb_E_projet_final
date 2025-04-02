@@ -10,17 +10,17 @@ include RACINE . "app/vues/page_header.php";
     Tableau de bord vente:
 </h2>
 
-<?=var_dump($lesCommandes)?>
+<?=var_dump($commande["lesCommandes"])?>
 
 
-<h2>Nombre d'utilisateurs: <?=var_dump($lesUtilisateurs)?></h2>
+<h2>Nombre d'utilisateurs: <?=$commande["lesUtilisateurs"][0]["count(*)"]?></h2>
 
 
 <h2>
     Tableau de bord Jeu:
 </h2>
 
-<?=var_dump($meilleurJoueur)?>
+<?=var_dump($commande["meilleurJoueur"])?>
 
 
 <?php
