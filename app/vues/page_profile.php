@@ -1,3 +1,9 @@
+<?php
+require_once RACINE . "app/controleurs/navigation_ctrl.php";
+include RACINE . "app/vues/page_header.php";
+?>
+
+
 <h1>Profil de <?=$commande["informations"][0]["prenom"] . " " . $commande["informations"][0]["nom"]; ?></h1>
 
 <h2>Informations Personnelles</h2>
@@ -8,8 +14,9 @@
 <p><strong>Ville :</strong> <?=$commande["informations"][0]["ville"]; ?></p>
 <p><strong>Code Postal :</strong> <?=$commande["informations"][0]["code_postal"]; ?></p>
 <p><strong>Téléphone :</strong> <?=$commande["informations"][0]["telephone"]; ?></p>
+<p><strong>Paiement :</strong> <?=$commande["informations"][0]["mode_paiement"]; ?></p>
 
-
+<?=$commande["formulaire"]?>
 
 <h2>Historique des commandes</h2>
 
@@ -39,3 +46,9 @@
 <?php else : ?>
     <p>Aucun score enregistré.</p>
 <?php endif; ?>
+
+<?php
+
+include RACINE . "app/vues/page_footer.php";
+
+?>

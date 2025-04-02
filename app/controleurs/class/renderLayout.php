@@ -10,9 +10,7 @@ class renderLayout
         
     }
 
-    public function render($target, $params = []){
-
-        
+    public function render($target, $params = [], $return = false){
 
         ob_start();
 
@@ -23,11 +21,10 @@ class renderLayout
 
         $pageContent = ob_get_clean();
 
-        
+        if ($return) {
+            return $pageContent;
+        }
+
         echo $pageContent;
-        
-
     }
-
-
-}
+    }

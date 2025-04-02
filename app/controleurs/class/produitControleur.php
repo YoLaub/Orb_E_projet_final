@@ -5,7 +5,7 @@ namespace app\controleurs\class;
 use app\middleware\Middleware;
 use app\modeles\DBProduct;
 
-class produitControleur
+class ProduitControleur
 {
     private $pageLayout;
     private $connexion;

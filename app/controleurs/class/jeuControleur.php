@@ -4,7 +4,7 @@ namespace app\controleurs\class;
 
 use app\middleware\Middleware;
 
-class jeuControleur
+class JeuControleur
 {
     private $pageLayout;
     private $connexion;
