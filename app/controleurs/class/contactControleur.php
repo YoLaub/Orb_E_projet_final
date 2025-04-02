@@ -3,15 +3,18 @@
 namespace app\controleurs\class;
 
 use app\modeles\DBContacts;
+use app\modeles\DBResponse;
 
 class ContactControleur
 {
     private $connexion;
+    private $connexionReponse;
     private $pageLayout;
     
     public function __construct()
     {
-        $connexion = new DBContacts();
+        $this->connexion = new DBContacts;
+        $this->connexionReponse = new DBResponse;
         $this->pageLayout = new renderLayout;
     }
 
@@ -58,6 +61,37 @@ class ContactControleur
         
         $params["message"] = "Dites nous tous !";
         return $this->pageLayout->render("page_contact.php", $params);
+    }
+
+    public function pageContactBo() 
+    {
+        $params["lesMessages"] = $this->connexion->getMessage();
+        $params["lesReponses"] = $this->connexionReponse->getReponse();
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $id_contact = htmlspecialchars($_POST["id_contact"]);
+            $reponse = htmlspecialchars($_POST["reponse"]);
+    
+            if(isset($_SESSION["id"])){
+                $id_admin = $_SESSION["id"];
+            }else{
+                $id_admin = NULL;
+            }
+    
+            if (!empty($id_contact) && !empty($id_admin) && !empty($reponse)) {
+                $etat =  $this->connexionReponse->saveMessageAdmin($id_contact, $id_admin, $reponse);
+                if ($etat) {
+                    header("Location: ?action=messagerie");
+                } else {
+                    return $this->pageLayout->render("admin/page_messagerie_bo.php", $params);
+                }
+            } else {
+        return $this->pageLayout->render("admin/page_messagerie_bo.php", $params);
+            }
+        }
+        return $this->pageLayout->render("admin/page_messagerie_bo.php", $params);
+
+
     }
 
     
