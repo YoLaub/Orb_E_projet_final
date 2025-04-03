@@ -27,5 +27,6 @@ $route = $controle->authMiddleware();
 $action = $_GET["action"] ?? "defaut";
 $route->redirection($action); 
 
+
 ?>
 

@@ -1,9 +1,11 @@
 
 
 <section>
-<h1>Commande</h1>
+
 
 <?=$commande["formulaire"]?>
+
+
 
 <h2>Panier</h2>
 

@@ -41,4 +41,40 @@
 
 
   
-
+  .produit-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+}
+.produit-container img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+.produit-details {
+    flex: 1;
+}
+.produit-details h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+.produit-details p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+.btn-commander {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+}

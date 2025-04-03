@@ -61,7 +61,8 @@ class ProfilControleur
             "email" => $this->email,
             "informations" =>  $this->infoPerso,
             "formulaire" => $this->modifierInformationPerso(), // On récupère le formulaire sous forme de chaîne
-            "infoProduit" => $this->connexionDBProduct->getProduct()
+            "infoProduit" => $this->connexionDBProduct->getProduct(),
+            
         ];
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
