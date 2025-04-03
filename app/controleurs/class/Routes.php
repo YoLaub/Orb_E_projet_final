@@ -28,7 +28,7 @@ class Routes
             "formulaire" => "ProfilControleur:modifierInformationPerso",
             "profile" => "ProfilControleur:pageProfil",
             "mentions" => "ArticleControleur:pageMention",
-            "mentions" => "ArticleControleur:pageRgpd",
+            "rgpd" => "ArticleControleur:pageRgpd",
             "qui" => "ArticleControleur:pageQui",
             "contact" => "ContactControleur:pageContact",
             "page404" => self::ERROR_ROUTE,
