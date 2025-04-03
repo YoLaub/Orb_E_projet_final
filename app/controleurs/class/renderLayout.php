@@ -10,7 +10,7 @@ class renderLayout
 
     public function __construct()
     {
-        $this->menuPrincipale = new MenuControleur("menu_principale"); 
+        $this->menuPrincipale = new MenuControleur("main-nav"); 
 
         
     }

@@ -3,7 +3,7 @@
 
 <h1 style="text-align: center;">Fiche Produit</h1>
     <div class="produit-container">
-        <img src=<?=$commande["Detail produit"][0]["photo"]?> alt="Drone Orbe">
+        <img src=<?=$commande["Detail produit"][0]["photo"]?> alt="Drone Orbe" loading="lazy">
         <div class="produit-details">
             <h2><?=$commande["Detail produit"][0]["nom"]?></h2>
             <p><?=$commande["Detail produit"][0]["description"]?></p>

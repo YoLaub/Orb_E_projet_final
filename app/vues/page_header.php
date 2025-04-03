@@ -15,31 +15,22 @@
                                                 echo "00";
                                             } ?> ">
     <meta name="author" content="AY-Lab">
-
     <link rel="icon" href="./publique/images/logo/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./publique/css/style.css">
+    <script src="./publique/scripts/menu.js"  defer></script>
     <title>Orb'E</title>
 </head>
 
-<body>
+<body class="menu-open">
 
-    <header>
-
-        <?=$navContent?>
-
-        <?=var_dump($_SESSION)?><br>
-        <?=var_dump(debug_print_backtrace())  ?><br>
-
-       <?php
-       if(isset($_SESSION["id"])){?>
-            <a href="./?action=profile">Mon profile</a>
-            <a href="./?action=deconnexion">Deconnexion</a>
-            
-            <?php
-       }else{
-        ?><a href="./?action=connexion">Connexion</a><?php
-       }
-       ?>
-        
-        
-    </header>
+<header>
+    <div class="logo"><img src="./publique/images/logo/Logo_V1_white.webp" alt="Logo AYLab"></div>
+    <button class="menu-toggle" >☰</button>
+    <?=$navContent?>
+    <?php if(isset($_SESSION["id"])) { ?>
+        <a href="./?action=profile">Mon profil</a>
+        <a href="./?action=deconnexion">Déconnexion</a>
+    <?php } else { ?>
+        <a href="./?action=connexion">Connexion</a>
+    <?php } ?>
+</header>

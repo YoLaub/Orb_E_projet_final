@@ -12,7 +12,7 @@ class MenuControleur {
             throw new InvalidArgumentException("L'ID du menu ne peut pas être vide.");
         }
         $this->menu = $menu;
-        $this->nav = "<nav id='" . $menu . "'>";
+        $this->nav = "<nav id='" . $menu . "' class='nav-hidden'>";
         $this->nav .= "<ul id='listMenu'>";
     }
 

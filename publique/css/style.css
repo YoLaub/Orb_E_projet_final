@@ -39,8 +39,150 @@
     src: url('../fonts/press-start-2p-v15-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
 
+/* Styles généraux */
 
-  
+body {
+    background-color: var(--background2);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background:var(--background1);
+    color: white;
+    position: relative;
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-family: var(--titre);
+    font-weight: bold;
+}
+
+/* Icône menu burger */
+.menu-toggle {
+    font-size: 24px;
+    font-family: var(--texte);
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 1100;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    font-family: var(--texte);
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 500px;
+    background:rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease-in-out;
+    padding-top: 50px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transform: translateX(100%);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    padding: 15px 0;
+}
+
+nav ul li a {
+    color:white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Affichage du menu */
+nav.open {
+    transform: translateX(0);
+}
+
+/* ======= Logo ======= */
+.logo {
+    max-width: 150px; /* Taille max en mobile */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centrage */
+}
+
+/* ======= Images générales ======= */
+img {
+    max-width: 100%; /* Empêche le dépassement */
+    height: auto;
+    display: block; /* Supprime l'espace sous l'image */
+    object-fit: cover; /* Assure un bon affichage */
+}
+
+/* ======= Images spécifiques ======= */
+
+/* Image bannière */
+.banner {
+    width: 100%;
+    max-height: 250px; /* Hauteur max en mobile */
+    object-fit: cover;
+}
+
+/* Images de contenu */
+.content-img {
+    width: 100%;
+    max-width: 400px; /* Taille max en mobile */
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Désactiver le scroll quand le menu est ouvert */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Desktop version */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+    
+    nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+        transform: none;
+    }
+    
+    nav ul {
+        display: flex;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        padding: 10px 20px;
+    }
+
+
+/* ================================================
+------------------Page produit------------------
+=================================================
+   */
   .produit-container {
     display: flex;
     align-items: center;
@@ -78,3 +220,28 @@
     border-radius: 5px;
     font-size: 1.2em;
 }
+
+.logo {
+    max-width: 200px; /* Augmente la taille */
+}
+
+.banner {
+    max-height: 350px;
+}
+
+.content-img {
+    max-width: 600px; /* Plus large sur grand écran */
+}
+}
+
+@media (min-width: 1024px) {
+.logo {
+    max-width: 250px; /* Grand format pour desktop */
+}
+
+.banner {
+    max-height: 450px;
+}
+}
+
+
