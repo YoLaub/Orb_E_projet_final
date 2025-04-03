@@ -1,8 +1,4 @@
-<?php
-require_once RACINE . "app/controleurs/navigation_ctrl.php";
-include RACINE . "app/vues/page_header.php";
 
-?>
 
 <h2>Contactez-nous</h2>
 
@@ -29,8 +25,3 @@ include RACINE . "app/vues/page_header.php";
         <button type="submit">Envoyer</button>
     </form>
 
-<?php
-
-include RACINE . "app/vues/page_footer.php";
-
-?>

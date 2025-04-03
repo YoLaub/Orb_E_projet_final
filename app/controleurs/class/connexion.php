@@ -33,8 +33,6 @@ class Connexion
         
         
             if (!empty($email) && !empty($mdp)) {
-         
-                $connexion = new GestionConnexion();
                 $estConnecte = self::verifInfoConn($email, $mdp);
         
                 if ($estConnecte==true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {

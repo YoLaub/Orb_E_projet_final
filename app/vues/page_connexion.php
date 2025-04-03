@@ -1,8 +1,4 @@
-<?php
-require_once RACINE . "app/controleurs/navigation_ctrl.php";
-include RACINE . "app/vues/page_header.php";
 
-?>
 
 <section id="connexion">
     <h2>
@@ -18,8 +14,3 @@ include RACINE . "app/vues/page_header.php";
 
 </section>
 
-<?php
-
-include RACINE . "app/vues/page_footer.php";
-
-?>

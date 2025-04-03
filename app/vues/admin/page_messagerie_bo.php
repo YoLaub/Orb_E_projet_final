@@ -1,9 +1,3 @@
-<?php
-require_once RACINE . "app/controleurs/navigation_ctrl.php";
-include RACINE . "app/vues/page_header.php";
-
-?>
-
 
 <h1>Messagerie</h1>
 
@@ -27,8 +21,3 @@ include RACINE . "app/vues/page_header.php";
 
 <?=var_dump($commande["lesReponses"])?>
 
-<?php
-
-include RACINE . "app/vues/page_footer.php";
-
-?>

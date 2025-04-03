@@ -25,9 +25,11 @@
 
     <header>
 
-        <?= $navContent ?>
+        <?=$navContent?>
+
         <?=var_dump($_SESSION)?><br>
         <?=var_dump(debug_print_backtrace())  ?><br>
+
        <?php
        if(isset($_SESSION["id"])){?>
             <a href="./?action=profile">Mon profile</a>

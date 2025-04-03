@@ -1,7 +1,3 @@
-<?php
-require_once RACINE . "app/controleurs/navigation_ctrl.php";
-include RACINE . "app/vues/page_header.php";
-?>
 
 
 <h1>Profil de <?=$commande["informations"][0]["prenom"] . " " . $commande["informations"][0]["nom"]; ?></h1>
@@ -47,8 +43,3 @@ include RACINE . "app/vues/page_header.php";
     <p>Aucun score enregistré.</p>
 <?php endif; ?>
 
-<?php
-
-include RACINE . "app/vues/page_footer.php";
-
-?>

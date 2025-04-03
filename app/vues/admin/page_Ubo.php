@@ -1,11 +1,20 @@
-<?php
-require_once RACINE . "app/controleurs/navigation_ctrl.php";
-include RACINE . "app/vues/page_header.php";
+<main>
+<section>
 
-?>
+<?=$commande["inscription"]?>
 
+<h2>Admin</h2>
+<?=print_r($commande["liste_admin"])?>
+<form action="./?action=suppression" method="post">
+    <input type="number" name="id_admin" placeholder="id admin">
+    <button type="submit">supprimer</button>
+</form>
 
-<h1>Utilisateur</h1>
+</section>
+
+<section>
+
+<h2>Utilisateur</h2>
 
 <?=print_r($commande["liste_utilisateur"])?>
 <form action="./?action=suppression" method="post">
@@ -13,18 +22,11 @@ include RACINE . "app/vues/page_header.php";
     <button type="submit">supprimer</button>
 </form>
 
-<section id="inscription">
-<?=$commande["inscription"]?>
+</main>
+
+
 </section>
 
-<?=print_r($commande["liste_admin"])?>
-<form action="./?action=suppression" method="post">
-    <input type="number" name="id_admin" placeholder="id admin">
-    <button type="submit">supprimer</button>
-</form>
 
-<?php
 
-include RACINE . "app/vues/page_footer.php";
 
-?>

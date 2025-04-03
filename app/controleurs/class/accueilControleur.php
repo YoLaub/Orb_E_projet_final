@@ -11,8 +11,8 @@ class accueilControleur{
 
     private $pageLayout;
     private $connexionUtilisateur;
-    private $connexionProduit;
     private $connexionCommande;
+    private $connexionProduit;
     private $connexionJeu;
 
     public function __construct()
