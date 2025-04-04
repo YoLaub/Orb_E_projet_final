@@ -1,6 +1,7 @@
-
-
+<section>
 <h2>Contactez-nous</h2>
+
+<img src="./publique/images/contact.webp" alt="Image de lettre design">
 
    <p>
     <?php 
@@ -24,4 +25,5 @@
 
         <button type="submit">Envoyer</button>
     </form>
+</section>
 

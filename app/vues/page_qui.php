@@ -1,7 +1,11 @@
 
 
 <section>
-<h1>qui sommes nous ?</h1>
+
+<img src="./publique/images/mini_jeu.webp" alt="Bague qui represente notre engagement">
+
+
+<h1>Qui sommes nous ?</h1>
 
 <h2>AY-Lab : L'innovation au service de l'humain</h2>
     <p>AY-Lab est née de la rencontre entre des experts issus de domaines complémentaires, réunis par une passion commune pour l’innovation technologique. Cette start-up a pour mission de repousser les limites de l’intelligence artificielle en développant des solutions d’assistance intelligentes et accessibles, conçues pour améliorer le quotidien de chacun. Guidée par une vision humaniste, AY-Lab place l’utilisateur au cœur de ses innovations, avec une ambition claire : rendre la technologie plus intuitive et bénéfique pour tous.</p>

@@ -1,10 +1,10 @@
 <main>
 
 <section class="intro">
-<div>
+<div class="presentation">
 <h1>Orb'E</h1>
 <p>Découvrez Orb’E, l'assistant personnel ultime qui repousse les limites de l'intelligence artificielle pour améliorer votre quotidien.</p>
-    <button><a href="?action=produit">En savoir plus sur Orb’E</a></button>
+    <button><a href="?action=produit">En savoir plus !</a></button>
 </div>
 <div>
     <img src="./publique/images/3.webp" alt="orb'e">
@@ -12,28 +12,29 @@
 </div>
 </section>
 
-<section>
-<div>
-<h1>Jouez à Orb'E</h1>
+<section class="introSuite">
+<div class="presentation">
+<h1>Jouez !</h1>
     <p>Relevez le défi avec le jeu Orb’E ! Évitez les obstacles, profitez d'une météo dynamique et tentez d'obtenir le score le plus élevé pour débloquer une surprise exclusive.</p>
-
-    <button><a href="?action=jeu">En savoir plus sur Orb’E</a></button>
 </div>
-<div>
-    <img src="./publique/images/a38ba6c6-6e43-470d-9527-37170cb3fe52.webp" alt="le jeu orb'e">
+<div class="jeuPresentation">
+    <button><a href="?action=jeu">Jouez à Orb’E</a></button>
+    <img src="./publique/images/mini_jeu1.webp" alt="le jeu orb'e" loading="lazy">
 
 </div>
 
 
 </section>
 
-<section>
+<section class="introSuite ">
 <div>
-    <p>Prêt à transformer votre quotidien avec Orb’E ? Commandez dès maintenant et découvrez l'assistant personnel ultime qui s'adapte à vos besoins.</p>
-    <button><a href="?action=commande">Commander Orb’E</a></button>
+<h1>Commandez !</h1>
+    <p class="presentation">Prêt à transformer votre quotidien avec Orb’E ? Commandez dès maintenant et découvrez l'assistant personnel ultime qui s'adapte à vos besoins.</p>
+    
 </div>
-<div>
-    <img src="./publique/images/Leonardo_Phoenix_10_Crez_un_visuel_pur_pour_prsenter_un_minije_1.webp" alt="le rêve orb'e">
+<div class="catSection">
+    <button class= "catButton" ><a href="?action=commande">Commander Orb’E</a></button>
+    <img class= "cat" src="./publique/images/mini_jeu2.webp" alt="le rêve orb'e" loading="lazy">
 
 </div>
 

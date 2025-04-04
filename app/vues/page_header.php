@@ -24,7 +24,7 @@
 <body class="menu-open">
 
 <header>
-    <div class="logo"><img src="./publique/images/logo/Logo_V1_white.webp" alt="Logo AYLab"></div>
+    <div class="logo"><a href="?action=accueil"><img src="./publique/images/logo/Logo_V1_white.webp" alt="Logo AYLab"></a></div>
     <button class="menu-toggle" >
     <svg  width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>

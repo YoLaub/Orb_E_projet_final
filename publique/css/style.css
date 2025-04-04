@@ -1,5 +1,6 @@
 :root {
     --element: #1210E0;
+    --elementTrans: #1310e091;
     --background1: #12121A;
     --background2: #FAF9FF;
     --texte1: #FAF9FF;
@@ -60,6 +61,11 @@ header {
     background: var(--background1);
     color: white;
     position: relative;
+}
+
+a{
+    text-decoration: none;
+    color: var(--texte1);
 }
 
 /* Logo */
@@ -127,11 +133,145 @@ nav.open {
 .intro {
     background-image: url(../images/fond.webp);
     color: var(--texte1);
+    padding: 32px 16px 0 16px;
+    position: relative;
+    top: -20px;
+
 }
 
-section.intro button {
-    background-color: var(--element);
+.intro button {
+    margin: auto;
+    height: 42px;
+    font-size: 1.2rem;
+    background-color: var(--elementTrans);
+    display: flex; /* Utilisez Flexbox pour centrer le contenu du bouton */
+    align-items: center;
+    justify-content: center; /* Centre le texte horizontalement */
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    padding: 0rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Ajoutez une transition pour le box-shadow */
+    box-shadow: 0 0 8px var(--element), 0 0 18px var(--element), 0 0 8px var(--elementTrans); /* Effet néon bleu électrique */
 }
+
+.intro button:hover {
+    background-color: var(--element); /* Changez la couleur de fond au survol si nécessaire */
+    box-shadow: 0 0 10px var(--element), 0 0 20px var(--element), 0 0 10px var(--elementTrans); /* Effet néon bleu électrique */
+}
+
+
+.introSuite{
+    padding: 0 16px;
+    margin: 40px auto 56px auto;
+}
+
+.jeuPresentation{
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;    /* Centre verticalement */          /* Assurez-vous que la hauteur est définie pour le centrage vertical */
+    position: relative;    /* Assurez-vous que le positionnement est relatif pour le bouton absolu */
+}
+
+.jeuPresentation button{
+
+    position: absolute;    /* Position absolue pour le bouton */
+    height: 42px;
+    font-size: 1.2rem;
+    background-color: var(--elementTrans);
+    display: flex;        /* Utilisez Flexbox pour centrer le contenu du bouton */
+    align-items: center;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    padding: 0rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Ajoutez une transition pour le box-shadow */
+    box-shadow: 0 0 8px var(--element), 0 0 18px var(--element), 0 0 8px var(--elementTrans); /* Effet néon bleu électrique */
+
+
+}
+
+.catSection {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;    /* Centre verticalement */          /* Assurez-vous que la hauteur est définie pour le centrage vertical */
+    position: relative;    /* Assurez-vous que le positionnement est relatif pour le bouton absolu */
+}
+
+.cat{
+    display: block;
+    object-fit: cover;
+    max-width: 100%;
+    border-radius: 0% ;
+    -webkit-border-radius: 0% ;
+    -moz-border-radius: 0% ;
+    -ms-border-radius: 0% ;
+    -o-border-radius: 0% ;
+}
+
+.catButton{
+    position: absolute;    /* Position absolue pour le bouton */
+    height: 42px;
+    font-size: 1.2rem;
+    background-color: var(--elementTrans);
+    display: flex;        /* Utilisez Flexbox pour centrer le contenu du bouton */
+    align-items: center;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    padding: 0rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Ajoutez une transition pour le box-shadow */
+    box-shadow: 0 0 8px var(--element), 0 0 18px var(--element), 0 0 8px var(--elementTrans); /* Effet néon bleu électrique */
+}
+
+.intro button:hover {
+    background-color: var(--element); /* Changez la couleur de fond au survol si nécessaire */
+    box-shadow: 0 0 10px var(--element), 0 0 20px var(--element), 0 0 10px var(--elementTrans); /* Effet néon bleu électrique */
+}
+
+
+.contactAccueil{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.contactAccueil button{
+    margin: auto;
+    height: 42px;
+    font-size: 1.2rem;
+    background-color: var(--element);
+    align-items: center;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding: 0rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.contactAccueil button:hover {
+    background-color:var(--element);
+    border: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    
+}
+
 
 /* ======= Logo ======= */
 .logo {
@@ -145,13 +285,16 @@ section.intro button {
 
 /* ======= Images générales ======= */
 img {
-    max-width: 100%;
-    /* Empêche le dépassement */
-    height: auto;
+    max-width: 90%;
+    margin: auto;
+    /*Empêcheledépassement*/height: auto;
     display: block;
-    /* Supprime l'espace sous l'image */
-    object-fit: cover;
-    /* Assure un bon affichage */
+    /*Supprimel'espace sous l'image*/object-fit: cover;
+    border-radius: 10% ;
+    -webkit-border-radius: 10% ;
+    -moz-border-radius: 10% ;
+    -ms-border-radius: 10% ;
+    -o-border-radius: 10% ;
 }
 
 /* ======= Images spécifiques ======= */
@@ -212,8 +355,8 @@ img {
 /* Footer*/
 
 footer {
-    background-color: #222;
-    color: #fff;
+    background-color: var(--background1);
+    color: var(--texte1);
     padding: 20px 15px;
     text-align: center;
 }
@@ -245,7 +388,7 @@ footer {
 }
 
 .footer-section ul li a:hover {
-    color: #fff;
+    color: var(--texte1);
 }
 
 /* Icônes sociales */
