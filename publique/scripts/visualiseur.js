@@ -1,6 +1,6 @@
-import * as THREE from 'https://cdn.skypack.dev/three';
-import { GLTFLoader } from 'https://cdn.skypack.dev/three/examples/jsm/loaders/GLTFLoader';
-import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls';
+import * as THREE from 'https://cdn.skypack.dev/three@0.129.0';
+  import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
+  import { OrbitControls } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js';
 
 // SCÈNE
 const scene = new THREE.Scene();
@@ -14,7 +14,8 @@ camera.position.set(0, 1, 3);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true; // Active les ombres
-document.body.appendChild(renderer.domElement);
+const container = document.getElementById('visualisation-3d');
+container.appendChild(renderer.domElement);
 
 // LUMIÈRE
 const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
@@ -43,7 +44,7 @@ controls.enableZoom = false;
 // CHARGEMENT DU MODÈLE
 const loader = new GLTFLoader();
 let model;
-loader.load('/publique/images/modeles/sphere.glb', (gltf) => {
+loader.load('./publique/images/modeles/sphere.glb', (gltf) => {
   model = gltf.scene;
   model.traverse(obj => {
     if (obj.isMesh) {

@@ -118,4 +118,5 @@ class ProduitControleur
         return "erreur 1"; // Aucun fichier uploadé ou erreur
 
     }
+
 }

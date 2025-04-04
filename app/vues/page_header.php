@@ -18,6 +18,7 @@
     <link rel="icon" href="./publique/images/logo/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./publique/css/style.css">
     <script src="./publique/scripts/menu.js"  defer></script>
+    <script type="module" src="./publique/scripts/visualiseur.js"></script>
     <title>Orb'E</title>
 </head>
 

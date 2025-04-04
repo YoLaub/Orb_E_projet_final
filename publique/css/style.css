@@ -68,6 +68,13 @@ a{
     color: var(--texte1);
 }
 
+#visualisation-3d { 
+    display: block;
+    max-width: 600px;
+ }
+
+ 
+
 /* Logo */
 .logo {
     font-size: 24px;
