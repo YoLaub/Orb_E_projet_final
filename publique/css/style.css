@@ -68,11 +68,12 @@ a{
     color: var(--texte1);
 }
 
-#visualisation-3d { 
-    display: block;
-    max-width: 600px;
- }
+#visualisation-3d {
+    width: 300px;
+    height: 800px;
 
+  }
+  
  
 
 /* Logo */
@@ -476,6 +477,12 @@ footer {
         height: auto;
         border-radius: 10px;
     }
+
+    #visualisation-3d {
+        width: 500px;
+        height: 700px;
+        
+      }
 
     .produit-details {
         flex: 1;

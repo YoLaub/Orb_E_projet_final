@@ -1,9 +1,9 @@
 
 <section>
-<div id="visualisation-3d"></div>
+
 <h1 style="text-align: center;">Fiche Produit</h1>
     <div class="produit-container">
-        <img src=<?=$commande["Detail produit"][0]["photo"]?> alt="Drone Orbe">
+    <div id="visualisation-3d"></div>
         <div class="produit-details">
             <h2><?=$commande["Detail produit"][0]["nom"]?></h2>
             <p><?=$commande["Detail produit"][0]["description"]?></p>
