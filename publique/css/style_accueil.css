@@ -1,0 +1,16 @@
+:root {
+    --element: #1210E0;
+    --elementTrans: #1310e091;
+    --background1: #12121A;
+    --background2: #FAF9FF;
+    --texte1: #FAF9FF;
+    --texte2: #12121A;
+    --fondPage: #FFFFFF;
+    --jeu: #39FF14;
+    --jeu_alert: #FF073A;
+
+    --texte: 'Poppins';
+    --titre: 'Roboto';
+    --jeu_texte: 'Press Start 2P';
+}
+

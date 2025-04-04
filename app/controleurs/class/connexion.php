@@ -15,6 +15,7 @@ class Connexion
     private $connexionProduct;
     private $pageLayout;
     private $home;
+    private $params;
 
     public function __construct()
     {
@@ -22,6 +23,8 @@ class Connexion
         $this->connexionProduct = new DBProduct();
         $this->pageLayout = new renderLayout;
         $this->home = new accueilControleur;
+        $this->params = array();
+        $this->params["style"] = "style_connexion.css";
     }
 
     public function connexionUtilisateur()
@@ -42,12 +45,12 @@ class Connexion
                     $this->home->accueil();
                 }else{
                     $content = "page_connexion.php";
-                    $this->pageLayout->render($content);
+                    $this->pageLayout->render($content, $this->params);
                 }   
                 exit(); // Assure que le script s'arrête ici
             }else{
                 $content = "page_connexion.php";
-                $this->pageLayout->render($content);
+                $this->pageLayout->render($content, $this->params);
             }
         }else{
         
@@ -57,7 +60,7 @@ class Connexion
             
             
             $content = "page_connexion.php";
-            $this->pageLayout->render($content);
+            $this->pageLayout->render($content, $this->params);
         
         }
     }
@@ -90,19 +93,20 @@ class Connexion
                 if ($etat) {
                     self::connexionUtilisateur($email, $mdp);
                     // Redirection vers l'accueil si connexion réussie
+                    $this->params["style"] = "style_accueil.css";
                     $content = "page_accueil.php";
-                    $this->pageLayout->render($content);
+                    $this->pageLayout->render($content, $this->params);
                 } else {
                     $content = "page_inscription.php";
-                    $this->pageLayout->render($content);
+                    $this->pageLayout->render($content, $this->params);
                 }
             } else {
                 $content = "page_inscription.php";
-                $this->pageLayout->render( $content);
+                $this->pageLayout->render( $content, $this->params);
             }
         } else {
             $content = "page_inscription.php";
-            $this->pageLayout->render($content);
+            $this->pageLayout->render($content, $this->params);
         }
     }
     
@@ -114,8 +118,10 @@ class Connexion
             unset($_SESSION["role"]);
             session_destroy();
 
+            $this->params["style"] = "style_accueil.css";
+
             $content = "page_accueil.php";
-            $this->pageLayout->render($content);
+            $this->pageLayout->render($content, $this->params);
             
         }
     }
@@ -141,11 +147,12 @@ class Connexion
                 exit();
         
                 default:
-                    $this->pageLayout->render($content);
+                    $this->pageLayout->render($content, $this->params);
             }
         } else {
             $content = "admin/page_Ubo.php";
-            $this->pageLayout->render($content);
+            $this->params["style"] = "style_utilisateurBo.css";
+            $this->pageLayout->render($content, $this->params);
         }
     }
 

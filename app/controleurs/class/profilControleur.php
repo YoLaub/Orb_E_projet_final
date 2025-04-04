@@ -48,7 +48,8 @@ class ProfilControleur
             "score" => $this->gestionProfil->getUserScores($this->email),
             "mesMessages" => $this->connexionContact->getMessagePerEmail($this->email),
             "mesReponses" => $this->connexionReponses->getReponsesPerEmail($id_contact),
-            "formulaire" => $this->modifierInformationPerso() // On récupère le formulaire sous forme de chaîne
+            "formulaire" => $this->modifierInformationPerso(),
+            "style"=>"style_profile.css" 
         ];
 
         $content = "page_profile.php";
@@ -60,8 +61,9 @@ class ProfilControleur
         $params = [
             "email" => $this->email,
             "informations" =>  $this->infoPerso,
-            "formulaire" => $this->modifierInformationPerso(), // On récupère le formulaire sous forme de chaîne
+            "formulaire" => $this->modifierInformationPerso(),
             "infoProduit" => $this->connexionDBProduct->getProduct(),
+            "style"=> "style_commande.css"
             
         ];
 
@@ -77,12 +79,10 @@ class ProfilControleur
             $etat =$this->connexionDBProduct->addOrder($prixTotal,$_SESSION["id"], $_SESSION["id_produit"],$quantite);
     
             if ($etat) {
-                $validation = "Votre commande est enregistrée !";
                 unset($_SESSION["id_produit"]);
                 // Redirection vers l'accueil si connexion réussie
                 header("Location: ?action=produit");
             } else {
-                $validation = "Une erreur c'est produite !";
                 // Redirection vers l'accueil si connexion réussie
                 $content = "page_commande.php";
                 $this->pageLayout->render($content, $params);
@@ -96,9 +96,8 @@ class ProfilControleur
             $content = "page_commande.php";
             $this->pageLayout->render($content, $params);
         }else{
-            
-            $content = "page_connexion.php";
-            $this->pageLayout->render($content, $params);
+
+            header("Location: ?action=connexion");
         
         }
     

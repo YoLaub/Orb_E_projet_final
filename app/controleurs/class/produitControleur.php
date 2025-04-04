@@ -20,6 +20,7 @@ class ProduitControleur
         $this->produits = new DBProduct;
         $this->detailsProduit = $this->produits->getProduct();
         $this->params = array();
+        $this->params["commande"] = "Commandez !";
         $this->params["style"] = "style_produit.css";
     }
 

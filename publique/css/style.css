@@ -300,11 +300,6 @@ img {
     /*Empêcheledépassement*/height: auto;
     display: block;
     /*Supprimel'espace sous l'image*/object-fit: cover;
-    border-radius: 10% ;
-    -webkit-border-radius: 10% ;
-    -moz-border-radius: 10% ;
-    -ms-border-radius: 10% ;
-    -o-border-radius: 10% ;
 }
 
 /* ======= Images spécifiques ======= */

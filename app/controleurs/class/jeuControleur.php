@@ -8,11 +8,13 @@ class JeuControleur
 {
     private $pageLayout;
     private $connexion;
+    private $params;
 
     public function __construct()
     {
         $this->pageLayout = new renderLayout;
         $this->connexion = new Middleware;
+        $this->params["style"] = "style_jeu.css";
 
 
     }
@@ -23,8 +25,9 @@ class JeuControleur
             $content = "page_jeu.php";
             $this->pageLayout->render($content);
         }else{
+            $this->params["style"] = "style_connexion.css";
             $content = "page_connexion.php";
-            $this->pageLayout->render($content);
+            $this->pageLayout->render($content, $this->params);
         
         }
     }

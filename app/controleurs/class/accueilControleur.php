@@ -14,24 +14,28 @@ class accueilControleur{
     private $connexionCommande;
     private $connexionProduit;
     private $connexionJeu;
+    private $params;
 
     public function __construct()
     {
         $this->pageLayout = new renderLayout;
+        $this->params = array();
+        
     }
 
     public function accueil(){
+        $this->params["style"] = "style_accueil.css";
 
         if(isset($_SESSION["role"])){
             if($_SESSION["role"] == "utilisateur"){
                 $content = "page_accueil.php";
-                $this->pageLayout->render($content);
+                $this->pageLayout->render($content, $this->params);
             }elseif($_SESSION["role"] == "admin"){
                return $this->accueilBo();
             }
         }else{
             $content = "page_accueil.php";
-                $this->pageLayout->render($content);
+                $this->pageLayout->render($content, $this->params);
         }
     }
 
@@ -41,6 +45,8 @@ class accueilControleur{
         $this->connexionProduit = new DBProduct();
         $this->connexionCommande = new DBOrder();
         $this->connexionJeu = new DBParty();
+
+        $this->params["style"] = "style_accueil.css";
 
         $count = 5;
 
