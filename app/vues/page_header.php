@@ -17,7 +17,9 @@
     <meta name="author" content="AY-Lab">
     <link rel="icon" href="./publique/images/logo/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./publique/css/style.css">
+    <link rel="stylesheet" href="./publique/css/<?=$commande["style"]?>">
     <script src="./publique/scripts/menu.js"  defer></script>
+    <script src="./publique/scripts/article.js"  defer></script>
     <script type="module" src="./publique/scripts/visualiseur.js"></script>
     <title>Orb'E</title>
 </head>

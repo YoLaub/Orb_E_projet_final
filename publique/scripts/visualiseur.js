@@ -64,7 +64,7 @@ loader.load('./publique/images/modeles/orbe.glb', (gltf) => {
       obj.receiveShadow = false;
     }
   });
-  model.scale.set(0.3, 0.3, 0.3);
+  model.scale.set(0.4, 0.4, 0.4);
   scene.add(model);
 }, undefined, (error) => {
   console.error('Erreur lors du chargement :', error);
@@ -90,7 +90,7 @@ function animate() {
     model.rotation.y += 0.002;
 
     //Zoom au hover
-    const targetScale = hover ? 0.4 : 0.3;
+    const targetScale = hover ? 0.5 : 0.4;
 
     //Transition de l'échelle (interpolation)
     const currentScale = model.scale.x;

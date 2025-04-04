@@ -11,6 +11,7 @@ class ProduitControleur
     private $connexion;
     private $produits;
     private $detailsProduit;
+    private $params;
 
     public function __construct()
     {
@@ -18,41 +19,41 @@ class ProduitControleur
         $this->connexion = new Middleware;
         $this->produits = new DBProduct;
         $this->detailsProduit = $this->produits->getProduct();
+        $this->params = array();
+        $this->params["style"] = "style_produit.css";
     }
 
     public function pageProduit()
     {
-
-        $params = array();
-        $params["commande"] = "Commandez !";
-        $params["Detail produit"] = $this->detailsProduit;
+         $this->params["commande"] = "Commandez !";
+         $this->params["Detail produit"] = $this->detailsProduit;
 
         if (!$this->detailsProduit[0]["disponibilite"] == "en_stock") {
-            $params["commande"] = "Reservez !";
+             $this->params["commande"] = "Reservez !";
         }
 
         $_SESSION["id_produit"] = $this->detailsProduit[0]["id_produit"];
 
         $content = "page_produit.php";
-        $this->pageLayout->render($content, $params);
+        $this->pageLayout->render($content,  $this->params);
     }
 
     public function pageProduitBo()
     {
 
-        $params["listeProduit"] = $this->produits->getProduct();
+         $this->params["listeProduit"] = $this->produits->getProduct();
         $_SESSION["id_produit"] = $this->detailsProduit[0]["id_produit"];
 
         $content = "admin/page_produit_bo.php";
-        $this->pageLayout->render($content, $params);
+        $this->pageLayout->render($content,  $this->params);
     }
 
     public function editionProduitBo()
     {
 
         $id_produit = $_SESSION["id_produit"];
-        $params["detailProduit"] = $this->produits->getProductById($id_produit);
-        $params["message"] = "Veuillez remplir tous les champs !";
+         $this->params["detailProduit"] = $this->produits->getProductById($id_produit);
+         $this->params["message"] = "Veuillez remplir tous les champs !";
         $content = "admin/page_ficheP_bo.php";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -62,7 +63,7 @@ class ProduitControleur
             $dispo = trim($_POST["dispo"] ?? '');
 
             // Vérifier si une nouvelle image a été uploadée
-            $photo = $this->ajouterPhoto() ?? $params["detailProduit"][0]["photo"];
+            $photo = $this->ajouterPhoto() ??  $this->params["detailProduit"][0]["photo"];
 
             if ($nom && $description &&  $prix && $photo && $dispo) {
                 $etat =  $this->produits->updateProduct($id_produit, $nom, $description, $prix, $photo, $dispo);
@@ -73,17 +74,17 @@ class ProduitControleur
                     header("Location: ?action=produit");
                     exit();
                 } else {
-                    $params["message"] = "Une erreur c'est produite !";;
+                     $this->params["message"] = "Une erreur c'est produite !";;
                 }
             } else {
-                $params["message"] = "Veuillez remplir tous les champs !";
+                 $this->params["message"] = "Veuillez remplir tous les champs !";
             }
         }
 
         if(isset($_SESSION["message"])){
             unset($_SESSION["message"]);
         }
-        $this->pageLayout->render($content, $params);
+        $this->pageLayout->render($content,  $this->params);
     }
 
     private function ajouterPhoto()

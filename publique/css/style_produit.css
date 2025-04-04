@@ -1,0 +1,62 @@
+:root {
+    --element: #1210E0;
+    --elementTrans: #1310e091;
+    --background1: #12121A;
+    --background2: #FAF9FF;
+    --texte1: #FAF9FF;
+    --texte2: #12121A;
+    --fondPage: #FFFFFF;
+    --jeu: #39FF14;
+    --jeu_alert: #FF073A;
+
+    --texte: 'Poppins';
+    --titre: 'Roboto';
+    --jeu_texte: 'Press Start 2P';
+}
+
+
+.container {
+    padding: 1rem;
+}
+.article {
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.article-header {
+    background-color: var(--element);
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.article-header h2 {
+    font-family: 'Roboto', sans-serif;
+    color: var(--texte1);
+    margin: 0;
+}
+.article-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.article-content p {
+    line-height: 1.6;
+    padding: 0 1rem;
+}
+.article-content img {
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+
+    .article-content {
+        max-height: 100%;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+
+}

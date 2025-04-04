@@ -68,9 +68,11 @@ a{
     color: var(--texte1);
 }
 
+
 #visualisation-3d {
-    width: 300px;
-    height: 800px;
+    width: 130px;
+    height: 300px;
+    margin: auto;
 
   }
   
@@ -479,8 +481,8 @@ footer {
     }
 
     #visualisation-3d {
-        width: 500px;
-        height: 700px;
+        width: 400px;
+        height: 550px;
         
       }
 
