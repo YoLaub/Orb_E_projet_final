@@ -1,6 +1,6 @@
 :root {
-    --element: #1210E0;
-    --elementTrans: #1310e091;
+    --element: #1310e0;
+    --elementTrans: #1310e003;
     --background1: #12121A;
     --background2: #FAF9FF;
     --texte1: #FAF9FF;
@@ -8,35 +8,106 @@
     --fondPage: #FFFFFF;
     --jeu: #39FF14;
     --jeu_alert: #FF073A;
-
     --texte: 'Poppins';
     --titre: 'Roboto';
     --jeu_texte: 'Press Start 2P';
+    --ombre: #00000003;
+    --ombreSurvol: #0000001e;
+    --test: #333232 ;
+}
+ 
+.contenaire{
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    text-align: center;
+    margin: 2px auto 16px auto;
 }
 
+#visualisation-3d {
+    width: 125px;
+    height: 300px;
+    margin: auto;
+
+  }
+
+.contenaire h2{
+    font-family: var(--titre);
+    font-size: 2rem;
+}
+
+.produit-details{
+    background-color: var(--ombre);
+    color: var(--texte2);
+    padding: 16px;
+    margin-top: 16px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 8px var(--ombre), 0 0 18px var(--ombre), 0 0 8px var(--ombre);
+ }
+
+
+
+ .produit-details button {
+    margin: 32px auto;
+    height: 42px;
+    color: var(--element);
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--elementTrans);
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    padding: 0rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 8px var(--elementTrans), 0 0 18px var(--elementTrans), 0 0 8px var(--elementTrans); 
+}
+
+.produit-details button:hover {
+    background-color: var(--element);
+    color: var(--texte1);
+    box-shadow: 0 0 10px var(--element), 0 0 20px var(--element), 0 0 10px var(--elementTrans);
+}
 
 .container {
-    padding: 1rem;
+    padding: 16px;
+    width: 1000px;
 }
-.article {
+
+
+article{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 2rem;
     border-radius: 10px;
     overflow: hidden;
+    background-color: var(--elementTrans);
+    box-shadow: 0 0 8px var(--elementTrans), 0 0 18px var(--elementTrans), 0 0 8px var(--elementTrans); 
 }
 .article-header {
     background-color: var(--element);
+    box-shadow: 0 0 8px var(--element), 0 0 18px var(--element), 0 0 8px var(--elementTrans); 
     padding: 1rem;
     cursor: pointer;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .article-header h2 {
     font-family: 'Roboto', sans-serif;
     color: var(--texte1);
-    margin: 0;
+    margin: 0 32px 0 0;
 }
 .article-content {
+    display: flex;
+    flex-direction: column;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
@@ -46,16 +117,59 @@
     padding: 0 1rem;
 }
 .article-content img {
-    border-radius: 10px;
-    margin-bottom: 1rem;
+       margin: 0;
 }
+
+
+ .partage{
+    margin: 16px 0 ;
+ }
+
 
 @media (min-width: 768px) {
 
+    .contenaire{ 
+        max-width: 1200px;
+    }
+
+    .contenaire .fiche_produit{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 400px;
+    }
+
+    .produit-details{
+        margin-left: 64px;
+        margin-top: 0;
+    }
+
+
     .article-content {
+        flex-direction: row;
         max-height: 100%;
         overflow: hidden;
         transition: max-height 0.3s ease;
+    }
+
+    .article-content img {
+        width: 20%;
+        margin: 0;
+        z-index: -1;
+ }
+
+    #visualisation-3d {
+        width: 850px;
+        height: 370px;
+        border-radius: 10px;
+        box-shadow: 0 0 8px var(--ombre), 0 0 18px var(--ombre), 0 0 8px var(--ombre); /* Effet néon bleu électrique */
+        
+      }
+
+    button {
+       margin-top: 64px;
     }
 
 

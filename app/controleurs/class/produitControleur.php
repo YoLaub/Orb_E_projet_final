@@ -28,6 +28,14 @@ class ProduitControleur
     {
          $this->params["commande"] = "Commandez !";
          $this->params["Detail produit"] = $this->detailsProduit;
+         $this->params["meta"] = '<meta property="og:title" content="' . htmlspecialchars($this->detailsProduit[0]["nom"]) . '" />
+        <meta property="og:description" content="' . htmlspecialchars   ($this->detailsProduit[0]["description"]) . '" />
+        <meta property="og:image" content="' . htmlspecialchars($this->detailsProduit[0]["photo"]) . '" />
+        <meta property="og:url" content="https://ton-site.com/?action=produit" />
+        <meta property="og:type" content="product" />';
+        $this->params["partage"] = $this->pageLayout->render("partials/partage.php",  $this->detailsProduit, true);
+        
+
 
         if (!$this->detailsProduit[0]["disponibilite"] == "en_stock") {
              $this->params["commande"] = "Reservez !";

@@ -40,6 +40,5 @@
         <p>&copy; 2025 Orb'E - Tous droits réservés.</p>
     </div>
 </footer>
-<script type="module" src="./publique/scripts/visualiseur.js"></script>
 </body>
 </html>

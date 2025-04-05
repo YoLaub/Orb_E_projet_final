@@ -5,6 +5,9 @@
 
 <?=$commande["formulaire"]?>
 
+</section>
+
+<section>
 
 
 <h2>Panier</h2>

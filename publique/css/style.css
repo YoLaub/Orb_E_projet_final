@@ -1,5 +1,5 @@
 :root {
-    --element: #1210E0;
+    --element: #1310e052;
     --elementTrans: #1310e091;
     --background1: #12121A;
     --background2: #FAF9FF;
@@ -51,11 +51,12 @@
 body {
     background-color: var(--background2);
     font-family: var(--texte);
+    margin: 0;
 }
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-around;
     align-items: center;
     padding: 10px 20px;
     background: var(--background1);
@@ -65,17 +66,9 @@ header {
 
 a{
     text-decoration: none;
-    color: var(--texte1);
+    color: var(--texte);
 }
-
-
-#visualisation-3d {
-    width: 130px;
-    height: 300px;
-    margin: auto;
-
-  }
-  
+ 
  
 
 /* Logo */
@@ -169,7 +162,8 @@ nav.open {
 
 .intro button:hover {
     background-color: var(--element); /* Changez la couleur de fond au survol si nécessaire */
-    box-shadow: 0 0 10px var(--element), 0 0 20px var(--element), 0 0 10px var(--elementTrans); /* Effet néon bleu électrique */
+    box-shadow: 0 0 10px var(--element), 0 0 20px var(--element), 0 0 10px var(--elementTrans);
+    border-radius: 10px; /* Effet néon bleu électrique */
 }
 
 
@@ -295,11 +289,11 @@ nav.open {
 
 /* ======= Images générales ======= */
 img {
-    max-width: 90%;
+    max-width: 100%;
     margin: auto;
-    /*Empêcheledépassement*/height: auto;
+    height: auto;
     display: block;
-    /*Supprimel'espace sous l'image*/object-fit: cover;
+    object-fit: cover;
 }
 
 /* ======= Images spécifiques ======= */
@@ -474,12 +468,6 @@ footer {
         height: auto;
         border-radius: 10px;
     }
-
-    #visualisation-3d {
-        width: 400px;
-        height: 550px;
-        
-      }
 
     .produit-details {
         flex: 1;

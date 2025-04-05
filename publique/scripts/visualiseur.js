@@ -4,7 +4,7 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.129.0';
 
 // SCÈNE
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xf0f0f0); // Arrière-plan clair
+scene.background = new THREE.Color(0xf1f8ff); // Arrière-plan clair
 
 // CAMÉRA
 const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -19,7 +19,7 @@ renderer.shadowMap.enabled = true; // Active les ombres
 container.appendChild(renderer.domElement);
 
 // LUMIÈRE
-const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+const ambientLight = new THREE.HemisphereLight(0x8cf1f1, 0x333232, 0.8);
 scene.add(ambientLight);
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
@@ -37,16 +37,13 @@ directionalLight.shadow.camera.far = 50;
 
 scene.add(directionalLight);
 
-// SOL POUR L'OMBRE
-const ground = new THREE.Mesh(
-  new THREE.PlaneGeometry(10, 10),
-  new THREE.ShadowMaterial({ opacity: 0.2 })
-);
-ground.rotation.x = -Math.PI / 2;
-ground.position.y = -0.30;
-ground.position.x = -0.20;
-ground.receiveShadow = true;
-scene.add(ground);
+
+const geometry = new THREE.CylinderGeometry(0.2, 0.2, 1, 32);
+const material = new THREE.MeshStandardMaterial({ color: 0xb5d3e0 });
+const cylinder = new THREE.Mesh(geometry, material);
+cylinder.position.y = -0.9;
+cylinder.receiveShadow = true;
+scene.add(cylinder);
 
 // CONTRÔLES
 const controls = new OrbitControls(camera, renderer.domElement);
