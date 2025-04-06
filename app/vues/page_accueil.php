@@ -3,9 +3,9 @@
 
 <section class="intro">
 <div class="presentation">
-<h1>Orb'E</h1>
+<h1>ORB'E</h1>
 <p>Découvrez Orb’E, L'Assistant personnel.</p>
-    <button><a href="?action=produit">En savoir plus !</a></button>
+   <a href="?action=produit">En savoir plus !</a>
 </div>
 <div class = "orbe">
 <img src="./publique/images/3.webp" alt="orb'e">
@@ -18,11 +18,11 @@
 
 <section class="introSuite">
 <div class="presentation">
-<h1>Jouez !</h1>
+    <h1>Jouez !</h1>
     <p>Relevez le défi avec le jeu Orb’E ! Évitez les obstacles, profitez d'une météo dynamique et tentez d'obtenir le score le plus élevé pour débloquer une surprise exclusive.</p>
 </div>
 <div class="jeuPresentation">
-    <button><a href="?action=jeu">Jouez à Orb’E</a></button>
+    <a href="?action=jeu">Jouez à Orb’E</a>
     <img src="./publique/images/mini_jeu1.webp" alt="le jeu orb'e" loading="lazy">
 
 </div>
@@ -33,7 +33,7 @@
 <section class="introSuite ">
 
 <div class="catSection">
-    <button class= "catButton" ><a href="?action=commande">Commander Orb’E</a></button>
+    <a class= "catButton" href="?action=commande">Commander Orb’E</a>
     <img class= "cat" src="./publique/images/mini_jeu2.webp" alt="le rêve orb'e" loading="lazy">
 </div>
 
@@ -46,7 +46,7 @@
 
 <aside class = "contactAccueil">
 
-<button><a href="?action=contact">Contactez nous !</a></button>
+<a href="?action=contact">Contactez nous !</a>
 
 </aside>
 

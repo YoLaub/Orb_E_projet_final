@@ -155,14 +155,6 @@ img {
 
 /* ======= Images spécifiques ======= */
 
-/* Image bannière */
-.banner {
-    width: 100%;
-    max-height: 250px;
-    /* Hauteur max en mobile */
-    object-fit: cover;
-}
-
 /* Images de contenu */
 .content-img {
     width: 100%;
@@ -310,7 +302,7 @@ footer {
     }
 
     nav ul li a{
-        font-size: 1.5rem;
+        font-size: 18px;
     }
 
 
@@ -370,10 +362,6 @@ footer {
         font-size: 1.2em;
     }
 
-    .logo {
-        max-width: 200px;
-        /* Augmente la taille */
-    }
 
     .banner {
         max-height: 350px;
@@ -386,8 +374,7 @@ footer {
 
 
     .logo {
-        max-width: 250px;
-        /* Grand format pour desktop */
+        max-width: 180px;
     }
 
     .banner {
