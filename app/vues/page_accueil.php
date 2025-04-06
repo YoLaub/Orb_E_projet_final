@@ -1,16 +1,20 @@
-<main>
+<main >
+
 
 <section class="intro">
 <div class="presentation">
 <h1>Orb'E</h1>
-<p>Découvrez Orb’E, l'assistant personnel ultime qui repousse les limites de l'intelligence artificielle pour améliorer votre quotidien.</p>
+<p>Découvrez Orb’E, L'Assistant personnel.</p>
     <button><a href="?action=produit">En savoir plus !</a></button>
 </div>
-<div>
-    <img src="./publique/images/3.webp" alt="orb'e">
-
+<div class = "orbe">
+<img src="./publique/images/3.webp" alt="orb'e">
 </div>
+    
+
+
 </section>
+
 
 <section class="introSuite">
 <div class="presentation">
@@ -27,15 +31,15 @@
 </section>
 
 <section class="introSuite ">
-<div>
-<h1>Commandez !</h1>
-    <p class="presentation">Prêt à transformer votre quotidien avec Orb’E ? Commandez dès maintenant et découvrez l'assistant personnel ultime qui s'adapte à vos besoins.</p>
-    
-</div>
+
 <div class="catSection">
     <button class= "catButton" ><a href="?action=commande">Commander Orb’E</a></button>
     <img class= "cat" src="./publique/images/mini_jeu2.webp" alt="le rêve orb'e" loading="lazy">
+</div>
 
+<div class="presentation">
+<h1>Commandez !</h1>
+    <p>Prêt à transformer votre quotidien avec Orb’E ? Commandez dès maintenant et découvrez l'assistant personnel ultime qui s'adapte à vos besoins.</p>
 </div>
 
 </section>

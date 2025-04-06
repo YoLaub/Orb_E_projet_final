@@ -172,5 +172,9 @@ article{
        margin-top: 64px;
     }
 
+    .icon{
+        display: none;
+    }
+
 
 }
