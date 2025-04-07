@@ -1,4 +1,4 @@
-<form action="./?action=contact" method="post">
+<form class="info-form" action="./?action=<?=$commande["action"]?>" method="post">
         <label for="name">Nom :</label>
         <input type="text" id="name" name="nom" required><br>
 

@@ -1,42 +1,12 @@
 Ne pas oublié:
 
 pensez à ajouter la selection de ville  et addresse automatiqquement via API
-pensez à ajouter la suppression du profile
-retirer l'affichage session 
+
+
 Mettre à jour le modèle conceptuel de donné (E/A)
-Redistribuer les modeles
 
-créer class Flux " pour factoriser ce type de bloc =
-// Vérification de la requête POST
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $email = trim($_POST["email"] ?? '');
-    $mdp = trim($_POST["password"] ?? '');
+reprendre le class
+
+adapter les bouton social media
 
 
-    if (!empty($email) && !empty($mdp)) {
- 
-        $connexion = new GestionConnexion();
-        $estConnecte = $connexion->connexion($email, $mdp);
-
-        if ($estConnecte==true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
-            // Redirection vers l'accueil si connexion réussie
-            header("Location: ?action=accueil");
-        }elseif($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "admin"){
-            header("Location: ?action=accueilBo");
-        } 
-        exit(); // Assure que le script s'arrête ici
-    }else{
-        header("Location: ?action=connexion");
-    }
-
-}else{
-
-    $connexion = new GestionConnexion();
-    $connexion->deconnexion();
-    
-    // Inclusion de la page connexion avec un message d'erreur si nécessaire
-    include RACINE . "app/vues/page_header.php";
-    include RACINE . "app/vues/page_connexion.php";
-    include RACINE . "app/vues/page_footer.php";
-
-}

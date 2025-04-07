@@ -18,47 +18,55 @@
 }
 
 
-:root {
-    --element: #121189;
-    --elementLight: #1310e052;
-    --elementTrans: #1310e091;
-    --background1: #12121A;
-    --background2: #FAF9FF;
-    --texte1: #FAF9FF;
-    --texte2: #12121A;
-    --fondPage: #FFFFFF;
-    --jeu: #39FF14;
-    --jeu_alert: #FF073A;
-    --ombre: #00000003;
-    --ombreSurvol: #0000001e;
-    --texte: 'Poppins';
-    --titre: 'Bristone';
-    --jeu_texte: 'Press Start 2P';
-}
+/* ===========================================
+==================GLOBAL ==================
+=========================================== */
+
 
 section {
     padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 16px;
     max-width: 1200px;
     margin: auto;
 }
-section img{
-    width: 100%;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    -ms-border-radius: 6px;
-    -o-border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
 
+section h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: var(--texte2);
 }
 
-section div{
-    display: flex;
-    flex-direction: column;
+section h2 {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  color: var(--texte2);
+  padding-bottom: 0.5rem;
+}
+
+section p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+section p strong {
+  display: inline-block;
+  width: 160px;
+  color: #555;
+}
+
+section ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+section li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 h2 {
@@ -66,24 +74,40 @@ h2 {
     margin: auto;
 }
 
-.infoPerso{
-    margin-bottom: 32px;
+article{
+    padding: 16px;
+    margin: 16px 0 8px 0;
+    border-radius: 6px;
+    box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.1) inset;
 
+}
+
+/* ===========================================
+==================INFO PROFILE==================
+=========================================== */
+
+.titre_form{
+  margin: 0;
+  padding: 0;
 }
 
 .info-form {
     padding: 16px;
     width: 90%;
-    margin: 20px auto;
-    background-color: var(--ombre);
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
-    font-family: system-ui, sans-serif;
+    margin: auto;
+    background-color: var(--background2);
     max-width: 100%;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     -ms-border-radius: 6px;
     -o-border-radius: 6px;
+}
+
+.info-form h2{
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .info-form input,
@@ -135,76 +159,183 @@ h2 {
     width: 100%;
 }
 
-.profil-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-    font-family: 'Segoe UI', sans-serif;
-    color: #333;
-  }
+.btn-modifier{
 
-  .profil-container h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    color: #007bff;
-  }
+  margin: 32px auto;
+  height: 42px;
+  color: var(--texte1);
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: var(--element);
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding: 0rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
 
-  .profil-container h2 {
-    margin-top: 2rem;
-    font-size: 1.4rem;
-    color: #333;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 0.5rem;
-  }
 
-  .profil-container p {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-  }
+  
 
-  .profil-container p strong {
-    display: inline-block;
-    width: 160px;
-    color: #555;
-  }
-
-  .profil-container ul {
-    list-style-type: disc;
-    padding-left: 2rem;
-    margin: 1rem 0;
-  }
-
-  .profil-container li {
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-  }
-
-  .profil-container .section-debug {
+  .profil-container {
     background: #fff;
     border: 1px dashed #ccc;
     padding: 1rem;
     margin-top: 1rem;
     border-radius: 8px;
     font-size: 0.9rem;
-    color: #666;
+    color: var(--ombre);
     overflow-x: auto;
     white-space: pre-wrap;
   }
 
+  /* ===========================================
+==================COMMANDE ==================
+=========================================== */
+
+  .commande-bloc {
+    margin-bottom: 2rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  
+  .commande-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .commande-table th,
+  .commande-table td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  
+  .commande-table th {
+    background-color: var(--element);
+    color: var(--texte1);
+  }
+  
+  .commande-table tfoot td {
+    font-weight: bold;
+    background: var(--element);
+    color: var(--texte1);
+  }
+  
+  ul {
+    padding-left: 1rem;
+  }
+  
+  ul li {
+    margin-bottom: 0.4rem;
+  }
+
+  /* ===========================================
+==================REMISE ==================
+=========================================== */
+
+  .remise-container {
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+  
+  .remise-bar {
+    position: relative;
+    height: 20px;
+    background-color: var(--background2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  
+  .remise-progress {
+    height: 100%;
+    background-color: var(--jeu);
+    transition: width 0.5s ease;
+  }
+  
+  .remise-step {
+    position: absolute;
+    top: -1.5rem;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: #333;
+    background: #fff;
+    padding: 2px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .remise-texte {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .jauge-info {
+    font-style: italic;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+
+  /* ===========================================
+==================MODAL==================
+=========================================== */
+  
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: var(--background2);
+    padding: 1rem;
+    border-radius: 6px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+  }
+  
+  .modal-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  
+/* ===========================================
+==================DESKTOP==================
+=========================================== */
 
 @media (min-width: 768px) {
 
-    .profil-container p strong {
+    section p strong {
         width: 100%;
         display: block;
         margin-bottom: 0.2rem;
       }
   
-      .profil-container ul {
+      section ul {
         padding-left: 1rem;
       }
 
@@ -234,5 +365,20 @@ h2 {
     section h2{
         font-size: 1.2rem;
     }
+
+    .commande-table td,
+    .commande-table th {
+      font-size: 1rem;
+      padding: 0.75rem;
+    }
+  
+    .commande-bloc {
+      padding: 2rem;
+    }
+
+    .echange{
+      margin-bottom: 80px;
+    }
+
 
 }

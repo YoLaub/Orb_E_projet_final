@@ -39,8 +39,8 @@ class ProfilControleur
 
     public function pageProfil(){
 
+        
         $id_contact = 12;
-
         $params = [
             "email" => $this->email,
             "informations" =>  $this->infoPerso,
@@ -49,13 +49,16 @@ class ProfilControleur
             "mesMessages" => $this->connexionContact->getMessagePerEmail($this->email),
             "mesReponses" => $this->connexionReponses->getReponsesPerEmail($id_contact),
             "formulaire" => $this->modifierInformationPerso(),
-            "style"=>"style_profile.css" 
+            "reponse"=>$this->repondre(),
+            "style"=>"style_profile.css",
+            "script"=>"modal_profile.js" 
         ];
 
         $content = "page_profile.php";
 
         $this->pageLayout->render($content, $params);
     }
+
 
     public function pageCommande(){
         $params = [
@@ -106,7 +109,6 @@ class ProfilControleur
     }
 
     public function modifierInformationPerso(){
-
         $params = array();
          // Récupérer les infos pour afficher le formulaire pré-rempli
         $params = [
@@ -146,6 +148,55 @@ class ProfilControleur
         }
 
             
+    }
+
+    private function repondre() {
+
+        $params = [
+            "action" => "profile"
+        ];
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $nom = htmlspecialchars($_POST["nom"]);
+    
+            if(isset($_SESSION["email"])){
+                $email = $_SESSION["email"];
+            }else{
+                $email = htmlspecialchars($_POST["email"]);
+            }
+    
+            $message = htmlspecialchars($_POST["message"]);
+    
+            if(isset($_SESSION["id"])){
+                $id_utlisateur = $_SESSION["id"];
+            }else{
+                $id_utlisateur = NULL;
+            }
+    
+            $connexionContact = new DBContacts();
+    
+    
+            if (!empty($nom) && !empty($email) && !empty($message)) {
+                $etat = $connexionContact->saveMessage($nom, $email, $message, $id_utlisateur);
+                if ($etat) {
+                    $_SESSION["message"] = "Message envoyé !";
+                } else {
+                   $params["message"] = "Erreur d'envoie' !";
+                    return $this->pageLayout->render("partials/contact.php",$params, true);
+                }
+                header("Location: ?action=contact"); // Redirection vers la même page après POST
+                exit; // Important pour éviter toute exécution après la redirection
+            } else {
+               $params["message"] = "Vous avez oubliez un champ !";
+                return $this->pageLayout->render("partials/contact.php",$params, true);   
+            }
+        }
+        if(isset($_SESSION["message"])){
+            unset($_SESSION["message"]);
+        }
+        
+       $params["message"] = "Dites nous tous !";
+        return $this->pageLayout->render("partials/contact.php",$params, true);
     }
 
 

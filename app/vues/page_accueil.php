@@ -1,6 +1,3 @@
-<main >
-
-
 <section class="intro">
 <div class="presentation">
 <h1>orb'e</h1>
@@ -48,6 +45,4 @@
     <a href="?action=contact">Contactez nous !</a>
 </aside>
 
-
-</main>
 

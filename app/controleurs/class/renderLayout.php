@@ -20,6 +20,7 @@ class renderLayout
         
 
         if ($return) {
+            ob_start();
             $commande = $params;
             $keys = array_keys($params);
             
