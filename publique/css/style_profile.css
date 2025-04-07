@@ -1,0 +1,238 @@
+:root {
+    --element: #121189;
+    --elementLight: #1310e052;
+    --elementTrans: #1310e091;
+    --background1: #12121A;
+    --background2: #FAF9FF;
+    --texte1: #FAF9FF;
+    --texte2: #12121A;
+    --fondPage: #FFFFFF;
+    --jeu: #39FF14;
+    --jeu_alert: #FF073A;
+    --ombre: #00000003;
+    --ombreSurvol: #0000001e;
+
+    --texte: 'Poppins';
+    --titre: 'Bristone';
+    --jeu_texte: 'Press Start 2P';
+}
+
+
+:root {
+    --element: #121189;
+    --elementLight: #1310e052;
+    --elementTrans: #1310e091;
+    --background1: #12121A;
+    --background2: #FAF9FF;
+    --texte1: #FAF9FF;
+    --texte2: #12121A;
+    --fondPage: #FFFFFF;
+    --jeu: #39FF14;
+    --jeu_alert: #FF073A;
+    --ombre: #00000003;
+    --ombreSurvol: #0000001e;
+    --texte: 'Poppins';
+    --titre: 'Bristone';
+    --jeu_texte: 'Press Start 2P';
+}
+
+section {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+section img{
+    width: 100%;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+
+}
+
+section div{
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 1rem;
+    margin: auto;
+}
+
+.infoPerso{
+    margin-bottom: 32px;
+
+}
+
+.info-form {
+    padding: 16px;
+    width: 90%;
+    margin: 20px auto;
+    background-color: var(--ombre);
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    font-family: system-ui, sans-serif;
+    max-width: 100%;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.info-form input,
+.info-form select,
+.info-form textarea,
+.info-form button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.info-form input:focus,
+.info-form textarea:focus {
+    border-color: var(--element);
+    outline: none;
+}
+
+.info-form textarea {
+    height: 200px;
+}
+
+.info-form button {
+    background-color: var(--element);
+    color: var(--texte1);
+    width: 33%;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.info-form button:hover {
+    transform: translateY(0.3px);
+    /* léger enfoncement visuel */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+.info-form .commander{
+    width: 100%;
+}
+
+.profil-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+  }
+
+  .profil-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #007bff;
+  }
+
+  .profil-container h2 {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+  }
+
+  .profil-container p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .profil-container p strong {
+    display: inline-block;
+    width: 160px;
+    color: #555;
+  }
+
+  .profil-container ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+    margin: 1rem 0;
+  }
+
+  .profil-container li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .profil-container .section-debug {
+    background: #fff;
+    border: 1px dashed #ccc;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #666;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+
+
+@media (min-width: 768px) {
+
+    .profil-container p strong {
+        width: 100%;
+        display: block;
+        margin-bottom: 0.2rem;
+      }
+  
+      .profil-container ul {
+        padding-left: 1rem;
+      }
+
+    h2 {
+        font-size: 0.8rem;
+        margin: auto;
+    }
+
+    .info-form {
+        max-width: 480px;
+    }
+
+    section{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    section img{
+        width: 85%;
+        margin-bottom: 60px;
+        margin-top: 36px;
+    }
+    section h1{
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+    section h2{
+        font-size: 1.2rem;
+    }
+
+}
