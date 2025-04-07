@@ -3,8 +3,8 @@
 
 <section class="intro">
 <div class="presentation">
-<h1>ORB'E</h1>
-<p>Découvrez Orb’E, L'Assistant personnel.</p>
+<h1>orb'e</h1>
+<p class="presParag">Découvrez Orb’E, L'Assistant personnel.</p>
    <a href="?action=produit">En savoir plus !</a>
 </div>
 <div class = "orbe">
@@ -17,8 +17,8 @@
 
 
 <section class="introSuite">
-<div class="presentation">
-    <h1>Jouez !</h1>
+<div class="presentationSuite">
+    <h1>Jouez</h1>
     <p>Relevez le défi avec le jeu Orb’E ! Évitez les obstacles, profitez d'une météo dynamique et tentez d'obtenir le score le plus élevé pour débloquer une surprise exclusive.</p>
 </div>
 <div class="jeuPresentation">
@@ -38,16 +38,14 @@
 </div>
 
 <div class="presentation">
-<h1>Commandez !</h1>
+<h1>Commandez</h1>
     <p>Prêt à transformer votre quotidien avec Orb’E ? Commandez dès maintenant et découvrez l'assistant personnel ultime qui s'adapte à vos besoins.</p>
 </div>
 
 </section>
 
 <aside class = "contactAccueil">
-
-<a href="?action=contact">Contactez nous !</a>
-
+    <a href="?action=contact">Contactez nous !</a>
 </aside>
 
 

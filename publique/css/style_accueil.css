@@ -1,5 +1,6 @@
 :root {
-    --element: #1310e052;
+    --element: #121189;
+    --elementLight: #1310e052;
     --elementTrans: #1310e091;
     --background1: #12121A;
     --background2: #FAF9FF;
@@ -8,20 +9,27 @@
     --fondPage: #FFFFFF;
     --jeu: #39FF14;
     --jeu_alert: #FF073A;
-    --texte: 'Poppins';
-    --titre: 'Roboto';
-    --jeu_texte: 'Press Start 2P';
     --ombre: #00000003;
     --ombreSurvol: #0000001e;
+    --texte: 'Poppins';
+    --titre: 'Bristone';
+    --jeu_texte: 'Press Start 2P';
 }
 
 
 /* ======= Accueil ======= */
 
+h1 {
+    font-family: var(--titre);
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
 .intro {
     background: var(--background1);
     color: var(--texte1);
-    padding: 64px 16px 64px 16px;
+    padding: 64px 24px 64px 24px;
     position: relative;
     top: -35px;
     display: flex;
@@ -49,54 +57,60 @@
       0 1px 0 rgba(255, 255, 255, 0.05) inset;
   }
 
-
-.introSuite {
-    display: flex;
-    flex-direction: column;
-    padding: 0 16px;
-    margin: 40px auto 56px auto;
-    background-color: var(--ombre)
-}
-
 .orbe {
     background-image: radial-gradient(circle,
             rgba(255, 255, 255, 0.25) 0%,
             rgba(255, 255, 255, 0.05) 23%,
             rgba(0, 0, 0, 0.0) 34%,
             rgba(0, 0, 0, 0) 100%);
-    width: 50%;
-    padding: 57px;
+    width: 100%;
+    padding: 8px;
+}
+
+.introSuite {
+    display: flex;
+    flex-direction: column;
+    border: 6px;
+    margin: 40px 16px 56px 16px;
+    background-color: var(--ombre);
+    box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.presentationSuite{
+    padding: 16px;
+}
+
+.presentation{
+    padding: 16px;
 }
 
 .jeuPresentation {
     display: flex;
     justify-content: center;
-    /* Centre horizontalement */
     align-items: center;
-    /* Centre verticalement */
-    /* Assurez-vous que la hauteur est définie pour le centrage vertical */
     position: relative;
-    /* Assurez-vous que le positionnement est relatif pour le bouton absolu */
 }
 
 .jeuPresentation a {
-
     position: absolute;
     height: 42px;
     font-size: 1.2rem;
-    background-color: var(--elementTrans);
+    background-color: var(--element);
     display: flex;
     align-items: center;
     text-align: center;
     border: none;
-    border-radius: 10px;
+    border-radius: 6px;
     padding: 0rem 2rem;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 
-      0 2px 4px rgba(0, 0, 0, 0.1),
-      0 1px 0 rgba(255, 255, 255, 0.1) inset;
-
+    box-shadow:       0 2px 4px rgba(0, 0, 0, 0.1),      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
 }
 
 .jeuPresentation a:hover{
@@ -106,6 +120,14 @@
       0 1px 0 rgba(255, 255, 255, 0.05) inset;
 }
 
+.jeuPresentation img{
+    border-radius:  0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    -ms-border-radius: 0 0 6px 6px;
+    -o-border-radius: 0 0 6px 6px;
+}
+
 .catSection {
     display: flex;
     justify-content: center;
@@ -113,33 +135,38 @@
     position: relative;
 }
 
+.catSection img{
+    border-radius: 6px 6px 0 0 ;
+    -webkit-border-radius: 6px 6px 0 0 ;
+    -moz-border-radius: 6px 6px 0 0 ;
+    -ms-border-radius: 6px 6px 0 0 ;
+    -o-border-radius: 6px 6px 0 0 ;
+}
+
 .cat {
     display: block;
     object-fit: cover;
     max-width: 100%;
-    border-radius: 0%;
-    -webkit-border-radius: 0%;
-    -moz-border-radius: 0%;
-    -ms-border-radius: 0%;
-    -o-border-radius: 0%;
 }
 
 .catButton {
     position: absolute;
     height: 42px;
     font-size: 1.2rem;
-    background-color: var(--elementTrans);
+    background-color: var(--element);
     display: flex;
     align-items: center;
     text-align: center;
     border: none;
-    border-radius: 10px;
+    border-radius: 6px;
     padding: 0rem 2rem;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 
-      0 2px 4px rgba(0, 0, 0, 0.1),
-      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    box-shadow:       0 2px 4px rgba(0, 0, 0, 0.1),      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
 }
 
 .catButton:hover{
@@ -166,15 +193,17 @@
     align-items: center;
     text-align: center;
     border: none;
-    border-radius: 10px;
+    border-radius: 6px;
     padding: 0rem 2rem;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
     transition: all 0.2s ease;
-    box-shadow: 
-      0 2px 4px rgba(0, 0, 0, 0.1),
-      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    box-shadow:       0 2px 4px rgba(0, 0, 0, 0.1),      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
 }
 
 .contactAccueil a:hover {
@@ -208,20 +237,19 @@
         padding: 57px;
     }
 
-    .presentation h1 {
-        font-family: var(--jeu_texte);
-        font-size: 3rem;
-        margin-bottom: 0;
-        margin-top: 0;
-    }
-
-    main .presentation{
+    .presentation{
         padding: 8px;
         margin-left: 132px;
         align-content: center;
     }
 
-    .presentation p {
+    .presentationSuite{
+        padding-left: 32px;
+        margin-right: 132px;
+        align-content: center;
+    }
+
+    .presentation .presParag {
         font-size: 16px;
         margin-top: 0;
         margin-bottom: 56px;
@@ -233,6 +261,7 @@
         flex-direction: row;
         max-width: 1100px;
         justify-content: space-between;
+
 
     }
 

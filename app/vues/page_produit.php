@@ -24,7 +24,7 @@
 <section class="contenaire">
         <article >
             <div class="article-header">
-                <h2>Technologie d'Antigravitation !</h2>
+                <h2>Antigravitation !</h2>
                 <div class="icon"></div>
             </div>
             <div class="article-content">
@@ -43,7 +43,7 @@
             </article>
         <article>
             <div class="article-header" >
-                <h2>Projection d'Image sur la Surface de Orb'E !</h2>
+                <h2>Projection d'Image !</h2>
                 <div class="icon"></div>
             </div>
             <div class="article-content">
@@ -62,7 +62,7 @@
             </article>
         <article>
             <div class="article-header" >
-                <h2>Captation d'Énergie Lumineuse pour une Énergie Infinie !</h2>
+                <h2>Énergie Infinie !</h2>
                 <div class="icon"></div>
             </div>
             <div class="article-content">

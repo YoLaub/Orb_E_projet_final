@@ -1,6 +1,7 @@
 :root {
-    --element: #1310e0;
-    --elementTrans: #1310e003;
+    --element: #121189;
+    --elementLight: #1310e052;
+    --elementTrans: #1310e091;
     --background1: #12121A;
     --background2: #FAF9FF;
     --texte1: #FAF9FF;
@@ -8,12 +9,8 @@
     --fondPage: #FFFFFF;
     --jeu: #39FF14;
     --jeu_alert: #FF073A;
-    --texte: 'Poppins';
-    --titre: 'Roboto';
-    --jeu_texte: 'Press Start 2P';
     --ombre: #00000003;
     --ombreSurvol: #0000001e;
-    --test: #333232 ;
 }
  
 .contenaire{
@@ -25,7 +22,7 @@
 }
 
 #visualisation-3d {
-    width: 125px;
+    width: 170px;
     height: 300px;
     margin: auto;
 
@@ -41,11 +38,15 @@
     color: var(--texte2);
     padding: 16px;
     margin-top: 16px;
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0 0 8px var(--ombre), 0 0 18px var(--ombre), 0 0 8px var(--ombre);
- }
-
-
+    border-radius: 0 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    -ms-border-radius: 0 0 6px 6px;
+    -o-border-radius: 0 0 6px 6px;
+    box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
 
  .produit-details button {
     margin: 32px auto;
@@ -53,7 +54,7 @@
     color: var(--element);
     font-size: 1.2rem;
     font-weight: bold;
-    background-color: var(--elementTrans);
+    background-color: var(--element);
     display: flex; 
     align-items: center;
     justify-content: center; 
@@ -63,14 +64,17 @@
     padding: 0rem 2rem;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 8px var(--elementTrans), 0 0 18px var(--elementTrans), 0 0 8px var(--elementTrans); 
+    transition: all 0.2s ease;
+    box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      0 1px 0 rgba(255, 255, 255, 0.1) inset;
 }
 
 .produit-details button:hover {
-    background-color: var(--element);
-    color: var(--texte1);
-    box-shadow: 0 0 10px var(--element), 0 0 20px var(--element), 0 0 10px var(--elementTrans);
+    transform: translateY(0.3px); /* léger enfoncement visuel */
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.05) inset;
 }
 
 .container {
@@ -85,23 +89,33 @@ article{
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
-    border-radius: 10px;
+    border-radius: 6px;
     overflow: hidden;
-    background-color: var(--elementTrans);
-    box-shadow: 0 0 8px var(--elementTrans), 0 0 18px var(--elementTrans), 0 0 8px var(--elementTrans); 
+    background-color: var(--ombre);
+    box-shadow:       0 2px 4px rgba(0, 0, 0, 0.1),      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
 }
+
 .article-header {
     background-color: var(--element);
-    box-shadow: 0 0 8px var(--element), 0 0 18px var(--element), 0 0 8px var(--elementTrans); 
     padding: 1rem;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.1) inset;
 }
+
+
 .article-header h2 {
     font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
     color: var(--texte1);
     margin: 0 32px 0 0;
 }

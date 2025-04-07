@@ -1,5 +1,6 @@
 :root {
-    --element: #1310e052;
+    --element: #121189;
+    --elementLight: #1310e052;
     --elementTrans: #1310e091;
     --background1: #12121A;
     --background2: #FAF9FF;
@@ -8,9 +9,11 @@
     --fondPage: #FFFFFF;
     --jeu: #39FF14;
     --jeu_alert: #FF073A;
+    --ombre: #00000003;
+    --ombreSurvol: #0000001e;
 
     --texte: 'Poppins';
-    --titre: 'Roboto';
+    --titre: 'Bristone';
     --jeu_texte: 'Press Start 2P';
 }
 
@@ -23,6 +26,16 @@
     font-style: normal;
     font-weight: 400;
     src: url('../fonts/poppins-v22-latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* poppins-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Bristone';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Bristone.woff2') format('woff2');
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
@@ -57,7 +70,7 @@ body {
 
 header {
     display: flex;
-    justify-content:space-around;
+    justify-content:space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: var(--background1);
@@ -71,28 +84,30 @@ a{
     color: var(--texte1);
 }
  
- 
 
-/* Logo */
-.logo {
-    font-size: 24px;
-    font-family: var(--titre);
-    font-weight: bold;
+header .iconHeader{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+    margin-right: 16px;
+
 }
+ 
 
 /* Icône menu burger */
 .menu-toggle {
     font-size: 24px;
     font-family: var(--texte);
+    margin-bottom: 8px;
     background: none;
     border: none;
     color: white;
     cursor: pointer;
     display: block;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    z-index: 1100;
+    position: relative;
 }
 
 /* Navigation */
@@ -101,12 +116,15 @@ nav {
     font-family: var(--texte);
     top: 0;
     right: 0;
-    width: 250px;
-    height: 500px;
-    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 350px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
     transition: transform 0.3s ease-in-out;
-    padding-top: 50px;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    padding-top: 30px;
+    box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.1) inset;
     z-index: 1000;
     transform: translateX(100%);
 }
@@ -137,11 +155,10 @@ nav.open {
 /* ======= Logo ======= */
 .logo {
     max-width: 150px;
-    /* Taille max en mobile */
     height: auto;
     display: block;
-    margin: 0 auto;
-    /* Centrage */
+    margin: 0;
+
 }
 
 /* ======= Images générales ======= */
@@ -157,12 +174,15 @@ img {
 
 /* Images de contenu */
 .content-img {
-    width: 100%;
-    max-width: 400px;
-    /* Taille max en mobile */
-    margin: 10px auto;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+      margin: 10px auto;
+      box-shadow:       0 2px 4px rgba(0, 0, 0, 0.1),      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+      border-radius: 6px ;
+      -webkit-border-radius: 6px ;
+      -moz-border-radius: 6px ;
+      -ms-border-radius: 6px ;
+      -o-border-radius: 6px ;
 }
 
 .partage {
