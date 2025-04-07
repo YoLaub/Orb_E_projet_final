@@ -95,6 +95,12 @@ header .iconHeader{
     margin-right: 16px;
 
 }
+
+h1{
+
+    font-family: var(--titre);
+}
+
  
 
 /* Icône menu burger */
@@ -296,6 +302,7 @@ footer {
     header {
         padding: 10px 56px;
     }
+
 
     .menu-toggle {
         display: none;

@@ -129,9 +129,9 @@ class ProfilControleur
                $etat = $this->gestionProfil->updateInfoUser($this->email, $prenom, $nom, $adresse, $ville, $cp, $tel, $paiement);
         
                 if ($etat) {
-                    $_SESSION["message"] = "Modification effectué !";
+                    $_SESSION["message"] = "<p>Modification effectué !</p>";
                 } else {
-                    $params["message"] = "Erreur de modification !";
+                    $params["message"] = "<p> Erreur de modification !</p>";
                     return $this->pageLayout->render("partials/formulaire.php", $params, true);
                 }
                 header("Location: ?action=profile"); // Redirection vers la même page après POST

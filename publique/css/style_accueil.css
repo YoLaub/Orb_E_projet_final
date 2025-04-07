@@ -256,13 +256,11 @@ h1 {
     }
 
     .introSuite {
-
         display: flex;
         flex-direction: row;
         max-width: 1100px;
         justify-content: space-between;
-
-
+        margin: 64px auto;
     }
 
     .introSuite img {
