@@ -30,7 +30,7 @@ class UtilisateurGControleur{
             "inscription" => $this->inscriptionAdmin(),
             "liste_utilisateur" => $this->listeUtilisateur,
             "liste_admin" => $this->listeAdmin,
-            "style" => "style_profile.css"
+            "style" => "style_profile_bo.css"
         ];
 
         $content = "admin/page_Ubo.php";

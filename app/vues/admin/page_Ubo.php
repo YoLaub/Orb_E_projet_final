@@ -1,17 +1,19 @@
-<main>
+<section>
 
-    <section class="ajout-admin">
-        <h2>Ajouter un compte administrateur</h2>
+<article>
+
+    <div class="ajout-admin">
+    <h2>Ajouter un compte administrateur</h2>
         <?= $commande["inscription"] ?>
         <form action="./?action=ajout_admin" method="post" class="form-block">
             <input type="email" name="email" placeholder="Votre email" required>
             <input type="password" name="mot_de_passe" placeholder="Votre mot de passe" required>
             <button type="submit">Valider</button>
         </form>
-    </section>
-
-    <section class="admin-section">
-        <h2>Liste des Administrateurs</h2>
+    </div>
+        
+<div class="admin-section">
+<h2>Liste des Administrateurs</h2>
         <?php foreach ($commande["liste_admin"] as $admin): ?>
             <div class="user-card">
                 <p><strong>Email :</strong> <?= htmlspecialchars($admin["email"]) ?></p>
@@ -23,9 +25,11 @@
             <input type="number" name="id_admin" placeholder="ID admin à supprimer" required>
             <button type="submit">Supprimer</button>
         </form>
-    </section>
 
-    <section class="user-section">
+</div>
+</article>
+
+<article class="user-section">
         <h2>Liste des Utilisateurs</h2>
         <?php foreach ($commande["liste_utilisateur"] as $user): ?>
             <div class="user-card">
@@ -45,6 +49,7 @@
             <input type="number" name="id_utilisateur" placeholder="ID utilisateur à supprimer" required>
             <button type="submit">Supprimer</button>
         </form>
-    </section>
+</article>
 
-</main>
+
+</section>
