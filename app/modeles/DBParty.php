@@ -52,4 +52,17 @@ class DBParty extends DbConnect
                 }
             }
 
+    public static function totalScore()
+        {
+        
+
+                $sql = "select sum(score) as total_points from parties";
+
+                try {
+                    return self::executerRequete($sql)->fetchAll(PDO::FETCH_ASSOC);
+                } catch (Exception $e) {
+                    return $e->getMessage();
+                }
+            }
+
 }

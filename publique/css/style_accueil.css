@@ -214,6 +214,8 @@ h1 {
 
 }
 
+
+
 @media (min-width: 768px) {
     header {
         padding: 10px 56px;
@@ -266,4 +268,7 @@ h1 {
     .introSuite img {
         width: 100%;
     }
+
+
+
 }

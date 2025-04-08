@@ -44,7 +44,7 @@ class ProfilControleur
         $params = [
             "email" => $this->email,
             "informations" =>  $this->infoPerso,
-            "commandes" => $this->gestionProfil->getUserOrders($this->email),
+            "commandes" => json_encode($this->gestionProfil->getUserOrders($this->email)),
             "score" => $this->gestionProfil->getUserScores($this->email),
             "mesMessages" => $this->connexionContact->getMessagePerEmail($this->email),
             "mesReponses" => $this->connexionReponses->getReponsesPerEmail($id_contact),
@@ -109,11 +109,14 @@ class ProfilControleur
     }
 
     public function modifierInformationPerso(){
+
+        $table = "commerce";
+        $colonne = "mode_paiement";
         $params = array();
          // Récupérer les infos pour afficher le formulaire pré-rempli
         $params = [
             "informations" => $this->gestionProfil->infoUser($this->email),
-            "select" => $this->gestionCommande->showEnum(),
+            "select" => $this->gestionCommande->showEnum($table, $colonne),
             "action" => "profile"
         ];
 

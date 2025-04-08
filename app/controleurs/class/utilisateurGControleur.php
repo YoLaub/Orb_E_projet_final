@@ -29,7 +29,8 @@ class UtilisateurGControleur{
         $params = [
             "inscription" => $this->inscriptionAdmin(),
             "liste_utilisateur" => $this->listeUtilisateur,
-            "liste_admin" => $this->listeAdmin
+            "liste_admin" => $this->listeAdmin,
+            "style" => "style_profile.css"
         ];
 
         $content = "admin/page_Ubo.php";

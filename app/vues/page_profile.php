@@ -40,16 +40,16 @@
 
 <article>
 
-<div>
+<div class = "mesInfos">
 <h2>Mes informations</h2>
-<p><strong>Email :</strong> <?=$commande["email"];?></p>
-<p><strong>Nom :</strong> <?=$commande["informations"][0]["nom"];?></p>
-<p><strong>Prénom :</strong> <?=$commande["informations"][0]["prenom"]; ?></p>
-<p><strong>Adresse :</strong> <?=$commande["informations"][0]["adresse_livraison"]; ?></p>
-<p><strong>Ville :</strong> <?=$commande["informations"][0]["ville"]; ?></p>
-<p><strong>Code Postal :</strong> <?=$commande["informations"][0]["code_postal"]; ?></p>
-<p><strong>Téléphone :</strong> <?=$commande["informations"][0]["telephone"]; ?></p>
-<p><strong>Paiement :</strong> <?=$commande["informations"][0]["mode_paiement"]; ?></p>
+<p><span>Email :</span> <?=$commande["email"];?></p>
+<p><span>Nom :</span> <?=$commande["informations"][0]["nom"];?></p>
+<p><span>Prénom :</span> <?=$commande["informations"][0]["prenom"]; ?></p>
+<p><span>Adresse :</span> <?=$commande["informations"][0]["adresse_livraison"]; ?></p>
+<p><span>Ville :</span> <?=$commande["informations"][0]["ville"]; ?></p>
+<p><span>Code Postal :</span> <?=$commande["informations"][0]["code_postal"]; ?></p>
+<p><span>Téléphone :</span> <?=$commande["informations"][0]["telephone"]; ?></p>
+<p><span>Paiement :</span> <?=$commande["informations"][0]["mode_paiement"]; ?></p>
 
 </div>
 
@@ -68,59 +68,13 @@
 
 </article>
 
-
-<article>
+<article id = "commande_contenair">
 
 <h2>Historique des commandes</h2>
 
-<?php if (!empty($commande["commandes"])) : ?>
-    <?php 
-        // Regrouper les produits par commande
-        $commandes_groupées = [];
-        foreach ($commande["commandes"] as $cmd) {
-            $id = $cmd["id_commande"];
-            $commandes_groupées[$id]["infos"] = $cmd;
-            $commandes_groupées[$id]["produits"][] = $cmd;
-        }
-    ?>
-    <?php foreach ($commandes_groupées as $idCommande => $details) : ?>
-        <div class="commande-bloc">
-            <p><strong>Commande #<?= $idCommande ?></strong> (<?= $details["infos"]["date_heure"] ?>) — <em><?= ucfirst(str_replace("_", " ", $details["infos"]["statut"])) ?></em></p>
-            <table class="commande-table">
-                <thead>
-                    <tr>
-                        <th>Produit</th>
-                        <th>Description</th>
-                        <th>Prix</th>
-                        <th>Qté</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($details["produits"] as $produit) : ?>
-                        <tr>
-                            <td><?= $produit["nom_produit"] ?></td>
-                            <td><?= $produit["description"] ?></td>
-                            <td><?= number_format($produit["prix"], 2) ?> €</td>
-                            <td><?= $produit["quantité"] ?></td>
-                            <td><?= number_format($produit["total_produit"], 2) ?> €</td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="4"><strong>Total Commande</strong></td>
-                        <td><strong><?= number_format($details["infos"]["montant_total"], 2) ?> €</strong></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    <?php endforeach; ?>
-<?php else : ?>
-    <p>Aucune commande enregistrée.</p>
-<?php endif; ?>
-
-
+<script id ="detail_commande" type="application/json">
+    <?=$commande["commandes"]?>
+</script>
 
 </article>
 
@@ -156,13 +110,9 @@
 
 </div>
 
-
-
 </article>
 
 </section>
-
-
 
 
 

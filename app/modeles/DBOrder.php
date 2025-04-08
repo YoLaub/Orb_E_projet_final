@@ -138,12 +138,34 @@ class DBOrder extends DbConnect
         }
         
 }
+public static function updateStatus($status, $idCommande)
+{
 
-    public static function showEnum(){
+    $value = array();
+    $value["status"] = $status;
+    $value["idCommande"] = $idCommande;
+
+    try {
+        $sql = "update commandes set statut = :status where id_commande = :idCommande ";
+
+        $req = self::executerRequete($sql, $value);
+        
+        return true;
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+        
+}
+
+    public static function showEnum($table, $colonne){
+
+        $value = array();
+        
+        $value["colonne"] = $colonne;
 
         // Récupérer les valeurs de l'ENUM
-        $sql = "SHOW COLUMNS FROM commerce LIKE 'mode_paiement'";
-        $req = self::executerRequete($sql);
+        $sql = "SHOW COLUMNS FROM `$table` LIKE :colonne";
+        $req = self::executerRequete($sql, $value);
 
         /* Remplacer ??? par la méthode fetchAll() */
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
