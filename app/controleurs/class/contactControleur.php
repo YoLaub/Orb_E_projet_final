@@ -18,10 +18,12 @@ class ContactControleur
         $this->connexionReponse = new DBResponse;
         $this->pageLayout = new renderLayout;
         $this->params = array();
-        $this->params["style"] = "style_contact.css";
+        
     }
 
     public function pageContact() {
+
+        $this->params["style"] = "style_contact.css";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $nom = htmlspecialchars($_POST["nom"]);
@@ -70,6 +72,7 @@ class ContactControleur
     {
        $this->params["lesMessages"] = $this->connexion->getMessage();
        $this->params["lesReponses"] = $this->connexionReponse->getReponse();
+       $this->params["style"] = "style_messagerie.css";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $id_contact = htmlspecialchars($_POST["id_contact"]);

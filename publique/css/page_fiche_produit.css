@@ -199,9 +199,6 @@ button:hover {
         align-items: center;
     }
 
-    input[type="number"] {
-        flex: 1;
-    }
 
 }
 

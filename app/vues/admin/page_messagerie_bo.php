@@ -1,47 +1,54 @@
-<h1>Messagerie</h1>
+<section>
+    <h1>Messagerie</h1>
 
-<section class="chat-container">
+    <div class="messagerie">
+        <article class="chat-container">
 
-    <h2>📨 Messages reçus</h2>
+            <h2>📨 Messages reçus</h2>
 
-    <?php foreach ($commande["lesMessages"] as $message): ?>
-        <div class="message-bulle user">
-            <div class="message-header">
-                <strong><?= htmlspecialchars($message["nom"]) ?></strong>
-                <span><?= $message["created_at"] ?></span>
-            </div>
-            <p class="message-text"><?= htmlspecialchars($message["message"]) ?></p>
-            <small><?= htmlspecialchars($message["email"]) ?> — ID: <?= $message["id_contact"] ?></small>
-        </div>
-    <?php endforeach; ?>
+            <?php foreach ($commande["lesMessages"] as $message): ?>
+                <div class="message-bulle user">
+                    <div class="message-header">
+                        <strong><?= htmlspecialchars($message["nom"]) ?></strong>
+                        <span><?= $message["created_at"] ?></span>
+                    </div>
+                    <p class="message-text"><?= htmlspecialchars($message["message"]) ?></p>
+                    <small><?= htmlspecialchars($message["email"]) ?> — ID: <?= $message["id_contact"] ?></small>
 
-</section>
+                    <form action="./?action=messagerie" method="post">
+                        <input type="hidden" name="id_contact" required value="<?= $message["id_contact"] ?>">
 
-<section class="form-container">
-    <h2>💬 Répondre</h2>
+                        <label for="reponse">Votre réponse :</label>
+                        <textarea name="reponse" rows="4" required placeholder="Tapez votre message ici..."></textarea>
 
-    <form action="./?action=messagerie" method="post">
-        <label for="id">ID du message :</label>
-        <input type="number" name="id_contact" required placeholder="Ex : 12">
+                        <button type="submit">Envoyer</button>
+                    </form>
+                </div>
 
-        <label for="reponse">Votre réponse :</label>
-        <textarea name="reponse" rows="4" required placeholder="Tapez votre message ici..."></textarea>
+            <?php endforeach; ?>
 
-        <button type="submit">Envoyer</button>
-    </form>
-</section>
+        </article>
 
-<section class="chat-container">
-    <h2>✅ Vos réponses envoyées</h2>
 
-    <?php foreach ($commande["lesReponses"] as $reponse): ?>
-        <div class="message-bulle admin">
-            <div class="message-header">
-                <strong>Admin #<?= $reponse["id_admin"] ?></strong>
-                <span><?= $reponse["created_at"] ?></span>
-            </div>
-            <p class="message-text"><?= htmlspecialchars($reponse["reponse"]) ?></p>
-            <small>En réponse au message ID <?= $reponse["id_contact"] ?></small>
-        </div>
-    <?php endforeach; ?>
+        <article class="chat-container">
+
+            <h2>✅ Vos réponses envoyées</h2>
+
+            <?php foreach ($commande["lesReponses"] as $reponse): ?>
+                <div class="message-bulle admin">
+                    <div class="message-header">
+                        <strong>Admin #<?= $reponse["id_admin"] ?></strong>
+                        <span><?= $reponse["created_at"] ?></span>
+                    </div>
+                    <p class="message-text"><?= htmlspecialchars($reponse["reponse"]) ?></p>
+                    <small>En réponse au message ID <?= $reponse["id_contact"] ?></small>
+                </div>
+            <?php endforeach; ?>
+
+        </article>
+
+
+    </div>
+
+
 </section>
