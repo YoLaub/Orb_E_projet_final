@@ -29,39 +29,38 @@ class Connexion
 
     public function connexionUtilisateur()
     {
-        
+
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $email = trim($_POST["email"] ?? '');
             $mdp = trim($_POST["password"] ?? '');
-        
-        
+
+
             if (!empty($email) && !empty($mdp)) {
                 $estConnecte = self::verifInfoConn($email, $mdp);
-        
-                if ($estConnecte==true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
+
+                if ($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
                     // Redirection vers l'accueil si connexion réussie
                     $this->home->accueil();
-                }elseif($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "admin"){
+                } elseif ($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
                     $this->home->accueil();
-                }else{
+                } else {
                     $content = "page_connexion.php";
                     $this->pageLayout->render($content, $this->params);
-                }   
+                }
                 exit(); // Assure que le script s'arrête ici
-            }else{
+            } else {
                 $content = "page_connexion.php";
                 $this->pageLayout->render($content, $this->params);
             }
-        }else{
-        
-            if(isset($_SESSION)){
+        } else {
+
+            if (isset($_SESSION)) {
                 self::deconnexion();
             }
-            
-            
+
+
             $content = "page_connexion.php";
             $this->pageLayout->render($content, $this->params);
-        
         }
     }
 
@@ -102,14 +101,14 @@ class Connexion
                 }
             } else {
                 $content = "page_inscription.php";
-                $this->pageLayout->render( $content, $this->params);
+                $this->pageLayout->render($content, $this->params);
             }
         } else {
             $content = "page_inscription.php";
             $this->pageLayout->render($content, $this->params);
         }
     }
-    
+
     public function deconnexion()
     {
         if (isset($_SESSION["id"])) {
@@ -122,31 +121,32 @@ class Connexion
 
             $content = "page_accueil.php";
             $this->pageLayout->render($content, $this->params);
-            
         }
     }
 
     public function suppressionUtilisateur()
     {
-       
+
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            
+
+
             switch (true) {
                 case isset($_POST["id_produit"]):
                     $etat = $this->connexionProduct->deleteProduct(intval($_POST["id_produit"]));
                     header("Location: ?action=produit");
-                exit();
-        
+                    exit();
+
                 case isset($_POST["id_utilisateur"]):
                     $etat = $this->connectDB->deleteUser(intval($_POST["id_utilisateur"]));
                     header("Location: ?action=utilisateur");
-                exit();
+                    exit();
                 case isset($_POST["id_admin"]):
                     $etat =  $this->connectDB->deleteUser(intval($_POST["id_admin"]));
                     header("Location: ?action=utilisateur");
-                exit();
-        
+                    exit();
+
                 default:
+                    $content = "admin/page_Ubo.php";
                     $this->pageLayout->render($content, $this->params);
             }
         } else {
@@ -156,7 +156,8 @@ class Connexion
         }
     }
 
-    public function verifInfoAuth($email, $mdp){
+    public function verifInfoAuth($email, $mdp)
+    {
 
         $regexMdp = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/";
 
@@ -173,7 +174,8 @@ class Connexion
             return $e->getMessage();
         }
     }
-    private function verifInfoConn($email, $mdp){
+    private function verifInfoConn($email, $mdp)
+    {
 
         $utilisateur =  $this->connectDB::getUserPerEmail($email);
 
@@ -193,7 +195,4 @@ class Connexion
             return $erreur;
         }
     }
-
-
-    }
-
+}

@@ -1,0 +1,207 @@
+:root {
+    --elementDark: #0e0c64;
+    --element: #121189;
+    --elementLight: #1310e052;
+    --elementTrans: #1310e091;
+    --background1: #12121A;
+    --background2: #FAF9FF;
+    --texte1: #FAF9FF;
+    --texte2: #12121A;
+    --fondPage: #FFFFFF;
+    --jeu: #39FF14;
+    --jeu_alert: #FF073A;
+    --ombre: #00000003;
+    --ombreSurvol: #0000001e;
+
+    --texte: 'Poppins';
+    --titre: 'Bristone';
+    --jeu_texte: 'Press Start 2P';
+}
+
+ 
+section{
+    display: flex;
+    flex-direction: column;
+    margin: 16px auto;
+    padding: 32px;
+
+}
+
+h1{
+    margin: 32px;
+}
+
+.nouveau_produit{
+    margin-left: 32px;
+    margin-bottom: 32px;
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    background-color: var(--element);
+    color: white;
+    text-decoration: none;
+    box-shadow:     0 2px 4px rgba(0, 0, 0, 0.1),    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+
+}
+
+.nouveau_produit:hover {
+    background-color: var(--elementDark);
+    transform: translateY(0.3px);
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+.produit-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.produit-card {
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.produit-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.produit-info {
+    padding: 1rem;
+}
+
+.produit-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-inline {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+button {
+    padding: 0.7rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    background-color: var(--jeu_alert);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow:     0 2px 4px rgba(0, 0, 0, 0.1),    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--jeu_alert);
+    transform: translateY(0.3px);
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+
+.form-produit {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    width: 100%;
+    padding: 64px;
+    margin: auto ;
+    background: #f9f9f9;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    box-shadow:     0 2px 4px rgba(0, 0, 0, 0.1),    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+
+}
+
+.form-produit label {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.form-produit input[type="text"],
+.form-produit input[type="file"],
+.form-produit textarea,
+.form-produit select {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-produit button {
+    background-color: var(--element);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-produit button:hover {
+    background-color: var(--element);
+}
+
+.photo-preview img {
+    display: block;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.message {
+    font-style: italic;
+    color: var(--jeu_alert);
+    margin-bottom: 1rem;
+}
+
+
+
+@media (min-width: 768px) {
+
+    
+    .produit-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .produit-card {
+        width: calc(50% - 1rem);
+    }
+
+    .form-inline {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    input[type="number"] {
+        flex: 1;
+    }
+
+}
+

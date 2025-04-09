@@ -19,8 +19,8 @@ class UtilisateurGControleur{
     {
         $this->gestionProfil = new DBUser;
         $this->connexion = new Connexion;
-        $this->listeUtilisateur = $this->gestionProfil->getUser("admin");
-        $this->listeAdmin = $this->gestionProfil->getUser("utilisateur");
+        $this->listeUtilisateur = $this->gestionProfil->getUser("utilisateur");
+        $this->listeAdmin = $this->gestionProfil->getUser("admin");
         $this->pageLayout = new renderLayout;
     }
 
@@ -38,8 +38,26 @@ class UtilisateurGControleur{
         
     }
 
+    public function rechercheUtilisateur(){
+
+        if (isset($_POST['terme'])) {
+            $terme = "%".trim($_POST['terme'])."%";
+      
+
+            $utilisateurs = $this->gestionProfil->searchUser($terme); // la méthode qu'on a vue plus haut
+        
+            header('Content-Type: application/json');
+            echo json_encode($utilisateurs);
+            exit;
+    }
+}
+
     public function inscriptionAdmin()
     {
+        $params = [
+            "action" => "utilisateur"
+        ];
+
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $email = trim($_POST["email"] ?? '');
             $mdp = trim($_POST["mdp"] ?? '');

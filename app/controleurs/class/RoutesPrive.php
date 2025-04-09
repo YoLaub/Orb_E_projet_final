@@ -24,6 +24,8 @@ class RoutesPrive {
             "connexion" => "Connexion:connexionUtilisateur",
             "suppression" => "Connexion:suppressionUtilisateur",
             "deconnexion" => "Connexion:deconnexion",
+            "rechercheU" => "UtilisateurGControleur:rechercheUtilisateur",
+            "nouveau" => "ProduitControleur:ajouterProduit",
             "page404" => self::ERROR_ROUTE,
         ];
     }

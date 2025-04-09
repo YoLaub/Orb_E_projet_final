@@ -20,6 +20,28 @@ class DBUser extends DbConnect
         }
     }
 
+    public static function searchUser($terme) 
+    {
+
+        $value = array();
+        $value["terme"] = $terme;
+
+        $sql = "select 
+                u.email,
+                c.nom,
+                c.prenom
+                from utilisateurs as u
+                left join commerce as c on u.id_utilisateur = c.id_utilisateur
+                where c.nom like :terme or c.prenom like :terme or u.email like :terme";
+
+        try {
+            return self::executerRequete($sql, $value)->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+    }
+
     public static function getUser($role)
     {
 
@@ -27,7 +49,8 @@ class DBUser extends DbConnect
         $value["role"] = $role;
 
         $sql = "select 
-                u.email, 
+                u.email,
+                u.id_utilisateur, 
                 c.nom, 
                 c.prenom, 
                 c.id_commerce, 
@@ -39,7 +62,7 @@ class DBUser extends DbConnect
                 c.mode_paiement
             from utilisateurs as u
             left join commerce as c on u.id_utilisateur = c.id_utilisateur
-            where u.rôle != :role";
+            where u.rôle = :role";
 
         $req = self::executerRequete($sql, $value);
         

@@ -4,6 +4,7 @@ namespace app\controleurs\class;
 
 use app\middleware\Middleware;
 use app\modeles\DBProduct;
+use app\modeles\DBOrder;
 
 class ProduitControleur
 {
@@ -11,6 +12,7 @@ class ProduitControleur
     private $connexion;
     private $produits;
     private $detailsProduit;
+    private $gestionCommande;
     private $params;
 
     public function __construct()
@@ -18,10 +20,11 @@ class ProduitControleur
         $this->pageLayout = new renderLayout;
         $this->connexion = new Middleware;
         $this->produits = new DBProduct;
+        $this->gestionCommande = new DBOrder;
         $this->detailsProduit = $this->produits->getProduct();
         $this->params = array();
         $this->params["commande"] = "Commandez !";
-        $this->params["style"] = "style_produit.css";
+        
     }
 
     public function pageProduit()
@@ -34,7 +37,7 @@ class ProduitControleur
         <meta property="og:url" content="https://ton-site.com/?action=produit" />
         <meta property="og:type" content="product" />';
         $this->params["partage"] = $this->pageLayout->render("partials/partage.php",  $this->detailsProduit, true);
-        
+        $this->params["style"] = "style_produit.css";
 
 
         if (!$this->detailsProduit[0]["disponibilite"] == "en_stock") {
@@ -52,18 +55,68 @@ class ProduitControleur
 
          $this->params["listeProduit"] = $this->produits->getProduct();
         $_SESSION["id_produit"] = $this->detailsProduit[0]["id_produit"];
-
+        $this->params["style"] = "page_fiche_produit.css";
+        
         $content = "admin/page_produit_bo.php";
         $this->pageLayout->render($content,  $this->params);
+    }
+
+    public function ajouterProduit(){
+
+        $table = "produits";
+        $colonne = "disponibilite";
+        $content = "admin/page_ajout_produit.php";
+
+        $this->params["message"] = "Veuillez remplir tous les champs !";
+        $this->params["select"] = $this->gestionCommande->showEnum($table, $colonne);
+        $this->params["style"] = "page_fiche_produit.css";
+
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $nom = trim($_POST["nom"] ?? '');
+            $description = trim($_POST["description"] ?? '');
+            $prix = floatval(trim($_POST["prix"] ?? ''));
+            $dispo = trim($_POST["dispo"] ?? '');
+
+
+            if ($nom && $description &&  $prix  && $dispo) {
+                $photo = $this->ajouterPhoto();
+                $etat =  $this->produits->addProduct($nom, $description, $prix, $photo, $dispo);
+
+                if ($etat) {
+                    $_SESSION["message"] = "Les modifications ont été enregstrée";
+                    header("Location: ?action=produit");
+                    exit();
+                } else {
+                     $this->params["message"] = $etat;
+                     $this->pageLayout->render($content,  $this->params);
+                }
+            } else {
+                 $this->params["message"] = "Veuillez remplir tous les champs !";
+                 $this->pageLayout->render($content,  $this->params);
+            }
+        }
+
+        if(isset($_SESSION["message"])){
+            unset($_SESSION["message"]);
+        }
+        $this->pageLayout->render($content,  $this->params);
+
     }
 
     public function editionProduitBo()
     {
 
+        $table = "produits";
+        $colonne = "disponibilite";
+
         $id_produit = $_SESSION["id_produit"];
          $this->params["detailProduit"] = $this->produits->getProductById($id_produit);
          $this->params["message"] = "Veuillez remplir tous les champs !";
         $content = "admin/page_ficheP_bo.php";
+         $this->params["select"] = $this->gestionCommande->showEnum($table, $colonne);
+         $this->params["style"] = "page_fiche_produit.css";
+
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $nom = trim($_POST["nom"] ?? '');

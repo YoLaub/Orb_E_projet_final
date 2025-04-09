@@ -10,3 +10,9 @@ reprendre le class
 adapter les bouton social media
 
 
+
+Reprendre les marges - toute les même et faire respirer le site
+
+padding input !!!
+
+

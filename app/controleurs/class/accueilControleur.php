@@ -89,7 +89,7 @@ class accueilControleur{
             $statut = trim($_POST["statut"] ?? '');
             
             if ($idCommande && $statut) {
-               $etat = $this->connexionCommande->updateStatus($status, $idCommande);
+               $etat = $this->connexionCommande->updateStatus($statut, $idCommande);
         
                 if ($etat) {
                     header("Location: ?action=accueilBo");
@@ -103,5 +103,8 @@ class accueilControleur{
             $content = "admin/page_accueil_bo.php";
             $this->pageLayout->render($content, $this->params);
         }
+        $content = "admin/page_accueil_bo.php";
+        $this->pageLayout->render($content, $this->params);
+
     }
 }

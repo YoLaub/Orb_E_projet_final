@@ -1,12 +1,5 @@
 <h1>🛠️ Édition de la fiche produit</h1>
 
-<?php
-// Chemins (à cacher en prod ou à afficher en mode debug uniquement)
-echo "<pre>";
-var_dump(__DIR__ . "/../../publique/images/imports/");
-var_dump(RACINE . "publique/images/imports/");
-echo "</pre>";
-?>
 
 <h2>✏️ Modifier les informations</h2>
 
@@ -38,11 +31,13 @@ echo "</pre>";
     <input type="file" id="photo" name="photo" accept="image/*">
 
     <label for="dispo">Disponibilité :</label>
-    <select name="dispo" id="dispo" required>
-        <option value="en_stock" <?= $commande["detailProduit"][0]["disponibilite"] === "en_stock" ? "selected" : "" ?>>En stock</option>
-        <option value="rupture" <?= $commande["detailProduit"][0]["disponibilite"] === "rupture" ? "selected" : "" ?>>Rupture de stock</option>
-        <option value="indisponible" <?= $commande["detailProduit"][0]["disponibilite"] === "indisponible" ? "selected" : "" ?>>Indisponible</option>
-    </select>
+    <select name="statut" id="statut">
+        <?php foreach ($commande["select"] as $value): ?>
+            <option value="<?= $infos["statut"] ?>">
+            <?= htmlspecialchars($value); ?>
+            </option>
+        <?php endforeach; ?>
+        </select>
 
     <button type="submit">💾 Valider</button>
 </form>

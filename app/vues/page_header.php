@@ -19,6 +19,8 @@
     <script src="./publique/scripts/article.js" defer></script>
     <script src="./publique/scripts/modal_profile.js" defer></script>
     <script type="module" src="./publique/scripts/visualiseur.js" defer></script>
+    <script src="./publique/scripts/rechercheUtilisateur.js" defer></script>
+    <script src="./publique/scripts/preview_photo.js" defer></script>
     <title>Orb'E</title>
 </head>
 
