@@ -160,7 +160,7 @@ class DBUser extends DbConnect
         if (!empty($data)) return $data;
     }
 
-    public static function updateInfoUser($email, $prenom, $nom, $adresse, $ville, $cp, $tel, $paiement)
+    public static function updateInfoUser($email, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement)
     {
         $value = [
             "email" => $email,
@@ -170,6 +170,7 @@ class DBUser extends DbConnect
             "ville" => $ville,
             "cp" => $cp,
             "tel" => $tel,
+            "pays" => $pays,
             "paiement" => $paiement
         ];
     
@@ -182,6 +183,7 @@ class DBUser extends DbConnect
                         commerce.ville = :ville, 
                         commerce.code_postal = :cp, 
                         commerce.telephone = :tel, 
+                        commerce.pays = :pays, 
                         commerce.mode_paiement = :paiement 
                     where utilisateurs.email = :email";
     

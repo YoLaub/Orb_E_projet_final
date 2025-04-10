@@ -22,6 +22,8 @@
     <!-- produit -->
     <script type="module" src="./publique/scripts/visualiseur.js" defer></script>
     <script src="./publique/scripts/article.js" defer></script>
+    <!-- commande -->
+    <script src="./publique/scripts/information.js" defer></script>
     <!-- profile bo -->
     <script src="./publique/scripts/rechercheUtilisateur.js" defer></script>
     <!-- contact bo -->

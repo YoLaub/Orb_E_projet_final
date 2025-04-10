@@ -39,7 +39,7 @@ class ProfilControleur
 
     public function pageProfil(){
 
-        
+        $action = "profile";
         $id_contact = 12;
         $params = [
             "email" => $this->email,
@@ -48,7 +48,7 @@ class ProfilControleur
             "score" => $this->gestionProfil->getUserScores($this->email),
             "mesMessages" => $this->connexionContact->getMessagePerEmail($this->email),
             "mesReponses" => $this->connexionReponses->getReponsesPerId($id_contact),
-            "formulaire" => $this->modifierInformationPerso(),
+            "formulaire" => $this->modifierInformationPerso($action),
             "reponse"=>$this->repondre(),
             "style"=>"style_profile.css",
             "script"=>"modal_profile.js" 
@@ -61,10 +61,11 @@ class ProfilControleur
 
 
     public function pageCommande(){
+        $action = "commande";
         $params = [
             "email" => $this->email,
             "informations" =>  $this->infoPerso,
-            "formulaire" => $this->modifierInformationPerso(),
+            "formulaire" => $this->modifierInformationPerso($action),
             "infoProduit" => $this->connexionDBProduct->getProduct(),
             "style"=> "style_commande.css"
             
@@ -108,7 +109,7 @@ class ProfilControleur
     
     }
 
-    public function modifierInformationPerso(){
+    public function modifierInformationPerso($action){
 
         $table = "commerce";
         $colonne = "mode_paiement";
@@ -117,7 +118,7 @@ class ProfilControleur
         $params = [
             "informations" => $this->gestionProfil->infoUser($this->email),
             "select" => $this->gestionCommande->showEnum($table, $colonne),
-            "action" => "profile"
+            "action" => $action
         ];
 
 
@@ -130,8 +131,9 @@ class ProfilControleur
             $tel = trim($_POST["tel"] ?? '');
             $pays = trim($_POST["pays"] ?? '');
             $paiement = trim($_POST["paiement"] ?? '');
+
            
-            if ($this->email && $nom && $prenom && $adresse&& $ville && $cp && $tel && $pays) {
+            if ($this->email && $nom && $prenom && $adresse && $cp && $tel ) {
                $etat = $this->gestionProfil->updateInfoUser($this->email, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement);
         
                 if ($etat) {
@@ -140,8 +142,11 @@ class ProfilControleur
                     $params["message"] = "<p> Erreur de modification !</p>";
                     return $this->pageLayout->render("partials/formulaire.php", $params, true);
                 }
-                header("Location: ?action=profile"); // Redirection vers la même page après POST
-                exit; // Important pour éviter toute exécution après la redirection
+                header("Location: ?action=" . $action);
+                exit;
+            }else{
+                echo var_dump($_POST); die();
+                return $this->pageLayout->render("partials/formulaire.php", $params, true);
             }
         } else {
             if(isset($_SESSION["message"])){

@@ -6,14 +6,14 @@
 ?>
 
 
-<form class="info-form" action="./?action=<?= $commande["action"] ?>" method="post">
+<form class="info-form" action="?action=<?= $commande["action"] ?>" method="post">
     <input type="text" name="prenom" value="<?php echo htmlspecialchars($commande["informations"][0]["prenom"]); ?>"></label><br>
     <input type="text" name="nom" value="<?php echo htmlspecialchars($commande["informations"][0]["nom"]); ?>"></label><br>
     <input type="text" name="adresse" value="<?php echo htmlspecialchars($commande["informations"][0]["adresse_livraison"]); ?>"></label><br>
-    <input type="text" name="ville" value="<?php echo htmlspecialchars($commande["informations"][0]["ville"]); ?>"></label><br>
-    <input type="text" name="cp" value="<?php echo htmlspecialchars($commande["informations"][0]["code_postal"]); ?>"></label><br>
+    <input id ="cpInput" type="text" name="cp" value="<?php echo htmlspecialchars($commande["informations"][0]["code_postal"]); ?>"></label><br>
+    <select id="resultListCp" name="ville"></select>
     <input type="text" id="searchInput" placeholder="Entrez un pays..." value="<?php echo htmlspecialchars($commande["informations"][0]["pays"]); ?>" />
-    <select id="countrySelect" size="5"></select>
+    <select id="resultList" name="pays"></select>
     <input type="text" name="tel" value="<?php echo htmlspecialchars($commande["informations"][0]["telephone"]); ?>"></label><br>
     <select name="paiement">
         <?php foreach ($commande["select"] as $value): ?>
