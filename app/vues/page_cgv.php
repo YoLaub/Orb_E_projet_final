@@ -1,6 +1,5 @@
 <section>
     <article>
-        <img src="./publique/images/cgv.webp" alt="Objet tech">
 
         <h1>Introduction</h1>
         <p>Les présentes conditions générales de vente (CGV) régissent les relations entre AY-Lab et ses clients concernant la vente de produits via le site internet.</p>
@@ -18,10 +17,10 @@
         <p>Le client peut passer commande sur le site internet. La commande ne sera définitive qu'après confirmation par AY-Lab.</p>
 
         <h2>Article 5 : Paiement</h2>
-        <p>Le paiement s'effectue par carte bancaire ou tout autre moyen proposé sur le site. La transaction est sécurisée.</p>
+        <p>Le paiement s'effectue par carte bancaire ou tout autre moyen proposé sur le site. Après la prise de commande nous vous contacterons pour vous informer sur la procedure de paiement et les delais de livraisons.</p>
 
         <h2>Article 6 : Livraison</h2>
-        <p>Les produits sont livrés à l'adresse indiquée par le client. Les délais de livraison sont indiqués lors de la commande.</p>
+        <p>Les produits sont livrés à l'adresse indiquée par le client. Les délais de livraison sont indiqués lors de la prise de contact.</p>
 
         <h2>Article 7 : Rétractation</h2>
         <p>Le client dispose d'un délai de rétractation de 14 jours à compter de la réception du produit pour retourner celui-ci.</p>

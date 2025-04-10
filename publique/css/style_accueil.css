@@ -67,6 +67,10 @@ h1 {
     padding: 8px;
 }
 
+.orbe-titre{
+    font-family: var(--titre) !important;
+}
+
 .introSuite {
     display: flex;
     flex-direction: column;

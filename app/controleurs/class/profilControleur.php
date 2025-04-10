@@ -128,10 +128,11 @@ class ProfilControleur
             $ville = trim($_POST["ville"] ?? '');
             $cp = trim($_POST["cp"] ?? '');
             $tel = trim($_POST["tel"] ?? '');
+            $pays = trim($_POST["pays"] ?? '');
             $paiement = trim($_POST["paiement"] ?? '');
            
-            if ($this->email && $nom && $prenom && $adresse&& $ville && $cp && $tel) {
-               $etat = $this->gestionProfil->updateInfoUser($this->email, $prenom, $nom, $adresse, $ville, $cp, $tel, $paiement);
+            if ($this->email && $nom && $prenom && $adresse&& $ville && $cp && $tel && $pays) {
+               $etat = $this->gestionProfil->updateInfoUser($this->email, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement);
         
                 if ($etat) {
                     $_SESSION["message"] = "<p>Modification effectué !</p>";

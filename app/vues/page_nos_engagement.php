@@ -13,9 +13,6 @@
     <li>Choix d'un hébergeur éco-responsable utilisant des énergies renouvelables.</li>
 </ul>
 
-<img src="./publique/images/engagement.webp" alt="Bague qui represente notre engagement">
-
-
 <h2>Sécurité</h2>
 <p>La sécurité est une priorité pour AY-Lab. Nous mettons en œuvre les mesures suivantes :</p>
 <ul>

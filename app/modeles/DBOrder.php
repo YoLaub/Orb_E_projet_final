@@ -59,7 +59,7 @@ class DBOrder extends DbConnect
     }
 
 
-    public static function updateInfoUser($email, $prenom, $nom, $adresse, $ville, $cp, $tel, $paiement)
+    public static function updateInfoUser($email, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement)
     {
         $value = [
             "email" => $email,
@@ -69,6 +69,7 @@ class DBOrder extends DbConnect
             "ville" => $ville,
             "cp" => $cp,
             "tel" => $tel,
+            "pays" => $pays,
             "paiement" => $paiement
         ];
     
@@ -81,6 +82,7 @@ class DBOrder extends DbConnect
                         commerce.ville = :ville, 
                         commerce.code_postal = :cp, 
                         commerce.telephone = :tel, 
+                        commerce.pays = :pays, 
                         commerce.mode_paiement = :paiement 
                     where utilisateurs.email = :email";
     

@@ -19,7 +19,7 @@
     <p>Relevez le défi avec le jeu Orb’E ! Évitez les obstacles, profitez d'une météo dynamique et tentez d'obtenir le score le plus élevé pour débloquer une surprise exclusive.</p>
 </div>
 <div class="jeuPresentation">
-    <a href="?action=jeu">Jouez à Orb’E</a>
+    <a class ="orbe-titre" href="?action=jeu">orb'e</a>
     <img src="./publique/images/mini_jeu1.webp" alt="le jeu orb'e" loading="lazy">
 
 </div>
@@ -30,13 +30,13 @@
 <section class="introSuite ">
 
 <div class="catSection">
-    <a class= "catButton" href="?action=commande">Commander Orb’E</a>
+    <a class= "catButton orbe-titre" href="?action=commande">orb'e</a>
     <img class= "cat" src="./publique/images/mini_jeu2.webp" alt="le rêve orb'e" loading="lazy">
 </div>
 
 <div class="presentation">
 <h1>Commandez</h1>
-    <p>Prêt à transformer votre quotidien avec Orb’E ? Commandez dès maintenant et découvrez l'assistant personnel ultime qui s'adapte à vos besoins.</p>
+    <p>Prêt à transformer votre quotidien avec Orb’E ? Commandez dès maintenant et découvrez l'Assistant personnel , propulsé par Lya, qui s'adapte à vos besoins.</p>
 </div>
 
 </section>

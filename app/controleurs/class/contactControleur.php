@@ -64,7 +64,7 @@ class ContactControleur
             unset($_SESSION["message"]);
         }
         
-       $this->params["message"] = "Dites nous tous !";
+       $this->params["message"] = "Dites nous tout !";
         return $this->pageLayout->render("page_contact.php",$this->params);
     }
 

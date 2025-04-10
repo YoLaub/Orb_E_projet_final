@@ -12,6 +12,8 @@
     <input type="text" name="adresse" value="<?php echo htmlspecialchars($commande["informations"][0]["adresse_livraison"]); ?>"></label><br>
     <input type="text" name="ville" value="<?php echo htmlspecialchars($commande["informations"][0]["ville"]); ?>"></label><br>
     <input type="text" name="cp" value="<?php echo htmlspecialchars($commande["informations"][0]["code_postal"]); ?>"></label><br>
+    <input type="text" id="searchInput" placeholder="Entrez un pays..." value="<?php echo htmlspecialchars($commande["informations"][0]["pays"]); ?>" />
+    <select id="countrySelect" size="5"></select>
     <input type="text" name="tel" value="<?php echo htmlspecialchars($commande["informations"][0]["telephone"]); ?>"></label><br>
     <select name="paiement">
         <?php foreach ($commande["select"] as $value): ?>
@@ -22,3 +24,6 @@
     </select>
     <button type="submit">Modifier</button>
 </form>
+
+
+<!-- https://apicarto.ign.fr/api/codes-postaux/communes/56420 -->

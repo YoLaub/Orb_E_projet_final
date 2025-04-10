@@ -56,6 +56,13 @@ section p {
     -o-border-radius: 6px;
 }
 
+#passwordError{
+    color: var(--jeu_alert); 
+    margin-bottom: 16px;
+    font-size: 0.9em; 
+    display: none;
+}
+
 .connexion-form input,
 .connexion-form textarea,
 .connexion-form button {

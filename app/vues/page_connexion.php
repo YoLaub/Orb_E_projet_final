@@ -9,11 +9,12 @@
   <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
 </svg>
 
-    <form class="connexion-form" action="./?action=connexion" method="post">
-        <input type="text" name="email" placeholder="votre email">
-        <input type="text" name="password" placeholder="votre password">
-        <button type="submit">Valider</button>
-    </form>
+    <form class="connexion-form" action="./?action=connexion" method="post" id="connexionForm">
+    <input type="email" name="email" placeholder="Votre email" required>
+    <input type="password" name="password" placeholder="Votre mot de passe" required minlength="6" id="passwordInput">
+    <div id="passwordError"></div>
+    <button type="submit">Valider</button>
+</form>
     
     <a href="./?action=inscription">S'inscrire</a>
 

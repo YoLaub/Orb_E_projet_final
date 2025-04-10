@@ -15,13 +15,23 @@
     <link rel="icon" href="./publique/images/logo/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./publique/css/style.css">
     <link rel="stylesheet" href="./publique/css/<?= $commande["style"] ?>">
+    <!-- general -->
     <script src="./publique/scripts/menu.js" defer></script>
-    <script src="./publique/scripts/article.js" defer></script>
+    <!-- profile -->
     <script src="./publique/scripts/modal_profile.js" defer></script>
+    <!-- produit -->
     <script type="module" src="./publique/scripts/visualiseur.js" defer></script>
+    <script src="./publique/scripts/article.js" defer></script>
+    <!-- profile bo -->
     <script src="./publique/scripts/rechercheUtilisateur.js" defer></script>
+    <!-- contact bo -->
     <script src="./publique/scripts/rechercheMessage.js" defer></script>
+    <!-- fiche produit bo -->
     <script src="./publique/scripts/preview_photo.js" defer></script>
+    <!-- connexion -->
+    <script src="./publique/scripts/formulaireConnexion.js" defer></script>
+    <script src="./publique/scripts/formulaireCommande.js" defer></script>
+
     <title>Orb'E</title>
 </head>
 

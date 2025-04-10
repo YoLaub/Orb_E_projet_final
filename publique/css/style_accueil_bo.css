@@ -1,4 +1,5 @@
 :root {
+    --elementDark: #0e0c64;
     --element: #121189;
     --elementLight: #1310e052;
     --elementTrans: #1310e091;
@@ -16,7 +17,6 @@
     --titre: 'Bristone';
     --jeu_texte: 'Press Start 2P';
 }
-
 
 h1{
     text-align: center;
