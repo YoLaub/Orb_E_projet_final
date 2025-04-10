@@ -47,7 +47,7 @@ class ProfilControleur
             "commandes" => json_encode($this->gestionProfil->getUserOrders($this->email)),
             "score" => $this->gestionProfil->getUserScores($this->email),
             "mesMessages" => $this->connexionContact->getMessagePerEmail($this->email),
-            "mesReponses" => $this->connexionReponses->getReponsesPerEmail($id_contact),
+            "mesReponses" => $this->connexionReponses->getReponsesPerId($id_contact),
             "formulaire" => $this->modifierInformationPerso(),
             "reponse"=>$this->repondre(),
             "style"=>"style_profile.css",

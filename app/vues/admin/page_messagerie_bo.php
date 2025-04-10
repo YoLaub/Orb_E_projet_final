@@ -3,50 +3,20 @@
 
     <div class="messagerie">
         <article class="chat-container">
-
-            <h2>📨 Messages reçus</h2>
-
-            <?php foreach ($commande["lesMessages"] as $message): ?>
-                <div class="message-bulle user">
-                    <div class="message-header">
-                        <strong><?= htmlspecialchars($message["nom"]) ?></strong>
-                        <span><?= $message["created_at"] ?></span>
-                    </div>
-                    <p class="message-text"><?= htmlspecialchars($message["message"]) ?></p>
-                    <small><?= htmlspecialchars($message["email"]) ?> — ID: <?= $message["id_contact"] ?></small>
-
-                    <form action="./?action=messagerie" method="post">
-                        <input type="hidden" name="id_contact" required value="<?= $message["id_contact"] ?>">
-
-                        <label for="reponse">Votre réponse :</label>
-                        <textarea name="reponse" rows="4" required placeholder="Tapez votre message ici..."></textarea>
-
-                        <button type="submit">Envoyer</button>
-                    </form>
-                </div>
-
-            <?php endforeach; ?>
+        <div class = "title">
+            <svg width="32" height="32" fill="currentColor" class="bi bi-envelope-arrow-down" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4.5a.5.5 0 0 1-1 0V5.383l-7 4.2-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h5.5a.5.5 0 0 1 0 1H2a2 2 0 0 1-2-1.99zm1 7.105 4.708-2.897L1 5.383zM1 4v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1"/>
+                 <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-1.646a.5.5 0 0 1-.722-.016l-1.149-1.25a.5.5 0 1 1 .737-.676l.28.305V11a.5.5 0 0 1 1 0v1.793l.396-.397a.5.5 0 0 1 .708.708z"/>
+            </svg>
+            <h2>Messages reçus</h2>
+        </div>
+        <div>
+        <input type="text" id="rechercheMessage" placeholder="Rechercher un message...">
+        <label for="mois">Afficher les messages du mois :</label>
+        <input type="month" id="rechercheMessageDate">
+        <div id="resultatsRechercheMessage"> </div>
 
         </article>
-
-
-        <article class="chat-container">
-
-            <h2>✅ Vos réponses envoyées</h2>
-
-            <?php foreach ($commande["lesReponses"] as $reponse): ?>
-                <div class="message-bulle admin">
-                    <div class="message-header">
-                        <strong>Admin #<?= $reponse["id_admin"] ?></strong>
-                        <span><?= $reponse["created_at"] ?></span>
-                    </div>
-                    <p class="message-text"><?= htmlspecialchars($reponse["reponse"]) ?></p>
-                    <small>En réponse au message ID <?= $reponse["id_contact"] ?></small>
-                </div>
-            <?php endforeach; ?>
-
-        </article>
-
 
     </div>
 

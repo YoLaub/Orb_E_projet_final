@@ -38,7 +38,7 @@
         <?php endforeach; ?>
     </select>
 
-    <button type="submit">💾 Ajouter</button>
+    <button type="submit">Ajouter</button>
 </form>
 
 </section>

@@ -65,19 +65,34 @@ button{
 .utilisateur{
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content:space-around;
+    align-items: center;
     background-color: var(--element);
     color: var(--texte1);
-    width: 100%;
+    width: 90%;
+    padding: 32px 0;
     text-align:  center;
-    padding: 0 64px;
     border-radius: 6px;
     box-shadow:       
     0 2px 4px rgba(0, 0, 0, 0.1),      
     0 1px 0 rgba(255, 255, 255, 0.1) inset;
-
-
 }
+
+.utilisateur div{
+    display: flex;
+}
+
+.utilisateur div svg{
+    width: 32px; 
+    height: 32px;
+    fill: var(--background2);
+    margin-right: 8px;
+}
+.utilisateur div p{
+   margin: 5px;
+}
+
+
 select{
     padding: 8px 16px;
     margin-right: 32px;
@@ -121,6 +136,10 @@ select{
 
 @media (min-width: 768px) {
 
+    .utilisateur{
+        padding: 0 64px;
+    }
+
     .commande-card {
         padding: 20px;
     }
@@ -138,6 +157,7 @@ select{
 
     .commande-card .produit p {
         margin: 0;
+
     }
 
 }

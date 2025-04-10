@@ -32,7 +32,8 @@ class DBUser extends DbConnect
                 c.prenom
                 from utilisateurs as u
                 left join commerce as c on u.id_utilisateur = c.id_utilisateur
-                where c.nom like :terme or c.prenom like :terme or u.email like :terme";
+                where c.nom like :terme or c.prenom like :terme or u.email like :terme
+                and u.rôle = 'utilisateur';";
 
         try {
             return self::executerRequete($sql, $value)->fetchAll(PDO::FETCH_ASSOC);
@@ -93,6 +94,22 @@ class DBUser extends DbConnect
         $value["email"] = $email;
 
         $sql = "select * from utilisateurs where email like :email";
+        $req = self::executerRequete($sql, $value);
+
+        /* Remplacer ??? par la méthode fetchAll() */
+        $data = $req->fetchAll(PDO::FETCH_ASSOC);
+
+
+        if (!empty($data)) return $data;
+    }
+
+    public static function getUserPerId($id)
+    {
+
+        $value= array();
+        $value["id_utilisateur"] = $id;
+
+        $sql = "select * from utilisateurs where id_utilisateur like :id_utilisateur";
         $req = self::executerRequete($sql, $value);
 
         /* Remplacer ??? par la méthode fetchAll() */
@@ -246,23 +263,37 @@ class DBUser extends DbConnect
         }
         
 }
-    public static function deleteUser($id_utilisateur)
-    {
-
-        $value = array();
-        $value["id_utilisateur"] = $id_utilisateur;
-
-        try {
-            $sql = "delete from utilisateurs where utilisateurs.id_utilisateur like :id_utilisateur";
+public static function deleteUser($id_utilisateur)
+{
+    $admin_principal = 23; // ID de l'admin principal (à ajuster selon ton besoin)
     
-            $req = self::executerRequete($sql, $value);
-            
-            return true;
-        } catch (Exception $e) {
-            return $e->getMessage();
+    try {
+        $id_utilisateur = (int)$id_utilisateur;
+        $admin_principal = (int)$admin_principal;
+
+        // Vérifier si l'utilisateur est l'admin principal
+        if ($id_utilisateur !== $admin_principal) {
+            $value = array();
+            $value["id_utilisateur"] = $id_utilisateur;
+
+            try {
+                // Suppression de l'utilisateur
+                $sql = "delete from utilisateurs where id_utilisateur = :id_utilisateur";
+                $req = self::executerRequete($sql, $value);
+
+                return true; // Suppression réussie
+            } catch (Exception $e) {
+                return "Erreur lors de la suppression : " . $e->getMessage(); // Erreur lors de la suppression
+            }
+        } else {
+            // Si c'est l'admin principal, lever une exception
+            throw new Exception("Impossible de supprimer l'admin principal.");
         }
-        
+    } catch (Exception $e) {
+        return "Erreur : " . $e->getMessage(); // Erreur lors de la récupération de l'utilisateur
+    }
 }
+
 
 
 }

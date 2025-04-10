@@ -88,8 +88,7 @@ h2 {
 
 .info-form input,
 .info-form select,
-.info-form textarea,
-.info-form button {
+.info-form textarea {
     width: 100%;
     font-size: 1rem;
     padding: 12px;
@@ -111,8 +110,9 @@ h2 {
 
 .info-form button {
     background-color: var(--element);
+    margin: 16px auto;
     color: var(--texte1);
-    width: 33%;
+    padding: 16px 32px;
     text-align: center;
     border: none;
     border-radius: 6px;
@@ -131,9 +131,7 @@ h2 {
         0 1px 0 rgba(255, 255, 255, 0.05) inset;
 }
 
-.info-form .commander{
-    width: 100%;
-}
+
 
 @media (min-width: 768px) {
 
@@ -149,6 +147,10 @@ h2 {
     section{
         display: grid;
         grid-template-columns: repeat(2,1fr);
+    }
+
+    section div{
+        align-self: self-start;
     }
 
     section img{

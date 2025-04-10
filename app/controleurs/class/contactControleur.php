@@ -100,5 +100,46 @@ class ContactControleur
 
     }
 
+    public function rechercheMessage(){
+
+        if (isset($_POST['terme'])) {
+            $terme = "%".trim($_POST['terme'])."%";
+      
+
+            $message = $this->connexion->searchMessagePerEmail($terme); // la méthode qu'on a vue plus haut
+        
+            header('Content-Type: application/json');
+            echo json_encode($message);
+            exit;
+    }
+}
+
+    public function rechercheMessageD(){
+
+        if (isset($_POST['terme'])) {
+            $terme = trim($_POST['terme']);
+      
+
+            $message = $this->connexion->searchMessagePerDate($terme); // la méthode qu'on a vue plus haut
+        
+            header('Content-Type: application/json');
+            echo json_encode($message);
+            exit;
+    }
+}
+    public function rechercheReponse(){
+
+        if (isset($_POST['terme'])) {
+            $terme = intval(trim($_POST['terme']));
+      
+
+            $message = $this->connexionReponse->getReponsesPerId($terme); // la méthode qu'on a vue plus haut
+        
+            header('Content-Type: application/json');
+            echo json_encode($message);
+            exit;
+    }
+}
+
     
 }

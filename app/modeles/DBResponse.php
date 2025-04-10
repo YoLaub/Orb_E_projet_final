@@ -20,7 +20,7 @@ class DBResponse extends DbConnect
         }
     }
 
-    public static function getReponsesPerEmail($id_contact)
+    public static function getReponsesPerId($id_contact)
         {
 
             $value = array();

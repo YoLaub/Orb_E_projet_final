@@ -98,7 +98,8 @@ h1{
 
 
 button {
-    padding: 0.7rem;
+    padding: 16px 32px;
+    margin: 32px auto;
     font-size: 1rem;
     border-radius: 6px;
     background-color: var(--jeu_alert);
@@ -121,9 +122,9 @@ button:hover {
 .form-produit {
     display: flex;
     flex-direction: column;
-    max-width: 800px;
+    max-width: 700px;
     width: 100%;
-    padding: 64px;
+    padding: 0px;
     margin: auto ;
     background: #f9f9f9;
     border-radius: 6px;
@@ -138,6 +139,7 @@ button:hover {
 .form-produit label {
     font-weight: bold;
     margin-bottom: 0.3rem;
+    margin-top: 0.6rem;
 }
 
 .form-produit input[type="text"],
@@ -192,6 +194,23 @@ button:hover {
 
     .produit-card {
         width: calc(50% - 1rem);
+    }
+
+    .form-produit {
+        display: flex;
+        flex-direction: column;
+        max-width: 900px;
+        width: 100%;
+        padding: 64px;
+        margin: auto ;
+        background: #f9f9f9;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+        box-shadow:     0 2px 4px rgba(0, 0, 0, 0.1),    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    
     }
 
     .form-inline {

@@ -1,7 +1,8 @@
-<h1>🛠️ Édition de la fiche produit</h1>
+<section>
 
+<h1>Édition de la fiche produit</h1>
 
-<h2>✏️ Modifier les informations</h2>
+<form action="./?action=fiche" method="post" enctype="multipart/form-data" class="form-produit">
 
 <p class="message">
     <?php
@@ -12,8 +13,6 @@
     }
     ?>
 </p>
-
-<form action="./?action=fiche" method="post" enctype="multipart/form-data" class="form-produit">
 
     <label for="nom">Nom :</label>
     <input type="text" id="nom" name="nom" required value="<?= htmlspecialchars($commande["detailProduit"][0]["nom"]); ?>">
@@ -33,11 +32,16 @@
     <label for="dispo">Disponibilité :</label>
     <select name="statut" id="statut">
         <?php foreach ($commande["select"] as $value): ?>
-            <option value="<?= $infos["statut"] ?>">
+            <option value="<?= $value ?>">
             <?= htmlspecialchars($value); ?>
             </option>
         <?php endforeach; ?>
         </select>
 
-    <button type="submit">💾 Valider</button>
+    <button type="submit">Valider</button>
 </form>
+
+
+</section>
+
+

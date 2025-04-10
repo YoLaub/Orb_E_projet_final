@@ -121,13 +121,11 @@ class ProduitControleur
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $nom = trim($_POST["nom"] ?? '');
             $description = trim($_POST["description"] ?? '');
-            $prix = trim($_POST["prix"] ?? '');
-            $dispo = trim($_POST["dispo"] ?? '');
+            $prix = floatval(trim($_POST["prix"] ?? '')) ;
+            $dispo = trim($_POST["statut"] ?? '');
 
-            // Vérifier si une nouvelle image a été uploadée
-            $photo = $this->ajouterPhoto() ??  $this->params["detailProduit"][0]["photo"];
-
-            if ($nom && $description &&  $prix && $photo && $dispo) {
+            if ($nom && $description &&  $prix && $dispo) {
+                $photo = $this->ajouterPhoto() ??  $this->params["detailProduit"][0]["photo"];
                 $etat =  $this->produits->updateProduct($id_produit, $nom, $description, $prix, $photo, $dispo);
 
                 if ($etat) {

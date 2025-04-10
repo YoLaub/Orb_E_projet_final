@@ -11,7 +11,9 @@ class DBContacts extends DbConnect
         {
         
 
-        $sql = "select * from contacts";
+        $sql = "select * from contacts
+        order by contacts.created_at desc";
+        
 
         try {
             return self::executerRequete($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -75,5 +77,39 @@ class DBContacts extends DbConnect
                     return $e->getMessage();
                 }
             }
+
+
+    public static function searchMessagePerEmail($terme) 
+    {
+
+        $value = array();
+        $value["terme"] = $terme;
+
+        $sql = "select * from contacts as c
+                where c.email like :terme";
+
+        try {
+            return self::executerRequete($sql, $value)->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+    }
+    public static function searchMessagePerDate($terme) 
+    {
+
+        $value = array();
+        $value["terme"] = $terme;
+
+        $sql = "select * from contacts as c
+                where date_format(c.created_at, '%Y-%m') = :terme";
+
+        try {
+            return self::executerRequete($sql, $value)->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+    }
 
 }
