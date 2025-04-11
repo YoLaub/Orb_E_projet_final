@@ -28,11 +28,15 @@
     <script src="./publique/scripts/rechercheUtilisateur.js" defer></script>
     <!-- contact bo -->
     <script src="./publique/scripts/rechercheMessage.js" defer></script>
+    <!-- contact -->
+    <script src="./publique/scripts/contact.js" defer></script>
     <!-- fiche produit bo -->
     <script src="./publique/scripts/preview_photo.js" defer></script>
     <!-- connexion -->
     <script src="./publique/scripts/formulaireConnexion.js" defer></script>
     <script src="./publique/scripts/formulaireCommande.js" defer></script>
+    <script src="./publique/scripts/showMdp.js" defer></script>
+
 
     <title>Orb'E</title>
 </head>

@@ -41,11 +41,14 @@ class ContactControleur
             }else{
                 $id_utlisateur = NULL;
             }
+
+
+            $prtg = htmlspecialchars($_POST["prtg"]);
     
             $connexion = new DBContacts();
     
     
-            if (!empty($nom) && !empty($email) && !empty($message)) {
+            if (isset($_POST["acceptTerms"]) && isset($_POST["envoyer"]) && empty($prtg) && !empty($nom) && !empty($email) && !empty($message)) {
                 $etat = $connexion->saveMessage($nom, $email, $message, $id_utlisateur);
                 if ($etat) {
                     $_SESSION["message"] = "Message envoyé !";

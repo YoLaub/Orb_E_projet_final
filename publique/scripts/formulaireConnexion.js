@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let form = document.getElementById("connexionForm");
+    let form = document.querySelector(".connexion-form");
     let emailInput = form.querySelector('input[name="email"]');
     let passwordInput = document.getElementById("passwordInput");
 
@@ -27,10 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
             /[^A-Za-z0-9]/.test(password) &&   // au moins un caractère spécial
             password.length >= 6;
 
+            console.log(passwordSecure);
         if (!passwordSecure) {
             valid = false;
             errorMessage = "Le mot de passe doit contenir au moins 6 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.";
         }
+
+        if(email.length > 0 && password.length > 0)
 
         if (!valid) {
             e.preventDefault();

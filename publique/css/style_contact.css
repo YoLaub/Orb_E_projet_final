@@ -32,10 +32,9 @@ section p {
     padding: 16px;
     width: 90%;
     margin: 20px auto;
-    background-color: var(--ombre);
+    background-color: var(--fondPage);
     border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
-    font-family: system-ui, sans-serif;
+    box-shadow: 2px 4px 12px #00000014;
     max-width: 100%;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -43,9 +42,9 @@ section p {
     -o-border-radius: 6px;
 }
 
+
 .contact-form input,
-.contact-form textarea,
-.contact-form button {
+.contact-form textarea {
     width: 100%;
     font-size: 1rem;
     padding: 12px;
@@ -65,7 +64,7 @@ section p {
     height: 200px;
 }
 
-.contact-form button {
+.contact-form input[type="submit"] {
     background-color: var(--element);
     color: var(--texte1);
     width: 33%;
@@ -79,13 +78,36 @@ section p {
         0 1px 0 rgba(255, 255, 255, 0.1) inset;
 }
 
-.contact-form button:hover {
+.contact-form input[type="submit"]:hover {
     transform: translateY(0.3px);
     /* léger enfoncement visuel */
     box-shadow:
         0 1px 2px rgba(0, 0, 0, 0.08),
         0 1px 0 rgba(255, 255, 255, 0.05) inset;
 }
+
+.maxChar{
+    font-weight: lighter;
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-right: 0;
+    margin-left: 80%;
+    margin-top: 0;
+    margin-bottom: 64px;
+}
+
+
+.check{
+    display: flex;
+    flex-direction: row;
+}
+
+.contact-form input[type="checkbox"] {
+   width: 16px;
+   margin-left: 32px;
+   margin-bottom: 32px;
+}
+
 
 @media (min-width: 768px) {
     .contact-form {

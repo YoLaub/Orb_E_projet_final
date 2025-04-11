@@ -20,21 +20,31 @@ document.addEventListener("DOMContentLoaded", function () {
       pays.name_fr.toLowerCase().startsWith(query)
     );
 
-    displayResults(results);
-  });
-
-  // Affiche les résultats dans une liste
-  function displayResults(results) {
     let select = document.getElementById('resultList');
     select.innerHTML = '';
 
     results.forEach(pays => {
 
-      select.innerHTML = `<option value="${pays.name_fr}">
-                            ${pays.name_fr}
-                        </option>`;
+      displayResults(pays.name_fr);
 
     });
+
+
+
+
+    
+  });
+
+  // Affiche les résultats dans une liste
+  function displayResults(pays) {
+    
+    let select = document.getElementById("resultList"); 
+    const option = document.createElement('option');
+    option.value = pays;
+    option.textContent = pays;
+    select.appendChild(option);
+
+    
   }
 
 
@@ -49,9 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(cpData)
         console.log(this.value)
   
-        let select = document.getElementById("resultListCp");
-        select.innerHTML = '';
-  
+
         cpData.forEach(ville => {
           displayResultsCp(ville.nomCommune);
         });

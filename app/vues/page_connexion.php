@@ -10,9 +10,14 @@
 </svg>
 
     <form class="connexion-form" action="./?action=connexion" method="post" id="connexionForm">
-    <input type="email" name="email" placeholder="Votre email" required>
-    <input type="password" name="password" placeholder="Votre mot de passe" required minlength="6" id="passwordInput">
-    <div id="passwordError"></div>
+    <input type="email" name="email" placeholder="votre email" require>
+    <input type="hidden" name="prtg">
+    <div class="show_hide">
+        <input id="passwordInput" type="password" name="password" placeholder="votre mot de passe" require>
+        <div class = "show"></div>
+        <div class = "hide"></div>
+    </div>
+    <p id = "passwordError"></p>
     <button type="submit">Valider</button>
 </form>
     

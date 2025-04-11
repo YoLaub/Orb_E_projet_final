@@ -33,9 +33,10 @@ class Connexion
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $email = trim($_POST["email"] ?? '');
             $mdp = trim($_POST["password"] ?? '');
+            $secu = trim($_POST["prtg"]);
 
 
-            if (!empty($email) && !empty($mdp)) {
+            if (empty($secu) && !empty($email) && !empty($mdp)) {
                 $estConnecte = self::verifInfoConn($email, $mdp);
 
                 if ($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {

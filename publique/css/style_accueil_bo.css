@@ -134,10 +134,11 @@ select{
     margin-top: 15px;
 }
 
+
 @media (min-width: 768px) {
 
     .utilisateur{
-        padding: 0 64px;
+        padding: 16px 64px;
     }
 
     .commande-card {

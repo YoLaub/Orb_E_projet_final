@@ -97,7 +97,79 @@ button:hover {
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 4px 12px #00000014;  
+}
+
+
+.connexion-form {
+    padding: 16px;
+    width: 90%;
+    margin: 20px auto;
+    background-color: var(--fondPage);
+    border-radius: 6px;
+    box-shadow: 2px 4px 12px #00000014;    
+    max-width: 100%;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+#passwordError{
+    color: var(--jeu_alert); 
+    margin-bottom: 16px;
+    font-size: 0.9em; 
+    display: none;
+}
+
+.connexion-form input,
+.connexion-form textarea,
+.connexion-form button {
+    width: 80%;
+    font-size: 1rem;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.connexion-form input:focus,
+.connexion-form textarea:focus {
+    border-color: var(--element);
+    outline: none;
+}
+
+.connexion-form textarea {
+    height: 200px;
+}
+
+.connexion-form button {
+    background-color: var(--element);
+    color: var(--texte1);
+    width: 33%;
+    margin: 16px;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.connexion-form button:hover {
+    transform: translateY(0.3px);
+    /* léger enfoncement visuel */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+#inscription{
+    display: flex;
+    flex-direction: column;
 }
 
 @media (min-width: 768px) {

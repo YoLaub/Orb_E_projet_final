@@ -6,7 +6,7 @@
 ?>
 
 
-<form class="info-form" action="?action=<?= $commande["action"] ?>" method="post">
+<form  action="?action=<?= $commande["action"] ?>" method="post">
     <input type="text" name="prenom" value="<?php echo htmlspecialchars($commande["informations"][0]["prenom"]); ?>"></label><br>
     <input type="text" name="nom" value="<?php echo htmlspecialchars($commande["informations"][0]["nom"]); ?>"></label><br>
     <input type="text" name="adresse" value="<?php echo htmlspecialchars($commande["informations"][0]["adresse_livraison"]); ?>"></label><br>
