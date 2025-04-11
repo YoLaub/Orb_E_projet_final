@@ -118,13 +118,21 @@ h1{
 .menu-toggle {
     font-size: 24px;
     font-family: var(--texte);
-    margin: 8px;
+    margin: 8px 8px 12px 8px;
     background: none;
     border: none;
     color: white;
     cursor: pointer;
     display: block;
     position: relative;
+}
+
+.deconnexionHeader{
+   margin-bottom: 12px;
+}
+
+.profileHeader{
+    margin-bottom: 16px;
 }
 
 /* Navigation */
@@ -316,7 +324,7 @@ footer {
 }
 
 .show, .hide {
-    padding-top: 12px;
+    padding: 0 0 10px 10px;
 }
 
 
@@ -368,6 +376,10 @@ footer {
     margin: 0;
     /* Centrage */
 }
+
+.deconnexionHeader{
+    margin-bottom: 0px;
+ }
 
     .produit-container {
         display: flex;

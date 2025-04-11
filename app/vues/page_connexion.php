@@ -9,18 +9,8 @@
   <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
 </svg>
 
-    <form class="connexion-form" action="./?action=connexion" method="post" id="connexionForm">
-    <input type="email" name="email" placeholder="votre email" require>
-    <input type="hidden" name="prtg">
-    <div class="show_hide">
-        <input id="passwordInput" type="password" name="password" placeholder="votre mot de passe" require>
-        <div class = "show"></div>
-        <div class = "hide"></div>
-    </div>
-    <p id = "passwordError"></p>
-    <button type="submit">Valider</button>
-</form>
-    
+<?= $commande["inscription"] ?>
+
     <a href="./?action=inscription">S'inscrire</a>
 
 </section>

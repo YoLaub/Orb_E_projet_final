@@ -25,14 +25,19 @@ class Connexion
         $this->home = new accueilControleur;
         $this->params = array();
         $this->params["style"] = "style_connexion.css";
+        $this->params["action"] = "connexion";
+        $this->params["inscription"] = $this->pageLayout->render("partials/inscription.php", $this->params, true);
     }
 
     public function connexionUtilisateur()
     {
+        $this->params["action"] = "connexion";
+        $this->params["inscription"] = $this->pageLayout->render("partials/inscription.php", $this->params, true);
+
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $email = trim($_POST["email"] ?? '');
-            $mdp = trim($_POST["password"] ?? '');
+            $mdp = trim($_POST["mdp"] ?? '');
             $secu = trim($_POST["prtg"]);
 
 
@@ -81,6 +86,9 @@ class Connexion
 
     public function inscription()
     {
+        $this->params["action"] = "inscription";
+        $this->params["inscription"] = $this->pageLayout->render("partials/inscription.php", $this->params, true);
+
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $email = trim($_POST["email"] ?? '');
             $mdp = trim($_POST["mdp"] ?? '');

@@ -1,11 +1,8 @@
 Ne pas oublié:
 
-pensez à ajouter la selection de ville  et addresse automatiqquement via API
-
-
 Mettre à jour le modèle conceptuel de donné (E/A)
 
-reprendre le class
+reprendre les class
 
 adapter les bouton social media
 
@@ -14,5 +11,14 @@ adapter les bouton social media
 Reprendre les marges - toute les même et faire respirer le site
 
 padding input !!!
+
+revoir formulaire profile repondre -> reprendre messagerie BO
+
+revoir style formulaire !!
+
+
+changer svg article ! 
+
+ajouter un article avec la video ! 
 
 

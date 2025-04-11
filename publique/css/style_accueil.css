@@ -60,8 +60,8 @@ h1 {
 .orbe {
     background-image: radial-gradient(circle,
             rgba(255, 255, 255, 0.25) 0%,
-            rgba(255, 255, 255, 0.05) 23%,
-            rgba(0, 0, 0, 0.0) 34%,
+            rgba(255, 255, 255, 0.05) 33%,
+            rgba(0, 0, 0, 0.0) 57%,
             rgba(0, 0, 0, 0) 100%);
     width: 100%;
     padding: 8px;
@@ -76,7 +76,7 @@ h1 {
     flex-direction: column;
     border: 6px;
     margin: 40px 16px 56px 16px;
-    background-color: var(--ombre);
+    background-color: var(--fondPage);
     box-shadow: 2px 4px 12px #00000014;
 }
 

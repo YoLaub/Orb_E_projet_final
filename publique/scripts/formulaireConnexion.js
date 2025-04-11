@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
             /[a-z]/.test(password) &&          // au moins une minuscule
             /[0-9]/.test(password) &&          // au moins un chiffre
             /[^A-Za-z0-9]/.test(password) &&   // au moins un caractère spécial
-            password.length >= 6;
+            password.length >= 6 ;
 
             console.log(passwordSecure);
         if (!passwordSecure) {
@@ -33,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
             errorMessage = "Le mot de passe doit contenir au moins 6 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.";
         }
 
-        if(email.length > 0 && password.length > 0)
+        if(email.length == 0 && password.length == 0){
+            valid = false;
+            errorMessage = "Veuillez remplir les champs";
+        }
 
         if (!valid) {
             e.preventDefault();

@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   let infoMessage = document.querySelector(".maxChar");
-  let maxChar = 3000;
+  let maxChar = 300;
   let inputSubmit = document.querySelector('input[name="envoyer"]');
 
   document.getElementById("message").addEventListener("input", function (e) {
