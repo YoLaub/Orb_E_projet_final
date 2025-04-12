@@ -12,7 +12,7 @@ class JeuControleur
 
     public function __construct()
     {
-        $this->pageLayout = new renderLayout;
+        $this->pageLayout = new RenderLayout;
         $this->connexion = new Middleware;
         $this->params["style"] = "style_jeu.css";
 

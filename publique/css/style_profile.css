@@ -123,8 +123,8 @@ li{
 .info-form button {
   width: 100%;
   font-size: 1rem;
-  padding: 12px;
-  margin-bottom: 12px;
+  padding:8px;
+  margin-bottom: 8px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
@@ -143,6 +143,7 @@ li{
 .info-form button {
   background-color: var(--element);
   color: var(--texte1);
+  margin-bottom: 16px;
   width: 33%;
   text-align: center;
   border: none;
@@ -203,6 +204,46 @@ li{
   overflow-x: auto;
   white-space: pre-wrap;
 }
+
+/* ===========================================
+==================MESSAGERIE ==================
+=========================================== */
+
+
+.echange-card {
+  border: 1px solid var(--element);
+  border-radius: 6px;
+  padding: 15px;
+  margin: 15px 0;
+  background: var(--fondPage);
+}
+
+.message-bulle {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.message-bulle.user {
+  background: var(--fondPage);
+}
+
+.message-bulle.admin {
+  background: var(--ombre);
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.message-text {
+  margin: 5px 0;
+}
+
+
 
 
 

@@ -7,7 +7,7 @@ use app\modeles\DBProduct;
 use app\modeles\DBOrder;
 use app\modeles\DBParty;
 
-class accueilControleur{
+class AccueilControleur{
 
     private $pageLayout;
     private $connexionUtilisateur;
@@ -18,7 +18,7 @@ class accueilControleur{
 
     public function __construct()
     {
-        $this->pageLayout = new renderLayout;
+        $this->pageLayout = new RenderLayout;
         $this->params = array();
        
         

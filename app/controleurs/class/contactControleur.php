@@ -16,7 +16,7 @@ class ContactControleur
     {
         $this->connexion = new DBContacts;
         $this->connexionReponse = new DBResponse;
-        $this->pageLayout = new renderLayout;
+        $this->pageLayout = new RenderLayout;
         $this->params = array();
         
     }
@@ -27,19 +27,13 @@ class ContactControleur
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $nom = htmlspecialchars($_POST["nom"]);
-    
-            if(isset($_SESSION["email"])){
-                $email = $_SESSION["email"];
-            }else{
-                $email = htmlspecialchars($_POST["email"]);
-            }
-    
+            $email = htmlspecialchars($_POST["email"]);
             $message = htmlspecialchars($_POST["message"]);
     
             if(isset($_SESSION["id"])){
-                $id_utlisateur = $_SESSION["id"];
+                $id_utilisateur = $_SESSION["id"];
             }else{
-                $id_utlisateur = NULL;
+                $id_utilisateur = NULL;
             }
 
 
@@ -49,25 +43,18 @@ class ContactControleur
     
     
             if (isset($_POST["acceptTerms"]) && isset($_POST["envoyer"]) && empty($prtg) && !empty($nom) && !empty($email) && !empty($message)) {
-                $etat = $connexion->saveMessage($nom, $email, $message, $id_utlisateur);
+                $etat = $connexion->saveMessage($nom, $email, $message, $id_utilisateur);
                 if ($etat) {
-                    $_SESSION["message"] = "Message envoyé !";
+                    header("Location: ?action=contact"); // Redirection vers la même page après POST
+                exit; 
                 } else {
-                   $this->params["message"] = "Erreur d'envoie' !";
                     return $this->pageLayout->render("page_contact.php",$this->params);
                 }
-                header("Location: ?action=contact"); // Redirection vers la même page après POST
-                exit; // Important pour éviter toute exécution après la redirection
             } else {
-               $this->params["message"] = "Vous avez oubliez un champ !";
                 return $this->pageLayout->render("page_contact.php",$this->params);   
             }
         }
-        if(isset($_SESSION["message"])){
-            unset($_SESSION["message"]);
-        }
         
-       $this->params["message"] = "Dites nous tout !";
         return $this->pageLayout->render("page_contact.php",$this->params);
     }
 

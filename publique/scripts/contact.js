@@ -1,37 +1,58 @@
 document.addEventListener("DOMContentLoaded", function () {
   let form = document.getElementById("contact");
   let error = document.querySelector(".errorMessage");
-  let errorMessage = "";
+  let send = document.querySelector(".send");
 
   form.addEventListener("submit", function (e) {
+    e.preventDefault(); // on empêche l'envoi immédiat
+  
     let nom = document.querySelector('input[name="nom"]').value;
     let email = document.querySelector('input[name="email"]').value;
     let message = document.querySelector('textarea[name="message"]').value;
-
+    let term = document.querySelector("#term");
+  
     let valid = true;
+    let errorMessage = "";
+  
     // Vérification email
     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
       valid = false;
-      errorMessage += "Veuillez entrer une adresse email valide.";
+      errorMessage = "Veuillez entrer une adresse email valide.";
     }
-
+  
     if (message.length < 10) {
       valid = false;
-      errorMessage += "Minimum 10 caractère";
+      errorMessage = "Minimum 10 caractères";
     }
-
+  
     if (nom.length < 2) {
       valid = false;
-      errorMessage += "Minimum 2 caractère";
+      errorMessage = "Minimum 2 caractères";
     }
-
+  
+    if (!term.checked) {
+      valid = false;
+      errorMessage = "Veuillez cocher les conditions d'utilisation";
+    }
+  
     if (!valid) {
-      e.preventDefault();
       error.style.display = "block";
       error.textContent = errorMessage;
     } else {
       error.style.display = "none";
+      send.innerHTML = "Envoi en cours... ✈️";
+
+      setTimeout(() => {
+        send.innerHTML = "Message envoyé !";
+      }, 2000);
+  
+      // Animation ou effet ici si tu veux (par exemple fade ou logo animé)
+  
+      // Attente de 3 secondes avant soumission réelle
+      setTimeout(() => {
+        form.submit();
+      }, 3000);
     }
   });
 

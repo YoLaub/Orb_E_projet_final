@@ -21,7 +21,7 @@ class UtilisateurGControleur{
         $this->connexion = new Connexion;
         $this->listeUtilisateur = $this->gestionProfil->getUser("utilisateur");
         $this->listeAdmin = $this->gestionProfil->getUser("admin");
-        $this->pageLayout = new renderLayout;
+        $this->pageLayout = new RenderLayout;
     }
 
     public function pageGUtilisateur(){

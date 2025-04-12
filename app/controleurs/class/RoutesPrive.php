@@ -8,15 +8,15 @@ class RoutesPrive {
     private array $adminActions; // Tableau associatif des actions du back-office
     private string $action;
     private $params;
-    private const DEFAULT_ROUTE = "accueilControleur:accueil"; // Définition d'une constante pour la route par défaut
-    private const ERROR_ROUTE = "page404_ctrl.php"; // Route d'erreur
+    private const DEFAULT_ROUTE = "AccueilControleur:accueil"; // Définition d'une constante pour la route par défaut
+    private const ERROR_ROUTE = "app/vues/'page404.php"; // Route d'erreur
 
     public function __construct() {
         // Liste des actions disponibles uniquement pour les administrateurs
         $this->adminActions = [
             "defaut"  => self::DEFAULT_ROUTE,
             "accueil" => self::DEFAULT_ROUTE,
-            "accueilBo" => "accueilControleur:accueil",
+            "accueilBo" => "AccueilControleur:accueil",
             "utilisateur" => "UtilisateurGControleur:pageGUtilisateur",
             "produit" => "ProduitControleur:pageProduitBo",
             "fiche" => "ProduitControleur:editionProduitBo",

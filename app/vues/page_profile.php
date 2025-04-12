@@ -81,30 +81,29 @@
 <article>
 
 <h2>Mes échanges</h2>
-<div class="echange">
-<?php if (!empty($commande["mesMessages"])) : ?>
-    <ul>
-        <?php foreach ($commande["mesMessages"] as $msg) : ?>
-            <li><strong>[<?= $msg["Date_message"] ?>]</strong> <?= htmlspecialchars($msg["Message"]) ?></li>
-        <?php endforeach; ?>
-    </ul>
-<?php else : ?>
-    <p>Aucun message.</p>
-<?php endif; ?>
-
-<h2>Les réponses</h2>
-<?php if (!empty($commande["mesReponses"])) : ?>
-    <ul>
-        <?php foreach ($commande["mesReponses"] as $rep) : ?>
-            <li><strong>[<?= $rep["Date_message"] ?>]</strong> <?= htmlspecialchars($rep["Message"]) ?></li>
-        <?php endforeach; ?>
-    </ul>
-<?php else : ?>
-    <p>Aucune réponse.</p>
-<?php endif; ?>
-</div>
 
 <div>
+<?php if (!empty($commande["mesMessages"])) : ?>
+
+  <?php foreach ($commande["mesMessages"] as $msg) : ?>
+    <div class="echange-card">
+      <div class="message-bulle user">
+        <p><strong>[<?= $msg["Date_message"] ?>]</strong></p>
+        <p><?= htmlspecialchars($msg["Message"]) ?></p>
+      </div>
+
+      <input class="ref" type="hidden" name="contact" value="<?= $msg["Ref"] ?>">
+      <div class="reponse"></div>
+    </div>
+  <?php endforeach; ?>  
+
+<?php else : ?>
+  <p>Aucun message.</p>
+<?php endif; ?>
+</div>
+<div>
+
+<h2>Nous contacter</h2>
 
 <?=$commande["reponse"]?>
 

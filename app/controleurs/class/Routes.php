@@ -10,8 +10,8 @@ class Routes
     private array $lesActions; // Tableau associatif des actions et fichiers correspondants
     private string $action;
     private $params;
-    private const DEFAULT_ROUTE = "accueilControleur:accueil"; // Définition d'une constante pour la route par défaut
-    private const ERROR_ROUTE = "page404_ctrl.php"; // Route en cas d'erreur ou de page introuvable
+    private const DEFAULT_ROUTE = "AccueilControleur:accueil"; // Définition d'une constante pour la route par défaut
+    private const ERROR_ROUTE = "app/vues/'page404.php"; // Route en cas d'erreur ou de page introuvable
 
     public function __construct()
     {
@@ -29,6 +29,7 @@ class Routes
             "profile" => "ProfilControleur:pageProfil",
             "rgpd" => "ArticleControleur:pageRgpd",
             "engagement" => "ArticleControleur:pageEngagement",
+            "rechercheR" => "ContactControleur:rechercheReponse",
             "cgv" => "ArticleControleur:pageCgv",
             "faq" => "ArticleControleur:pageFaq",
             "qui" => "ArticleControleur:pageQui",

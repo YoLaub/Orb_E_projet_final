@@ -43,8 +43,17 @@ section p {
 }
 
 
-.contact-form input,
 .contact-form textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    margin-bottom: 0px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.contact-form input{
     width: 100%;
     font-size: 1rem;
     padding: 12px;
@@ -93,7 +102,26 @@ section p {
     margin-right: 0;
     margin-left: 80%;
     margin-top: 0;
-    margin-bottom: 64px;
+}
+
+.send{
+    font-size: 0.8rem;
+    margin-left: 32px;
+    color: var(--texte2);
+}
+
+.errorMessage{
+    margin-left: 32px;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--jeu_alert);
+    width: 100%;
+}
+
+.sendMessage{
+    display: flex;
+    flex-direction: row;
+
 }
 
 

@@ -19,6 +19,7 @@
     <script src="./publique/scripts/menu.js" defer></script>
     <!-- profile -->
     <script src="./publique/scripts/modal_profile.js" defer></script>
+    <script src="./publique/scripts/rechercheReponse.js" defer></script>
     <!-- produit -->
     <script type="module" src="./publique/scripts/visualiseur.js" defer></script>
     <script src="./publique/scripts/article.js" defer></script>

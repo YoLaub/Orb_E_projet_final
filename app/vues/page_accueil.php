@@ -13,7 +13,7 @@
 </section>
 
 
-<section class="introSuite">
+<section class="jouer">
 <div class="presentationSuite">
     <h1>Jouez</h1>
     <p>Relevez le défi avec le jeu Orb’E ! Évitez les obstacles, profitez d'une météo dynamique et tentez d'obtenir le score le plus élevé pour débloquer une surprise exclusive.</p>
@@ -27,7 +27,7 @@
 
 </section>
 
-<section class="introSuite ">
+<section class="commander ">
 
 <div class="catSection">
     <a class= "catButton orbe-titre" href="?action=commande">orb'e</a>

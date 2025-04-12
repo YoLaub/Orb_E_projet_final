@@ -9,7 +9,7 @@ class ArticleControleur{
 
     public function __construct()
     {
-        $this->pageLayout = new renderLayout;
+        $this->pageLayout = new RenderLayout;
         $this->params = array();
         $this->params["style"] = "style_article.css";
         
@@ -41,7 +41,7 @@ class ArticleControleur{
     public function pageFaq(){
 
        
-            $content = "page_Faq.php";
+            $content = "page_faq.php";
             $this->pageLayout->render($content, $this->params);
         
     }

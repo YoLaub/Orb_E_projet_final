@@ -5,7 +5,7 @@ namespace app\controleurs\class;
 use \Exception;
 
 use app\modeles\DBUser;
-use app\controleurs\class\renderLayout;
+use app\controleurs\class\RenderLayout;
 use app\modeles\DBProduct;
 
 class Connexion
@@ -21,8 +21,8 @@ class Connexion
     {
         $this->connectDB = new DBUser;
         $this->connexionProduct = new DBProduct();
-        $this->pageLayout = new renderLayout;
-        $this->home = new accueilControleur;
+        $this->pageLayout = new RenderLayout;
+        $this->home = new AccueilControleur;
         $this->params = array();
         $this->params["style"] = "style_connexion.css";
         $this->params["action"] = "connexion";

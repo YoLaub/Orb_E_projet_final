@@ -4,7 +4,7 @@ namespace app\controleurs\class;
 
 use app\controleurs\class\MenuControleur;
 
-class renderLayout
+class RenderLayout
 {
     private $menuPrincipale;
 

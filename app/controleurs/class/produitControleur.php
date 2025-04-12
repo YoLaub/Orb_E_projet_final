@@ -17,7 +17,7 @@ class ProduitControleur
 
     public function __construct()
     {
-        $this->pageLayout = new renderLayout;
+        $this->pageLayout = new RenderLayout;
         $this->connexion = new Middleware;
         $this->produits = new DBProduct;
         $this->gestionCommande = new DBOrder;

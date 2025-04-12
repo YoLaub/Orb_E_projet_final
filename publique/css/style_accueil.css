@@ -71,9 +71,18 @@ h1 {
     font-family: var(--titre) !important;
 }
 
-.introSuite {
+.jouer{
     display: flex;
     flex-direction: column;
+    border: 6px;
+    margin: 40px 16px 56px 16px;
+    background-color: var(--fondPage);
+    box-shadow: 2px 4px 12px #00000014;
+}
+
+.commander{
+    display: flex;
+    flex-direction: column-reverse;
     border: 6px;
     margin: 40px 16px 56px 16px;
     background-color: var(--fondPage);
@@ -101,6 +110,7 @@ h1 {
     position: absolute;
     height: 42px;
     font-size: 1.2rem;
+    margin-bottom: 40px;
     background-color: var(--element);
     display: flex;
     align-items: center;
@@ -140,11 +150,7 @@ h1 {
 }
 
 .catSection img{
-    border-radius: 6px 6px 0 0 ;
-    -webkit-border-radius: 6px 6px 0 0 ;
-    -moz-border-radius: 6px 6px 0 0 ;
-    -ms-border-radius: 6px 6px 0 0 ;
-    -o-border-radius: 6px 6px 0 0 ;
+    border-radius: 0 0 6px 6px;
 }
 
 .cat {
@@ -156,6 +162,7 @@ h1 {
 .catButton {
     position: absolute;
     height: 42px;
+    margin-bottom: 40px;
     font-size: 1.2rem;
     background-color: var(--element);
     display: flex;
@@ -272,6 +279,14 @@ h1 {
         width: 100%;
     }
 
+    .jeuPresentation img{
+       border-radius: 0 6px 6px 0;
+    }
+
+    .catSection img{
+        border-radius: 0 6px 6px 0;
+    }
+    
 
 
 }

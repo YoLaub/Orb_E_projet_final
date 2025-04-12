@@ -23,7 +23,7 @@ class ProfilControleur
 
     public function __construct()
     {
-        $this->pageLayout = new renderLayout;
+        $this->pageLayout = new RenderLayout;
         $this->connexion = new Middleware;
         $this->gestionProfil = new DBUser;
         $this->connexionContact = new DBContacts;
@@ -40,16 +40,15 @@ class ProfilControleur
     public function pageProfil(){
 
         $action = "profile";
-        $id_contact = 12;
+        $nom = $this->infoPerso[0]["nom"];
         $params = [
             "email" => $this->email,
             "informations" =>  $this->infoPerso,
             "commandes" => json_encode($this->gestionProfil->getUserOrders($this->email)),
             "score" => $this->gestionProfil->getUserScores($this->email),
             "mesMessages" => $this->connexionContact->getMessagePerEmail($this->email),
-            "mesReponses" => $this->connexionReponses->getReponsesPerId($id_contact),
             "formulaire" => $this->modifierInformationPerso($action),
-            "reponse"=>$this->repondre(),
+            "reponse"=>$this->repondre($nom),
             "style"=>"style_profile.css",
             "script"=>"modal_profile.js" 
         ];
@@ -145,7 +144,6 @@ class ProfilControleur
                 header("Location: ?action=" . $action);
                 exit;
             }else{
-                echo var_dump($_POST); die();
                 return $this->pageLayout->render("partials/formulaire.php", $params, true);
             }
         } else {
@@ -159,19 +157,16 @@ class ProfilControleur
             
     }
 
-    private function repondre() {
+    private function repondre($nom) {
 
         $params = [
             "action" => "profile"
         ];
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $nom = htmlspecialchars($_POST["nom"]);
-    
+              
             if(isset($_SESSION["email"])){
                 $email = $_SESSION["email"];
-            }else{
-                $email = htmlspecialchars($_POST["email"]);
             }
     
             $message = htmlspecialchars($_POST["message"]);
