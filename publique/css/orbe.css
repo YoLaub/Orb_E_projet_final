@@ -1,0 +1,11 @@
+body{
+    font-family: 16px;
+    color: black;
+    max-width: 1200px;
+    width: 1200px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}

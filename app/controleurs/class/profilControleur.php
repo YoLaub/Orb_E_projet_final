@@ -35,6 +35,7 @@ class ProfilControleur
         }
         $this->infoPerso = $this->gestionProfil->infoUser($this->email);
         
+        
     }
 
     public function pageProfil(){
@@ -50,8 +51,11 @@ class ProfilControleur
             "formulaire" => $this->modifierInformationPerso($action),
             "reponse"=>$this->repondre($nom),
             "style"=>"style_profile.css",
-            "script"=>"modal_profile.js" 
+            "scripts" => '<script src="./publique/scripts/modal_profile.js" defer></script>
+<script src="./publique/scripts/rechercheReponse.js" defer></script>
+<script src="./publique/scripts/information.js" defer></script>'
         ];
+
 
         $content = "page_profile.php";
 
@@ -66,7 +70,9 @@ class ProfilControleur
             "informations" =>  $this->infoPerso,
             "formulaire" => $this->modifierInformationPerso($action),
             "infoProduit" => $this->connexionDBProduct->getProduct(),
-            "style"=> "style_commande.css"
+            "style"=> "style_commande.css",
+            "scripts"=>'<script src="./publique/scripts/formulaireCommande.js" defer></script>
+            <script src="./publique/scripts/information.js" defer></script>'
             
         ];
 
@@ -188,7 +194,7 @@ class ProfilControleur
                    $params["message"] = "Erreur d'envoie' !";
                     return $this->pageLayout->render("partials/contact.php",$params, true);
                 }
-                header("Location: ?action=contact"); // Redirection vers la même page après POST
+                header("Location: ?action=profile"); // Redirection vers la même page après POST
                 exit; // Important pour éviter toute exécution après la redirection
             } else {
                $params["message"] = "Vous avez oubliez un champ !";

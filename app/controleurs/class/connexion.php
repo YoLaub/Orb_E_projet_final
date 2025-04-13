@@ -26,6 +26,8 @@ class Connexion
         $this->params = array();
         $this->params["style"] = "style_connexion.css";
         $this->params["action"] = "connexion";
+        $this->params["scripts"] = '<script src="./publique/scripts/formulaireConnexion.js" defer></script>
+    <script src="./publique/scripts/showMdp.js" defer></script>';
         $this->params["inscription"] = $this->pageLayout->render("partials/inscription.php", $this->params, true);
     }
 

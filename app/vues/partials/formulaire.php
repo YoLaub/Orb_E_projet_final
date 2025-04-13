@@ -7,9 +7,9 @@
 
 
 <form class="info-form" action="?action=<?= $commande["action"] ?>" method="post">
-    <input type="text" name="prenom" value="<?php echo htmlspecialchars($commande["informations"][0]["prenom"]); ?>"></label><br>
-    <input type="text" name="nom" value="<?php echo htmlspecialchars($commande["informations"][0]["nom"]); ?>"></label><br>
-    <input type="text" name="adresse" value="<?php echo htmlspecialchars($commande["informations"][0]["adresse_livraison"]); ?>"></label><br>
+    <input type="text" name="prenom" placeholder ="Votre prénom.." value="<?php echo htmlspecialchars($commande["informations"][0]["prenom"]); ?>"></label><br>
+    <input type="text" name="nom" placeholder ="Votre nom.." value="<?php echo htmlspecialchars($commande["informations"][0]["nom"]); ?>"></label><br>
+    <input type="text" name="adresse" placeholder ="Votre adresse.." value="<?php echo htmlspecialchars($commande["informations"][0]["adresse_livraison"]); ?>"></label><br>
     <input id ="cpInput" type="text" name="cp" placeholder="Entrez votre code postal..." value="<?php echo htmlspecialchars($commande["informations"][0]["code_postal"]); ?>"></label><br>
     <select id="resultListCp" name="ville">
         <option value="<?php echo htmlspecialchars($commande["informations"][0]["ville"]) ?? ''; ?>"><?php echo htmlspecialchars($commande["informations"][0]["ville"]) ?? '--- Selectionner votre ville'; ?></option>
@@ -18,7 +18,8 @@
     <select id="resultList" name="pays">
         <option value="<?php echo htmlspecialchars($commande["informations"][0]["pays"]) ?? ''; ?>"><?php echo htmlspecialchars($commande["informations"][0]["pays"]) ?? '--- Selectionner votre pays'; ?></option>
     </select>
-    <input type="text" name="tel" value="<?php echo htmlspecialchars($commande["informations"][0]["telephone"]); ?>"></label><br>
+    <input type="text" name="tel" placeholder ="Votre numero de téléphone.." value="<?php echo htmlspecialchars($commande["informations"][0]["telephone"]); ?>"></label><br>
+    <label for="paiement">Mode de paiement</label>
     <select name="paiement">
         <?php foreach ($commande["select"] as $value): ?>
             <option value="<?= htmlspecialchars($value); ?>">
@@ -28,6 +29,3 @@
     </select>
     <button type="submit">Modifier</button>
 </form>
-
-
-<!-- https://apicarto.ign.fr/api/codes-postaux/communes/56420 -->

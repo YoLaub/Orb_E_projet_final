@@ -38,6 +38,9 @@ class ProduitControleur
         <meta property="og:type" content="product" />';
         $this->params["partage"] = $this->pageLayout->render("partials/partage.php",  $this->detailsProduit, true);
         $this->params["style"] = "style_produit.css";
+        $this->params["scripts"] = '<script type="module" src="./publique/scripts/visualiseur.js" defer></script>
+        <script src="./publique/scripts/article.js" defer></script>';
+
 
 
         if (!$this->detailsProduit[0]["disponibilite"] == "en_stock") {
@@ -53,9 +56,11 @@ class ProduitControleur
     public function pageProduitBo()
     {
 
-         $this->params["listeProduit"] = $this->produits->getProduct();
+        $this->params["listeProduit"] = $this->produits->getProduct();
         $_SESSION["id_produit"] = $this->detailsProduit[0]["id_produit"];
         $this->params["style"] = "page_fiche_produit.css";
+        $this->params["scripts"] = '<script src="./publique/scripts/preview_photo.js" defer></script>';
+
         
         $content = "admin/page_produit_bo.php";
         $this->pageLayout->render($content,  $this->params);

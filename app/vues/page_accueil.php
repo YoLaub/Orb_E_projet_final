@@ -1,3 +1,13 @@
+<div class = "modal">
+    <div id="cookie-banner">
+        <p>Nous utilisons des cookies pour analyser le trafic de notre site et améliorer votre expérience.  
+        <a class="rgpd" href="?action=rgpd" >En savoir plus</a>.
+        </p>
+        <button id="accept-cookies">Accepter</button>
+    </div>
+</div>
+
+
 <section class="intro">
 <div class="presentation">
 <h1>orb'e</h1>

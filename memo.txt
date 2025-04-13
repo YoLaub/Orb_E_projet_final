@@ -22,3 +22,6 @@ changer svg article !
 ajouter un article avec la video ! 
 
 
+Retirer "?action="
+
+

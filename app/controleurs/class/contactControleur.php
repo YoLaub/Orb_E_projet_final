@@ -24,6 +24,8 @@ class ContactControleur
     public function pageContact() {
 
         $this->params["style"] = "style_contact.css";
+        $this->params["scripts"] = '<script src="./publique/scripts/contact.js" defer></script>';
+
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $nom = htmlspecialchars($_POST["nom"]);
@@ -63,6 +65,8 @@ class ContactControleur
        $this->params["lesMessages"] = $this->connexion->getMessage();
        $this->params["lesReponses"] = $this->connexionReponse->getReponse();
        $this->params["style"] = "style_messagerie.css";
+       $this->params["scripts"] = '<script src="./publique/scripts/rechercheMessage.js" defer></script>';
+
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $id_contact = htmlspecialchars($_POST["id_contact"]);

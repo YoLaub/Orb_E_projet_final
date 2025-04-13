@@ -17,26 +17,8 @@
     <link rel="stylesheet" href="./publique/css/<?= $commande["style"] ?>">
     <!-- general -->
     <script src="./publique/scripts/menu.js" defer></script>
-    <!-- profile -->
-    <script src="./publique/scripts/modal_profile.js" defer></script>
-    <script src="./publique/scripts/rechercheReponse.js" defer></script>
-    <!-- produit -->
-    <script type="module" src="./publique/scripts/visualiseur.js" defer></script>
-    <script src="./publique/scripts/article.js" defer></script>
-    <!-- commande -->
-    <script src="./publique/scripts/information.js" defer></script>
-    <!-- profile bo -->
-    <script src="./publique/scripts/rechercheUtilisateur.js" defer></script>
-    <!-- contact bo -->
-    <script src="./publique/scripts/rechercheMessage.js" defer></script>
-    <!-- contact -->
-    <script src="./publique/scripts/contact.js" defer></script>
-    <!-- fiche produit bo -->
-    <script src="./publique/scripts/preview_photo.js" defer></script>
-    <!-- connexion -->
-    <script src="./publique/scripts/formulaireConnexion.js" defer></script>
-    <script src="./publique/scripts/formulaireCommande.js" defer></script>
-    <script src="./publique/scripts/showMdp.js" defer></script>
+  
+    <?= $commande["scripts"] ?? "" ?>
 
 
     <title>Orb'E</title>

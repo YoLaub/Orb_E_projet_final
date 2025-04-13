@@ -14,7 +14,8 @@ class JeuControleur
     {
         $this->pageLayout = new RenderLayout;
         $this->connexion = new Middleware;
-        $this->params["style"] = "style_jeu.css";
+        $this->params["style"] = "orbe.css";
+        $this->params["scripts"] = '<script type="module" src="./publique/scripts/orbe/ballRun.js" defer></script>';
 
 
     }
@@ -23,11 +24,9 @@ class JeuControleur
 
         if($this->connexion->accesMiddleware()){
             $content = "page_jeu.php";
-            $this->pageLayout->render($content);
-        }else{
-            $this->params["style"] = "style_connexion.css";
-            $content = "page_connexion.php";
             $this->pageLayout->render($content, $this->params);
+        }else{
+            header("Location: ?action=connexion");
         
         }
     }

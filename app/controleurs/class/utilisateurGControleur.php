@@ -30,8 +30,12 @@ class UtilisateurGControleur{
             "inscription" => $this->inscriptionAdmin(),
             "liste_utilisateur" => $this->listeUtilisateur,
             "liste_admin" => $this->listeAdmin,
-            "style" => "style_profile_bo.css"
+            "style" => "style_profile_bo.css",
+            "scripts" => '<script src="./publique/scripts/rechercheUtilisateur.js" defer></script>
+            <script src="./publique/scripts/formulaireConnexion.js" defer></script>
+    <script src="./publique/scripts/showMdp.js" defer></script>'
         ];
+    
 
         $content = "admin/page_Ubo.php";
         $this->pageLayout->render($content, $params);
