@@ -72,7 +72,7 @@ section h1 {
     padding: 16px;
 }
 
-section h3{
+section h3 {
     margin: 0 16px;
 }
 
@@ -81,10 +81,10 @@ section h3{
 section p {
     text-align: center;
     font-weight: 400;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     border: none;
     border-radius: 6px;
-    padding: 8px 24px;
+    padding: 8px 16px;
     margin: auto;
     cursor: pointer;
     box-shadow:
@@ -94,21 +94,22 @@ section p {
 
 }
 
-#startRestart{
-    
+#startRestart {
+
     display: flex;
     flex-direction: row;
     gap: 16px;
+    font-size: 0.8rem;
 }
 
 
-#jump{
+#jump {
     border: none;
     padding: 16px;
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
     cursor: pointer;
-    box-shadow:        0 2px 4px rgba(0, 0, 0, 0.1),        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
     border-radius: 6px;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -116,22 +117,19 @@ section p {
     -o-border-radius: 6px;
 }
 
-#jump, #start, #restart{
+#jump,
+#start,
+#restart {
     background-color: #5b5b5f;
 }
 
-.bi-x{
-    fill: var(--texte1);
-    height: 40px;
-    width: 40px;
-}
 
 #console {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-image: url("../images/backgroundJeu.webp"),
-     linear-gradient( var(--elementLight), var(--elementTrans));
+        linear-gradient(var(--elementLight), var(--elementTrans));
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -152,7 +150,7 @@ section p {
     width: 350px;
     height: 175px;
     border: 1px solid #00000071;
-    box-shadow:        0 2px 4px rgba(0, 0, 0, 0.1),        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
     border-radius: 6px;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -164,24 +162,76 @@ section p {
     background-color: #565558;
     display: flex;
     flex-direction: row;
-    gap: 16px;
+    width: 100%;
+    gap: 32px;
+    padding: 16px 0;
     font-family: var(--jeu_texte);
-    justify-content: space-between;
-    padding: 20px 80px 20px 80px;
+    justify-content:center;
     border-radius: 0 0 32px 32px;
     -webkit-border-radius: 0 0 32px 32px;
     -moz-border-radius: 0 0 32px 32px;
     -ms-border-radius: 0 0 32px 32px;
     -o-border-radius: 0 0 32px 32px;
     box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+@media (min-width: 768px) {
+
+    .control {
+        width: 100%;
+        gap: 72px;
+        border-radius: 0 0 32px 32px;
+        -webkit-border-radius: 0 0 32px 32px;
+        -moz-border-radius: 0 0 32px 32px;
+        -ms-border-radius: 0 0 32px 32px;
+        -o-border-radius: 0 0 32px 32px;
+        box-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.1),
+            0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    }
+
+    
+
+    #gameCanvas {
+        width: 400px;
+        height: 200px;
+    }
+
+    section p {
+       
+        padding: 8px 24px;
+    
+    }
 }
 
 
 
-
 @media (min-width: 1000px) {
+
+    .control {
+        gap: 160px;
+       
+    }
+
+    #jump {
+        height: 50px;
+        width: 50px;
+
+    }
+
+    section p {
+        font-size: 0.8rem;
+    
+    }
+
+    #startRestart {
+
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
 
 
     section {
@@ -190,21 +240,17 @@ section p {
     }
 
 
-
-
     #gameCanvas {
         width: 800px;
         height: 400px;
+    }
+
+    .bi-x {
+        height: 40px;
+        width: 40px;
     }
 
 
 
 }
 
-@media (min-width: 768px) {
-
-        .control {
-    padding: 20px 48px 20px 48px;
-   
-}
-}
