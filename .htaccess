@@ -1,5 +1,8 @@
+Options -Indexes
+
 RewriteEngine On
 RewriteBase /yoann-laubert/Orb_E_projet_final/
+
 
 #Redirige HTTP vers HTTPS
 RewriteCond %{HTTPS} off

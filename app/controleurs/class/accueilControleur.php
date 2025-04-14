@@ -12,7 +12,6 @@ class AccueilControleur{
     private $pageLayout;
     private $connexionUtilisateur;
     private $connexionCommande;
-    private $connexionProduit;
     private $connexionJeu;
     private $params;
 
@@ -45,7 +44,6 @@ class AccueilControleur{
     public function accueilBo(){
     
         $this->connexionUtilisateur = new DBUser();
-        $this->connexionProduit = new DBProduct();
         $this->connexionCommande = new DBOrder();
         $this->connexionJeu = new DBParty();
 

@@ -27,7 +27,7 @@
 <body class="menu-open">
 
     <header>
-        <div class="logo"><a href="?action=accueil"><img src="./publique/images/logo/Logo_V1_white.webp" alt="Logo AYLab"></a></div>
+        <div class="logo"><a href="?action=accueil"><img src="./publique/images/logo/Logo.webp" alt="Logo AYLab"></a></div>
         <?= $navContent ?>
         <div class="iconHeader">
             <p class="menu-toggle">

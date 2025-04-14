@@ -76,37 +76,45 @@ bgBresil.src = "./publique/images/orbe/rio.png"; // Remplace par le chemin de to
 const bgNewYork = new Image();
 bgNewYork.src = "./publique/images/orbe/newyork.png"; // Remplace par le chemin de ton image
 
-
-
 var backgroundsCity = [
   { src: bgParis, x: 0, y: -100, width: canva.width, height: canva.height },
   { src: bgMoscou, x: 0, y: -100, width: canva.width, height: canva.height },
   { src: bgTokyo, x: 0, y: -100, width: canva.width, height: canva.height },
-  { src: bgJohannesburg, x: 0, y: -100, width: canva.width, height: canva.height },
+  {
+    src: bgJohannesburg,
+    x: 0,
+    y: -100,
+    width: canva.width,
+    height: canva.height,
+  },
   { src: bgBresil, x: 0, y: -100, width: canva.width, height: canva.height },
-  { src: bgNewYork, x: 0, y: -100, width: canva.width, height: canva.height }
+  { src: bgNewYork, x: 0, y: -100, width: canva.width, height: canva.height },
 ];
 
 var backgroundIndex = 0;
 var round = 0;
 
 function drawAndUpdateBackground() {
-  context.drawImage(backgroundsCity[backgroundIndex].src, backgroundsCity[backgroundIndex].x + canva.width, backgroundsCity[backgroundIndex].y, backgroundsCity[backgroundIndex].width, backgroundsCity[backgroundIndex].height);
+  context.drawImage(
+    backgroundsCity[backgroundIndex].src,
+    backgroundsCity[backgroundIndex].x + canva.width,
+    backgroundsCity[backgroundIndex].y,
+    backgroundsCity[backgroundIndex].width,
+    backgroundsCity[backgroundIndex].height
+  );
 
-  if ((backgroundsCity[backgroundIndex].x + canva.width) > -800) {
-    console.log(backgroundsCity[backgroundIndex].x + canva.width)
-    console.log(backgroundsCity[backgroundIndex])
+  if (backgroundsCity[backgroundIndex].x + canva.width > -800) {
     if (isSlow) {
       backgroundsCity[backgroundIndex].x -= 0.1; // Vitesse réduite si slow
     } else if (isInvincible) {
-      backgroundsCity[backgroundIndex].x -= 0.4; // Vitesse légèrement plus lente pour simuler la distance
+      backgroundsCity[backgroundIndex].x -= 0.6; // Vitesse légèrement plus lente pour simuler la distance
     } else {
       backgroundsCity[backgroundIndex].x -= 0.2;
     }
   } else {
     if (backgroundIndex === backgroundsCity.length - 1) {
       backgroundIndex = 0;
-      backgroundsCity.forEach((backgroundCity) => backgroundCity.x = 0);
+      backgroundsCity.forEach((backgroundCity) => (backgroundCity.x = 0));
       round++;
     } else {
       backgroundIndex++;
@@ -117,7 +125,6 @@ function drawAndUpdateBackground() {
 //=========================METEO======================
 //=======================/////////======================
 //=======================/////////======================
-
 
 var pressureData = null;
 var temperatureData = null;
@@ -154,7 +161,6 @@ async function temperature() {
 }
 temperature();
 
-
 async function nebulosity() {
   try {
     const weatherData = await getValueWeather();
@@ -187,7 +193,6 @@ const blurLayers = 4; // Nombre de couches de flou
 const blurIntensity = 10; // Intensité du flou
 
 function drawSun() {
-
   // Calculer la position du cercle en fonction de l'angle de rotation
   const circleX = rotationCenterX + circleDistance * Math.cos(angle);
   const circleY = rotationCenterY + circleDistance * Math.sin(angle);
@@ -195,7 +200,13 @@ function drawSun() {
   // Dessiner le cercle avec effet de flou
   for (let i = 0; i < blurLayers; i++) {
     context.beginPath();
-    context.arc(circleX, circleY, circleRadius + i * blurIntensity, 0, 2 * Math.PI);
+    context.arc(
+      circleX,
+      circleY,
+      circleRadius + i * blurIntensity,
+      0,
+      2 * Math.PI
+    );
     context.fillStyle = `rgba(255, 165, 0, ${(1 - i / blurLayers) * 0.5})`;
     context.fill();
     context.closePath();
@@ -226,12 +237,9 @@ function generateClouds() {
   }
 }
 
-
-
 function drawCloud() {
   for (let i = clouds.length - 1; i >= 0; i--) {
     let cloud = clouds[i];
-
 
     if (!isSlow) {
       cloud.x -= 0.2;
@@ -317,8 +325,6 @@ function drawCloud() {
 //       drawBranch(x, y, size, angle, 3); // Profondeur 3
 //   }
 // }
-
-
 
 //=======================MUSIQUES======================
 //=======================/////////======================
@@ -498,8 +504,18 @@ function drawObstacles() {
     }
 
     // Dessine l'obstacle
-    context.fillStyle = "black";
+    context.fillStyle = "#585863";
     context.fillRect(
+      obstacle.x,
+      groundY - obstacle.height,
+      obstacle.width,
+      obstacle.height
+    );
+
+    // Couleur et style du contour
+    context.strokeStyle = "#3c3c49"; // ou une autre couleur
+    context.lineWidth = 1; // épaisseur du contour
+    context.strokeRect(
       obstacle.x,
       groundY - obstacle.height,
       obstacle.width,
@@ -555,8 +571,6 @@ function checkObstaclesCollision() {
     }
   }
 }
-
-
 
 //=======================MESSAGES======================
 //=======================/////////======================
@@ -616,7 +630,6 @@ function updateGame() {
   drawSun();
   drawCloud();
 
-
   drawB(context, canva);
   drawAndUpdateBackground();
   //drawBackground();
@@ -661,7 +674,6 @@ function updateGame() {
 
   if (speed > 15) {
     speed = 15;
-    console.log(speed);
   } else {
     speed = baseSpeed + 0.1 * Math.floor(scoreDisplay / 5);
   }
@@ -672,7 +684,6 @@ function updateGame() {
     });
     drawObstacles();
   }
-
 
   checkObstaclesCollision();
   checkBonusCollision();
@@ -731,15 +742,16 @@ function updateGame() {
     context.font = "20px Arial";
   }
 
-
-
-
   //Affichage du score
   context.font = "16px serif";
   context.fillText("Score: " + scoreDisplay, 600, 20);
   //Temperature
   context.font = "16px serif";
-  context.fillText("Temperature: " + Math.floor(temperatureData) + "°C", 600, 40);
+  context.fillText(
+    "Temperature: " + Math.floor(temperatureData) + "°C",
+    600,
+    40
+  );
 
   animationId = requestAnimationFrame(updateGame);
 
@@ -749,6 +761,25 @@ function updateGame() {
 }
 
 function stopGame() {
+  let scoreToSave = Math.max(...scoreTab);
+
+  fetch("?action=jeu", {
+    method: "POST",
+    header: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      score: scoreToSave,
+    }),
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      console.log("Score envoyé au serveur :", data);
+    })
+    .catch((error) => {
+      console.error("Erreur lors de l'envoi du score :", error);
+    });
+
   cancelAnimationFrame(animationId);
 
   context.clearRect(0, 0, canva.width, canva.height);
@@ -761,6 +792,7 @@ function stopGame() {
     canva.width / 2,
     canva.height / 2
   );
+
   context.font = "20px Arial";
   context.fillText(
     "You failed " + gameOver + " times",
@@ -778,44 +810,79 @@ function stopGame() {
 var jumpStartTime = null;
 var doubleJumpAvailable = true;
 
-document.addEventListener("keydown", (e) => {
-  if (e.code === "Space") {
-    if (ballY === groundY - 10 || isOnBlock) {
-      velocityY = jumpPower;
-      //soundJump.play();
-      isOnBlock = false; // La balle quitte le bloc
-      doubleJumpAvailable = true;
-    } else if (doubleJumpAvailable) {
-      velocityY = jumpPower + 2;
-      doubleJumpAvailable = false;
-    }
+document.getElementById("jump").addEventListener("click", () => {
+  if (ballY === groundY - 10 || isOnBlock) {
+    velocityY = jumpPower;
+    //soundJump.play();
+    isOnBlock = false; // La balle quitte le bloc
+    doubleJumpAvailable = true;
+  } else if (doubleJumpAvailable) {
+    velocityY = jumpPower + 2;
+    doubleJumpAvailable = false;
+  }
 
-    if (e.code === "Space" && jumpStartTime === null) {
-      jumpStartTime = Date.now();
-    }
+  if (e.code === "Space" && jumpStartTime === null) {
+    jumpStartTime = Date.now();
   }
 });
 
-document.addEventListener("keyup", (e) => {
-  if (e.code === "Space" && jumpStartTime != null) {
-    let pressDuration = (Date.now() - jumpStartTime) / 1000;
-    jumpStartTime = null;
+// document.getElementById("jump").addEventListener("mousedown", () => {
+//     let pressDuration = (Date.now() - jumpStartTime) / 1000;
+//     jumpStartTime = null;
 
-    let jumpPowerModulated = Math.max(
-      maxJumpPower,
-      minJumpPower - pressDuration * 10
-    );
+//     let jumpPowerModulated = Math.max(
+//       maxJumpPower,
+//       minJumpPower - pressDuration * 10
+//     );
 
-    if (ballY === groundY - 10 || isOnBlock) {
-      velocityY = jumpPowerModulated;
-      isOnBlock = false;
-      doubleJumpAvailable = true;
-    } else if (doubleJumpAvailable) {
-      velocityY = jumpPowerModulated;
-    } else if (ballY < groundY - 10) {
-    }
-  }
-});
+//     if (ballY === groundY - 10 || isOnBlock) {
+//       velocityY = jumpPowerModulated;
+//       isOnBlock = false;
+//       doubleJumpAvailable = true;
+//     } else if (doubleJumpAvailable) {
+//       velocityY = jumpPowerModulated;
+//     } else if (ballY < groundY - 10) {
+//     }
+// });
+
+// document.addEventListener("keydown", (e) => {
+//   if (e.code === "Space") {
+//     if (ballY === groundY - 10 || isOnBlock) {
+//       velocityY = jumpPower;
+//       //soundJump.play();
+//       isOnBlock = false; // La balle quitte le bloc
+//       doubleJumpAvailable = true;
+//     } else if (doubleJumpAvailable) {
+//       velocityY = jumpPower + 2;
+//       doubleJumpAvailable = false;
+//     }
+
+//     if (e.code === "Space" && jumpStartTime === null) {
+//       jumpStartTime = Date.now();
+//     }
+//   }
+// });
+
+// document.addEventListener("keyup", (e) => {
+//   if (e.code === "Space" && jumpStartTime != null) {
+//     let pressDuration = (Date.now() - jumpStartTime) / 1000;
+//     jumpStartTime = null;
+
+//     let jumpPowerModulated = Math.max(
+//       maxJumpPower,
+//       minJumpPower - pressDuration * 10
+//     );
+
+//     if (ballY === groundY - 10 || isOnBlock) {
+//       velocityY = jumpPowerModulated;
+//       isOnBlock = false;
+//       doubleJumpAvailable = true;
+//     } else if (doubleJumpAvailable) {
+//       velocityY = jumpPowerModulated;
+//     } else if (ballY < groundY - 10) {
+//     }
+//   }
+// });
 
 function restartGame() {
   //Réinitialise les variables
@@ -830,20 +897,33 @@ function restartGame() {
   updateGame();
 }
 
-document.addEventListener("keydown", (e) => {
-  if ((e.key === "s" && !start) || (e.key === "S" && !start)) {
-    // Démarrer le jeu après interaction
-    initializeAudio(backgroundMusic);
-    updateGame();
-    generateClouds();
+// document.addEventListener("keydown", (e) => {
+//   if ((e.key === "s" && !start) || (e.key === "S" && !start)) {
+//     // Démarrer le jeu après interaction
+//     initializeAudio(backgroundMusic);
+//     updateGame();
+//     generateClouds();
 
-  }
+//   }
+// });
+
+document.getElementById("start").addEventListener("click", () => {
+  // Démarrer le jeu après interaction
+  initializeAudio(backgroundMusic);
+  updateGame();
+  generateClouds();
 });
 
-window.addEventListener("keydown", (e) => {
-  if ((e.key === "r" && isGameOver) || (e.key === "R" && isGameOver)) {
-    // Démarrer le jeu après interaction
-    initializeAudio(backgroundMusic);
-    restartGame();
-  }
+document.getElementById("restart").addEventListener("click", () => {
+  // Démarrer le jeu après interaction
+  initializeAudio(backgroundMusic);
+  restartGame();
 });
+
+// window.addEventListener("keydown", (e) => {
+//   if ((e.key === "r" && isGameOver) || (e.key === "R" && isGameOver)) {
+//     // Démarrer le jeu après interaction
+//     initializeAudio(backgroundMusic);
+//     restartGame();
+//   }
+// });
