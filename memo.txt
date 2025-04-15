@@ -2,15 +2,14 @@
 !!!!!!!!!!!!14/04/2024!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
--centrer le jeu
--ameliorer les controleurs
--eclaircir le fond
--change couleur boule
--integrer les scores
--modifier API meteo
--rendre le site responsive sur ecran tourné
--améliorer interface du jeu
 
+-modifier API meteo
+
+-changer icon de menu
+
+-voir methode deconnexion
+
+-voir pleine ecran pour le  jeu
 
 
 
