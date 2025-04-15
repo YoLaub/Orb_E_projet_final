@@ -4,20 +4,23 @@
 
 
 
--éclaircir le fond
 
--change couleur boule
- -partager scores !
+-partager scores !
+-leaderboard page accueil
+
+-icone header
 
 -modifier API meteo
 
--peine ecran jeu ?
 
 - social icone !!
 
 
 -Attention Si h3 il doit y avoir un h2 !!! verifier la syntaxe
 - Accessibilité - Arialabel !!!
+
+
+-ameliorer jeu et son code
 
 
 
