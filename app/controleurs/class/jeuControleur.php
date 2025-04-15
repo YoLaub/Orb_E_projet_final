@@ -39,12 +39,12 @@ class JeuControleur
                     if ($etat) {
                         header("Location: ?action=jeu"); // Redirection vers la même page après POST
                         exit;
-                    }else{
+                    } else {
                         $this->params["message"] = "Une erreur c'est produite !";
-                        return $this->pageLayout->render("page_jeu.php",$this->params);
+                        return $this->pageLayout->render("page_jeu.php", $this->params);
                     }
                     $this->params["message"] = "Vous n'êtes probablement pas autorisé à participer, inscrivez vous !!";
-                    return $this->pageLayout->render("page_jeu.php",$this->params);
+                    return $this->pageLayout->render("page_jeu.php", $this->params);
                 }
             }
 

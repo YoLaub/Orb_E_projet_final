@@ -4,14 +4,16 @@ namespace app\controleurs\class;
 
 use app\controleurs\class\Connexion;
 
-class RoutesPrive {
+class RoutesPrive
+{
     private array $adminActions; // Tableau associatif des actions du back-office
     private string $action;
     private $params;
     private const DEFAULT_ROUTE = "AccueilControleur:accueil"; // Définition d'une constante pour la route par défaut
     private const ERROR_ROUTE = "app/vues/'page404.php"; // Route d'erreur
 
-    public function __construct() {
+    public function __construct()
+    {
         // Liste des actions disponibles uniquement pour les administrateurs
         $this->adminActions = [
             "defaut"  => self::DEFAULT_ROUTE,
@@ -33,24 +35,22 @@ class RoutesPrive {
         ];
     }
 
-    public function redirection(string $action = "defaut", array $params = []){
+    public function redirection(string $action = "defaut", array $params = [])
+    {
 
         $this->action = $action;
         $this->params = $params;
 
-            // Vérifie si l'action existe, sinon, renvoie vers la page 404
+        // Vérifie si l'action existe, sinon, renvoie vers la page 404
         $controllerAction = explode(":", $this->adminActions[$this->action]);
         // $controller = new $controllerAction[0]();
         $fullPathClass =  __NAMESPACE__ . "\\" . $controllerAction[0];
-        
-        $controller = new $fullPathClass(); 
-        $method = $controllerAction[1]; 
+
+        $controller = new $fullPathClass();
+        $method = $controllerAction[1];
 
         $controller->$method($params);
 
         exit();
-
     }
-
 }
-

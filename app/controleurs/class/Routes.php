@@ -38,7 +38,8 @@ class Routes
         ];
     }
 
-    public function redirection(string $action = "defaut", array $params = []){
+    public function redirection(string $action = "defaut", array $params = [])
+    {
 
         $this->action = $action;
         $this->params = $params;
@@ -47,13 +48,12 @@ class Routes
         $controllerAction = explode(":", $this->lesActions[$this->action]);
         // $controller = new $controllerAction[0]();
         $fullPathClass =  __NAMESPACE__ . "\\" . $controllerAction[0];
-        
-        $controller = new $fullPathClass(); 
-        $method = $controllerAction[1]; 
+
+        $controller = new $fullPathClass();
+        $method = $controllerAction[1];
 
         $controller->$method($params);
 
-          exit();
+        exit();
     }
-
 }

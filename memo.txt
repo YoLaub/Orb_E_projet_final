@@ -4,12 +4,16 @@
 
 -centrer le jeu
 -ameliorer les controleurs
--eclaircir le fond
+-éclaircir le fond
 -change couleur boule
 -integrer les scores
 -modifier API meteo
 -rendre le site responsive sur ecran tourné
 -améliorer interface du jeu
+-fil ariane
+-survol du menu
+-Attention Si h3 il doit y avoir un h2 !!! verifier la syntaxe
+
 
 
 

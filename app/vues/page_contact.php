@@ -9,7 +9,7 @@
         <textarea id="message" name="message" placeholder="Votre message" required></textarea><br>
         <p class="maxChar"></p>
         <div class="check">
-        <label for = "acceptTerms"> J'accepte les conditions d'utilisation</label>
+        <label for = "acceptTerms"> J'accepte <a class="rgpd" href="?action=rgpd">la politique de confidentialité</a> de AyLab</label>
         <input type="checkbox" name="acceptTerms" id="term">
         </div>
         <div class = "sendMessage">

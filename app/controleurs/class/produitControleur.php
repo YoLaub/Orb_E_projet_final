@@ -24,15 +24,14 @@ class ProduitControleur
         $this->detailsProduit = $this->produits->getProduct();
         $this->params = array();
         $this->params["commande"] = "Commandez !";
-        
     }
 
     public function pageProduit()
     {
-         $this->params["commande"] = "Commandez !";
-         $this->params["Detail produit"] = $this->detailsProduit;
-         $this->params["meta"] = '<meta property="og:title" content="' . htmlspecialchars($this->detailsProduit[0]["nom"]) . '" />
-        <meta property="og:description" content="' . htmlspecialchars   ($this->detailsProduit[0]["description"]) . '" />
+        $this->params["commande"] = "Commandez !";
+        $this->params["Detail produit"] = $this->detailsProduit;
+        $this->params["meta"] = '<meta property="og:title" content="' . htmlspecialchars($this->detailsProduit[0]["nom"]) . '" />
+        <meta property="og:description" content="' . htmlspecialchars($this->detailsProduit[0]["description"]) . '" />
         <meta property="og:image" content="' . htmlspecialchars($this->detailsProduit[0]["photo"]) . '" />
         <meta property="og:url" content="https://ton-site.com/?action=produit" />
         <meta property="og:type" content="product" />';
@@ -44,7 +43,7 @@ class ProduitControleur
 
 
         if (!$this->detailsProduit[0]["disponibilite"] == "en_stock") {
-             $this->params["commande"] = "Reservez !";
+            $this->params["commande"] = "Reservez !";
         }
 
         $_SESSION["id_produit"] = $this->detailsProduit[0]["id_produit"];
@@ -61,12 +60,13 @@ class ProduitControleur
         $this->params["style"] = "page_fiche_produit.css";
         $this->params["scripts"] = '<script src="./publique/scripts/preview_photo.js" defer></script>';
 
-        
+
         $content = "admin/page_produit_bo.php";
         $this->pageLayout->render($content,  $this->params);
     }
 
-    public function ajouterProduit(){
+    public function ajouterProduit()
+    {
 
         $table = "produits";
         $colonne = "disponibilite";
@@ -93,20 +93,19 @@ class ProduitControleur
                     header("Location: ?action=produit");
                     exit();
                 } else {
-                     $this->params["message"] = $etat;
-                     $this->pageLayout->render($content,  $this->params);
+                    $this->params["message"] = $etat;
+                    $this->pageLayout->render($content,  $this->params);
                 }
             } else {
-                 $this->params["message"] = "Veuillez remplir tous les champs !";
-                 $this->pageLayout->render($content,  $this->params);
+                $this->params["message"] = "Veuillez remplir tous les champs !";
+                $this->pageLayout->render($content,  $this->params);
             }
         }
 
-        if(isset($_SESSION["message"])){
+        if (isset($_SESSION["message"])) {
             unset($_SESSION["message"]);
         }
         $this->pageLayout->render($content,  $this->params);
-
     }
 
     public function editionProduitBo()
@@ -116,17 +115,17 @@ class ProduitControleur
         $colonne = "disponibilite";
 
         $id_produit = $_SESSION["id_produit"];
-         $this->params["detailProduit"] = $this->produits->getProductById($id_produit);
-         $this->params["message"] = "Veuillez remplir tous les champs !";
+        $this->params["detailProduit"] = $this->produits->getProductById($id_produit);
+        $this->params["message"] = "Veuillez remplir tous les champs !";
         $content = "admin/page_ficheP_bo.php";
-         $this->params["select"] = $this->gestionCommande->showEnum($table, $colonne);
-         $this->params["style"] = "page_fiche_produit.css";
+        $this->params["select"] = $this->gestionCommande->showEnum($table, $colonne);
+        $this->params["style"] = "page_fiche_produit.css";
 
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $nom = trim($_POST["nom"] ?? '');
             $description = trim($_POST["description"] ?? '');
-            $prix = floatval(trim($_POST["prix"] ?? '')) ;
+            $prix = floatval(trim($_POST["prix"] ?? ''));
             $dispo = trim($_POST["statut"] ?? '');
 
             if ($nom && $description &&  $prix && $dispo) {
@@ -139,14 +138,14 @@ class ProduitControleur
                     header("Location: ?action=produit");
                     exit();
                 } else {
-                     $this->params["message"] = "Une erreur c'est produite !";;
+                    $this->params["message"] = "Une erreur c'est produite !";;
                 }
             } else {
-                 $this->params["message"] = "Veuillez remplir tous les champs !";
+                $this->params["message"] = "Veuillez remplir tous les champs !";
             }
         }
 
-        if(isset($_SESSION["message"])){
+        if (isset($_SESSION["message"])) {
             unset($_SESSION["message"]);
         }
         $this->pageLayout->render($content,  $this->params);
@@ -184,5 +183,4 @@ class ProduitControleur
         return "erreur 1"; // Aucun fichier uploadé ou erreur
 
     }
-
 }

@@ -7,10 +7,12 @@ use PDOException;
 use Exception;
 
 // Singleton - Connexion base de données
-abstract class DbConnect {
+abstract class DbConnect
+{
     private static ?PDO $instance = null; // Stocke l'instance unique de PDO
 
-    private static function connexion(): PDO {
+    private static function connexion(): PDO
+    {
         if (self::$instance === null) {
             try {
                 $dsn = 'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'];
@@ -26,7 +28,8 @@ abstract class DbConnect {
     }
 
     // Exécute une requête SQL éventuellement paramétrée
-    protected static function executerRequete(string $sql, array $values = []) {
+    protected static function executerRequete(string $sql, array $values = [])
+    {
         try {
             $query = self::connexion()->prepare($sql);
 

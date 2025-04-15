@@ -20,7 +20,7 @@ class DBUser extends DbConnect
         }
     }
 
-    public static function searchUser($terme) 
+    public static function searchUser($terme)
     {
 
         $value = array();
@@ -40,13 +40,12 @@ class DBUser extends DbConnect
         } catch (Exception $e) {
             return $e->getMessage();
         }
-
     }
 
     public static function getUser($role)
     {
 
-        $value= array();
+        $value = array();
         $value["role"] = $role;
 
         $sql = "select 
@@ -66,7 +65,7 @@ class DBUser extends DbConnect
             where u.rôle = :role";
 
         $req = self::executerRequete($sql, $value);
-        
+
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -90,7 +89,7 @@ class DBUser extends DbConnect
     public static function getUserPerEmail($email)
     {
 
-        $value= array();
+        $value = array();
         $value["email"] = $email;
 
         $sql = "select * from utilisateurs where email like :email";
@@ -106,7 +105,7 @@ class DBUser extends DbConnect
     public static function getUserPerId($id)
     {
 
-        $value= array();
+        $value = array();
         $value["id_utilisateur"] = $id;
 
         $sql = "select * from utilisateurs where id_utilisateur like :id_utilisateur";
@@ -131,12 +130,11 @@ class DBUser extends DbConnect
         try {
 
             $utilisateur = self::getUserPerEmail($email);
-            if($utilisateur==""){
+            if ($utilisateur == "") {
                 $sql = "insert into utilisateurs (rôle, email, password) values (:role, :email, :password)";
                 self::executerRequete($sql, $value);
                 return true;
-            }
-             else {
+            } else {
                 throw new Exception("Adresse Email déjà utilisée");
             }
         } catch (Exception $e) {
@@ -149,7 +147,7 @@ class DBUser extends DbConnect
 
         $value = array();
         $value["email"] = $email;
-        
+
         $sql = "select c.* from commerce as c inner join utilisateurs as u on c.id_utilisateur = u.id_utilisateur where binary u.email like :email";
         $req = self::executerRequete($sql, $value);
 
@@ -173,7 +171,7 @@ class DBUser extends DbConnect
             "pays" => $pays,
             "paiement" => $paiement
         ];
-    
+
         try {
             $sql = "update commerce 
                     join utilisateurs on commerce.id_utilisateur = utilisateurs.id_utilisateur 
@@ -186,9 +184,9 @@ class DBUser extends DbConnect
                         commerce.pays = :pays, 
                         commerce.mode_paiement = :paiement 
                     where utilisateurs.email = :email";
-    
+
             $req = self::executerRequete($sql, $value);
-            
+
             return true;
         } catch (Exception $e) {
             return $e->getMessage();
@@ -197,9 +195,9 @@ class DBUser extends DbConnect
 
     public static function getUserOrders($email)
     {
-    $value = ["email" => $email];
+        $value = ["email" => $email];
 
-    $sql = "select 
+        $sql = "select 
                 commandes.id_commande,
                 commandes.date_heure,
                 commandes.montant_total,
@@ -216,17 +214,17 @@ class DBUser extends DbConnect
             where commandes.id_utilisateur = (select id_utilisateur from utilisateurs where email = :email)
             order by commandes.date_heure desc";
 
-    try {
-        return self::executerRequete($sql, $value)->fetchAll();
-    } catch (Exception $e) {
-        return $e->getMessage();
+        try {
+            return self::executerRequete($sql, $value)->fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
-}
     public static function getUserScores($email)
     {
-    $value = ["email" => $email];
+        $value = ["email" => $email];
 
-    $sql = "select 
+        $sql = "select 
                 parties.id_partie,
                 parties.score,
                 parties.date_heure,
@@ -238,15 +236,15 @@ class DBUser extends DbConnect
             where utilisateurs.email = :email
             order by parties.date_heure desc";
 
-    try {
-        return self::executerRequete($sql, $value)->fetchAll();
-    } catch (Exception $e) {
-        return $e->getMessage();
+        try {
+            return self::executerRequete($sql, $value)->fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
-}
-    
 
-          
+
+
 
     public static function deleteInfoUser($email)
     {
@@ -256,46 +254,42 @@ class DBUser extends DbConnect
 
         try {
             $sql = "delete commerce from commerce join utilisateurs on commerce.id_utilisateur = utilisateurs.id_utilisateur where utilisateurs.email like :email";
-    
+
             $req = self::executerRequete($sql, $value);
-            
+
             return true;
         } catch (Exception $e) {
             return $e->getMessage();
         }
-        
-}
-public static function deleteUser($id_utilisateur)
-{
-    $admin_principal = 23; // ID de l'admin principal (à ajuster selon ton besoin)
-    
-    try {
-        $id_utilisateur = (int)$id_utilisateur;
-        $admin_principal = (int)$admin_principal;
-
-        // Vérifier si l'utilisateur est l'admin principal
-        if ($id_utilisateur !== $admin_principal) {
-            $value = array();
-            $value["id_utilisateur"] = $id_utilisateur;
-
-            try {
-                // Suppression de l'utilisateur
-                $sql = "delete from utilisateurs where id_utilisateur = :id_utilisateur";
-                $req = self::executerRequete($sql, $value);
-
-                return true; // Suppression réussie
-            } catch (Exception $e) {
-                return "Erreur lors de la suppression : " . $e->getMessage(); // Erreur lors de la suppression
-            }
-        } else {
-            // Si c'est l'admin principal, lever une exception
-            throw new Exception("Impossible de supprimer l'admin principal.");
-        }
-    } catch (Exception $e) {
-        return "Erreur : " . $e->getMessage(); // Erreur lors de la récupération de l'utilisateur
     }
-}
+    public static function deleteUser($id_utilisateur)
+    {
+        $admin_principal = 23; // ID de l'admin principal (à ajuster selon ton besoin)
 
+        try {
+            $id_utilisateur = (int)$id_utilisateur;
+            $admin_principal = (int)$admin_principal;
 
+            // Vérifier si l'utilisateur est l'admin principal
+            if ($id_utilisateur !== $admin_principal) {
+                $value = array();
+                $value["id_utilisateur"] = $id_utilisateur;
 
+                try {
+                    // Suppression de l'utilisateur
+                    $sql = "delete from utilisateurs where id_utilisateur = :id_utilisateur";
+                    $req = self::executerRequete($sql, $value);
+
+                    return true; // Suppression réussie
+                } catch (Exception $e) {
+                    return "Erreur lors de la suppression : " . $e->getMessage(); // Erreur lors de la suppression
+                }
+            } else {
+                // Si c'est l'admin principal, lever une exception
+                throw new Exception("Impossible de supprimer l'admin principal.");
+            }
+        } catch (Exception $e) {
+            return "Erreur : " . $e->getMessage(); // Erreur lors de la récupération de l'utilisateur
+        }
+    }
 }

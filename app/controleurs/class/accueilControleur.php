@@ -7,7 +7,8 @@ use app\modeles\DBProduct;
 use app\modeles\DBOrder;
 use app\modeles\DBParty;
 
-class AccueilControleur{
+class AccueilControleur
+{
 
     private $pageLayout;
     private $connexionUtilisateur;
@@ -19,30 +20,30 @@ class AccueilControleur{
     {
         $this->pageLayout = new RenderLayout;
         $this->params = array();
-       
-        
     }
 
-    public function accueil(){
-        
+    public function accueil()
+    {
+
         $this->params["style"] = "style_accueil.css";
         $this->params["scripts"] = '<script src="./publique/scripts/consent.js" defer></script>';
 
-        if(isset($_SESSION["role"])){
-            if($_SESSION["role"] == "utilisateur"){
+        if (isset($_SESSION["role"])) {
+            if ($_SESSION["role"] == "utilisateur") {
                 $content = "page_accueil.php";
                 $this->pageLayout->render($content, $this->params);
-            }elseif($_SESSION["role"] == "admin"){
-               return $this->accueilBo();
+            } elseif ($_SESSION["role"] == "admin") {
+                return $this->accueilBo();
             }
-        }else{
+        } else {
             $content = "page_accueil.php";
-                $this->pageLayout->render($content, $this->params);
+            $this->pageLayout->render($content, $this->params);
         }
     }
 
-    public function accueilBo(){
-    
+    public function accueilBo()
+    {
+
         $this->connexionUtilisateur = new DBUser();
         $this->connexionCommande = new DBOrder();
         $this->connexionJeu = new DBParty();
@@ -75,24 +76,24 @@ class AccueilControleur{
         $colonne = 'statut';
 
         $count = 5;
-        
+
 
         $this->params["commande"] =  $commandesGroupées;
         $this->params["lesUtilisateurs"] = $this->connexionUtilisateur->numberOfUser();
-        $this->params ["meilleurJoueur"] = $this->connexionJeu->getFiveBestScores($count);
-        $this->params ["total_score"] = $this->connexionJeu->totalScore();
-        $this->params ["select"] = $this->connexionCommande->showEnum($table, $colonne);
+        $this->params["meilleurJoueur"] = $this->connexionJeu->getFiveBestScores($count);
+        $this->params["total_score"] = $this->connexionJeu->totalScore();
+        $this->params["select"] = $this->connexionCommande->showEnum($table, $colonne);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $idCommande = trim($_POST["idCommande"] ?? '');
             $statut = trim($_POST["statut"] ?? '');
-            
+
             if ($idCommande && $statut) {
-               $etat = $this->connexionCommande->updateStatus($statut, $idCommande);
-        
+                $etat = $this->connexionCommande->updateStatus($statut, $idCommande);
+
                 if ($etat) {
                     header("Location: ?action=accueilBo");
-                exit; 
+                    exit;
                 } else {
                     return $content = "admin/page_accueil_bo.php";
                     $this->pageLayout->render($content, $this->params);
@@ -104,6 +105,5 @@ class AccueilControleur{
         }
         $content = "admin/page_accueil_bo.php";
         $this->pageLayout->render($content, $this->params);
-
     }
 }
