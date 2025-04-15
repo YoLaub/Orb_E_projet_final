@@ -44,7 +44,7 @@ class ContactControleur
             $connexion = new DBContacts();
 
 
-            if (isset($_POST["acceptTerms"]) && isset($_POST["envoyer"]) && empty($prtg) && !empty($nom) && !empty($email) && !empty($message)) {
+            if (isset($_POST["term"]) && isset($_POST["envoyer"]) && empty($prtg) && !empty($nom) && !empty($email) && !empty($message)) {
                 $etat = $connexion->saveMessage($nom, $email, $message, $id_utilisateur);
                 if ($etat) {
                     header("Location: ?action=contact"); // Redirection vers la même page après POST

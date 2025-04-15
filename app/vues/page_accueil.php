@@ -6,6 +6,9 @@
         <button id="accept-cookies">Accepter</button>
     </div>
 </div>
+<aside>
+    <a href="#top"  class="ariane">Accueil</a>
+</aside>
 
 
 <section class="intro">
@@ -17,10 +20,8 @@
     <div class="orbe">
         <img src="./publique/images/3.webp" alt="orb'e">
     </div>
-
-
-
 </section>
+
 
 
 <section class="jouer">

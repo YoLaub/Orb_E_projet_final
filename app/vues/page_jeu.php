@@ -1,3 +1,7 @@
+<aside>
+<a href="#top" class="ariane">Jouer</a>
+</aside>
+
 <section>
         <h1>orbe</h1>
 
@@ -8,6 +12,7 @@
                 </canvas>
                 <div class="control">
                         <div id="startRestart">
+                                <p id="full"></p>
                                 <p id="start">Start</p>
                                 <p id="restart">Restart</p>
                         </div>

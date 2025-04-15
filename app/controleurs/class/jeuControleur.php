@@ -18,7 +18,8 @@ class JeuControleur
         $this->connexion = new Middleware;
         $this->partie = new DBParty;
         $this->params["style"] = "orbe.css";
-        $this->params["scripts"] = '<script type="module" src="./publique/scripts/orbe/ballRun.js" defer></script>';
+        $this->params["scripts"] = '<script type="module" src="./publique/scripts/orbe/ballRun.js" defer></script>
+        <script src="./publique/scripts/orbe/fullscreen.js" defer></script>';
     }
 
     public function pageJeu()

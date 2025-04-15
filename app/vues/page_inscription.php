@@ -1,3 +1,7 @@
+<aside>
+<a href="#top" class="ariane">Inscription</a>
+</aside>
+
 <section id="inscription">
     <h1>Inscription</h1>
 

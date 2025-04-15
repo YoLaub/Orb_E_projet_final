@@ -100,9 +100,9 @@ section p {
     font-style: italic;
 }
 
-.rgpd:hover{
-    color: var(--texte2);
-    font-style: italic;
+.rgpd:hover {
+   font-weight: bold;
+   color: var(--element);
 }
 
 .maxChar{

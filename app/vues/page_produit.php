@@ -1,3 +1,6 @@
+<aside>
+<a href="#top" class="ariane">Orb'E</a>
+</aside>
 <section class="contenaire">
 
     <h2><?= $commande["Detail produit"][0]["nom"] ?></h2>

@@ -1,8 +1,8 @@
 :root {
     --elementDark: #0e0c64;
     --element: #121189;
-    --elementLight: #1310e052;
-    --elementTrans: #1310e091;
+    --elementLight: #1916c705;
+    --elementTrans: #1310e077;
     --background1: #12121A;
     --background2: #FAF9FF;
     --texte1: #FAF9FF;
@@ -59,7 +59,9 @@
     src: url('../fonts/press-start-2p-v15-latin-regular.woff2') format('woff2');
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-
+html {
+    scroll-behavior: smooth;
+}
 /* Styles généraux */
 
 .st0{fill:#2B79C2;}
@@ -94,6 +96,23 @@ a{
     text-decoration: none;
     color: var(--texte1);
 }
+
+a:hover{
+    color: var(--element);
+    background-color: var(--background1);
+    font-weight: bold;
+    box-shadow: 0 0 0 var(--background1);
+
+}
+
+.active{
+    color: var(--texte1);
+    font-weight: bold;
+    border-bottom: 2px solid var(--element);
+   
+}
+
+
  
 
 header .iconHeader{
@@ -136,6 +155,28 @@ h1{
 }
 
 /* Navigation */
+aside{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.ariane{
+    position: fixed;
+    top: 35px;
+    text-align: center;
+    background-color: var(--background1);
+    margin: -37px auto;
+    padding: 4px 16px;
+    color: var(--texte1);
+    border-radius: 0 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    -ms-border-radius: 0 0 6px 6px;
+    -o-border-radius: 0 0 6px 6px;
+}
+
+
 nav {
     position: fixed;
     font-family: var(--texte);

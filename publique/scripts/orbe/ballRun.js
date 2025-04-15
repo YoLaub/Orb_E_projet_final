@@ -10,6 +10,7 @@ import { getValueWeather } from "./meteoSource.js";
 // =======================////////////////======================
 // =======================////////////////======================
 
+
 var canva = document.getElementById("gameCanvas");
 const context = canva.getContext("2d");
 
