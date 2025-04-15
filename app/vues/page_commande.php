@@ -1,3 +1,6 @@
+<aside>
+<a href="#top" class="ariane">Commande</a>
+</aside>
 <section>
     <h1>Commande</h1>
     <div class="infoPerso info-form">
@@ -5,12 +8,12 @@
     </div>
     <div class="info-form">
         <h2>Votre panier</h2>
-        <form id = "commandeForm"  action="./?action=commande" method="post">
+        <form id="commandeForm" action="./?action=commande" method="post">
             <input type="text" name="nomProduit" value="<?= $commande["infoProduit"][0]["nom"]; ?>" readonly><br>
             <input type="text" name="prix" value="<?= $commande["infoProduit"][0]["prix"]; ?>" readonly><br>
-            <input id = "commandeForm" type="number" name="quantite" value="1"><br>
+            <input id="commandeForm" type="number" name="quantite" value="1"><br>
 
-            <button id = "showModal" class="commander" type="submit">Commander !</button>
+            <button id="showModal" class="commander" type="submit">Commander !</button>
         </form>
         <img src="./publique/images/commande_ex.webp" alt="Concept art du noyau Orbe">
     </div>

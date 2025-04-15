@@ -17,14 +17,14 @@
     <link rel="stylesheet" href="./publique/css/<?= $commande["style"] ?>">
     <!-- general -->
     <script src="./publique/scripts/menu.js" defer></script>
-  
+
     <?= $commande["scripts"] ?? "" ?>
 
 
     <title>Orb'E</title>
 </head>
 
-<body class="menu-open">
+<body class="menu-open" id ="top">
 
     <header>
         <div class="logo"><a href="?action=accueil"><img src="./publique/images/logo/Logo.webp" alt="Logo AYLab"></a></div>
@@ -38,28 +38,28 @@
             </p>
 
             <?php if (isset($_SESSION["id"]) && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") { ?>
-                <a class = "profileHeader" href="./?action=profile">
+                <a class="profileHeader" href="./?action=profile">
                     <svg width="32" height="32" fill="white" class="bi bi-person-badge" viewBox="0 0 16 16">
                         <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                         <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
                     </svg>
                 </a>
-                <a class = "deconnexionHeader" href="./?action=deconnexion">
-                <svg  width="32" height="32" fill="white" class="bi bi-door-closed" viewBox="0 0 16 16">
-                    <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3zm1 13h8V2H4z"/>
-                    <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/>
-                </svg>
+                <a class="deconnexionHeader" href="./?action=deconnexion">
+                    <svg width="32" height="32" fill="white" class="bi bi-door-closed" viewBox="0 0 16 16">
+                        <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3zm1 13h8V2H4z" />
+                        <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0" />
+                    </svg>
                 </a>
 
-            <?php } elseif(isset($_SESSION["role"]) && $_SESSION["role"] == "admin") { ?>
-                <a class = "deconnexionHeader" href="./?action=deconnexion">
-                <svg  width="32" height="32" fill="white" class="bi bi-door-closed" viewBox="0 0 16 16">
-                    <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3zm1 13h8V2H4z"/>
-                    <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/>
-                </svg>
+            <?php } elseif (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") { ?>
+                <a class="deconnexionHeader" href="./?action=deconnexion">
+                    <svg width="32" height="32" fill="white" class="bi bi-door-closed" viewBox="0 0 16 16">
+                        <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3zm1 13h8V2H4z" />
+                        <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0" />
+                    </svg>
                 </a>
 
-            <?php }else{?>
+            <?php } else { ?>
                 <a href="./?action=connexion">
                     <svg width="32" height="32" fill="white" class="bi bi-power" viewBox="0 0 16 16">
                         <path d="M7.5 1v7h1V1z" />
@@ -72,3 +72,4 @@
     </header>
 
     <main>
+        

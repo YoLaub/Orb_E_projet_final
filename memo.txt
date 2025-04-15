@@ -1,9 +1,28 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!14/04/2024!!!!!!!!!!!!!
+!!!!!!!!!!!!15/04/2024!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+
+
+-partager scores !
+-leaderboard page accueil
+
+-icone header
+
+
 -modifier API meteo
+
+
+- social icone !!
+
+
+-Attention Si h3 il doit y avoir un h2 !!! verifier la syntaxe
+- Accessibilité - Arialabel !!!
+
+
+-ameliorer jeu et son code
+
 
 -changer icon de menu
 

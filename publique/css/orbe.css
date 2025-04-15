@@ -145,6 +145,12 @@ section p {
     -o-border-radius: 6px 6px 32px 32px;
 }
 
+#console:fullscreen{
+   justify-content: space-between;
+   padding-top: 15%;
+
+}
+
 #gameCanvas {
     margin: 16px;
     width: 350px;
@@ -204,6 +210,12 @@ section p {
         padding: 8px 24px;
     
     }
+
+    #console:fullscreen{
+        justify-content: space-between;
+        padding-top: 7%;
+     
+     }
 }
 
 
@@ -249,7 +261,6 @@ section p {
         height: 40px;
         width: 40px;
     }
-
 
 
 }

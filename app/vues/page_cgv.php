@@ -1,3 +1,7 @@
+<aside>
+<a href="#top" class="ariane">CGV</a>
+</aside>
+
 <section>
     <article>
 

@@ -5,10 +5,13 @@ import {
   getCurrentFrequency,
 } from "./audioManager.js";
 import { getValueWeather } from "./meteoSource.js";
+import { themeVars } from './variableCSS.js';
+import { Texte } from './texte.js';
 
 //=======================VARIABLES GENERALE======================
 // =======================////////////////======================
 // =======================////////////////======================
+
 
 var canva = document.getElementById("gameCanvas");
 const context = canva.getContext("2d");
@@ -38,9 +41,7 @@ const messageFinSpeed = 2;
 var ballY = 290;
 var velocityY = 0;
 const gravity = 0.3;
-const maxJumpPower = -15;
 const jumpPower = -10;
-const minJumpPower = -2;
 const groundY = 300;
 var isOnBlock = false;
 
@@ -121,6 +122,15 @@ function drawAndUpdateBackground() {
     }
   }
 }
+//=========================TEXTE======================
+//=======================/////////======================
+//=======================/////////======================
+
+// const textes = [
+//   new Text({id:"gameover", text:"Game Over", x:canva.width / 2, y:canva.height / 2, color: jeu_alert, justify: "center" }),
+//   new Text({id:"gameover", text:"Game Over", x:canva.width / 2, y:canva.height / 2, color: jeu_alert, justify: "center" })
+// ]
+
 
 //=========================METEO======================
 //=======================/////////======================
@@ -598,17 +608,31 @@ function drawEndMessage() {
 
 function updateGame() {
   if (isGameOver) {
-    // Afficher l'écran de Game Over
-    context.fillStyle = "black";
-    context.font = "40px Arial";
-    context.textAlign = "center";
-    context.fillText("Game Over", canva.width / 2, canva.height / 2);
-    context.font = "20px Arial";
-    context.fillText(
-      "Press R to Restart",
-      canva.width / 2,
-      canva.height / 2 + 40
-    );
+  
+    let isOver = new Texte({
+      id:"isOver", 
+      text:"Game Over !!", 
+      font: themeVars.jeu_texte, 
+      size:30,
+      x:canva.width / 2,
+      y:canva.height / 2,  
+      color: themeVars.jeu_alert, 
+      justify: "center" 
+    });
+    isOver.draw(context)
+
+    let retry = new Texte({
+      id:"retry", 
+      text:"Press Restart", 
+      font: themeVars.jeu_texte, 
+      size:30,
+      x:canva.width / 2,
+      y:canva.height / 2 + 40,  
+      color: themeVars.jeu_alert, 
+      justify: "center" 
+    });
+    retry.draw(context)
+
     return; // Arrête la boucle du jeu
   }
 
@@ -644,7 +668,7 @@ function updateGame() {
   start = true;
 
   //Dessine la boule
-  context.fillStyle = "black";
+  context.fillStyle = "#0e0c64";
   context.beginPath();
   context.arc(100, ballY, 10, 0, Math.PI * 2);
   context.fill();
@@ -706,52 +730,102 @@ function updateGame() {
 
   // Indicateur de bonus
   if (isInvincible && !isGameOver) {
-    context.fillStyle = "black";
-    context.font = "40px Arial";
-    context.textAlign = "center";
-    context.fillText("SPEED ACTIVATE", canva.width / 2, 100);
-    context.font = "20px Arial";
+
+    let speed = new Texte({
+      id:"speed", 
+      text:"SPEED ACTIVATE", 
+      font: themeVars.jeu_texte, 
+      size:20,
+      x:canva.width / 2,
+      y: 60,  
+      color: themeVars.jeu_alert, 
+      justify: "center" 
+    });
+    speed.draw(context)
   }
   if (isSlow && !isGameOver) {
-    context.fillStyle = "black";
-    context.font = "40px Arial";
-    context.textAlign = "center";
-    context.fillText("SLOW", canva.width / 2, 100);
-    context.font = "20px Arial";
+    
+    let slow = new Texte({
+      id:"slow", 
+      text:"SLOW", 
+      font: themeVars.jeu_texte, 
+      size:20,
+      x:canva.width / 2,
+      y: 50,  
+      color: themeVars.jeu_alert, 
+      justify: "center" 
+    });
+    slow.draw(context)
   }
 
   if (speed > 10 && !messageFinActive && !isGameOver) {
-    context.fillStyle = "black";
-    context.font = "40px Arial";
-    context.textAlign = "center";
-    context.fillText("YOU SO ARE FAST!!", canva.width / 2, canva.height);
-    context.font = "20px Arial";
+
+    let soFast = new Texte({
+      id:"soFast", 
+      text:"YOU SO ARE FAST!!", 
+      font: themeVars.jeu_texte, 
+      size:30,
+      x:canva.width / 2,
+      y:canva.height - 50,  
+      color: themeVars.jeu, 
+      justify: "center" 
+    });
+    soFast.draw(context)
   }
   if (speed > 5 && speed < 10 && !messageFinActive && !isGameOver) {
-    context.fillStyle = "black";
-    context.font = "40px Arial";
-    context.textAlign = "center";
-    context.fillText("GO FAST!!", canva.width / 2, canva.height);
-    context.font = "20px Arial";
+    let goFast = new Texte({
+      id:"goFast", 
+      text:"GO FAST!!", 
+      font: themeVars.jeu_texte, 
+      size:30,
+      x:canva.width / 2,
+      y:canva.height - 50,  
+      color: themeVars.jeu, 
+      justify: "center" 
+    });
+    goFast.draw(context)
+   
   }
   if (speed < 4 && !messageFinActive && !isGameOver) {
-    context.fillStyle = "black";
-    context.font = "40px Arial";
-    context.textAlign = "center";
-    context.fillText("YOU ARE SO SLOW!!", canva.width / 2, canva.height);
-    context.font = "20px Arial";
+    let slow = new Texte({
+      id:"soSlow", 
+      text:"YOU ARE SO SLOW!!", 
+      font: themeVars.jeu_texte, 
+      size:30,
+      x:canva.width / 2,
+      y:canva.height - 50,  
+      color: themeVars.jeu_alert, 
+      justify: "center" 
+    });
+    slow.draw(context)
+
   }
 
-  //Affichage du score
-  context.font = "16px serif";
-  context.fillText("Score: " + scoreDisplay, 600, 20);
-  //Temperature
-  context.font = "16px serif";
-  context.fillText(
-    "Temperature: " + Math.floor(temperatureData) + "°C",
-    600,
-    40
-  );
+
+  let scoreText = new Texte({
+    id:"score", 
+    text: `Score: ${scoreDisplay}`, 
+    font: themeVars.jeu_texte, 
+    size:16,
+    x:700,
+    y: 50,  
+    color: themeVars.jeu, 
+    justify: "right" 
+  });
+
+  let TempText = new Texte({
+    id:"temp", 
+    text: `Temperature: ${Math.floor(temperatureData)}°C`, 
+    font: themeVars.jeu_texte, 
+    size:16,
+    x:700,
+    y: 30,  
+    color: themeVars.jeu, 
+    justify: "right" 
+  });
+
+  scoreText.draw(context)
+  TempText.draw(context)
 
   animationId = requestAnimationFrame(updateGame);
 
@@ -784,23 +858,31 @@ function stopGame() {
 
   context.clearRect(0, 0, canva.width, canva.height);
 
-  context.fillStyle = "black";
-  context.font = "40px Arial";
-  context.textAlign = "center";
-  context.fillText(
-    "Your best Score: " + Math.max(...scoreTab),
-    canva.width / 2,
-    canva.height / 2
-  );
+  let bestScore = new Texte({
+    id:"bestScore", 
+    text: "Your best Score: " + Math.max(...scoreTab), 
+    font: themeVars.jeu_texte, 
+    size:24,
+    x:canva.width / 2,
+    y:  canva.height / 2,  
+    color: themeVars.jeu, 
+    justify: "center" 
+  });
 
-  context.font = "20px Arial";
-  context.fillText(
-    "You failed " + gameOver + " times",
-    canva.width / 2,
-    canva.height / 2 + 40
-  );
-  console.log(scoreTab);
-}
+  bestScore.draw(context)
+
+  let failed = new Texte({
+    id:"failed", 
+    text:  "You failed " + gameOver + " times", 
+    font: themeVars.jeu_texte, 
+    size:16,
+    x: canva.width / 2,
+    y: canva.height / 2 + 40,  
+    color: themeVars.jeu_alert, 
+    justify: "center" 
+  });
+
+  failed.draw(context)
 
 //=======================COMMANDES======================
 //=======================/////////======================
