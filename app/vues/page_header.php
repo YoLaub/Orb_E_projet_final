@@ -72,4 +72,8 @@
     </header>
 
     <main>
+    <aside id="ariane">
+        <a href="#top" class="ariane"><?= $commande["page"] ?? "" ?></a>
+    </aside>
+
         

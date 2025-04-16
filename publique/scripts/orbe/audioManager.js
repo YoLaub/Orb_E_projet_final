@@ -59,7 +59,8 @@ export function detectBeats(callback) {
    }
 
    export function getCurrentFrequency(){
-    let currentFrequency = dataArray[0];
+    let currentFrequency = dataArray[Math.floor(Math.random() * 25)];
+
     return currentFrequency
    }
 

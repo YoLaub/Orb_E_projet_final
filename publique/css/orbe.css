@@ -78,7 +78,7 @@ section h3 {
 
 
 
-section p {
+#full, #start, #restart {
     text-align: center;
     font-weight: 400;
     font-size: 0.6rem;
@@ -183,6 +183,101 @@ section p {
         0 1px 0 rgba(255, 255, 255, 0.1) inset;
 }
 
+
+/* ///////////////////////////////////
+////////MODAL/////////////
+//////////////////////// */
+
+.modal {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .modal.show {
+    opacity: 1;
+    pointer-events: auto;
+    position: fixed;
+    top: 150px;
+  }
+  
+  .modal-content {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    background: var(--background2);
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 2px 4px 12px #00000014;
+  }
+  
+  .modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .modal.hidden {
+    display: none;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .modal-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--texte2);
+  }
+  
+  .modal-content button {
+    display: block;
+    padding: 4px 8px;
+    margin: 0 auto 0.5rem auto;
+    font-size: 1rem;
+    border: none;
+    border-radius:6px;
+    background-color: var(--element);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .modal-content button:hover {
+    background-color: var(--elementDark);
+  }
+  
+
+  #partage-alt{
+    display: none;
+    gap: 8px;
+    padding: 4px;
+  }
+
+  #shareIcon{
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+    justify-content:space-between;
+    padding: 0;
+    
+  }
+
+  #partage-alt.svg{
+    width: 16px;
+    height: 16px;
+    fill: var(--texte2);
+    transition: all 0.2s ease;
+  }
+
+  #partage-alt ul li:hover, #partage-alt ul li a:hover{
+    background-color: var(--fondPage);
+    transform: scale(1.2);
+  }
+
 @media (min-width: 768px) {
 
     .control {
@@ -205,7 +300,7 @@ section p {
         height: 200px;
     }
 
-    section p {
+    #full, #start, #restart {
        
         padding: 8px 24px;
     
@@ -216,6 +311,28 @@ section p {
         padding-top: 7%;
      
      }
+
+/* ///////////////////////////////////
+////////MODAL/////////////
+//////////////////////// */
+
+
+     .modal-content {
+        padding: 2rem;
+        max-width: 500px;
+      }
+    
+      .modal-content h2 {
+        font-size: 2rem;
+      }
+    
+      .modal-content p {
+        font-size: 1.2rem;
+      }
+    
+      .modal-content button {
+        font-size: 1.1rem;
+      }
 }
 
 
@@ -233,7 +350,7 @@ section p {
 
     }
 
-    section p {
+    #full, #start, #restart {
         font-size: 0.8rem;
     
     }

@@ -50,6 +50,7 @@ class ProfilControleur
             "formulaire" => $this->modifierInformationPerso($action),
             "reponse" => $this->repondre($nom),
             "style" => "style_profile.css",
+            "page" => "Mon profil",
             "scripts" => '<script src="./publique/scripts/modal_profile.js" defer></script>
 <script src="./publique/scripts/rechercheReponse.js" defer></script>
 <script src="./publique/scripts/information.js" defer></script>'
@@ -71,6 +72,7 @@ class ProfilControleur
             "formulaire" => $this->modifierInformationPerso($action),
             "infoProduit" => $this->connexionDBProduct->getProduct(),
             "style" => "style_commande.css",
+            "page" => "Commande",
             "scripts" => '<script src="./publique/scripts/formulaireCommande.js" defer></script>
             <script src="./publique/scripts/information.js" defer></script>'
 

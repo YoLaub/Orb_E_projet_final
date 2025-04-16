@@ -1,7 +1,3 @@
-<aside>
-<a href="#top" class="ariane">Mon profil</a>
-</aside>
-
 <section>
   <h1>Mon profile</h1>
   <article>

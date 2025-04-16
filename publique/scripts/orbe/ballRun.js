@@ -6,7 +6,7 @@ import {
 } from "./audioManager.js";
 import { getValueWeather } from "./meteoSource.js";
 import { themeVars } from './variableCSS.js';
-import { Texte } from './texte.js';
+import { Texte, openModal } from './texte.js';
 
 //=======================VARIABLES GENERALE======================
 // =======================////////////////======================
@@ -25,6 +25,7 @@ var scoreTab = [];
 
 //Debut de partie
 var start = false;
+
 
 //Fin de partie
 var isGameOver = false;
@@ -59,6 +60,20 @@ var invincibilityTimer = 0;
 
 var isSlow = false;
 var slowTimer = 0;
+//=========================TEXTE======================
+//=======================/////////======================
+//=======================/////////======================
+
+var speedText = new Texte({
+  id: "speed",
+  text: "Super speed",
+  font: themeVars.jeu_texte,
+  size: 20,
+  x: canva.width / 2,
+  y: 60,
+  color: themeVars.jeu_alert,
+  justify: "center"
+});
 
 //=======================BACKGROUND======================
 //=======================/////////======================
@@ -340,13 +355,12 @@ function drawCloud() {
 //=======================/////////======================
 //=======================/////////======================
 
-const backgroundMusic = new Audio("./publique/musique/test3.mp3");
+const backgroundMusic = new Audio("./publique/musique/test1.mp3");
 backgroundMusic.volume = 1; // Ajuste le volume
 
 backgroundMusic.addEventListener("ended", () => {
   messageFinActive = true;
   drawEndMessage();
-  console.log("ended");
 });
 
 //=========================BONUS======================
@@ -419,6 +433,7 @@ function checkBonusCollision() {
 
 function activateInvincibility() {
   isInvincible = true;
+  speedText.updateText("Super speed")
   baseSpeed = 10;
   invincibilityTimer = 300; // 5 seconds => 60 FPS)
 }
@@ -426,6 +441,16 @@ function activateInvincibility() {
 function updateInvincibility() {
   if (isInvincible) {
     invincibilityTimer--;
+   if(invincibilityTimer <= 200 && invincibilityTimer > 150){
+    speedText.updateText("3")
+   }else if(invincibilityTimer <= 150 && invincibilityTimer > 100){
+    speedText.updateText("2")
+   }else if(invincibilityTimer <= 100 && invincibilityTimer > 50){
+    speedText.updateText("1")
+   }else if(invincibilityTimer <= 50){
+    speedText.updateText("0")
+   }
+
     if (invincibilityTimer <= 0) {
       isInvincible = false;
       baseSpeed = 3;
@@ -494,12 +519,19 @@ function drawParticule() {
 
 //generer les obstacles
 function generateObstacle() {
+  let compare = getCurrentFrequency()/2 - Math.floor(Math.random() * 200);
+
+ if( compare > 0){
   let obstacle = {
     x: canva.width,
     width: 20 + Math.floor(Math.random() * 10),
-    height: getCurrentFrequency() / 4 - Math.floor(Math.random() * 10),
+    height: compare,
   };
   obstacles.push(obstacle); // Ajoute le nouvel obstacle au tableau
+ }else{
+  return
+ }
+  
 }
 
 function drawObstacles() {
@@ -599,6 +631,7 @@ function drawEndMessage() {
     canva.width / 2
   ) {
     stopGame(); // Arrêter le jeu
+
   }
 }
 
@@ -608,30 +641,31 @@ function drawEndMessage() {
 
 function updateGame() {
   if (isGameOver) {
-  
+
     let isOver = new Texte({
-      id:"isOver", 
-      text:"Game Over !!", 
-      font: themeVars.jeu_texte, 
-      size:30,
-      x:canva.width / 2,
-      y:canva.height / 2,  
-      color: themeVars.jeu_alert, 
-      justify: "center" 
+      id: "isOver",
+      text: "Game Over !!",
+      font: themeVars.jeu_texte,
+      size: 30,
+      x: canva.width / 2,
+      y: canva.height / 2,
+      color: themeVars.jeu_alert,
+      justify: "center"
     });
     isOver.draw(context)
 
     let retry = new Texte({
-      id:"retry", 
-      text:"Press Restart", 
-      font: themeVars.jeu_texte, 
-      size:30,
-      x:canva.width / 2,
-      y:canva.height / 2 + 40,  
-      color: themeVars.jeu_alert, 
-      justify: "center" 
+      id: "retry",
+      text: "Press Restart",
+      font: themeVars.jeu_texte,
+      size: 30,
+      x: canva.width / 2,
+      y: canva.height / 2 + 40,
+      color: themeVars.jeu_alert,
+      justify: "center"
     });
     retry.draw(context)
+    document.getElementById("restart").style.display ="block";
 
     return; // Arrête la boucle du jeu
   }
@@ -731,29 +765,19 @@ function updateGame() {
   // Indicateur de bonus
   if (isInvincible && !isGameOver) {
 
-    let speed = new Texte({
-      id:"speed", 
-      text:"SPEED ACTIVATE", 
-      font: themeVars.jeu_texte, 
-      size:20,
-      x:canva.width / 2,
-      y: 60,  
-      color: themeVars.jeu_alert, 
-      justify: "center" 
-    });
-    speed.draw(context)
+    speedText.draw(context)
   }
   if (isSlow && !isGameOver) {
-    
+
     let slow = new Texte({
-      id:"slow", 
-      text:"SLOW", 
-      font: themeVars.jeu_texte, 
-      size:20,
-      x:canva.width / 2,
-      y: 50,  
-      color: themeVars.jeu_alert, 
-      justify: "center" 
+      id: "slow",
+      text: "SLOW",
+      font: themeVars.jeu_texte,
+      size: 20,
+      x: canva.width / 2,
+      y: 50,
+      color: themeVars.jeu_alert,
+      justify: "center"
     });
     slow.draw(context)
   }
@@ -761,41 +785,41 @@ function updateGame() {
   if (speed > 10 && !messageFinActive && !isGameOver) {
 
     let soFast = new Texte({
-      id:"soFast", 
-      text:"YOU SO ARE FAST!!", 
-      font: themeVars.jeu_texte, 
-      size:30,
-      x:canva.width / 2,
-      y:canva.height - 50,  
-      color: themeVars.jeu, 
-      justify: "center" 
+      id: "soFast",
+      text: "YOU SO ARE FAST!!",
+      font: themeVars.jeu_texte,
+      size: 30,
+      x: canva.width / 2,
+      y: canva.height - 50,
+      color: themeVars.jeu,
+      justify: "center"
     });
     soFast.draw(context)
   }
   if (speed > 5 && speed < 10 && !messageFinActive && !isGameOver) {
     let goFast = new Texte({
-      id:"goFast", 
-      text:"GO FAST!!", 
-      font: themeVars.jeu_texte, 
-      size:30,
-      x:canva.width / 2,
-      y:canva.height - 50,  
-      color: themeVars.jeu, 
-      justify: "center" 
+      id: "goFast",
+      text: "GO FAST!!",
+      font: themeVars.jeu_texte,
+      size: 30,
+      x: canva.width / 2,
+      y: canva.height - 50,
+      color: themeVars.jeu,
+      justify: "center"
     });
     goFast.draw(context)
-   
+
   }
   if (speed < 4 && !messageFinActive && !isGameOver) {
     let slow = new Texte({
-      id:"soSlow", 
-      text:"YOU ARE SO SLOW!!", 
-      font: themeVars.jeu_texte, 
-      size:30,
-      x:canva.width / 2,
-      y:canva.height - 50,  
-      color: themeVars.jeu_alert, 
-      justify: "center" 
+      id: "soSlow",
+      text: "YOU ARE SO SLOW!!",
+      font: themeVars.jeu_texte,
+      size: 30,
+      x: canva.width / 2,
+      y: canva.height - 50,
+      color: themeVars.jeu_alert,
+      justify: "center"
     });
     slow.draw(context)
 
@@ -803,25 +827,25 @@ function updateGame() {
 
 
   let scoreText = new Texte({
-    id:"score", 
-    text: `Score: ${scoreDisplay}`, 
-    font: themeVars.jeu_texte, 
-    size:16,
-    x:700,
-    y: 50,  
-    color: themeVars.jeu, 
-    justify: "right" 
+    id: "score",
+    text: `Score: ${scoreDisplay}`,
+    font: themeVars.jeu_texte,
+    size: 16,
+    x: 700,
+    y: 50,
+    color: themeVars.jeu,
+    justify: "right"
   });
 
   let TempText = new Texte({
-    id:"temp", 
-    text: `Temperature: ${Math.floor(temperatureData)}°C`, 
-    font: themeVars.jeu_texte, 
-    size:16,
-    x:700,
-    y: 30,  
-    color: themeVars.jeu, 
-    justify: "right" 
+    id: "temp",
+    text: `Temperature: ${Math.floor(temperatureData)}°C`,
+    font: themeVars.jeu_texte,
+    size: 16,
+    x: 700,
+    y: 30,
+    color: themeVars.jeu,
+    justify: "right"
   });
 
   scoreText.draw(context)
@@ -831,6 +855,7 @@ function updateGame() {
 
   if (messageFinActive) {
     drawEndMessage();
+    
   }
 }
 
@@ -854,35 +879,40 @@ function stopGame() {
       console.error("Erreur lors de l'envoi du score :", error);
     });
 
+  openModal(scoreToSave);
   cancelAnimationFrame(animationId);
+
+
 
   context.clearRect(0, 0, canva.width, canva.height);
 
   let bestScore = new Texte({
-    id:"bestScore", 
-    text: "Your best Score: " + Math.max(...scoreTab), 
-    font: themeVars.jeu_texte, 
-    size:24,
-    x:canva.width / 2,
-    y:  canva.height / 2,  
-    color: themeVars.jeu, 
-    justify: "center" 
+    id: "bestScore",
+    text: "Your best Score: " + Math.max(...scoreTab),
+    font: themeVars.jeu_texte,
+    size: 24,
+    x: canva.width / 2,
+    y: canva.height / 2,
+    color: themeVars.jeu,
+    justify: "center"
   });
 
   bestScore.draw(context)
 
   let failed = new Texte({
-    id:"failed", 
-    text:  "You failed " + gameOver + " times", 
-    font: themeVars.jeu_texte, 
-    size:16,
+    id: "failed",
+    text: "You failed " + gameOver + " times",
+    font: themeVars.jeu_texte,
+    size: 16,
     x: canva.width / 2,
-    y: canva.height / 2 + 40,  
-    color: themeVars.jeu_alert, 
-    justify: "center" 
+    y: canva.height / 2 + 40,
+    color: themeVars.jeu_alert,
+    justify: "center"
   });
 
   failed.draw(context)
+
+}
 
 //=======================COMMANDES======================
 //=======================/////////======================
@@ -908,63 +938,6 @@ document.getElementById("jump").addEventListener("click", () => {
   }
 });
 
-// document.getElementById("jump").addEventListener("mousedown", () => {
-//     let pressDuration = (Date.now() - jumpStartTime) / 1000;
-//     jumpStartTime = null;
-
-//     let jumpPowerModulated = Math.max(
-//       maxJumpPower,
-//       minJumpPower - pressDuration * 10
-//     );
-
-//     if (ballY === groundY - 10 || isOnBlock) {
-//       velocityY = jumpPowerModulated;
-//       isOnBlock = false;
-//       doubleJumpAvailable = true;
-//     } else if (doubleJumpAvailable) {
-//       velocityY = jumpPowerModulated;
-//     } else if (ballY < groundY - 10) {
-//     }
-// });
-
-// document.addEventListener("keydown", (e) => {
-//   if (e.code === "Space") {
-//     if (ballY === groundY - 10 || isOnBlock) {
-//       velocityY = jumpPower;
-//       //soundJump.play();
-//       isOnBlock = false; // La balle quitte le bloc
-//       doubleJumpAvailable = true;
-//     } else if (doubleJumpAvailable) {
-//       velocityY = jumpPower + 2;
-//       doubleJumpAvailable = false;
-//     }
-
-//     if (e.code === "Space" && jumpStartTime === null) {
-//       jumpStartTime = Date.now();
-//     }
-//   }
-// });
-
-// document.addEventListener("keyup", (e) => {
-//   if (e.code === "Space" && jumpStartTime != null) {
-//     let pressDuration = (Date.now() - jumpStartTime) / 1000;
-//     jumpStartTime = null;
-
-//     let jumpPowerModulated = Math.max(
-//       maxJumpPower,
-//       minJumpPower - pressDuration * 10
-//     );
-
-//     if (ballY === groundY - 10 || isOnBlock) {
-//       velocityY = jumpPowerModulated;
-//       isOnBlock = false;
-//       doubleJumpAvailable = true;
-//     } else if (doubleJumpAvailable) {
-//       velocityY = jumpPowerModulated;
-//     } else if (ballY < groundY - 10) {
-//     }
-//   }
-// });
 
 function restartGame() {
   //Réinitialise les variables
@@ -979,18 +952,11 @@ function restartGame() {
   updateGame();
 }
 
-// document.addEventListener("keydown", (e) => {
-//   if ((e.key === "s" && !start) || (e.key === "S" && !start)) {
-//     // Démarrer le jeu après interaction
-//     initializeAudio(backgroundMusic);
-//     updateGame();
-//     generateClouds();
-
-//   }
-// });
 
 document.getElementById("start").addEventListener("click", () => {
   // Démarrer le jeu après interaction
+  document.getElementById("start").style.display = "none";
+  document.getElementById("restart").style.display = "none";
   initializeAudio(backgroundMusic);
   updateGame();
   generateClouds();
@@ -998,14 +964,9 @@ document.getElementById("start").addEventListener("click", () => {
 
 document.getElementById("restart").addEventListener("click", () => {
   // Démarrer le jeu après interaction
+  document.getElementById("restart").style.display = "none";
   initializeAudio(backgroundMusic);
   restartGame();
 });
 
-// window.addEventListener("keydown", (e) => {
-//   if ((e.key === "r" && isGameOver) || (e.key === "R" && isGameOver)) {
-//     // Démarrer le jeu après interaction
-//     initializeAudio(backgroundMusic);
-//     restartGame();
-//   }
-// });
+

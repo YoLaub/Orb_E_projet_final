@@ -1,6 +1,3 @@
-<aside>
-<a href="#top" class="ariane">FAQ</a>
-</aside>
 <section>
     <article>
         <img src="./publique/images/faq.webp" alt="Faq">

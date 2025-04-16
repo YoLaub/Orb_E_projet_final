@@ -34,6 +34,7 @@ class Connexion
     public function connexionUtilisateur()
     {
         $this->params["action"] = "connexion";
+        $this->params["page"] = "Connexion";
         $this->params["inscription"] = $this->pageLayout->render("partials/inscription.php", $this->params, true);
 
 
@@ -89,6 +90,7 @@ class Connexion
     public function inscription()
     {
         $this->params["action"] = "inscription";
+        $this->params["page"] = "Inscription";
         $this->params["inscription"] = $this->pageLayout->render("partials/inscription.php", $this->params, true);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {

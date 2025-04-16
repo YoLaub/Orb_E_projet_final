@@ -6,10 +6,6 @@
         <button id="accept-cookies">Accepter</button>
     </div>
 </div>
-<aside>
-    <a href="#top"  class="ariane">Accueil</a>
-</aside>
-
 
 <section class="intro">
     <div class="presentation">

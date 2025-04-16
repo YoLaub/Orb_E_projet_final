@@ -30,15 +30,16 @@ class ProduitControleur
     {
         $this->params["commande"] = "Commandez !";
         $this->params["Detail produit"] = $this->detailsProduit;
-        $this->params["meta"] = '<meta property="og:title" content="' . htmlspecialchars($this->detailsProduit[0]["nom"]) . '" />
-        <meta property="og:description" content="' . htmlspecialchars($this->detailsProduit[0]["description"]) . '" />
-        <meta property="og:image" content="' . htmlspecialchars($this->detailsProduit[0]["photo"]) . '" />
-        <meta property="og:url" content="https://ton-site.com/?action=produit" />
+        $this->params["meta"] = '<meta property="og:title" content="' . $this->detailsProduit[0]["nom"] . '" />
+        <meta property="og:description" content="' . $this->detailsProduit[0]["description"] . '" />
+        <meta property="og:image" content="./publique/images/3.webp" />
+        <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/?action=produit" />
         <meta property="og:type" content="product" />';
         $this->params["partage"] = $this->pageLayout->render("partials/partage.php",  $this->detailsProduit, true);
         $this->params["style"] = "style_produit.css";
         $this->params["scripts"] = '<script type="module" src="./publique/scripts/visualiseur.js" defer></script>
         <script src="./publique/scripts/article.js" defer></script>';
+        $this->params["page"] = "Orb'E";
 
 
 

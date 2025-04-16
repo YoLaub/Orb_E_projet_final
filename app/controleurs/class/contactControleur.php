@@ -25,7 +25,7 @@ class ContactControleur
 
         $this->params["style"] = "style_contact.css";
         $this->params["scripts"] = '<script src="./publique/scripts/contact.js" defer></script>';
-
+        $this->params["page"] = "Contactez nous";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $nom = htmlspecialchars($_POST["nom"]);

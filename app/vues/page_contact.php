@@ -1,6 +1,3 @@
-<aside>
-<a href="#top" class="ariane">Contact</a>
-</aside>
 <section>
     <h1>Contactez-nous</h1>
 

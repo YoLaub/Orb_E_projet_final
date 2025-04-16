@@ -1,6 +1,4 @@
-<aside>
-<a href="#top" class="ariane">Commande</a>
-</aside>
+
 <section>
     <h1>Commande</h1>
     <div class="infoPerso info-form">
