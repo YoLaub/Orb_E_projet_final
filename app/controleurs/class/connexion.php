@@ -49,7 +49,14 @@ class Connexion
 
                 if ($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
                     // Redirection vers l'accueil si connexion réussie
-                    $this->home->accueil();
+                    if(isset($_SESSION["url"])){
+                        $url = $_SESSION["url"];
+                        unset($_SESSION["url"]);
+                        header("Location: $url");
+                        exit;
+                    }else{
+                        $this->home->accueil();
+                    }
                 } elseif ($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
                     $this->home->accueil();
                 } else {
@@ -130,10 +137,8 @@ class Connexion
             unset($_SESSION["role"]);
             session_destroy();
 
-            $this->params["style"] = "style_accueil.css";
-
-            $content = "page_accueil.php";
-            $this->pageLayout->render($content, $this->params);
+            header("Location: ?action=accueil");
+            exit();
         }
     }
 

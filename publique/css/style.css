@@ -68,6 +68,11 @@ html {
 .st1{fill:#3B4652;}
 .st2{fill:#333333;}
 
+.bi-person-lock{
+    width: 40px;
+    height: 40px;
+}
+
 svg{
     width: 32px;
     height: 32px;
@@ -98,10 +103,8 @@ a{
 }
 
 a:hover{
-    color: var(--element);
-    background-color: var(--background1);
+    transform: scale(1.2);
     font-weight: bold;
-    box-shadow: 0 0 0 var(--background1);
 
 }
 
@@ -178,7 +181,7 @@ h1{
 
 
 nav {
-    position: relative;
+    position: fixed;
     font-family: var(--texte);
     top: 0;
     right: 0;
@@ -187,7 +190,6 @@ nav {
     background: rgba(0, 0, 0, 0.74);
     backdrop-filter: blur(2px);
     transition: transform 0.3s ease-in-out;
-    padding-top: 30px;
     box-shadow: 
     0 2px 4px rgba(0, 0, 0, 0.1),
     0 1px 0 rgba(255, 255, 255, 0.1) inset;
@@ -387,7 +389,7 @@ footer {
         background: none;
         box-shadow: none;
         transform: none;
-        padding-bottom: 64px;
+        padding-bottom: 16px;
         margin-right: 32px;
     }
 

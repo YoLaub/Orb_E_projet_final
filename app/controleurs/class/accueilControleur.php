@@ -15,11 +15,14 @@ class AccueilControleur
     private $connexionCommande;
     private $connexionJeu;
     private $params;
+    private $count;
 
     public function __construct()
     {
         $this->pageLayout = new RenderLayout;
+        $this->connexionJeu = new DBParty();
         $this->params = array();
+        $this->count = 3;
     }
 
     public function accueil()
@@ -27,8 +30,8 @@ class AccueilControleur
 
         $this->params["style"] = "style_accueil.css";
         $this->params["scripts"] = '<script src="./publique/scripts/consent.js" defer></script>';
+        $this->params["meilleurJoueur"] = $this->connexionJeu->getFiveBestScores( $this->count);
         $this->params["page"] = 'Accueil';
-
 
         if (isset($_SESSION["role"])) {
             if ($_SESSION["role"] == "utilisateur") {
@@ -48,7 +51,6 @@ class AccueilControleur
 
         $this->connexionUtilisateur = new DBUser();
         $this->connexionCommande = new DBOrder();
-        $this->connexionJeu = new DBParty();
 
         $this->params["style"] = "style_accueil_bo.css";
 
@@ -77,12 +79,10 @@ class AccueilControleur
         $table = 'commandes';
         $colonne = 'statut';
 
-        $count = 5;
-
 
         $this->params["commande"] =  $commandesGroupées;
         $this->params["lesUtilisateurs"] = $this->connexionUtilisateur->numberOfUser();
-        $this->params["meilleurJoueur"] = $this->connexionJeu->getFiveBestScores($count);
+        $this->params["meilleurJoueur"] = $this->connexionJeu->getFiveBestScores( $this->count);
         $this->params["total_score"] = $this->connexionJeu->totalScore();
         $this->params["select"] = $this->connexionCommande->showEnum($table, $colonne);
 

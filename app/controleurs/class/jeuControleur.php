@@ -57,6 +57,7 @@ class JeuControleur
             $content = "page_jeu.php";
             $this->pageLayout->render($content, $this->params);
         } else {
+            $_SESSION["url"] = $_SERVER['REQUEST_URI'];
             header("Location: ?action=connexion");
         }
     }
