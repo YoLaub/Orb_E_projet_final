@@ -46,7 +46,7 @@ const share = document.getElementById("share-btn");
 export function openModal(score) {
     document.getElementById("final-score").textContent = score;
     modal.classList.remove("hidden");
-    modal.classList.add("show");
+    modal.classList.add("showModale");
 
     share.addEventListener("click", function () {
 

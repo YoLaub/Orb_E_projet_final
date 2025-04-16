@@ -45,7 +45,7 @@ section p {
 }
 
 .connexion-form {
-    padding: 32px;
+    padding: 32px 0px;
     width: 90%;
     margin: 20px auto;
     background-color: var(--fondPage);
@@ -121,6 +121,7 @@ section p {
     }
     
     .connexion-form {
+        padding: 32px 8px;
         max-width: 480px;
     }
 
