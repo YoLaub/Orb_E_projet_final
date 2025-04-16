@@ -27,6 +27,8 @@ class AccueilControleur
 
         $this->params["style"] = "style_accueil.css";
         $this->params["scripts"] = '<script src="./publique/scripts/consent.js" defer></script>';
+        $this->params["page"] = 'Accueil';
+
 
         if (isset($_SESSION["role"])) {
             if ($_SESSION["role"] == "utilisateur") {

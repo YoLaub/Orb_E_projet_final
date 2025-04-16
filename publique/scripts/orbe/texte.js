@@ -31,3 +31,60 @@ export class Texte {
         this.visible = true;
     }
 }
+
+
+const modal = document.getElementById("game-end-modal");
+const retryBtn = document.getElementById("retry-btn");
+const share = document.getElementById("share-btn");
+
+// Ouvre la modale
+export function openModal(score) {
+    document.getElementById("final-score").textContent = score;
+    modal.classList.remove("hidden");
+    modal.classList.add("show");
+
+    share.addEventListener("click", function () {
+
+        if (window.innerWidth < 768) {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Mon score',
+                    text: `Regarde mon score de fou : ${score} ! `,
+                    url: window.location.href
+                });
+            } else {
+                // Affiche un menu personnalisé avec liens de partage
+                document.querySelector('#partage-alt').style.display = "block";
+  
+            }
+        }else{
+            // Affiche un menu personnalisé avec liens de partage
+            document.querySelector('#partage-alt').style.display = "block";
+
+        }
+
+
+    })
+}
+
+// Ferme la modale
+function closeModal() {
+    modal.classList.remove("show");
+}
+
+// Fermer en cliquant en dehors de .modal-content
+modal.addEventListener("click", (e) => {
+    if (e.target.dataset.close !== undefined) {
+        closeModal();
+    }
+});
+
+// Bouton rejouer
+retryBtn.addEventListener("click", () => {
+    location.reload();
+    // ici tu peux relancer ton jeu
+});
+
+
+
+

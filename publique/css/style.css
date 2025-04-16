@@ -155,7 +155,7 @@ h1{
 }
 
 /* Navigation */
-aside{
+#ariane{
     display: flex;
     justify-content: center;
     align-content: center;
@@ -178,7 +178,7 @@ aside{
 
 
 nav {
-    position: fixed;
+    position: relative;
     font-family: var(--texte);
     top: 0;
     right: 0;
@@ -387,7 +387,7 @@ footer {
         background: none;
         box-shadow: none;
         transform: none;
-        padding-top: 0;
+        padding-bottom: 64px;
         margin-right: 32px;
     }
 

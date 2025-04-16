@@ -1,6 +1,3 @@
-<aside>
-<a href="#top" class="ariane">Qui sommes nous ?</a>
-</aside>
 <section>
 
     <article>

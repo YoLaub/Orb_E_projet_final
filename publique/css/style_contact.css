@@ -102,6 +102,7 @@ section p {
 
 .rgpd:hover {
    font-weight: bold;
+   background-color: var(--background2);
    color: var(--element);
 }
 

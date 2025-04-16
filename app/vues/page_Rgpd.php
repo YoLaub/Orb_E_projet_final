@@ -1,6 +1,3 @@
-<aside>
-<a href="#top" class="ariane">Rgpd</a>
-</aside>
 <section>
     <article>
         <h1>Nos Engagements</h1>

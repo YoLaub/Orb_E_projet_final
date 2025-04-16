@@ -1,6 +1,3 @@
-<aside>
-<a href="#top"class="ariane">Connexion</a>
-</aside>
 <section id="connexion">
     <h1>
         Connexion

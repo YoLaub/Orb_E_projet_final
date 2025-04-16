@@ -20,6 +20,11 @@ class JeuControleur
         $this->params["style"] = "orbe.css";
         $this->params["scripts"] = '<script type="module" src="./publique/scripts/orbe/ballRun.js" defer></script>
         <script src="./publique/scripts/orbe/fullscreen.js" defer></script>';
+        $this->params["page"] = "Jouer";
+        $this->params["meta"] = '<meta property="og:title" content="Orbe" />
+        <meta property="og:image" content="./publique/images/mini_jeu1.webp" />
+        <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/?action=accueil" />
+        <meta property="og:type" content="game" />';
     }
 
     public function pageJeu()
@@ -34,17 +39,17 @@ class JeuControleur
                 $idUtilisateur = $_SESSION["id"] ?? "";
                 $data = json_decode(file_get_contents("php://input"), true);
                 $score = $data["score"] ?? "";
+                $_SESSION["score"] = $score;
 
                 if (!empty($idUtilisateur) && !empty($score)) {
                     $etat = $this->partie->saveScore($score, $idUtilisateur);
                     if ($etat) {
-                        header("Location: ?action=jeu"); // Redirection vers la même page après POST
-                        exit;
+                        return $this->pageLayout->render("page_jeu.php", $this->params);
                     } else {
                         $this->params["message"] = "Une erreur c'est produite !";
                         return $this->pageLayout->render("page_jeu.php", $this->params);
                     }
-                    $this->params["message"] = "Vous n'êtes probablement pas autorisé à participer, inscrivez vous !!";
+                    $this->params["message"] = "Vous n'êtes probablement pas autorisé à jouer, inscrivez vous !!";
                     return $this->pageLayout->render("page_jeu.php", $this->params);
                 }
             }
