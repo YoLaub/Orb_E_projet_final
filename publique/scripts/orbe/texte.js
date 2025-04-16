@@ -23,6 +23,10 @@ export class Texte {
         this.text = newText;
     }
 
+    updatePosition(newX) {
+        this.x = newX;
+    }
+
     hide() {
         this.visible = false;
     }
@@ -31,6 +35,7 @@ export class Texte {
         this.visible = true;
     }
 }
+
 
 
 const modal = document.getElementById("game-end-modal");

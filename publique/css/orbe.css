@@ -81,7 +81,7 @@ section h3 {
 #full, #start, #restart {
     text-align: center;
     font-weight: 400;
-    font-size: 0.6rem;
+    font-size: 0.4rem;
     border: none;
     border-radius: 6px;
     padding: 8px 16px;
@@ -99,7 +99,6 @@ section h3 {
     display: flex;
     flex-direction: row;
     gap: 16px;
-    font-size: 0.8rem;
 }
 
 
@@ -119,8 +118,14 @@ section h3 {
 
 #jump,
 #start,
-#restart {
+#restart,
+#full {
     background-color: #5b5b5f;
+}
+
+.full{
+  width: 16px;
+  height: 16px;
 }
 
 
@@ -152,16 +157,10 @@ section h3 {
 }
 
 #gameCanvas {
-    margin: 16px;
     width: 350px;
     height: 175px;
     border: 1px solid #00000071;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    -ms-border-radius: 6px;
-    -o-border-radius: 6px;
 }
 
 .control {
@@ -169,7 +168,7 @@ section h3 {
     display: flex;
     flex-direction: row;
     width: 100%;
-    gap: 32px;
+    gap: 16px;
     padding: 16px 0;
     font-family: var(--jeu_texte);
     justify-content:center;
@@ -353,6 +352,11 @@ section h3 {
     #full, #start, #restart {
         font-size: 0.8rem;
     
+    }
+
+    .full{
+      width: 32px;
+      height: 32px;
     }
 
     #startRestart {

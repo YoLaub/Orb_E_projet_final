@@ -4,7 +4,7 @@ import {
   drawB,
   getCurrentFrequency,
 } from "./audioManager.js";
-import { getValueWeather } from "./meteoSource.js";
+import { getValueWeather, updateCount } from "./meteoSource.js";
 import { themeVars } from './variableCSS.js';
 import { Texte, openModal } from './texte.js';
 
@@ -16,7 +16,7 @@ import { Texte, openModal } from './texte.js';
 var canva = document.getElementById("gameCanvas");
 const context = canva.getContext("2d");
 
-var modeTest = false;
+var modeTest = true;
 
 //Gestion du score
 var score = 0;
@@ -35,7 +35,7 @@ var animationId = null;
 // Variables pour gérer le message de fin
 let messageFinActive = false;
 let messageFinX = canva.width;
-const messageFinText = "Fin";
+const messageFinText = "Finish";
 const messageFinSpeed = 2;
 
 //Gestion de la balle
@@ -60,6 +60,10 @@ var invincibilityTimer = 0;
 
 var isSlow = false;
 var slowTimer = 0;
+
+//Particule
+var particules = [];
+var ballParticules = [];
 //=========================TEXTE======================
 //=======================/////////======================
 //=======================/////////======================
@@ -75,40 +79,64 @@ var speedText = new Texte({
   justify: "center"
 });
 
+var cityText = new Texte({
+  id: "city",
+  text: "Paris",
+  font: themeVars.jeu_texte,
+  size: 20,
+  x: canva.width / 2,
+  y: canva.height - 20,
+  color: themeVars.jeu,
+  justify: "center"
+});
+
+var finishText = new Texte({
+  id: "finish",
+  text: messageFinText,
+  font: themeVars.jeu_texte,
+  size: 32,
+  x: messageFinX,
+  y: canva.height / 2,
+  color: themeVars.jeu,
+  justify: "center"
+});
+
+
+
 //=======================BACKGROUND======================
 //=======================/////////======================
 //=======================/////////======================
 
-const bgParis = new Image();
-bgParis.src = "./publique/images/orbe/paris.png"; // Remplace par le chemin de ton image
-const bgMoscou = new Image();
-bgMoscou.src = "./publique/images/orbe/moscou.png"; // Remplace par le chemin de ton image
-const bgTokyo = new Image();
-bgTokyo.src = "./publique/images/orbe/tokyo.png"; // Remplace par le chemin de ton image
-const bgJohannesburg = new Image();
-bgJohannesburg.src = "./publique/images/orbe/johannesburg.png"; // Remplace par le chemin de ton image
-const bgBresil = new Image();
-bgBresil.src = "./publique/images/orbe/rio.png"; // Remplace par le chemin de ton image
-const bgNewYork = new Image();
-bgNewYork.src = "./publique/images/orbe/newyork.png"; // Remplace par le chemin de ton image
+const paris = new Image();
+paris.src = "./publique/images/orbe/paris.png"; // Remplace par le chemin de ton image
+const moscou = new Image();
+moscou.src = "./publique/images/orbe/moscou.png"; // Remplace par le chemin de ton image
+const tokyo = new Image();
+tokyo.src = "./publique/images/orbe/tokyo.png"; // Remplace par le chemin de ton image
+const johannesburg = new Image();
+johannesburg.src = "./publique/images/orbe/johannesburg.png"; // Remplace par le chemin de ton image
+const rio = new Image();
+rio.src = "./publique/images/orbe/rio.png"; // Remplace par le chemin de ton image
+const newYork = new Image();
+newYork.src = "./publique/images/orbe/newyork.png"; // Remplace par le chemin de ton image
 
 var backgroundsCity = [
-  { src: bgParis, x: 0, y: -100, width: canva.width, height: canva.height },
-  { src: bgMoscou, x: 0, y: -100, width: canva.width, height: canva.height },
-  { src: bgTokyo, x: 0, y: -100, width: canva.width, height: canva.height },
+  { src: paris, x: 0, y: -100, width: canva.width, height: canva.height },
+  { src: moscou, x: 0, y: -100, width: canva.width, height: canva.height },
+  { src: tokyo, x: 0, y: -100, width: canva.width, height: canva.height },
   {
-    src: bgJohannesburg,
+    src: johannesburg,
     x: 0,
     y: -100,
     width: canva.width,
     height: canva.height,
   },
-  { src: bgBresil, x: 0, y: -100, width: canva.width, height: canva.height },
-  { src: bgNewYork, x: 0, y: -100, width: canva.width, height: canva.height },
+  { src: rio, x: 0, y: -100, width: canva.width, height: canva.height },
+  { src: newYork, x: 0, y: -100, width: canva.width, height: canva.height },
 ];
 
-var backgroundIndex = 0;
-var round = 0;
+let backgroundIndex = 0;
+let round = 0;
 
 function drawAndUpdateBackground() {
   context.drawImage(
@@ -123,9 +151,9 @@ function drawAndUpdateBackground() {
     if (isSlow) {
       backgroundsCity[backgroundIndex].x -= 0.1; // Vitesse réduite si slow
     } else if (isInvincible) {
-      backgroundsCity[backgroundIndex].x -= 0.6; // Vitesse légèrement plus lente pour simuler la distance
+      backgroundsCity[backgroundIndex].x -= 0.7; // Vitesse légèrement plus lente pour simuler la distance
     } else {
-      backgroundsCity[backgroundIndex].x -= 0.2;
+      backgroundsCity[backgroundIndex].x -= 0.3;
     }
   } else {
     if (backgroundIndex === backgroundsCity.length - 1) {
@@ -134,6 +162,13 @@ function drawAndUpdateBackground() {
       round++;
     } else {
       backgroundIndex++;
+      updateCount(backgroundIndex)
+      pressure();
+      temperature();
+      nebulosity();
+      let nameCity = backgroundsCity[backgroundIndex].src.src
+      let cleanedName = nameCity.split('/').pop().replace('.png', '');
+      cityText.updateText(cleanedName.toUpperCase()); // affiche juste "paris"
     }
   }
 }
@@ -201,8 +236,7 @@ async function nebulosity() {
 }
 nebulosity();
 
-//Particule
-var particules = [];
+
 //Son
 
 //const soundJump = new Audio("sound/jump.mp3")
@@ -355,7 +389,7 @@ function drawCloud() {
 //=======================/////////======================
 //=======================/////////======================
 
-const backgroundMusic = new Audio("./publique/musique/test1.mp3");
+const backgroundMusic = new Audio("./publique/musique/test.mp3");
 backgroundMusic.volume = 1; // Ajuste le volume
 
 backgroundMusic.addEventListener("ended", () => {
@@ -476,9 +510,9 @@ function updateSlow() {
 //=======================/////////======================
 //=======================/////////======================
 
-//Generer les particules
+//Generer les particules pluie
 function generateParticules() {
-  const particule = {
+  let particule = {
     x: Math.random() * 800,
     y: Math.random() * groundY,
     width: 2,
@@ -508,10 +542,49 @@ function drawParticule() {
 
     if (particule.x + particule.width < 0) {
       particules.splice(i, 1); // Retire l'obstacle du tableau
-      score++;
+     
     }
   });
 }
+
+//particule balle
+function generateBallParticules() {
+  let ballParticule = {
+    x: 100,
+    y: Math.random() * 10 + ballY,
+    width: 5,
+    height: 1,
+  };
+  ballParticules.push(ballParticule);
+}
+
+function drawParticuleBall(){
+  ballParticules.forEach((ballParticule) => {
+    let i = ballParticule;
+    if (isSlow) {
+      ballParticule.x -= 0;
+      ballParticule.y += 0;
+    } else {
+      ballParticule.x -= baseSpeed * Math.random();
+    }
+
+    context.fillStyle = "#f0f0f2";
+    context.fillRect(
+      ballParticule.x,
+      ballParticule.y,
+      ballParticule.width,
+      ballParticule.height
+    );
+
+    if(ballParticules.length > 10){
+      ballParticules.splice(i, 1); // Retire l'obstacle du tableau
+    }
+      
+    
+    
+  });
+}
+
 
 //=======================OBSTACLES======================
 //=======================/////////======================
@@ -620,10 +693,9 @@ function checkObstaclesCollision() {
 
 // Fonction pour dessiner le message "Fin"
 function drawEndMessage() {
-  context.font = "48px Arial";
-  context.fillStyle = "black";
-  context.fillText(messageFinText, messageFinX, canva.height / 2);
+  finishText.draw(context)
   messageFinX -= messageFinSpeed;
+  finishText.updatePosition(messageFinX)
 
   // Vérifier si le message est complètement sorti de l'écran
   if (
@@ -648,7 +720,7 @@ function updateGame() {
       font: themeVars.jeu_texte,
       size: 30,
       x: canva.width / 2,
-      y: canva.height / 2,
+      y: (canva.height / 2) -20,
       color: themeVars.jeu_alert,
       justify: "center"
     });
@@ -660,7 +732,7 @@ function updateGame() {
       font: themeVars.jeu_texte,
       size: 30,
       x: canva.width / 2,
-      y: canva.height / 2 + 40,
+      y: canva.height / 2 + 20,
       color: themeVars.jeu_alert,
       justify: "center"
     });
@@ -671,6 +743,7 @@ function updateGame() {
   }
 
   context.clearRect(0, 0, canva.width, canva.height);
+  
 
   //COULEUR DE FOND
 
@@ -685,6 +758,7 @@ function updateGame() {
   context.fillStyle = gradient;
   context.fillRect(0, 0, canva.width, canva.height);
 
+  
   drawSun();
   drawCloud();
 
@@ -702,18 +776,24 @@ function updateGame() {
   start = true;
 
   //Dessine la boule
-  context.fillStyle = "#0e0c64";
+  context.fillStyle = themeVars.texte1;
   context.beginPath();
   context.arc(100, ballY, 10, 0, Math.PI * 2);
   context.fill();
+  context.lineWidth = 1; // épaisseur du contour
+  context.strokeStyle = themeVars.texte2; // couleur du contour
+  context.stroke(); // dessine le contour
 
   //Dessine le sol
-  context.beginPath(); // Start a new path
-  context.moveTo(0, 300); // Move the pen to (30, 50)
-  context.lineTo(800, 300); // Draw a line to (150, 100)
+  context.beginPath(); 
+  context.moveTo(0, 300); 
+  context.lineTo(800, 300); 
   context.lineWidth = 5;
   context.stroke(); // Render the path
-
+  context.fillStyle = "black";
+  context.fillRect(0, 300, canva.width, 100);
+  generateBallParticules()
+  drawParticuleBall()
   //gravité
   velocityY += gravity;
   ballY += velocityY;
@@ -773,7 +853,7 @@ function updateGame() {
       id: "slow",
       text: "SLOW",
       font: themeVars.jeu_texte,
-      size: 20,
+      size: 24,
       x: canva.width / 2,
       y: 50,
       color: themeVars.jeu_alert,
@@ -788,7 +868,7 @@ function updateGame() {
       id: "soFast",
       text: "YOU SO ARE FAST!!",
       font: themeVars.jeu_texte,
-      size: 30,
+      size: 24,
       x: canva.width / 2,
       y: canva.height - 50,
       color: themeVars.jeu,
@@ -801,7 +881,7 @@ function updateGame() {
       id: "goFast",
       text: "GO FAST!!",
       font: themeVars.jeu_texte,
-      size: 30,
+      size: 24,
       x: canva.width / 2,
       y: canva.height - 50,
       color: themeVars.jeu,
@@ -815,7 +895,7 @@ function updateGame() {
       id: "soSlow",
       text: "YOU ARE SO SLOW!!",
       font: themeVars.jeu_texte,
-      size: 30,
+      size: 24,
       x: canva.width / 2,
       y: canva.height - 50,
       color: themeVars.jeu_alert,
@@ -831,7 +911,7 @@ function updateGame() {
     text: `Score: ${scoreDisplay}`,
     font: themeVars.jeu_texte,
     size: 16,
-    x: 700,
+    x: 780,
     y: 50,
     color: themeVars.jeu,
     justify: "right"
@@ -842,7 +922,7 @@ function updateGame() {
     text: `Temperature: ${Math.floor(temperatureData)}°C`,
     font: themeVars.jeu_texte,
     size: 16,
-    x: 700,
+    x: 780,
     y: 30,
     color: themeVars.jeu,
     justify: "right"
@@ -850,6 +930,7 @@ function updateGame() {
 
   scoreText.draw(context)
   TempText.draw(context)
+  cityText.draw(context);
 
   animationId = requestAnimationFrame(updateGame);
 
@@ -919,7 +1000,6 @@ function stopGame() {
 //=======================/////////======================
 
 //Gestion du saut
-var jumpStartTime = null;
 var doubleJumpAvailable = true;
 
 document.getElementById("jump").addEventListener("click", () => {
@@ -933,9 +1013,6 @@ document.getElementById("jump").addEventListener("click", () => {
     doubleJumpAvailable = false;
   }
 
-  if (e.code === "Space" && jumpStartTime === null) {
-    jumpStartTime = Date.now();
-  }
 });
 
 
@@ -958,6 +1035,7 @@ document.getElementById("start").addEventListener("click", () => {
   document.getElementById("start").style.display = "none";
   document.getElementById("restart").style.display = "none";
   initializeAudio(backgroundMusic);
+  updateCount(0);
   updateGame();
   generateClouds();
 });
