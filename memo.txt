@@ -10,7 +10,6 @@
 
 -icone header
 
-
 -modifier API meteo
 
 
@@ -22,6 +21,17 @@
 
 
 -ameliorer jeu et son code
+-modale inscritpion
+
+Figma
+
+SCSS
+
+présentation person
+
+-support de presentation projet
+
+-commenter code
 
 
 -changer icon de menu

@@ -64,17 +64,17 @@ CREATE TABLE detail_commande(
    FOREIGN KEY(id_produit) REFERENCES produits(id_produit) ON DELETE CASCADE
 );
 
-CREATE TABLE commerce (
-    id_commerce INT AUTO_INCREMENT PRIMARY KEY,
-    id_utilisateur INT NOT NULL,
+CREATE TABLE profil_utilisateur (
+    id_profil INT AUTO_INCREMENT PRIMARY KEY,
+    id_utilisateur INT UNIQUE NOT NULL,
     nom VARCHAR(50) NOT NULL,
-    prenom VARCHAR(50) NOT NULL,
-    adresse_livraison VARCHAR(255) NOT NULL,
-    ville VARCHAR(100) NOT NULL,
-    code_postal VARCHAR(20) NOT NULL,
-    pays VARCHAR(100) NOT NULL DEFAULT 'France',
-    telephone VARCHAR(20) NOT NULL,
-    mode_paiement ENUM('carte', 'paypal', 'virement', 'autre') NOT NULL DEFAULT 'carte',
+    prenom VARCHAR(50),
+    adresse_livraison VARCHAR(255),
+    ville VARCHAR(100),
+    code_postal VARCHAR(20),
+    pays VARCHAR(100) DEFAULT 'France',
+    telephone VARCHAR(20),
+    mode_paiement ENUM('carte', 'paypal', 'virement', 'autre') DEFAULT 'carte',
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE
 );
 

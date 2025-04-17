@@ -27,6 +27,7 @@ class ContactControleur
         $this->params["scripts"] = '<script src="./publique/scripts/contact.js" defer></script>';
         $this->params["page"] = "Contactez nous";
 
+        
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $nom = htmlspecialchars($_POST["nom"]);
             $email = htmlspecialchars($_POST["email"]);
@@ -43,8 +44,9 @@ class ContactControleur
 
             $connexion = new DBContacts();
 
+            
 
-            if (isset($_POST["term"]) && isset($_POST["envoyer"]) && empty($prtg) && !empty($nom) && !empty($email) && !empty($message)) {
+            if (isset($_POST["term"])  && empty($prtg) && !empty($nom) && !empty($email) && !empty($message)) {
                 $etat = $connexion->saveMessage($nom, $email, $message, $id_utilisateur);
                 if ($etat) {
                     header("Location: ?action=contact"); // Redirection vers la même page après POST
@@ -53,6 +55,7 @@ class ContactControleur
                     return $this->pageLayout->render("page_contact.php", $this->params);
                 }
             } else {
+
                 return $this->pageLayout->render("page_contact.php", $this->params);
             }
         }
@@ -129,7 +132,6 @@ class ContactControleur
 
 
             $message = $this->connexionReponse->getReponsesPerId($terme); // la méthode qu'on a vue plus haut
-
             header('Content-Type: application/json');
             echo json_encode($message);
             exit;

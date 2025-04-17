@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="message-header">
               <p><strong>Réponse</strong></p>
             </div>
-            <p class="message-text">${sanitize(reponse.Message)}</p>
+            <p class="message-text">${reponse.Message}</p>
             <small>En réponse au message du ${reponse.Date_message}</small>
           `;
 

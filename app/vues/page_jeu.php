@@ -1,4 +1,3 @@
-
 <section>
         <h1>orbe</h1>
 
@@ -23,6 +22,12 @@
   <div class="modal-content">
     <h2>Bravo ! </h2>
     <p>Tu as fait un score de <span id="final-score"></span> points !</p>
+
+        <form action="?action=save" method="post">
+        <input type="text" name="nom" placeholder="Votre nom.." value="<?= $commande["infoProfil"][0]["nom"] ?? "" ?>" aria-label ="nom" required><br>
+        <button type="submit" aria-label ="envoyer">Podium</button>
+        </form>
+
     <button id="share-btn">Partager</button>
     <button id="retry-btn">Rejouer</button>
     <aside id="partage-alt"> <ul id="shareIcon">
