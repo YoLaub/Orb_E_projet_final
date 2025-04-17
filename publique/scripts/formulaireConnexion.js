@@ -26,8 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             /[0-9]/.test(password) &&          // au moins un chiffre
             /[^A-Za-z0-9]/.test(password) &&   // au moins un caractère spécial
             password.length >= 6 ;
-
-            console.log(passwordSecure);
+            
         if (!passwordSecure) {
             valid = false;
             errorMessage = "Le mot de passe doit contenir au moins 6 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.";

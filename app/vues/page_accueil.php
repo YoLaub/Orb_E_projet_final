@@ -7,6 +7,9 @@
     </div>
 </div>
 
+
+
+
 <section class="intro">
     <div class="presentation">
         <h1>orb'e</h1>
@@ -18,6 +21,33 @@
     </div>
 </section>
 
+<section class="podium"> 
+    <h1>Podium</h1>
+    <article class="steps">
+        
+        <div class="step second">
+            <div class="rank">#2</div>
+            <div class="score" aria-label ="score" ><?= !empty($commande["meilleurJoueur"][1]["meilleur_score"]) 
+    ? htmlspecialchars($commande["meilleurJoueur"][1]["meilleur_score"] . " pts") 
+    : ""; ?></div>
+            <div class="pseudo"  aria-label ="email" ><?=!empty($commande["meilleurJoueur"][1]["pseudo"]) ? htmlspecialchars($commande["meilleurJoueur"][1]["pseudo"]) : "" ?></div>
+            </div>
+
+        <!-- 1ère place -->
+        <div class="step first">
+            <div class="rank">#1</div>
+            <div class="score" aria-label ="score" ><?=!empty($commande["meilleurJoueur"][0]["meilleur_score"]) ? htmlspecialchars($commande["meilleurJoueur"][0]["meilleur_score"] . " pts") : ""?></div>
+            <div class="pseudo" aria-label ="email" ><?=!empty($commande["meilleurJoueur"][0]["pseudo"]) ? htmlspecialchars($commande["meilleurJoueur"][0]["pseudo"]) : ""?></div>
+        </div>
+
+        <!--  3e place -->
+        <div class="step third">
+            <div class="rank">#3</div>
+            <div class="score" aria-label ="score" ><?=!empty($commande["meilleurJoueur"][2]["meilleur_score"]) ? htmlspecialchars($commande["meilleurJoueur"][2]["meilleur_score"] . " pts") : "" ?></div>
+            <div class="pseudo" aria-label ="email" ><?=!empty($commande["meilleurJoueur"][2]["pseudo"]) ? htmlspecialchars($commande["meilleurJoueur"][2]["pseudo"]) : "" ?></div>
+        </div>
+    </article>
+    </section>
 
 
 <section class="jouer">
@@ -51,3 +81,17 @@
 <aside class="contactAccueil">
     <a href="?action=contact">Contactez nous !</a>
 </aside>
+
+
+
+
+<?php echo var_dump($_SESSION);
+if(isset($_SESSION["inscription"]) && $_SESSION["inscription"] == "ok"){
+  ?>
+    <div id="successModal" >
+        <div class="successModal-content">
+          <h1>Inscription réussie !</h1>
+        </div>
+    </div> 
+<?php } 
+?>

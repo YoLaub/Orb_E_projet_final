@@ -23,6 +23,10 @@ export class Texte {
         this.text = newText;
     }
 
+    updatePosition(newX) {
+        this.x = newX;
+    }
+
     hide() {
         this.visible = false;
     }
@@ -33,6 +37,7 @@ export class Texte {
 }
 
 
+
 const modal = document.getElementById("game-end-modal");
 const retryBtn = document.getElementById("retry-btn");
 const share = document.getElementById("share-btn");
@@ -41,7 +46,7 @@ const share = document.getElementById("share-btn");
 export function openModal(score) {
     document.getElementById("final-score").textContent = score;
     modal.classList.remove("hidden");
-    modal.classList.add("show");
+    modal.classList.add("showModale");
 
     share.addEventListener("click", function () {
 

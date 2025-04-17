@@ -35,4 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         return null;
     }
+
+    let selector = document.querySelector("#successModal");
+
+    function hideModal(selector){
+        selector.style.display = "none";
+        
+    }
+
+    if(selector){
+        setTimeout(() => hideModal(selector), 2000);
+    }
+  
 });

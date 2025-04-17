@@ -45,13 +45,10 @@ section p {
 }
 
 .connexion-form {
-    padding: 32px;
-    width: 90%;
+    padding: 32px 0px;
+    width: 100%;
     margin: 20px auto;
-    background-color: var(--fondPage);
     border-radius: 6px;
-    box-shadow: 2px 4px 12px #00000014;
-    max-width: 100%;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     -ms-border-radius: 6px;
@@ -113,6 +110,9 @@ section p {
     color: var(--texte2);
 }
 
+
+  
+
 @media (min-width: 768px) {
 
     .bi-key, .bi-pen{
@@ -121,6 +121,7 @@ section p {
     }
     
     .connexion-form {
+        padding: 32px 8px;
         max-width: 480px;
     }
 

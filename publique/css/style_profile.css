@@ -55,7 +55,7 @@ section p {
 section p strong {
   display: inline-block;
   width: 160px;
-  color: #555;
+  color: var(--texte2);
 }
 
 section ul {
@@ -106,6 +106,7 @@ li{
   margin: auto;
   background-color: var(--background2);
   max-width: 100%;
+  border-radius: 6px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
@@ -260,7 +261,7 @@ li{
 .remise-bar {
   position: relative;
   height: 20px;
-  background-color: var(--background2);
+  background-color: var(--elementLight);
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -268,7 +269,7 @@ li{
 
 .remise-progress {
   height: 100%;
-  background-color: var(--jeu);
+  background-color: var(--element);
   transition: width 0.5s ease;
 }
 

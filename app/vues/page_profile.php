@@ -16,7 +16,7 @@
     <div class="remise-container">
       <h3>Votre remise</h3>
       <div class="remise-bar">
-        <div class="remise-progress" style="width: <?= min(100, ($commande["score"][0]["meilleur_score"] / 1500) * 100) ?>%;"></div>
+        <div class="remise-progress" style="width: <?= min(100, ($commande["score"][0]["meilleur_score"] / 500) * 100) ?>%;"></div>
         <div class="remise-step" style="left: 33%;">5%</div>
         <div class="remise-step" style="left: 66%;">10%</div>
         <div class="remise-step" style="left: 100%;">15%</div>
@@ -26,9 +26,9 @@
         <strong>
           <?php
           $score = $commande["score"][0]["meilleur_score"];
-          if ($score >= 1500) echo "15%";
-          elseif ($score >= 1000) echo "10%";
-          elseif ($score >= 500) echo "5%";
+          if ($score >= 500) echo "15%";
+          elseif ($score >= 450) echo "10%";
+          elseif ($score >= 400) echo "5%";
           else echo "0%";
           ?>
         </strong>

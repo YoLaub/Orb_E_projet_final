@@ -55,9 +55,11 @@ class DBParty extends DbConnect
         $sql = "select 
                             utilisateurs.id_utilisateur,
                             utilisateurs.email as email_utilisateur,
+                            commerce.nom as pseudo,
                             max(parties.score) as meilleur_score
                         from parties
                         join utilisateurs on parties.id_utilisateur = utilisateurs.id_utilisateur
+                        join commerce on parties.id_utilisateur = commerce.id_utilisateur
                         group by utilisateurs.id_utilisateur, utilisateurs.email
                         order by meilleur_score desc
                         limit :count";

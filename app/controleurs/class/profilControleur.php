@@ -38,8 +38,9 @@ class ProfilControleur
 
     public function pageProfil()
     {
+        if ($this->connexion->accesMiddleware()) {
 
-        $action = "profile";
+            $action = "profile";
         $nom = $this->infoPerso[0]["nom"];
         $params = [
             "email" => $this->email,
@@ -55,16 +56,23 @@ class ProfilControleur
 <script src="./publique/scripts/rechercheReponse.js" defer></script>
 <script src="./publique/scripts/information.js" defer></script>'
         ];
+        
+            $content = "page_profile.php";
+            $this->pageLayout->render($content, $params);
+        } else {
+            $_SESSION["url"] = $_SERVER['REQUEST_URI'];
+            header("Location: ?action=connexion");
+        }
 
 
-        $content = "page_profile.php";
-
-        $this->pageLayout->render($content, $params);
+        
     }
 
 
     public function pageCommande()
     {
+        if ($this->connexion->accesMiddleware()) {
+            
         $action = "commande";
         $params = [
             "email" => $this->email,
@@ -78,37 +86,32 @@ class ProfilControleur
 
         ];
 
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $nomProduit = trim($_POST["nomProduit"] ?? '');
-            $prix = trim($_POST["prix"] ?? '');
-            $quantite = intval(trim($_POST["quantite"] ?? ''));
-            $prixTotal = floatval($prix) * $quantite;
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $nomProduit = trim($_POST["nomProduit"] ?? '');
+                $prix = trim($_POST["prix"] ?? '');
+                $quantite = intval(trim($_POST["quantite"] ?? ''));
+                $prixTotal = floatval($prix) * $quantite;
 
 
-            if ($nomProduit && $prix) {
-                $etat = false;
-                $etat = $this->connexionDBProduct->addOrder($prixTotal, $_SESSION["id"], $_SESSION["id_produit"], $quantite);
+                if ($nomProduit && $prix) {
+                    $etat = false;
+                    $etat = $this->connexionDBProduct->addOrder($prixTotal, $_SESSION["id"], $_SESSION["id_produit"], $quantite);
 
-                if ($etat) {
-                    unset($_SESSION["id_produit"]);
-                    // Redirection vers l'accueil si connexion réussie
-                    header("Location: ?action=produit");
-                } else {
-                    // Redirection vers l'accueil si connexion réussie
-                    $content = "page_commande.php";
-                    $this->pageLayout->render($content, $params);
+                    if ($etat) {
+                        unset($_SESSION["id_produit"]);
+                        header("Location: ?action=produit");
+                    } else {
+                        $content = "page_commande.php";
+                        $this->pageLayout->render($content, $params);
+                    }
                 }
-            }
-        } else {
-
-            if ($this->connexion->accesMiddleware()) {
-
+            } else {
                 $content = "page_commande.php";
                 $this->pageLayout->render($content, $params);
-            } else {
-
-                header("Location: ?action=connexion");
             }
+        } else {
+            $_SESSION["url"] = $_SERVER['REQUEST_URI'];
+            header("Location: ?action=connexion");
         }
     }
 

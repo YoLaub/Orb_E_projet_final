@@ -1,7 +1,7 @@
 <form class="info-form" action="./?action=<?= $commande["action"] ?>" method="post">
 
     <label for="message">Message :</label>
-    <textarea id="message" name="message" required></textarea><br>
+    <textarea id="message" name="message" aria-label ="message" required></textarea><br>
 
-    <button type="submit">Envoyer</button>
+    <button type="submit" aria-label ="envoyer">Envoyer</button>
 </form>
