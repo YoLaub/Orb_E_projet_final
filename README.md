@@ -39,9 +39,13 @@ Orb'E est un assistant personnel intelligent sous forme de sphère. Ce projet de
    - Importer le fichier SQL fourni dans MySQL
    - Modifier `config.php` avec vos paramètres de connexion
 
-3. **Lancer le serveur local**
+3. **Installer Composer***
+   -npm init
+   -composer install
+   
+4. **Lancer le serveur local**
    - Utiliser XAMPP ou un autre serveur PHP
 
-4. **Schema E/A**
+5. **Schema E/A**
 ![schema E/A](./publique/images/divers/modeleBDD_E-A.jpg "E/A") 
 

@@ -389,7 +389,7 @@ function drawCloud() {
 //=======================/////////======================
 //=======================/////////======================
 
-const backgroundMusic = new Audio("./publique/musique/test3.mp3");
+const backgroundMusic = new Audio("./publique/musique/test.mp3");
 backgroundMusic.volume = 1; // Ajuste le volume
 
 backgroundMusic.addEventListener("ended", () => {
@@ -641,7 +641,7 @@ function drawObstacles() {
     if (obstacle.x + obstacle.width < 0) {
       obstacles.splice(i, 1); // Retire l'obstacle du tableau
       score++;
-      if (score % 10 === 0) {
+      if (score % 5 === 0) {
         scoreDisplay++;
       } // Incrémente le score
     }
@@ -702,6 +702,7 @@ function drawEndMessage() {
     messageFinX + context.measureText(messageFinText).width <
     canva.width / 2
   ) {
+    scoreTab.push(scoreDisplay);
     stopGame(); // Arrêter le jeu
 
   }

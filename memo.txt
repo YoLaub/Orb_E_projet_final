@@ -3,24 +3,18 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-
-
--partager scores !
--leaderboard page accueil
-
--icone header
-
--modifier API meteo
-
-
-- social icone !!
-
-
--Attention Si h3 il doit y avoir un h2 !!! verifier la syntaxe
-- Accessibilité - Arialabel !!!
-
-
 -ameliorer jeu et son code
+-modale inscritpion
+
+Figma
+
+SCSS
+
+présentation person
+
+-support de presentation projet
+
+-commenter code
 
 
 

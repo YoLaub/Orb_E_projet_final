@@ -25,7 +25,7 @@
         Remise actuelle :
         <strong>
           <?php
-          $score = $commande["score"][0]["meilleur_score"];
+          $score = $commande["score"][0]["meilleur_score"] ?? "";
           if ($score >= 500) echo "15%";
           elseif ($score >= 450) echo "10%";
           elseif ($score >= 400) echo "5%";
@@ -43,13 +43,13 @@
     <div class="mesInfos">
       <h2>Mes informations</h2>
       <p><span>Email :</span> <?= $commande["email"]; ?></p>
-      <p><span>Nom :</span> <?= $commande["informations"][0]["nom"]; ?></p>
-      <p><span>Prénom :</span> <?= $commande["informations"][0]["prenom"]; ?></p>
-      <p><span>Adresse :</span> <?= $commande["informations"][0]["adresse_livraison"]; ?></p>
-      <p><span>Ville :</span> <?= $commande["informations"][0]["ville"]; ?></p>
-      <p><span>Code Postal :</span> <?= $commande["informations"][0]["code_postal"]; ?></p>
-      <p><span>Téléphone :</span> <?= $commande["informations"][0]["telephone"]; ?></p>
-      <p><span>Paiement :</span> <?= $commande["informations"][0]["mode_paiement"]; ?></p>
+      <p><span>Nom :</span> <?= $commande["informations"][0]["nom"] ?? $commande["email"];  ?></p>
+      <p><span>Prénom :</span> <?= $commande["informations"][0]["prenom"] ?? "" ;?></p>
+      <p><span>Adresse :</span> <?= $commande["informations"][0]["adresse_livraison"] ?? ""; ?></p>
+      <p><span>Ville :</span> <?= $commande["informations"][0]["ville"] ?? "" ?></p>
+      <p><span>Code Postal :</span> <?= $commande["informations"][0]["code_postal"] ?? ""; ?></p>
+      <p><span>Téléphone :</span> <?= $commande["informations"][0]["telephone"] ?? ""; ?></p>
+      <p><span>Paiement :</span> <?= $commande["informations"][0]["mode_paiement"] ?? "" ;?></p>
 
     </div>
 

@@ -94,6 +94,31 @@ class DBOrder extends DbConnect
         }
     }
 
+    public static function createInfoUser($id_utilisateur, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement)
+    {
+        $value = [
+            "id_utilisateur" => $id_utilisateur,
+            "prenom" => $prenom,
+            "nom" => $nom,
+            "adresse_livraison" => $adresse,
+            "ville" => $ville,
+            "code_postal" => $cp,
+            "telephone" => $tel,
+            "pays" => $pays,
+            "mode_paiement" => $paiement
+        ];
+
+        try {
+            $sql = "insert into commerce (id_utilisateur, nom, prenom, adresse_livraison, ville, code_postal, pays, telephone, mode_paiement) values (:id_utilisateur, :nom, :prenom, :adresse_livraison, :ville, :code_postal, :pays, :telephone, :mode_paiement)";
+
+            self::executerRequete($sql, $value);
+
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
     public static function getUserOrders($email)
     {
         $value = ["email" => $email];
