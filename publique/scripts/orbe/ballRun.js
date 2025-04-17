@@ -16,7 +16,7 @@ import { Texte, openModal } from './texte.js';
 var canva = document.getElementById("gameCanvas");
 const context = canva.getContext("2d");
 
-var modeTest = true;
+var modeTest = false;
 
 //Gestion du score
 var score = 0;
@@ -389,7 +389,7 @@ function drawCloud() {
 //=======================/////////======================
 //=======================/////////======================
 
-const backgroundMusic = new Audio("./publique/musique/test.mp3");
+const backgroundMusic = new Audio("./publique/musique/test3.mp3");
 backgroundMusic.volume = 1; // Ajuste le volume
 
 backgroundMusic.addEventListener("ended", () => {

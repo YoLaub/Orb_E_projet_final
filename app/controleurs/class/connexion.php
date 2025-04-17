@@ -48,7 +48,7 @@ class Connexion
                 $estConnecte = self::verifInfoConn($email, $mdp);
 
                 if ($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
-                    // Redirection vers l'accueil si connexion réussie
+                
                     if(isset($_SESSION["url"])){
                         $url = $_SESSION["url"];
                         unset($_SESSION["url"]);
@@ -110,11 +110,14 @@ class Connexion
                 $etat = $this->connectDB::addUser($email, $mdpHache);
 
                 if ($etat) {
+                    $_SESSION["valide"] = "ok";
                     self::connexionUtilisateur($email, $mdp);
+                    
                     // Redirection vers l'accueil si connexion réussie
-                    $this->params["style"] = "style_accueil.css";
-                    $content = "page_accueil.php";
-                    $this->pageLayout->render($content, $this->params);
+                    
+                    
+                    header("Location: ?action=accueil");
+                    exit();
                 } else {
                     $content = "page_inscription.php";
                     $this->pageLayout->render($content, $this->params);
@@ -124,6 +127,7 @@ class Connexion
                 $this->pageLayout->render($content, $this->params);
             }
         } else {
+            
             $content = "page_inscription.php";
             $this->pageLayout->render($content, $this->params);
         }
@@ -132,9 +136,6 @@ class Connexion
     public function deconnexion()
     {
         if (isset($_SESSION["id"])) {
-            unset($_SESSION["email"]);
-            unset($_SESSION["id"]);
-            unset($_SESSION["role"]);
             session_destroy();
 
             header("Location: ?action=accueil");

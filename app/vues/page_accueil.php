@@ -7,6 +7,9 @@
     </div>
 </div>
 
+
+
+
 <section class="intro">
     <div class="presentation">
         <h1>orb'e</h1>
@@ -79,3 +82,16 @@
     <a href="?action=contact">Contactez nous !</a>
 </aside>
 
+
+
+
+<?php echo var_dump($_SESSION);
+if(isset($_SESSION["inscription"]) && $_SESSION["inscription"] == "ok"){
+  ?>
+    <div id="successModal" >
+        <div class="successModal-content">
+          <h1>Inscription réussie !</h1>
+        </div>
+    </div> 
+<?php } 
+?>

@@ -11,10 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let links = document.querySelectorAll("#main-nav li a");
   links.forEach((link) => {
     if (link.href == window.location.href) {
-      console.log(window.location.href);
-      console.log(link.href);
-
-      link.classList.add("active");
+       link.classList.add("active");
 
     }
   });
