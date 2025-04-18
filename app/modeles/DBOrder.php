@@ -32,10 +32,10 @@ class DBOrder extends DbConnect
                 order by commandes.date_heure desc";
 
 
-                
+
 
         $req = self::executerRequete($sql);
-        
+
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -47,7 +47,7 @@ class DBOrder extends DbConnect
 
         $value = array();
         $value["email"] = $email;
-        
+
         $sql = "select c.* from commerce as c inner join utilisateurs as u on c.id_utilisateur = u.id_utilisateur where binary u.email like :email";
         $req = self::executerRequete($sql, $value);
 
@@ -59,7 +59,7 @@ class DBOrder extends DbConnect
     }
 
 
-    public static function updateInfoUser($email, $prenom, $nom, $adresse, $ville, $cp, $tel, $paiement)
+    public static function updateInfoUser($email, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement)
     {
         $value = [
             "email" => $email,
@@ -69,9 +69,10 @@ class DBOrder extends DbConnect
             "ville" => $ville,
             "cp" => $cp,
             "tel" => $tel,
+            "pays" => $pays,
             "paiement" => $paiement
         ];
-    
+
         try {
             $sql = "update commerce 
                     join utilisateurs on commerce.id_utilisateur = utilisateurs.id_utilisateur 
@@ -81,11 +82,37 @@ class DBOrder extends DbConnect
                         commerce.ville = :ville, 
                         commerce.code_postal = :cp, 
                         commerce.telephone = :tel, 
+                        commerce.pays = :pays, 
                         commerce.mode_paiement = :paiement 
                     where utilisateurs.email = :email";
-    
+
             $req = self::executerRequete($sql, $value);
-            
+
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public static function createInfoUser($id_utilisateur, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement)
+    {
+        $value = [
+            "id_utilisateur" => $id_utilisateur,
+            "prenom" => $prenom,
+            "nom" => $nom,
+            "adresse_livraison" => $adresse,
+            "ville" => $ville,
+            "code_postal" => $cp,
+            "telephone" => $tel,
+            "pays" => $pays,
+            "mode_paiement" => $paiement
+        ];
+
+        try {
+            $sql = "insert into commerce (id_utilisateur, nom, prenom, adresse_livraison, ville, code_postal, pays, telephone, mode_paiement) values (:id_utilisateur, :nom, :prenom, :adresse_livraison, :ville, :code_postal, :pays, :telephone, :mode_paiement)";
+
+            self::executerRequete($sql, $value);
+
             return true;
         } catch (Exception $e) {
             return $e->getMessage();
@@ -94,9 +121,9 @@ class DBOrder extends DbConnect
 
     public static function getUserOrders($email)
     {
-    $value = ["email" => $email];
+        $value = ["email" => $email];
 
-    $sql = "select 
+        $sql = "select 
                 commandes.id_commande,
                 commandes.date_heure,
                 commandes.montant_total,
@@ -113,14 +140,14 @@ class DBOrder extends DbConnect
             where commandes.id_utilisateur = (select id_utilisateur from utilisateurs where email = :email)
             order by commandes.date_heure desc";
 
-    try {
-        return self::executerRequete($sql, $value)->fetchAll();
-    } catch (Exception $e) {
-        return $e->getMessage();
+        try {
+            return self::executerRequete($sql, $value)->fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
-}
- 
-    
+
+
     public static function deleteInfoUser($email)
     {
 
@@ -129,14 +156,49 @@ class DBOrder extends DbConnect
 
         try {
             $sql = "delete commerce from commerce join utilisateurs on commerce.id_utilisateur = utilisateurs.id_utilisateur where utilisateurs.email like :email";
-    
+
             $req = self::executerRequete($sql, $value);
-            
+
             return true;
         } catch (Exception $e) {
             return $e->getMessage();
         }
-        
-}
+    }
+    public static function updateStatus($status, $idCommande)
+    {
 
+        $value = array();
+        $value["status"] = $status;
+        $value["idCommande"] = $idCommande;
+
+        try {
+            $sql = "update commandes set statut = :status where id_commande = :idCommande ";
+
+            $req = self::executerRequete($sql, $value);
+
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public static function showEnum($table, $colonne)
+    {
+
+        $value = array();
+
+        $value["colonne"] = $colonne;
+
+        // Récupérer les valeurs de l'ENUM
+        $sql = "SHOW COLUMNS FROM `$table` LIKE :colonne";
+        $req = self::executerRequete($sql, $value);
+
+        /* Remplacer ??? par la méthode fetchAll() */
+        $data = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        preg_match("/^enum\((.+)\)$/i",  $data[0]["Type"], $matches);
+        $enumValues = str_getcsv($matches[1], ",", "'");
+
+        if (!empty($data)) return $enumValues;
+    }
 }

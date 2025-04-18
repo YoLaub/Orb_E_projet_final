@@ -1,0 +1,406 @@
+:root {
+  --elementDark: #0e0c64;
+  --element: #121189;
+  --elementLight: #1310e007;
+  --elementTrans: #1310e02c;
+  --background1: #12121A;
+  --background2: #FAF9FF;
+  --texte1: #FAF9FF;
+  --texte2: #12121A;
+  --fondPage: #FFFFFF;
+  --jeu: #39FF14;
+  --jeu_alert: #FF073A;
+  --ombre: #00000003;
+  --ombreSurvol: #0000001e;
+
+  --texte: 'Poppins';
+  --titre: 'Bristone';
+  --jeu_texte: 'Press Start 2P';
+}
+
+
+/* poppins-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/poppins-v22-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* poppins-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Bristone';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Bristone.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-v47-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/press-start-2p-v15-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+section h1 {
+  padding: 16px;
+}
+
+section h3 {
+  margin: 0 16px;
+}
+
+
+
+#full,
+#start,
+#restart {
+  text-align: center;
+  font-weight: 400;
+  font-size: 0.4rem;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  margin: auto;
+  cursor: pointer;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+  color: var(--texte1);
+
+}
+
+#startRestart {
+
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+
+#jump {
+  border: none;
+  padding: 16px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+#jump,
+#start,
+#restart,
+#full {
+  background-color: #5b5b5f;
+}
+
+.full {
+  width: 16px;
+  height: 16px;
+}
+
+
+#console {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../images/backgroundJeu.webp"),
+    linear-gradient(var(--elementLight), var(--elementTrans));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--elementLight);
+  backdrop-filter: blur(2px);
+  border-top: 12px solid #565558;
+  margin: 32px auto;
+  box-shadow: 2px 4px 12px var(--elementTrans);
+  border-radius: 6px 6px 32px 32px;
+  -webkit-border-radius: 6px 6px 32px 32px;
+  -moz-border-radius: 6px 6px 32px 32px;
+  -ms-border-radius: 6px 6px 32px 32px;
+  -o-border-radius: 6px 6px 32px 32px;
+}
+
+#console:fullscreen {
+  justify-content: space-between;
+  padding-top: 15%;
+
+}
+
+#gameCanvas {
+  width: 350px;
+  height: 175px;
+  border: 1px solid #00000071;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.control {
+  background-color: #565558;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 16px;
+  padding: 16px 0;
+  font-family: var(--jeu_texte);
+  justify-content: center;
+  border-radius: 0 0 32px 32px;
+  -webkit-border-radius: 0 0 32px 32px;
+  -moz-border-radius: 0 0 32px 32px;
+  -ms-border-radius: 0 0 32px 32px;
+  -o-border-radius: 0 0 32px 32px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+
+/* ///////////////////////////////////
+////////MODAL/////////////
+//////////////////////// */
+
+.modal {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal.showModale {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  pointer-events: auto;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding:  0 32px;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  background: var(--background2);
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 1rem;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 2px 4px 12px #00000014;
+}
+
+.modal.showModale .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--texte2);
+}
+
+.modal-content button {
+  display: block;
+  padding: 4px 8px;
+  margin: 0 auto 0.5rem auto;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--element);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-content button:hover {
+  background-color: var(--elementDark);
+}
+
+
+#partage-alt {
+  display: none;
+  gap: 8px;
+  padding: 4px;
+}
+
+#shareIcon {
+  display: flex;
+  list-style: none;
+  text-decoration: none;
+  justify-content: space-between;
+  padding: 0;
+
+}
+
+#partage-alt.svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--texte2);
+  transition: all 0.2s ease;
+}
+
+#partage-alt ul li:hover,
+#partage-alt ul li a:hover {
+  background-color: var(--fondPage);
+  transform: scale(1.2);
+}
+
+@media (min-width: 768px) {
+
+  .control {
+    width: 100%;
+    gap: 32px;
+    border-radius: 0 0 32px 32px;
+    -webkit-border-radius: 0 0 32px 32px;
+    -moz-border-radius: 0 0 32px 32px;
+    -ms-border-radius: 0 0 32px 32px;
+    -o-border-radius: 0 0 32px 32px;
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+  }
+
+
+
+  #gameCanvas {
+    width: 400px;
+    height: 200px;
+  }
+
+  #full,
+  #start,
+  #restart {
+
+    padding: 8px 24px;
+
+  }
+
+  #console:fullscreen {
+    justify-content: space-between;
+    padding-top: 7%;
+
+  }
+
+  /* ///////////////////////////////////
+////////MODAL/////////////
+//////////////////////// */
+
+
+  .modal-content {
+    padding: 2rem;
+    max-width: 500px;
+  }
+
+  .modal-content h2 {
+    font-size: 2rem;
+  }
+
+  .modal-content p {
+    font-size: 1.2rem;
+  }
+
+  .modal-content button {
+    font-size: 1.1rem;
+  }
+}
+
+
+
+@media (min-width: 1000px) {
+
+
+
+  .control {
+    gap: 160px;
+
+  }
+
+  #jump {
+    height: 50px;
+    width: 50px;
+
+  }
+
+  #full,
+  #start,
+  #restart {
+    font-size: 0.8rem;
+
+  }
+
+  .full {
+    width: 32px;
+    height: 32px;
+  }
+
+  #startRestart {
+
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+
+  section {
+    max-width: 1200px;
+
+  }
+
+
+  #gameCanvas {
+    width: 800px;
+    height: 400px;
+  }
+
+  .bi-x {
+    height: 40px;
+    width: 40px;
+  }
+
+
+}

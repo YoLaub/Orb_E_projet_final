@@ -1,0 +1,176 @@
+:root {
+    --element: #121189;
+    --elementLight: #1310e052;
+    --elementTrans: #1310e091;
+    --background1: #12121A;
+    --background2: #FAF9FF;
+    --texte1: #FAF9FF;
+    --texte2: #12121A;
+    --fondPage: #FFFFFF;
+    --jeu: #39FF14;
+    --jeu_alert: #FF073A;
+    --ombre: #00000003;
+    --ombreSurvol: #0000001e;
+    --texte: 'Poppins';
+    --titre: 'Bristone';
+    --jeu_texte: 'Press Start 2P';
+}
+
+section {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section p {
+    font-weight: bold;
+}
+
+.contact-form {
+    padding: 16px;
+    width: 90%;
+    margin: 20px auto;
+    background-color: var(--fondPage);
+    border-radius: 6px;
+    box-shadow: 2px 4px 12px #00000014;
+    max-width: 100%;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+
+.contact-form textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    margin-bottom: 0px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.contact-form input{
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--element);
+    outline: none;
+}
+
+.contact-form textarea {
+    height: 200px;
+}
+
+.contact-form input[type="submit"] {
+    background-color: var(--element);
+    color: var(--texte1);
+    width: 33%;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.contact-form input[type="submit"]:hover {
+    transform: translateY(0.3px);
+    /* léger enfoncement visuel */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+.rgpd{
+    color: var(--texte2);
+    font-style: italic;
+}
+
+.rgpd:hover {
+   font-weight: bold;
+   background-color: var(--background2);
+   color: var(--element);
+}
+
+.maxChar{
+    font-weight: lighter;
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-right: 0;
+    margin-left: 80%;
+    margin-top: 0;
+}
+
+.send{
+    font-size: 0.8rem;
+    margin-left: 32px;
+    color: var(--texte2);
+}
+
+.errorMessage{
+    margin-left: 32px;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--jeu_alert);
+    width: 100%;
+}
+
+.sendMessage{
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.check{
+    display: flex;
+    flex-direction: row;
+}
+
+.contact-form input[type="checkbox"] {
+   width: 16px;
+   margin-left: 32px;
+   margin-bottom: 32px;
+}
+
+
+@media (min-width: 768px) {
+    .contact-form {
+        max-width: 480px;
+    }
+
+    .imageRogne {
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+    }
+
+    .imageRogne img {
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+        position: relative;
+        bottom: 150px;
+    }
+}

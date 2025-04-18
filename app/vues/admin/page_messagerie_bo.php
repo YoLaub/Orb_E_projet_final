@@ -1,21 +1,24 @@
-<h1>Messagerie</h1>
+<section>
+    <h1>Messagerie</h1>
 
-<h2>Vos message</h2>
+    <div class="messagerie">
+        <article class="chat-container">
+            <div class="title">
+                <svg width="32" height="32" fill="currentColor" class="bi bi-envelope-arrow-down" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4.5a.5.5 0 0 1-1 0V5.383l-7 4.2-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h5.5a.5.5 0 0 1 0 1H2a2 2 0 0 1-2-1.99zm1 7.105 4.708-2.897L1 5.383zM1 4v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1" />
+                    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-1.646a.5.5 0 0 1-.722-.016l-1.149-1.25a.5.5 0 1 1 .737-.676l.28.305V11a.5.5 0 0 1 1 0v1.793l.396-.397a.5.5 0 0 1 .708.708z" />
+                </svg>
+                <h2>Messages reçus</h2>
+            </div>
+            <div>
+                <input type="text" id="rechercheMessage" placeholder="Rechercher un message...">
+                <label for="mois">Afficher les messages du mois :</label>
+                <input type="month" id="rechercheMessageDate">
+                <div id="resultatsRechercheMessage"> </div>
 
-<?=var_dump($lesMessages)?>
+        </article>
 
-<h2>Répondre</h2>
-    
-    <form action="./?action=messagerie" method="post">
-        <label for="id">ID message</label>
-        <input type="text" id="name" name="id_contact" required><br>
+    </div>
 
-        <label for="reponse">Message :</label>
-        <textarea id="message" name="reponse" required></textarea><br>
 
-        <button type="submit">Envoyer</button>
-    </form>
-
-<h2>Vos réponse</h2>
-
-<?=var_dump($lesReponses)?>
+</section>

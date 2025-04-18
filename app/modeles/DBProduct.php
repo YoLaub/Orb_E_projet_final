@@ -68,7 +68,7 @@ class DBProduct extends DbConnect
     {
 
         if (!is_int($idCommande) || !is_int($idProduct) || !is_int($quantite) || $quantite <= 0) {
-            throw new InvalidArgumentException("Les paramètres doivent être des entiers valides, et la quantité doit être supérieure à zéro.");
+            throw new Exception("Les paramètres doivent être des entiers valides, et la quantité doit être supérieure à zéro.");
         }
 
         $value = array();
@@ -86,17 +86,26 @@ class DBProduct extends DbConnect
         }
     }
 
-    public static function addProduct()
+    public static function addProduct($nom, $description, $prix, $photo, $dispo)
     {
 
-        $sql = "select * from produits";
+        $value = array();
+        $value["nom"] = $nom;
+        $value["description"] = $description;
+        $value["prix"] = $prix;
+        $value["photo"] = $photo;
+        $value["disponibilite"] = $dispo;
 
-        $req = self::executerRequete($sql);
+        try {
+            $sql = "insert into produits (nom, description, prix, photo, disponibilite)
+    VALUES (:nom, :description, :prix, :photo, :disponibilite )";
 
-        $data = $req->fetchAll(PDO::FETCH_ASSOC);
+            self::executerRequete($sql, $value);
 
-
-        if (!empty($data)) return $data;
+            return true;
+        } catch (Exception $e) {
+            return "Erreur lors de la suppression : " . $e->getMessage();
+        }
     }
 
     public static function deleteProduct($id_produit)
@@ -110,7 +119,7 @@ class DBProduct extends DbConnect
 
             self::executerRequete($sql, $value);
 
-            return $value;
+            return true;
         } catch (Exception $e) {
             return "Erreur lors de la suppression : " . $e->getMessage();
         }
@@ -173,7 +182,7 @@ class DBProduct extends DbConnect
 
         $value = array();
         $value["id_commande"] = $id_commande;
-        
+
 
 
         try {

@@ -1,0 +1,14 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /yoann-laubert/Orb_E_projet_final/
+
+
+#Redirige HTTP vers HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ index.php?action=$1 [NC,QSA,L]
+

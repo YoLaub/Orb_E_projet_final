@@ -1,0 +1,465 @@
+:root {
+    --element: #121189;
+    --elementLight: #1310e052;
+    --elementTrans: #1310e091;
+    --background1: #12121A;
+    --background2: #FAF9FF;
+    --texte1: #FAF9FF;
+    --texte2: #12121A;
+    --fondPage: #FFFFFF;
+    --jeu: #39FF14;
+    --jeu_alert: #FF073A;
+    --ombre: #00000003;
+    --ombreSurvol: #0000001e;
+    --texte: 'Poppins';
+    --titre: 'Bristone';
+    --jeu_texte: 'Press Start 2P';
+}
+
+
+
+
+/* ======= Accueil ======= */
+
+h1 {
+    font-family: var(--titre);
+    font-size: 2rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.intro {
+    background: var(--background1);
+    color: var(--texte1);
+    padding: 64px 24px 64px 24px;
+    position: relative;
+    top: -35px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.intro a {
+    background-color: var(--elementTrans);
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow:        0 2px 4px rgba(0, 0, 0, 0.1),        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.intro a:hover {
+    transform: translateY(0.3px);
+    /* léger enfoncement visuel */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+.orbe {
+    background-image: radial-gradient(circle,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.05) 33%,
+            rgba(0, 0, 0, 0.0) 57%,
+            rgba(0, 0, 0, 0) 100%);
+    width: 100%;
+    padding: 8px;
+}
+
+.orbe-titre {
+    font-family: var(--titre) !important;
+}
+
+.jouer {
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    margin: 40px 16px 56px 16px;
+    background-color: var(--fondPage);
+    box-shadow: 2px 4px 12px #00000014;
+}
+
+.commander {
+    display: flex;
+    flex-direction: column-reverse;
+    border-radius: 6px;
+    margin: 40px 16px 56px 16px;
+    background-color: var(--fondPage);
+    box-shadow: 2px 4px 12px #00000014;
+}
+
+
+
+.presentationSuite {
+    padding: 16px;
+}
+
+.presentation {
+    padding: 16px;
+}
+
+.jeuPresentation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.jeuPresentation a {
+    position: absolute;
+    height: 42px;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    background-color: var(--element);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    padding: 0rem 2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.jeuPresentation a:hover {
+    transform: translateY(0.3px);
+    /* léger enfoncement visuel */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+.jeuPresentation img {
+    border-radius: 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    -ms-border-radius: 0 0 6px 6px;
+    -o-border-radius: 0 0 6px 6px;
+}
+
+.catSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.catSection img {
+    border-radius: 0 0 6px 6px;
+}
+
+.cat {
+    display: block;
+    object-fit: cover;
+    max-width: 100%;
+}
+
+.catButton {
+    position: absolute;
+    height: 42px;
+    margin-bottom: 40px;
+    font-size: 1.2rem;
+    background-color: var(--element);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    padding: 0rem 2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.catButton:hover {
+    transform: translateY(0.3px);
+    /* léger enfoncement visuel */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+
+.contactAccueil {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.contactAccueil a {
+    height: 42px;
+    background-color: var(--element);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    padding: 0rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.contactAccueil a:hover {
+    transform: translateY(0.3px);
+    /* léger enfoncement visuel */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+
+}
+
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--background2);
+    color: var(--texte2);
+    text-align: center;
+    padding: 10px 104px;
+    display: none;
+    z-index: 1001;
+
+}
+
+#accept-cookies {
+    background-color: var(--element);
+    color: var(--texte1);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.rgpd {
+    color: var(--texte2);
+    text-decoration: underline;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* ////////////////////////////
+////////////PODIUM///////////
+//////////////////////////// */
+
+.podium {
+    max-width: 700px;
+    margin: 2rem auto;
+    text-align: center;
+    padding: 16px;
+
+}
+
+.podium h1 {
+    margin-bottom: 2rem;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.step {
+    width: 70px;
+    background: #f1f1f1;
+    border-radius: 10px 10px 0 0;
+    padding: 1rem;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s;
+}
+
+.step:hover {
+    transform: scale(1.05);
+}
+
+/* Hauteurs différentes pour l’effet podium */
+.first {
+    height: 200px;
+    background: gold;
+}
+
+.second {
+    height: 160px;
+    background: silver;
+}
+
+.third {
+    height: 130px;
+    background: #cd7f32;
+    /* bronze */
+}
+
+.rank {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.score {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.pseudo {
+    font-size: 1rem;
+    color: var(--texte2);
+}
+
+/* //////////////////////////////
+//////////MODAL/////////////
+/////////////////////////// */
+
+#successModal {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    opacity: 1;
+    inset: 0;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    padding: 0 32px;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+}
+
+.successModal-content {
+    background: var(--background2);
+    padding: 2rem;
+    border-radius: 6px;
+    text-align: center;
+    min-width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.successModal-content h1{
+    font-size: 1.2rem;
+}
+
+
+
+
+@media (min-width: 768px) {
+    header {
+        padding: 10px 56px;
+    }
+
+    .intro {
+        display: flex;
+        flex-direction: row;
+        padding: 20px 42px 80px 80px;
+        margin: auto;
+        justify-content: center;
+    }
+
+    .orbe {
+        background-image: radial-gradient(circle,
+                rgba(255, 255, 255, 0.25) 0%,
+                rgba(255, 255, 255, 0.05) 23%,
+                rgba(0, 0, 0, 0.0) 34%,
+                rgba(0, 0, 0, 0) 100%);
+        width: 40%;
+        padding: 57px;
+    }
+
+    .presentation {
+        padding: 8px;
+        margin-left: 132px;
+        align-content: center;
+    }
+
+    .presentationSuite {
+        padding-left: 32px;
+        margin-right: 132px;
+        align-content: center;
+    }
+
+    .presentation .presParag {
+        font-size: 16px;
+        margin-top: 0;
+        margin-bottom: 56px;
+    }
+
+
+    .jouer {
+        display: flex;
+        flex-direction: row;
+        max-width: 1200px;
+        justify-content: space-between;
+        margin: 64px auto;
+
+    }
+
+    .commander {
+        display: flex;
+        flex-direction: row;
+        max-width: 1200px;
+        justify-content: space-between;
+        margin: 64px auto;
+
+    }
+
+
+
+    .jeuPresentation img {
+        border-radius: 0 6px 6px 0;
+    }
+
+    .catSection img {
+        border-radius: 6px 0 0 6px;
+        -webkit-border-radius: 6px 0 0 6px;
+        -moz-border-radius: 6px 0 0 6px;
+        -ms-border-radius: 6px 0 0 6px;
+        -o-border-radius: 6px 0 0 6px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .step {
+        width: 150px;
+    }
+
+
+
+}

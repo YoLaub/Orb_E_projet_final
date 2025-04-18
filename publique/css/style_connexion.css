@@ -1,0 +1,148 @@
+:root {
+    --element: #121189;
+    --elementLight: #1310e052;
+    --elementTrans: #1310e091;
+    --background1: #12121A;
+    --background2: #FAF9FF;
+    --texte1: #FAF9FF;
+    --texte2: #12121A;
+    --fondPage: #FFFFFF;
+    --jeu: #39FF14;
+    --jeu_alert: #FF073A;
+    --ombre: #00000003;
+    --ombreSurvol: #0000001e;
+
+    --texte: 'Poppins';
+    --titre: 'Bristone';
+    --jeu_texte: 'Press Start 2P';
+}
+
+
+
+    
+section {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+section h1 {
+    font-size: 2rem;
+    margin-bottom: 0px;
+}
+
+.bi-key, .bi-pen{
+    margin-top: 32px;
+    width: 60px;
+    height: 60px;
+}
+
+section p {
+    font-weight: bold;
+}
+
+.connexion-form {
+    padding: 32px 0px;
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+#passwordError{
+    color: var(--jeu_alert); 
+    margin-bottom: 16px;
+    font-size: 0.9em; 
+    display: none;
+}
+
+.connexion-form input,
+.connexion-form textarea,
+.connexion-form button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.connexion-form input:focus,
+.connexion-form textarea:focus {
+    border-color: var(--element);
+    outline: none;
+}
+
+.connexion-form textarea {
+    height: 200px;
+}
+
+.connexion-form button {
+    background-color: var(--element);
+    color: var(--texte1);
+    width: 33%;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.connexion-form button:hover {
+    transform: translateY(0.3px);
+    /* léger enfoncement visuel */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+#connexion a{
+    color: var(--texte2);
+}
+
+
+  
+
+@media (min-width: 768px) {
+
+    .bi-key, .bi-pen{
+        width: 100px;
+        height: 100px;
+    }
+    
+    .connexion-form {
+        padding: 32px 8px;
+        max-width: 480px;
+    }
+
+    .imageRogne {
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+    }
+
+    .imageRogne img {
+       border-radius: 6px;
+       -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+       -ms-border-radius: 6px;
+       -o-border-radius: 6px;
+       position: relative;
+       bottom: 150px;
+}
+}

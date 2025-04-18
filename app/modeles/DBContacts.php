@@ -8,10 +8,12 @@ use \Exception;
 class DBContacts extends DbConnect
 {
     public static function getMessage()
-        {
-        
+    {
 
-        $sql = "select * from contacts";
+
+        $sql = "select * from contacts
+        order by contacts.created_at desc";
+
 
         try {
             return self::executerRequete($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -19,15 +21,15 @@ class DBContacts extends DbConnect
             return $e->getMessage();
         }
     }
- 
+
 
     public static function getMessagePerEmail($email)
-        {
-        
+    {
+
         $value = array();
         $value = ["email" => $email];
 
-                $sql = "select
+        $sql = "select
                             contacts.id_contact as Ref,
                             contacts.message as Message,
                             contacts.created_at as Date_message
@@ -35,15 +37,15 @@ class DBContacts extends DbConnect
                         where contacts.email = :email
                         order by contacts.created_at desc";
 
-                try {
-                    return self::executerRequete($sql, $value)->fetchAll(PDO::FETCH_ASSOC);
-                } catch (Exception $e) {
-                    return $e->getMessage();
-                }
-            }
+        try {
+            return self::executerRequete($sql, $value)->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 
     public static function saveMessage($nom, $email, $message, $id_utilisateur = NULL)
-        {
+    {
 
         $value = array();
         $value["nom"] = $nom;
@@ -51,29 +53,60 @@ class DBContacts extends DbConnect
         $value["message"] = $message;
         $value["id_utilisateur"] = $id_utilisateur;
 
-                try {
-                    $sql = "insert into contacts (id_utilisateur, nom, email, message) VALUES (:id_utilisateur, :nom, :email, :message)";
-                    self::executerRequete($sql, $value);
-                    return $value;
-                } catch (Exception $e) {
-                    return $e->getMessage();
-                }
-            }
+        try {
+            $sql = "insert into contacts (id_utilisateur, nom, email, message) VALUES (:id_utilisateur, :nom, :email, :message)";
+            self::executerRequete($sql, $value);
+            return $value;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 
 
 
 
     public static function deleteMessage($idMessage)
-        {
+    {
         $value = ["idMessage" => $idMessage];
 
-                $sql = "delete from contacts where contacts.id_contact like :idMessage";
+        $sql = "delete from contacts where contacts.id_contact like :idMessage";
 
-                try {
-                    return self::executerRequete($sql, $value)->fetchAll(PDO::FETCH_ASSOC);
-                } catch (Exception $e) {
-                    return $e->getMessage();
-                }
-            }
+        try {
+            return self::executerRequete($sql, $value)->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 
+
+    public static function searchMessagePerEmail($terme)
+    {
+
+        $value = array();
+        $value["terme"] = $terme;
+
+        $sql = "select * from contacts as c
+                where c.email like :terme";
+
+        try {
+            return self::executerRequete($sql, $value)->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+    public static function searchMessagePerDate($terme)
+    {
+
+        $value = array();
+        $value["terme"] = $terme;
+
+        $sql = "select * from contacts as c
+                where date_format(c.created_at, '%Y-%m') = :terme";
+
+        try {
+            return self::executerRequete($sql, $value)->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }

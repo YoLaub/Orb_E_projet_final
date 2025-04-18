@@ -1,0 +1,228 @@
+:root {
+    --elementDark: #0e0c64;
+    --element: #121189;
+    --elementLight: #1310e052;
+    --elementTrans: #1310e091;
+    --background1: #12121A;
+    --background2: #FAF9FF;
+    --texte1: #FAF9FF;
+    --texte2: #12121A;
+    --fondPage: #FFFFFF;
+    --jeu: #39FF14;
+    --jeu_alert: #FF073A;
+    --ombre: #00000003;
+    --ombreSurvol: #0000001e;
+
+    --texte: 'Poppins';
+    --titre: 'Bristone';
+    --jeu_texte: 'Press Start 2P';
+}
+
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+    padding: 32px;
+}
+
+
+.form-block,
+.form-inline {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+}
+
+.form-inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"]
+{
+    padding: 8px 16px;
+    margin: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    background-color: var(--element);
+    padding: 8px 16px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    box-shadow:     0 2px 4px rgba(0, 0, 0, 0.1),    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+button:hover {
+    background-color: var(--elementDark);
+    transform: translateY(0.3px); /* léger enfoncement visuel */
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+.user_section{
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.user-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 2px 4px 12px #00000014;  
+}
+
+
+.connexion-form {
+    padding: 16px;
+    width: 90%;
+    margin: 20px auto;
+    background-color: var(--fondPage);
+    border-radius: 6px;
+    box-shadow: 2px 4px 12px #00000014;    
+    max-width: 100%;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+#passwordError{
+    color: var(--jeu_alert); 
+    margin-bottom: 16px;
+    font-size: 0.9em; 
+    display: none;
+}
+
+.connexion-form input,
+.connexion-form textarea,
+.connexion-form button {
+    width: 80%;
+    font-size: 1rem;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.connexion-form input:focus,
+.connexion-form textarea:focus {
+    border-color: var(--element);
+    outline: none;
+}
+
+.connexion-form textarea {
+    height: 200px;
+}
+
+.connexion-form button {
+    background-color: var(--element);
+    color: var(--texte1);
+    width: 33%;
+    margin: 16px;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.connexion-form button:hover {
+    transform: translateY(0.3px);
+    /* léger enfoncement visuel */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+#inscription{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+
+
+article{
+    margin-bottom:  0;
+}
+
+.admin{
+    display: flex;
+    flex-direction: row;
+
+}
+.utilisateur{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.ajout_admin{
+    margin-right: 64px;
+}
+
+.user_section{
+    flex-direction: row;
+
+}
+
+.form-block,
+.form-inline {
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-block input,
+.form-inline input {
+    flex: 1;
+}
+
+.form-block button,
+.form-inline button {
+    flex-shrink: 0;
+}
+
+.user-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.user-card p {
+    margin: 0;
+}
+
+}

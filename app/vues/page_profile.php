@@ -1,50 +1,114 @@
-<h1>Profil de <?php echo htmlspecialchars($informations[0]["prenom"] . " " . $informations[0]["nom"]); ?></h1>
+<section id="sectionProfile">
+  <h1>Mon profile</h1>
+  <article>
 
-<h2>Informations Personnelles</h2>
-<p><strong>Email :</strong> <?php echo htmlspecialchars($email); ?></p>
-<p><strong>Nom :</strong> <?php echo htmlspecialchars($informations[0]["nom"]); ?></p>
-<p><strong>Prénom :</strong> <?php echo htmlspecialchars($informations[0]["prenom"]); ?></p>
-<p><strong>Adresse :</strong> <?php echo htmlspecialchars($informations[0]["adresse_livraison"]); ?></p>
-<p><strong>Ville :</strong> <?php echo htmlspecialchars($informations[0]["ville"]); ?></p>
-<p><strong>Code Postal :</strong> <?php echo htmlspecialchars($informations[0]["code_postal"]); ?></p>
-<p><strong>Téléphone :</strong> <?php echo htmlspecialchars($informations[0]["telephone"]); ?></p>
+    <h2>Mon score</h2>
+    <?php if (!empty($commande["score"])) : ?>
+      <ul>
+        <li><strong>Meilleur Score :</strong> <?= $commande["score"][0]["meilleur_score"] ?></li>
+        <li><strong>Score Moyen :</strong> <?= number_format($commande["score"][0]["score_moyen"], 2, ',', ' ') ?></li>
+        <li><strong>Nombre de Parties :</strong> <?= $commande["score"][0]["nombre_parties"] ?></li>
+      </ul>
+    <?php else : ?>
+      <p>Aucun score enregistré.</p>
+    <?php endif; ?>
 
-<h2>Modifier les informations</h2>
-<form action="./?action=profile" method="post">
-    <label>Prénom : <input type="text" name="prenom" value="<?php echo htmlspecialchars($informations[0]["prenom"]); ?>"></label><br>
-    <label>Nom : <input type="text" name="nom" value="<?php echo htmlspecialchars($informations[0]["nom"]); ?>"></label><br>
-    <label>Adresse : <input type="text" name="adresse" value="<?php echo htmlspecialchars($informations[0]["adresse_livraison"]); ?>"></label><br>
-    <label>Ville : <input type="text" name="ville" value="<?php echo htmlspecialchars($informations[0]["ville"]); ?>"></label><br>
-    <label>Code Postal : <input type="text" name="cp" value="<?php echo htmlspecialchars($informations[0]["code_postal"]); ?>"></label><br>
-    <label>Téléphone : <input type="text" name="tel" value="<?php echo htmlspecialchars($informations[0]["telephone"]); ?>"></label><br>
-    <button type="submit">Modifier</button>
-</form>
+    <div class="remise-container">
+      <h3>Votre remise</h3>
+      <div class="remise-bar">
+        <div class="remise-progress" style="width: <?= min(100, ($commande["score"][0]["meilleur_score"] / 500) * 100) ?>%;"></div>
+        <div class="remise-step" style="left: 33%;">5%</div>
+        <div class="remise-step" style="left: 66%;">10%</div>
+        <div class="remise-step" style="left: 100%;">15%</div>
+      </div>
+      <p class="remise-texte">
+        Remise actuelle :
+        <strong>
+          <?php
+          $score = $commande["score"][0]["meilleur_score"] ?? "";
+          if ($score >= 500) echo "15%";
+          elseif ($score >= 450) echo "10%";
+          elseif ($score >= 400) echo "5%";
+          else echo "0%";
+          ?>
+        </strong>
+      </p>
+    </div>
 
-<h2>Historique des commandes</h2>
 
-<?php if (!empty($commandes)) : ?>
-    <ul>
-        <?php foreach ($commandes as $commande) : ?>
-            <li>Commande #<?php echo $commande["id_commande"]; ?> - Montant : <?php echo $commande["montant_total"]; ?> € - Date : <?php echo $commande["date_heure"]; ?>- Status : <?php echo $commande["statut"]; ?></li>
+  </article>
+
+  <article>
+
+    <div class="mesInfos">
+      <h2>Mes informations</h2>
+      <p><span>Email :</span> <?= $commande["email"]; ?></p>
+      <p><span>Nom :</span> <?= $commande["informations"][0]["nom"] ?? $commande["email"];  ?></p>
+      <p><span>Prénom :</span> <?= $commande["informations"][0]["prenom"] ?? "" ;?></p>
+      <p><span>Adresse :</span> <?= $commande["informations"][0]["adresse_livraison"] ?? ""; ?></p>
+      <p><span>Ville :</span> <?= $commande["informations"][0]["ville"] ?? "" ?></p>
+      <p><span>Code Postal :</span> <?= $commande["informations"][0]["code_postal"] ?? ""; ?></p>
+      <p><span>Téléphone :</span> <?= $commande["informations"][0]["telephone"] ?? ""; ?></p>
+      <p><span>Paiement :</span> <?= $commande["informations"][0]["mode_paiement"] ?? "" ;?></p>
+
+    </div>
+
+
+    <div>
+      <button class="btn-modifier" data-modal-target="#modalInfos">Modifier mes informations</button>
+
+      <div id="modalInfos" class="modal-overlay">
+        <div class="modal-content">
+          <span class="modal-close" data-close>&times;</span>
+          <?= $commande["formulaire"] ?>
+        </div>
+      </div>
+
+    </div>
+
+  </article>
+
+  <article id="commande_contenair">
+
+    <h2>Historique des commandes</h2>
+
+    <script id="detail_commande" type="application/json">
+      <?= $commande["commandes"] ?>
+    </script>
+
+  </article>
+
+  <article>
+
+    <h2>Mes échanges</h2>
+
+    <div>
+      <?php if (!empty($commande["mesMessages"])) : ?>
+
+        <?php foreach ($commande["mesMessages"] as $msg) : ?>
+          <div class="echange-card">
+            <div class="message-bulle user">
+              <p><strong>[<?= $msg["Date_message"] ?>]</strong></p>
+              <p><?= htmlspecialchars($msg["Message"]) ?></p>
+            </div>
+
+            <input class="ref" type="hidden" name="contact" value="<?= $msg["Ref"] ?>">
+            <div class="reponse"></div>
+          </div>
         <?php endforeach; ?>
-    </ul>
-<?php else : ?>
-    <p>Aucune commande enregistrée.</p>
-<?php endif; ?>
 
-<h2>Mes échanges</h2>
-<?=var_dump($mesMessages)?>
+      <?php else : ?>
+        <p>Aucun message.</p>
+      <?php endif; ?>
+    </div>
+    <div>
 
-<h2>Les réponses</h2>
-<?=var_dump($mesReponses)?>
+      <h2>Nous contacter</h2>
 
-<h2>Scores</h2>
-<?php if (!empty($score)) : ?>
-    <ul>
-        <li><strong>Meilleur Score :</strong> <?php echo $score[0]["meilleur_score"]; ?></li>
-        <li><strong>Score Moyen :</strong> <?php echo number_format($score[0]["score_moyen"], 2); ?></li>
-        <li><strong>Nombre de Parties :</strong> <?php echo $score[0]["nombre_parties"]; ?></li>
-    </ul>
-<?php else : ?>
-    <p>Aucun score enregistré.</p>
-<?php endif; ?>
+      <?= $commande["reponse"] ?>
+
+    </div>
+
+  </article>
+
+</section>

@@ -1,0 +1,174 @@
+:root {
+    --elementDark: #0e0c64;
+    --element: #121189;
+    --elementLight: #1310e052;
+    --elementTrans: #1310e091;
+    --background1: #12121A;
+    --background2: #FAF9FF;
+    --texte1: #FAF9FF;
+    --texte2: #12121A;
+    --fondPage: #FFFFFF;
+    --jeu: #39FF14;
+    --jeu_alert: #FF073A;
+    --ombre: #00000003;
+    --ombreSurvol: #0000001e;
+
+    --texte: 'Poppins';
+    --titre: 'Bristone';
+    --jeu_texte: 'Press Start 2P';
+}
+
+
+
+section{
+
+    display: flex;
+    flex-direction: column;
+    margin: 16px auto;
+    max-width: 1200px;
+    padding: 0 16px;
+
+}
+
+.title{
+    display: flex;
+    margin-left: 32px;
+}
+
+.title h2{
+    margin:0 0 0 16px;
+}
+
+.messagerie{
+    display: flex;
+    flex-direction: column;
+}
+
+.formMessagerie{
+    margin-bottom: 64px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--elementDark);
+}
+
+
+#messageR{
+    margin-top: 16px;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.message-bulle {
+    width: 90%;
+    margin: 32px 0;
+    border-radius: 6px;
+    padding: 1rem;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-bulle.user {
+    background-color: #f1f1f1;
+    align-self: flex-start;
+    border-left: 5px solid var(--elementLight);
+}
+
+.message-bulle.admin {
+    background-color: #d1f7d1;
+    align-self: flex-end;
+    border-right: 5px solid #28a745;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.message-text {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+small {
+    font-size: 0.8rem;
+    color: var(--texte2);
+}
+
+.form-container {
+    margin: 2rem 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+input,
+textarea {
+    padding: 0.8rem;
+    margin: 16px 0 32px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: var(--element);
+    padding: 8px 16px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    box-shadow:     0 2px 4px rgba(0, 0, 0, 0.1),    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+button:hover {
+    background-color: var(--elementDark);
+    transform: translateY(0.3px); /* léger enfoncement visuel */
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+
+@media (min-width: 768px) {
+
+    section{
+
+        display: flex;
+        flex-direction:column;
+        
+    }
+
+    .messagerie{
+        flex-direction: row;
+        margin: auto;
+    }
+
+    .chat-container {
+        padding: 2rem 0;
+    }
+
+    .message-bulle {
+        max-width: 100%;
+    }
+
+    .form-container {
+        width: 60%;
+        margin: auto;
+    }
+}
