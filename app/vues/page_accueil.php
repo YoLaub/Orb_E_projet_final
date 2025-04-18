@@ -27,7 +27,7 @@
         
         <div class="step second">
             <div class="rank">#2</div>
-            <div class="score" aria-label ="score" ><?= !empty($commande["meilleurJoueur"][1]["meilleur_score"]) 
+            <div class="score"  ><?= !empty($commande["meilleurJoueur"][1]["meilleur_score"]) 
     ? htmlspecialchars($commande["meilleurJoueur"][1]["meilleur_score"] . " pts") 
     : ""; ?></div>
             <div class="pseudo"  aria-label ="email" ><?=!empty($commande["meilleurJoueur"][1]["pseudo"]) ? htmlspecialchars($commande["meilleurJoueur"][1]["pseudo"]) : "" ?></div>
@@ -36,15 +36,15 @@
         <!-- 1ère place -->
         <div class="step first">
             <div class="rank">#1</div>
-            <div class="score" aria-label ="score" ><?=!empty($commande["meilleurJoueur"][0]["meilleur_score"]) ? htmlspecialchars($commande["meilleurJoueur"][0]["meilleur_score"] . " pts") : ""?></div>
-            <div class="pseudo" aria-label ="email" ><?=!empty($commande["meilleurJoueur"][0]["pseudo"]) ? htmlspecialchars($commande["meilleurJoueur"][0]["pseudo"]) : ""?></div>
+            <div class="score"  ><?=!empty($commande["meilleurJoueur"][0]["meilleur_score"]) ? htmlspecialchars($commande["meilleurJoueur"][0]["meilleur_score"] . " pts") : ""?></div>
+            <div class="pseudo"  ><?=!empty($commande["meilleurJoueur"][0]["pseudo"]) ? htmlspecialchars($commande["meilleurJoueur"][0]["pseudo"]) : ""?></div>
         </div>
 
         <!--  3e place -->
         <div class="step third">
             <div class="rank">#3</div>
-            <div class="score" aria-label ="score" ><?=!empty($commande["meilleurJoueur"][2]["meilleur_score"]) ? htmlspecialchars($commande["meilleurJoueur"][2]["meilleur_score"] . " pts") : "" ?></div>
-            <div class="pseudo" aria-label ="email" ><?=!empty($commande["meilleurJoueur"][2]["pseudo"]) ? htmlspecialchars($commande["meilleurJoueur"][2]["pseudo"]) : "" ?></div>
+            <div class="score" ><?=!empty($commande["meilleurJoueur"][2]["meilleur_score"]) ? htmlspecialchars($commande["meilleurJoueur"][2]["meilleur_score"] . " pts") : "" ?></div>
+            <div class="pseudo" ><?=!empty($commande["meilleurJoueur"][2]["pseudo"]) ? htmlspecialchars($commande["meilleurJoueur"][2]["pseudo"]) : "" ?></div>
         </div>
     </article>
     </section>
@@ -85,13 +85,16 @@
 
 
 
-<?php echo var_dump($_SESSION);
-if(isset($_SESSION["inscription"]) && $_SESSION["inscription"] == "ok"){
+<?php 
+if(isset($_SESSION["valide"]) && $_SESSION["valide"] == "ok"){
   ?>
     <div id="successModal" >
         <div class="successModal-content">
           <h1>Inscription réussie !</h1>
         </div>
     </div> 
-<?php } 
+    <?php
+  // Supprimer la variable après affichage
+  unset($_SESSION["valide"]);
+} 
 ?>

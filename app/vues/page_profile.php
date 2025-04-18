@@ -1,4 +1,4 @@
-<section>
+<section id="sectionProfile">
   <h1>Mon profile</h1>
   <article>
 

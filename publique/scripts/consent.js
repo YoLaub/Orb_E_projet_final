@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function hideModal(selector){
         selector.style.display = "none";
         
+        
     }
 
     if(selector){

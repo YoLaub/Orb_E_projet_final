@@ -4,7 +4,7 @@
     <form action="./?action=contact" method="post" class="contact-form" id = "contact">
         <input type="text" id="name" name="nom" placeholder="Votre nom" aria-label="Votre nom" required><br>
         <input type="email" id="email" name="email" value ="<?=$_SESSION["email"] ?? ""?>" aria-label="Votre prenom" placeholder="Votre email" required><br>
-        <input type="hidden" name= "prtg" id ="">
+        <input type="hidden" name= "prtg">
         <textarea id="message" name="message" aria-label="Votre message" placeholder="Votre message" required></textarea><br>
         <p class="maxChar"></p>
         <div class="check">

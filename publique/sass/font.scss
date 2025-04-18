@@ -1,0 +1,32 @@
+   // Font-face
+   @font-face {
+    font-display: swap;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/poppins-v22-latin-regular.woff2') format('woff2');
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: 'Bristone';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Bristone.woff2') format('woff2');
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-v47-latin-regular.woff2') format('woff2');
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: 'Press Start 2P';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/press-start-2p-v15-latin-regular.woff2') format('woff2');
+  }
