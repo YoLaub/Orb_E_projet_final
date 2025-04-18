@@ -90,10 +90,10 @@ CREATE TABLE contacts (
 
 CREATE TABLE reponses_contacts (
     id_reponse INT AUTO_INCREMENT PRIMARY KEY,
-    id_contact INT NOT NULL,             -- Référence au message de contact
-    id_admin INT NOT NULL,               -- L'ID de l'administrateur qui répond
-    reponse TEXT NOT NULL,               -- Le contenu de la réponse
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Date de la réponse
-    CONSTRAINT fk_contact FOREIGN KEY (id_contact) REFERENCES contacts(id_contact) ON DELETE CASCADE,  -- Lien vers le message de contact
-    CONSTRAINT fk_admin FOREIGN KEY (id_admin) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE  -- Lien vers l'administrateur (assuré par la table utilisateurs)
+    id_contact INT NOT NULL,             
+    id_admin INT NOT NULL,              
+    reponse TEXT NOT NULL,               
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    CONSTRAINT fk_contact FOREIGN KEY (id_contact) REFERENCES contacts(id_contact) ON DELETE CASCADE,  
+    CONSTRAINT fk_admin FOREIGN KEY (id_admin) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE  
 );
