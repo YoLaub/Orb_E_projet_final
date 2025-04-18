@@ -25,10 +25,10 @@ class JeuControleur
         $this->params["scripts"] = '<script type="module" src="./publique/scripts/orbe/ballRun.js" defer></script>
         <script src="./publique/scripts/orbe/fullscreen.js" defer></script>';
         $this->params["page"] = "Jouer";
-        $this->params["meta"] = '<meta property="og:title" content="Orbe" />
-        <meta property="og:image" content="./publique/images/mini_jeu1.webp" />
-        <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/?action=accueil" />
-        <meta property="og:type" content="game" />';
+        $this->params["meta"] = '<meta property="og:title" content="Orbe" >
+        <meta property="og:image" content="./publique/images/mini_jeu1.webp" >
+        <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/ >
+        <meta property="og:type" content="game" >';
     }
 
     public function pageJeu()
@@ -60,7 +60,7 @@ class JeuControleur
             $this->pageLayout->render($content, $this->params);
         } else {
             $_SESSION["url"] = $_SERVER['REQUEST_URI'];
-            header("Location: ?action=connexion");
+            header("Location: connexion");
         }
     }
 
@@ -85,11 +85,11 @@ class JeuControleur
                 if (empty($infoProfil[0]["nom"])) {
                     $etat =  $this->infoJoueur->createInfoUser($idUtilisateur, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement);
                     if ($etat) {
-                        header("Location: ?action=jeu");
+                        header("Location: jeu");
                         exit();
                     } else {
                         $_SESSION["message"] = "Une erreur c'est produite !";
-                        header("Location: ?action=jeu");
+                        header("Location: jeu");
                         exit();
                     }
                 }

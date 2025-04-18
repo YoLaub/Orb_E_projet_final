@@ -9,6 +9,6 @@
 
     <?= $commande["inscription"] ?>
 
-    <a href="./?action=inscription">S'inscrire</a>
+    <a href="inscription">S'inscrire</a>
 
 </section>

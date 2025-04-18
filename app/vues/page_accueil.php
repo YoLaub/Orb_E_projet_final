@@ -1,7 +1,7 @@
 <div class="modal">
     <div id="cookie-banner">
         <p>Nous utilisons des cookies pour analyser le trafic de notre site et améliorer votre expérience.
-            <a class="rgpd" href="?action=rgpd">En savoir plus</a>.
+            <a class="rgpd" href="rgpd">En savoir plus</a>.
         </p>
         <button id="accept-cookies">Accepter</button>
     </div>
@@ -14,7 +14,7 @@
     <div class="presentation">
         <h1>orb'e</h1>
         <p class="presParag">Découvrez Orb’E, L'Assistant personnel.</p>
-        <a href="?action=produit">En savoir plus !</a>
+        <a href="produit">En savoir plus !</a>
     </div>
     <div class="orbe">
         <img src="./publique/images/3.webp" alt="orb'e">
@@ -52,11 +52,11 @@
 
 <section class="jouer">
     <div class="presentationSuite">
-        <h1>Jouez</h1>
+        <h1>Jouer</h1>
         <p>Relevez le défi avec le jeu Orb’E ! Évitez les obstacles, profitez d'une météo dynamique et tentez d'obtenir le score le plus élevé pour débloquer une surprise exclusive.</p>
     </div>
     <div class="jeuPresentation">
-        <a class="orbe-titre" href="?action=jeu">orb'e</a>
+        <a class="orbe-titre" href="jeu">orb'e</a>
         <img src="./publique/images/mini_jeu1.webp" alt="le jeu orb'e" loading="lazy">
 
     </div>
@@ -72,14 +72,14 @@
     </div>
 
     <div class="presentation">
-        <h1>Commandez</h1>
+        <h1>Commander</h1>
         <p>Prêt à transformer votre quotidien avec Orb’E ? Commandez dès maintenant et découvrez l'Assistant personnel , propulsé par Lya, qui s'adapte à vos besoins.</p>
     </div>
 
 </section>
 
 <aside class="contactAccueil">
-    <a href="?action=contact">Contactez nous !</a>
+    <a href="contact">Contactez nous !</a>
 </aside>
 
 

@@ -24,20 +24,20 @@ class MenuControleur
 
         if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
 
-            $this->nav .= $this->addItem("./?action=accueilBo", "Tableau de bord");
-            $this->nav .= $this->addItem("./?action=utilisateur", "Gestion utilisateur");
-            $this->nav .= $this->addItem("./?action=produit", "Gestion de produit");
-            $this->nav .= $this->addItem("./?action=messagerie", "Messagerie");
+            $this->nav .= $this->addItem("accueilBo", "Tableau de bord");
+            $this->nav .= $this->addItem("utilisateur", "Gestion utilisateur");
+            $this->nav .= $this->addItem("produit", "Gestion de produit");
+            $this->nav .= $this->addItem("messagerie", "Messagerie");
 
             return $this->nav .= $this->getNav();
         } else {
             //Création du menu
 
-            $this->nav .= $this->addItem("./?action=accueil", "Accueil");
-            $this->nav .= $this->addItem("./?action=jeu", "Jouer");
-            $this->nav .= $this->addItem("./?action=produit", "Orb'E");
-            $this->nav .= $this->addItem("./?action=qui", "Qui sommes nous ?");
-            $this->nav .= $this->addItem("./?action=contact", "Contactez-nous");
+            $this->nav .= $this->addItem("accueil", "Accueil");
+            $this->nav .= $this->addItem("jeu", "Jouer");
+            $this->nav .= $this->addItem("produit", "Orb'E");
+            $this->nav .= $this->addItem("qui", "Qui sommes nous ?");
+            $this->nav .= $this->addItem("contact", "Contactez-nous");
 
             return $this->nav .= $this->getNav();
         }

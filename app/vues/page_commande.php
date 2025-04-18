@@ -6,7 +6,7 @@
     </div>
     <div class="info-form">
         <h2>Votre panier</h2>
-        <form id="commandeForm" action="./?action=ajouterCommande" method="post">
+        <form id="commandeForm" action="ajouterCommande" method="post">
             <input type="text" name="nomProduit" value="<?= $commande["infoProduit"][0]["nom"]; ?>" readonly><br>
             <input type="text" name="prix" value="<?= $commande["infoProduit"][0]["prix"]; ?>" readonly><br>
             <input id="commandeForm" type="number" name="quantite" value="1"><br>

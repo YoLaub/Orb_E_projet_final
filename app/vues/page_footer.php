@@ -4,26 +4,26 @@
         <div class="footer-section">
             <h3>À propos</h3>
             <ul>
-                <li><a href="?action=qui">Qui sommes-nous ?</a></li>
-                <li><a href="?action=engagement">Nos engagements</a></li>
+                <li><a href="qui">Qui sommes-nous ?</a></li>
+                <li><a href="engagement">Nos engagements</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
             <h3>Support</h3>
             <ul>
-                <li><a href="?action=faq">FAQ</a></li>
-                <li><a href="?action=cgv">Livraison & Retour</a></li>
-                <li><a href="?action=contact">Contact</a></li>
+                <li><a href="faq">FAQ</a></li>
+                <li><a href="cgv">Livraison & Retour</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
             <h3>Mentions Légales</h3>
             <ul>
-                <li><a href="?action=cgv">CGV</a></li>
-                <li><a href="?action=rgpd">Politique de confidentialité</a></li>
-                <li><a href="?action=rgpd">Cookies</a></li>
+                <li><a href="cgv">CGV</a></li>
+                <li><a href="rgpd">Politique de confidentialité</a></li>
+                <li><a href="rgpd">Cookies</a></li>
             </ul>
         </div>
 

@@ -11,7 +11,7 @@
                 </svg>
             </p>
             <p><strong>Disponibilité : </strong><?= $commande["Detail produit"][0]["disponibilite"] ?></p>
-            <button><a href="./?action=<?= $keys[0] ?>"><?= $commande[$keys[0]] ?></a></button>
+            <button><a href="<?= $keys[0] ?>"><?= $commande[$keys[0]] ?></a></button>
 
             <?= $commande["partage"] ?>
 
