@@ -2,9 +2,7 @@
 !!!!!!!!!!!!15/04/2024!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
--ameliorer jeu et son code
--modale inscritpion
+Lien instagram
 
 Figma
 
@@ -16,31 +14,11 @@ présentation person
 
 -commenter code
 
-
-
+Mettre à jour le modèle conceptuel de donné (E/A)
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!Ne pas oublié:!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-Mettre à jour le modèle conceptuel de donné (E/A)
-
-reprendre les class
-
-adapter les bouton social media
-
-Reprendre les marges - toute les même et faire respirer le site
-
-padding input !!!
-
-revoir formulaire profile repondre -> reprendre messagerie BO
-
-revoir style formulaire !!
-
-
-changer svg article ! 
-
-ajouter un article avec la video ! 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!Retirer "?action="!!!!!!!!!!!!!
