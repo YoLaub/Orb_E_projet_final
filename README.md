@@ -1,5 +1,7 @@
 # Orb'E - Site Web & Mini-Jeu
 
+
+
 ## Description
 Orb'E est un assistant personnel intelligent sous forme de sphère. Ce projet de site web vise à promouvoir Orb'E en intégrant un mini-jeu interactif permettant aux utilisateurs de gagner des réductions en fonction de leurs scores.
 
@@ -37,6 +39,7 @@ Orb'E est un assistant personnel intelligent sous forme de sphère. Ce projet de
    ```
 2. **Configurer la base de données**
    - Importer le fichier SQL fourni dans MySQL
+   - Un admin sera automatiquement créé: nom: admin, email: admin@example.com, mot de passe: adminpass
    - Creer un fichier .env avec vos paramètres de connexion
   
    DB_HOST=
@@ -53,5 +56,5 @@ Orb'E est un assistant personnel intelligent sous forme de sphère. Ce projet de
    - Utiliser XAMPP ou un autre serveur PHP
 
 5. **Schema E/A**
-![schema E/A](./publique/images/divers/modeleBDD_E-A.jpg "E/A") 
+![schema E/A](./publique/images/divers/MCD.jpg "MCD") 
 
