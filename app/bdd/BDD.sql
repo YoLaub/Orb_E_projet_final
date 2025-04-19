@@ -50,7 +50,7 @@ CREATE TABLE produits(
    description TEXT NOT NULL,
    prix DECIMAL(10,2) NOT NULL,
    photo VARCHAR(255) NOT NULL,
-   disponibilité ENUM("en_stock", "epuise")  NOT NULL DEFAULT 'en_stock',
+   disponibilite ENUM("en_stock", "epuise")  NOT NULL DEFAULT 'en_stock',
    PRIMARY KEY(id_produit)
 );
 
@@ -64,7 +64,7 @@ CREATE TABLE detail_commande(
    FOREIGN KEY(id_produit) REFERENCES produits(id_produit) ON DELETE CASCADE
 );
 
-CREATE TABLE profil_utilisateur (
+CREATE TABLE commerce (
     id_profil INT AUTO_INCREMENT PRIMARY KEY,
     id_utilisateur INT UNIQUE NOT NULL,
     nom VARCHAR(50) NOT NULL,
@@ -90,10 +90,20 @@ CREATE TABLE contacts (
 
 CREATE TABLE reponses_contacts (
     id_reponse INT AUTO_INCREMENT PRIMARY KEY,
-    id_contact INT NOT NULL,             -- Référence au message de contact
-    id_admin INT NOT NULL,               -- L'ID de l'administrateur qui répond
-    reponse TEXT NOT NULL,               -- Le contenu de la réponse
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Date de la réponse
-    CONSTRAINT fk_contact FOREIGN KEY (id_contact) REFERENCES contacts(id_contact) ON DELETE CASCADE,  -- Lien vers le message de contact
-    CONSTRAINT fk_admin FOREIGN KEY (id_admin) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE  -- Lien vers l'administrateur (assuré par la table utilisateurs)
+    id_contact INT NOT NULL,            
+    id_admin INT NOT NULL,             
+    reponse TEXT NOT NULL,           
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  
+    CONSTRAINT fk_contact FOREIGN KEY (id_contact) REFERENCES contacts(id_contact) ON DELETE CASCADE, 
+    CONSTRAINT fk_admin FOREIGN KEY (id_admin) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE  
 );
+
+-- Insertion automatique du produit par défaut
+INSERT INTO produits (nom, description, prix, photo)
+VALUES 
+('Drone Orbe', 'Un drone en forme de sphère avec IA intégrée', 1990.99, 'img1.jpg');
+
+-- Insertion automatique de l’administrateur par défaut
+INSERT INTO utilisateurs (date_inscription, rôle, email, password)
+VALUES 
+('2025-03-03', 'admin', 'admin@example.com', 'adminpass');
