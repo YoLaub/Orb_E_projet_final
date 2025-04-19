@@ -36,13 +36,13 @@ Orb'E est un assistant personnel intelligent sous forme de sphère. Ce projet de
    git clone https://github.com/utilisateur/OrbE-Site.git
    ```
 2. **Configurer la base de données**
-   - Importer le fichier SQL fourni dans MySQL
+   - Importer dans phpmyadmin le fichier SQL fourni dans le dossier app/BDD
    - Creer un fichier .env avec vos paramètres de connexion
   
-   DB_HOST=
-   DB_NAME= 
-   USERNAME=
-   PASSWORD=
+  - DB_HOST=
+  - DB_NAME= 
+  - USERNAME=
+  - PASSWORD=
 
 
 3. **Installer Composer***
