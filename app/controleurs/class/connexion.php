@@ -116,7 +116,7 @@ class Connexion
                     // Redirection vers l'accueil si connexion réussie
                     
                     
-                    header("Location: ?action=accueil");
+                    header("Location: accueil");
                     exit();
                 } else {
                     $content = "page_inscription.php";

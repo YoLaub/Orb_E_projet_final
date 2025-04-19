@@ -1,5 +1,5 @@
 # Orb'E - Site Web & Mini-Jeu
-
+- Presentation du projet dans le dossier Presentation
 ## Description
 Orb'E est un assistant personnel intelligent sous forme de sphère. Ce projet de site web vise à promouvoir Orb'E en intégrant un mini-jeu interactif permettant aux utilisateurs de gagner des réductions en fonction de leurs scores.
 
@@ -36,16 +36,22 @@ Orb'E est un assistant personnel intelligent sous forme de sphère. Ce projet de
    git clone https://github.com/utilisateur/OrbE-Site.git
    ```
 2. **Configurer la base de données**
-   - Importer le fichier SQL fourni dans MySQL
-   - Modifier `config.php` avec vos paramètres de connexion
+   - Importer le fichier SQL dans PhpMyAdmin qui est dans app/bdd
+  
 
-3. **Installer Composer***
+3. **Installer Composer**
    -npm init
    -composer install
+
+4. **Preparer un fichier .env à la racine**
+   - DB_HOST=
+   - DB_NAME= 
+   - USERNAME= 
+   - PASSWORD=
    
-4. **Lancer le serveur local**
+5. **Lancer le serveur local**
    - Utiliser XAMPP ou un autre serveur PHP
 
-5. **Schema E/A**
-![schema E/A](./publique/images/divers/modeleBDD_E-A.jpg "E/A") 
+6. **Schema E/A**
+![schema E/A](./publique/images/divers/E_A_Orbe.jpg "E/A") 
 

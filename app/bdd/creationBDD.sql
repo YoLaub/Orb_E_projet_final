@@ -64,7 +64,7 @@ CREATE TABLE detail_commande(
    FOREIGN KEY(id_produit) REFERENCES produits(id_produit) ON DELETE CASCADE
 );
 
-CREATE TABLE profil_utilisateur (
+CREATE TABLE commerce (
     id_profil INT AUTO_INCREMENT PRIMARY KEY,
     id_utilisateur INT UNIQUE NOT NULL,
     nom VARCHAR(50) NOT NULL,
