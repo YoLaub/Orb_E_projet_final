@@ -45,6 +45,11 @@
   font-weight: 400;
   src: url("../fonts/press-start-2p-v15-latin-regular.woff2") format("woff2");
 }
+
+/* ////////////////////////////
+////////////GENERAL///////////
+//////////////////////////// */
+
 html {
   scroll-behavior: smooth;
 }
@@ -92,6 +97,10 @@ header .iconHeader {
 h1 {
   font-family: var(--titre);
 }
+
+/* ////////////////////////////
+////////////MENU///////////
+//////////////////////////// */
 
 .menu-toggle {
   font-size: 24px;
@@ -213,6 +222,10 @@ img {
   transform: scale(1.1);
 }
 
+/* ////////////////////////////
+////////////FOOTER///////////
+//////////////////////////// */
+
 footer {
   background-color: var(--background1);
   color: var(--texte1);
@@ -277,6 +290,10 @@ footer .footer-bottom {
   padding: 0 0 10px 10px;
 }
 
+/* ////////////////////////////
+////////////ICON///////////
+//////////////////////////// */
+
 .st0 {
   fill: #2B79C2;
 }
@@ -298,6 +315,12 @@ svg {
   width: 40px;
   height: 40px;
 }
+
+
+
+/* ////////////////////////////
+////////////DESKTOP///////////
+//////////////////////////// */
 
 @media (min-width: 768px) {
   header {

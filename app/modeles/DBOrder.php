@@ -9,6 +9,7 @@ use \Exception;
 class DBOrder extends DbConnect
 {
 
+    // Récupération de toute les commandes
     public static function getAllOrder()
     {
 
@@ -42,6 +43,7 @@ class DBOrder extends DbConnect
         if (!empty($data)) return $data;
     }
 
+    // Récupération des informations personnel de l'utilisateur 
     public static function infoUser($email)
     {
 
@@ -59,6 +61,7 @@ class DBOrder extends DbConnect
     }
 
 
+    // Mise à jours des informations personnelle de l'utilisateur
     public static function updateInfoUser($email, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement)
     {
         $value = [
@@ -94,6 +97,7 @@ class DBOrder extends DbConnect
         }
     }
 
+    // Creation de la fiche client
     public static function createInfoUser($id_utilisateur, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement)
     {
         $value = [
@@ -119,6 +123,7 @@ class DBOrder extends DbConnect
         }
     }
 
+    // Récupération des informations personnel de l'utilisateur par email
     public static function getUserOrders($email)
     {
         $value = ["email" => $email];
@@ -147,7 +152,7 @@ class DBOrder extends DbConnect
         }
     }
 
-
+    // Suppression des informations personnel de l'utilisateur par email
     public static function deleteInfoUser($email)
     {
 
@@ -164,6 +169,8 @@ class DBOrder extends DbConnect
             return $e->getMessage();
         }
     }
+
+    // Mise à jours du statut de commande
     public static function updateStatus($status, $idCommande)
     {
 
@@ -182,6 +189,7 @@ class DBOrder extends DbConnect
         }
     }
 
+    // Récuperation des en tête de champ ENUM
     public static function showEnum($table, $colonne)
     {
 

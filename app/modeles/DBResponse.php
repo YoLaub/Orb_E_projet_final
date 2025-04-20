@@ -7,6 +7,8 @@ use \Exception;
 
 class DBResponse extends DbConnect
 {
+
+    // Récupération de toute les réponses
     public static function getReponse()
     {
 
@@ -20,6 +22,7 @@ class DBResponse extends DbConnect
         }
     }
 
+    // Récupération des réponses par id
     public static function getReponsesPerId($id_contact)
     {
 
@@ -42,11 +45,7 @@ class DBResponse extends DbConnect
         }
     }
 
-
-
-
-
-
+    // Sauvegarder la réponse
     public static function saveMessageAdmin($id_contact, $id_admin, $reponse)
     {
 

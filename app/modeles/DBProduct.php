@@ -9,6 +9,7 @@ use \Exception;
 class DBProduct extends DbConnect
 {
 
+    // Récupération de tout les produits
     public static function getProduct()
     {
 
@@ -22,6 +23,7 @@ class DBProduct extends DbConnect
         if (!empty($data)) return $data;
     }
 
+    // Récupération d'un produit par Id
     public static function getProductById($id_produit)
     {
 
@@ -38,19 +40,7 @@ class DBProduct extends DbConnect
         if (!empty($data)) return $data;
     }
 
-    public static function getOrder()
-    {
-
-        $sql = "select * from order";
-
-        $req = self::executerRequete($sql);
-
-        $data = $req->fetchAll(PDO::FETCH_ASSOC);
-
-
-        if (!empty($data)) return $data;
-    }
-
+    // Récupération de la derniere commande passé
     public static function lastOrder()
     {
 
@@ -64,6 +54,7 @@ class DBProduct extends DbConnect
         if (!empty($data)) return $data;
     }
 
+    // Ajouter les details d'une commande
     public static function addDetailsOrder($idCommande, $idProduct, $quantite)
     {
 
@@ -86,6 +77,7 @@ class DBProduct extends DbConnect
         }
     }
 
+    // Ajouter un nouveau produit
     public static function addProduct($nom, $description, $prix, $photo, $dispo)
     {
 
@@ -125,6 +117,7 @@ class DBProduct extends DbConnect
         }
     }
 
+    // Mise à jours des informations produit
     public static function updateProduct($id_produit, $nom, $description, $prix, $photo, $dispo)
     {
 
@@ -154,6 +147,7 @@ class DBProduct extends DbConnect
     }
 
 
+    // Ajouter une commande
     public static function addOrder($total, $idUtilisateur, $idProduct, $quantite)
     {
 
@@ -177,6 +171,7 @@ class DBProduct extends DbConnect
         }
     }
 
+    // Suppression d'une commande
     public static function deleteOrder($id_commande)
     {
 

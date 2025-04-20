@@ -8,6 +8,7 @@ use \Exception;
 class DBUser extends DbConnect
 {
 
+    // Récupération de tout les utilisateurs
     public static function getAllUser()
     {
 
@@ -20,6 +21,7 @@ class DBUser extends DbConnect
         }
     }
 
+    // Recherche les utilisateur selon un term
     public static function searchUser($terme)
     {
 
@@ -42,6 +44,7 @@ class DBUser extends DbConnect
         }
     }
 
+    // Récupération de tout les utilisateurs selon leur rôle
     public static function getUser($role)
     {
 
@@ -72,6 +75,7 @@ class DBUser extends DbConnect
         if (!empty($data)) return $data;
     }
 
+    // Compte le nombre d'utilisateur
     public static function numberOfUser()
     {
 
@@ -85,7 +89,7 @@ class DBUser extends DbConnect
         if (!empty($data)) return $data;
     }
 
-
+    // Récupération des utilisateurs par email
     public static function getUserPerEmail($email)
     {
 
@@ -102,6 +106,7 @@ class DBUser extends DbConnect
         if (!empty($data)) return $data;
     }
 
+    // Récupération des utilisateurs par Id
     public static function getUserPerId($id)
     {
 
@@ -119,6 +124,7 @@ class DBUser extends DbConnect
     }
 
 
+    // Ajouter un nouvel utilisateur selon son rôle, par defaut "utilisateur"
     public static function addUser($email, $mdp, $role = "utilisateur")
     {
 
@@ -142,6 +148,7 @@ class DBUser extends DbConnect
         }
     }
 
+    // Récupération des informations utilisateur par email
     public static function infoUser($email)
     {
 
@@ -158,6 +165,7 @@ class DBUser extends DbConnect
         if (!empty($data)) return $data;
     }
 
+    // Mise à jour de la fiche client
     public static function updateInfoUser($email, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement)
     {
         $value = [
@@ -193,6 +201,8 @@ class DBUser extends DbConnect
         }
     }
 
+
+    // Récupération des information personnel par email
     public static function getUserOrders($email)
     {
         $value = ["email" => $email];
@@ -220,6 +230,8 @@ class DBUser extends DbConnect
             return $e->getMessage();
         }
     }
+
+    // Récupération des score par email
     public static function getUserScores($email)
     {
         $value = ["email" => $email];
@@ -245,7 +257,7 @@ class DBUser extends DbConnect
 
 
 
-
+    // Suppression des informations utilisateur
     public static function deleteInfoUser($email)
     {
 

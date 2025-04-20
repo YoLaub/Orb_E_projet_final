@@ -7,13 +7,13 @@ use \Exception;
 
 class DBContacts extends DbConnect
 {
+
+    // Récupération de tout les message
     public static function getMessage()
     {
 
-
         $sql = "select * from contacts
         order by contacts.created_at desc";
-
 
         try {
             return self::executerRequete($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -22,7 +22,7 @@ class DBContacts extends DbConnect
         }
     }
 
-
+    // Récupération des message par email
     public static function getMessagePerEmail($email)
     {
 
@@ -44,6 +44,7 @@ class DBContacts extends DbConnect
         }
     }
 
+    // Sauvegarde des messages
     public static function saveMessage($nom, $email, $message, $id_utilisateur = NULL)
     {
 
@@ -62,9 +63,7 @@ class DBContacts extends DbConnect
         }
     }
 
-
-
-
+    //Suppression des message par son Id
     public static function deleteMessage($idMessage)
     {
         $value = ["idMessage" => $idMessage];
@@ -78,7 +77,7 @@ class DBContacts extends DbConnect
         }
     }
 
-
+    //Recherche des message par lettre
     public static function searchMessagePerEmail($terme)
     {
 
@@ -94,6 +93,8 @@ class DBContacts extends DbConnect
             return $e->getMessage();
         }
     }
+
+    //Recherche des message par date
     public static function searchMessagePerDate($terme)
     {
 

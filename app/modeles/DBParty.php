@@ -7,6 +7,8 @@ use \Exception;
 
 class DBParty extends DbConnect
 {
+
+    // Récupération des scores de l'utilisateur par email
     public static function getUserScores($email)
     {
         $value = ["email" => $email];
@@ -30,6 +32,7 @@ class DBParty extends DbConnect
         }
     }
 
+    // Récupération du dernier score de l'utilisateur par id utilisateur
     public static function getLastScores($idUtilisateur)
     {
         $value = ["id" => $idUtilisateur];
@@ -47,7 +50,7 @@ class DBParty extends DbConnect
         }
     }
 
-
+    // Récupération des 5 meilleurs scores
     public static function getFiveBestScores($count)
     {
         $value = ["count" => $count];
@@ -71,6 +74,7 @@ class DBParty extends DbConnect
         }
     }
 
+    // Récupération et calcul de la somme de tout les scores
     public static function totalScore()
     {
 
@@ -84,6 +88,7 @@ class DBParty extends DbConnect
         }
     }
 
+    // Enregistrer les scores
     public static function saveScore($score, $idUtilisateur)
     {
 

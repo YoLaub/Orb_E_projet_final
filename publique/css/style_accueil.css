@@ -18,8 +18,10 @@
 
 
 
+/* ////////////////////////////
+////////////Accueil///////////
+//////////////////////////// */
 
-/* ======= Accueil ======= */
 
 h1 {
     font-family: var(--titre);
@@ -38,6 +40,10 @@ h1 {
     flex-direction: column;
 
 }
+
+/* ////////////////////////////
+////////////PRESENTATION///////////
+//////////////////////////// */
 
 .intro a {
     background-color: var(--elementTrans);
@@ -104,6 +110,10 @@ h1 {
     padding: 16px;
 }
 
+/* ////////////////////////////
+////////////JOUER///////////
+//////////////////////////// */
+
 .jeuPresentation {
     display: flex;
     justify-content: center;
@@ -147,6 +157,10 @@ h1 {
     -ms-border-radius: 0 0 6px 6px;
     -o-border-radius: 0 0 6px 6px;
 }
+
+/* ////////////////////////////
+////////////CALL TO ACTION///////////
+//////////////////////////// */
 
 .catSection {
     display: flex;
@@ -194,6 +208,10 @@ h1 {
         0 1px 0 rgba(255, 255, 255, 0.05) inset;
 }
 
+/* ////////////////////////////
+////////////CONTACT///////////
+//////////////////////////// */
+
 
 .contactAccueil {
     height: 150px;
@@ -232,6 +250,12 @@ h1 {
 
 }
 
+
+/* ////////////////////////////
+////////////MODAL COOKIES///////////
+//////////////////////////// */
+
+
 #cookie-banner {
     position: fixed;
     bottom: 0;
@@ -239,18 +263,35 @@ h1 {
     background-color: var(--background2);
     color: var(--texte2);
     text-align: center;
-    padding: 10px 104px;
+    padding: 40px 0;
     display: none;
     z-index: 1001;
 
 }
 
+
 #accept-cookies {
     background-color: var(--element);
     color: var(--texte1);
+    border-radius: 6px;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+#decline-cookies {
+    background-color: var(--element);
+    color: var(--texte1);
+    border-radius: 6px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
 }
 
 .rgpd {

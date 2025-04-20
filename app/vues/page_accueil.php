@@ -4,6 +4,7 @@
             <a class="rgpd" href="rgpd">En savoir plus</a>.
         </p>
         <button id="accept-cookies">Accepter</button>
+        <button id="decline-cookies">Refuser</button>
     </div>
 </div>
 

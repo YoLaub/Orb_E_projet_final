@@ -17,9 +17,13 @@
     --jeu_texte: 'Press Start 2P';
 }
 
+/* ////////////////////////////
+////////////GENERAL///////////
+//////////////////////////// */
 
 section{
     max-width: 1200px;
+    margin: auto;
 }
 
 section article {

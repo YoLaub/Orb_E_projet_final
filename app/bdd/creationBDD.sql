@@ -97,3 +97,13 @@ CREATE TABLE reponses_contacts (
     CONSTRAINT fk_contact FOREIGN KEY (id_contact) REFERENCES contacts(id_contact) ON DELETE CASCADE,  
     CONSTRAINT fk_admin FOREIGN KEY (id_admin) REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE  
 );
+
+-- Insertion automatique du produit par défaut
+INSERT INTO produits (nom, description, prix, photo)
+VALUES 
+('Drone Orbe', 'Un drone en forme de sphère avec IA intégrée', 1990.99, 'img1.jpg');
+
+-- Insertion automatique de l’administrateur par défaut
+INSERT INTO utilisateurs (date_inscription, rôle, email, password)
+VALUES 
+('2025-03-03', 'admin', 'admin@example.com', 'Admin01!');

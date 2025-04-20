@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     let cookieBanner = document.getElementById("cookie-banner");
     let acceptButton = document.getElementById("accept-cookies");
+    let declineButton = document.getElementById("decline-cookies");
     let modal = document.querySelector(".modal");
 
 
@@ -13,6 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Lorsque l'utilisateur accepte
     acceptButton.addEventListener("click", function () {
         setCookie("cookieConsent", "accepted", 1); 
+        cookieBanner.style.display = "none"; 
+        modal.style.display = "none";
+    });
+
+    declineButton.addEventListener("click", function () {
         cookieBanner.style.display = "none"; 
         modal.style.display = "none";
     });
@@ -40,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function hideModal(selector){
         selector.style.display = "none";
-        
         
     }
 
