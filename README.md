@@ -19,7 +19,7 @@ Orb'E est un assistant personnel intelligent sous forme de sphère. Ce projet de
    git clone https://github.com/utilisateur/OrbE-Site.git
    ```
 2. **Configurer la base de données**
-   - Executer le fichier creationBDD.sql dans votre base de donné 
+   - Executer le fichier app/bdd/creationBDD.sql dans votre base de donné 
   
 
 3. **Installer Composer**

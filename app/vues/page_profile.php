@@ -2,6 +2,7 @@
   <h1>Mon profile</h1>
   <article>
 
+  <!-- Affichage du score -->
     <h2>Mon score</h2>
     <?php if (!empty($commande["score"])) : ?>
       <ul>
@@ -13,6 +14,7 @@
       <p>Aucun score enregistré.</p>
     <?php endif; ?>
 
+    <!-- Affichage de la remise -->
     <div class="remise-container">
       <h3>Votre remise</h3>
       <div class="remise-bar">
@@ -40,6 +42,7 @@
 
   <article>
 
+  <!-- Informations personnelle -->
     <div class="mesInfos">
       <h2>Mes informations</h2>
       <p><span>Email :</span> <?= $commande["email"]; ?></p>
@@ -68,6 +71,7 @@
 
   </article>
 
+  <!-- suivi des commandes  -->
   <article id="commande_contenair">
 
     <h2>Historique des commandes</h2>
@@ -78,6 +82,7 @@
 
   </article>
 
+  <!-- Messagerie -->
   <article>
 
     <h2>Mes échanges</h2>

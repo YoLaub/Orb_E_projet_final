@@ -58,24 +58,39 @@ let show = `<svg  viewBox="0 0 512 512"  version="1.1" xml:space="preserve" xmln
                 </g>
             </svg>`;
 
+// Sélection des éléments du DOM : 
+// - icône pour masquer le mot de passe (œil fermé)
+// - icône pour afficher le mot de passe (œil ouvert)
+// - champ de saisie du mot de passe
 let eye = document.querySelector(".hide");
 let eyeoff = document.querySelector(".show");
-let passwordField =  document.querySelector("#passwordInput")
+let passwordField = document.querySelector("#passwordInput");
 
+// Injection du contenu (icône ou texte) dans l'élément œil fermé
 eye.innerHTML = hide;
 
-
+// Injection du contenu (icône ou texte) dans l'élément œil ouvert
 eyeoff.innerHTML = show;
+// Cache l'icône œil ouvert par défaut
 eyeoff.style.display = "none";
 
+// Ajout d'un événement clic sur l'icône œil fermé
 eye.addEventListener("click", () => {
+  // Cache l'icône œil fermé
   eye.style.display = "none";
+  // Affiche l'icône œil ouvert
   eyeoff.style.display = "block";
+  // Change le type du champ mot de passe pour afficher le texte en clair
   passwordField.type = "text";
 });
 
+// Ajout d'un événement clic sur l'icône œil ouvert
 eyeoff.addEventListener("click", () => {
+  // Cache l'icône œil ouvert
   eyeoff.style.display = "none";
+  // Réaffiche l'icône œil fermé
   eye.style.display = "block";
+  // Change le type du champ pour masquer le texte (mot de passe)
   passwordField.type = "password";
 });
+

@@ -1,3 +1,4 @@
+<!--Formulaire de connexion  -->
 <section id="connexion">
     <h1>
         Connexion

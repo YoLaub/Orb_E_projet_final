@@ -11,7 +11,7 @@ class Routes
     private string $action; // Action courante demandée par l'utilisateur
     private $params; // Paramètres associés à l'action
     private const DEFAULT_ROUTE = "AccueilControleur:accueil"; // Route par défaut (utilisée si aucune action n'est spécifiée)
-    private const ERROR_ROUTE = "app/vues/'page404.php"; // Route utilisée en cas d'erreur ou de page non trouvée
+    private const ERROR_ROUTE = "page404.php"; // Route utilisée en cas d'erreur ou de page non trouvée
 
     public function __construct()
     {
@@ -44,7 +44,8 @@ class Routes
         $this->action = $action; // Récupère l'action demandée
         $this->params = $params; // Récupère les paramètres éventuels
 
-        // Vérifie si l'action demandée est bien définie dans le tableau des routes, sinon, redirige vers page404
+        if(isset($this->lesActions[$this->action])){
+                    // Vérifie si l'action demandée est bien définie dans le tableau des routes, sinon, redirige vers page404
         $controllerAction = explode(":", $this->lesActions[$this->action]);
 
         // Construit le chemin complet vers le contrôleur (espace de nom + nom de classe)
@@ -61,5 +62,10 @@ class Routes
 
         // Termine le script après la redirection
         exit();
+        }else{
+            $pageError = new RenderLayout;
+            $pageError->render($this->lesActions['page404'] ,  $this->params,false);
+        }
+
     }
 }

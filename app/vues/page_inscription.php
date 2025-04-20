@@ -1,3 +1,4 @@
+<!-- Zone d'inscription -->
 <section id="inscription">
     <h1>Inscription</h1>
 

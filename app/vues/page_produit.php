@@ -1,5 +1,6 @@
 <section class="contenaire">
 
+<!-- Fiche produit -->
     <h2><?= $commande["Detail produit"][0]["nom"] ?></h2>
     <div class=fiche_produit>
         <div id="visualisation-3d"></div>
@@ -21,6 +22,7 @@
 
 </section>
 
+<!-- Description produit -->
 <section class="contenaire">
     <article>
         <div class="article-header">
@@ -77,6 +79,15 @@
 
             </div>
 
+        </div>
+    </article>
+    <article>
+        <div class="article-header">
+            <h2>Processus de création en vidéo</h2>
+            <div class="icon"></div>
+        </div>
+        <div class="article-content">
+        <iframe src="https://www.youtube.com/embed/hA9JeTi_wjU?si=n48GcP9LumhZju-M" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </article>
 </section>

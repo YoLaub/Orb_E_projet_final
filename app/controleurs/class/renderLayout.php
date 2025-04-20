@@ -32,8 +32,7 @@ class RenderLayout
             ob_start(); // Démarre la mise en mémoire tampon
 
             $commande = $params;             // Récupère les paramètres pour la vue
-            $keys = array_keys($params);     // Récupère les clés des paramètres
-
+           
             // Inclut le fichier de la vue ciblée
             require RACINE . 'app/vues/' . $target;
 

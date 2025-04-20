@@ -1,3 +1,4 @@
+<!-- Consentement utilisateur pour les cookies -->
 <div class="modal">
     <div id="cookie-banner">
         <p>Nous utilisons des cookies pour analyser le trafic de notre site et améliorer votre expérience.
@@ -10,7 +11,7 @@
 
 
 
-
+<!-- Presentation principale -->
 <section class="intro">
     <div class="presentation">
         <h1>orb'e</h1>
@@ -22,6 +23,7 @@
     </div>
 </section>
 
+<!-- Call to action pour jouer à Orb'E -->
 <section class="podium"> 
     <h1>Podium</h1>
     <article class="steps">
@@ -65,6 +67,8 @@
 
 </section>
 
+
+<!-- Call to action pour commande Orb'E -->
 <section class="commander ">
 
     <div class="catSection">
@@ -85,7 +89,7 @@
 
 
 
-
+<!-- Modale de confirmation d'inscription -->
 <?php 
 if(isset($_SESSION["valide"]) && $_SESSION["valide"] == "ok"){
   ?>

@@ -1,4 +1,4 @@
-
+<!-- Condition général de vente -->
 <section>
     <article>
 

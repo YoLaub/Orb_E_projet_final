@@ -1,4 +1,4 @@
-
+<!-- Formulaire de commande -->
 <section>
     <h1>Commande</h1>
     <div class="infoPerso info-form">

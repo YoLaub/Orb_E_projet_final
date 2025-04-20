@@ -1,4 +1,5 @@
 </main>
+<!-- Pied de page -->
 <footer>
     <div class="footer-container">
         <div class="footer-section">

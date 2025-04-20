@@ -1,3 +1,4 @@
+<!-- Foire au question -->
 <section>
     <article>
         <img src="./publique/images/faq.webp" alt="Faq">

@@ -1,3 +1,4 @@
+<!-- Formulaire de contact -->
 <section>
     <h1>Contactez-nous</h1>
 
