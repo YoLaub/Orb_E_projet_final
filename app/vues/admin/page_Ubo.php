@@ -29,7 +29,9 @@
                         <button type="submit">Supprimer</button>
                     </form>
                 </div>
-            <?php endforeach; ?>
+            <?php endforeach; 
+            echo password_hash("Admin01!", PASSWORD_DEFAULT );?>
+
 
         </div>
     </article>

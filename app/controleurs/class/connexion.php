@@ -144,17 +144,17 @@ class Connexion
             switch (true) {
                 case isset($_POST["id_produit"]):
                     $etat = $this->connexionProduct->deleteProduct(intval($_POST["id_produit"]));
-                    header("Location: ?action=produit");
+                    header("Location: produit");
                     exit();
 
                 case isset($_POST["id_utilisateur"]):
                     $etat = $this->connectDB->deleteUser(intval($_POST["id_utilisateur"]));
-                    header("Location: ?action=utilisateur");
+                    header("Location: utilisateur");
                     exit();
 
                 case isset($_POST["id_admin"]):
                     $etat = $this->connectDB->deleteUser(intval($_POST["id_admin"]));
-                    header("Location: ?action=utilisateur");
+                    header("Location: utilisateur");
                     exit();
 
                 default:

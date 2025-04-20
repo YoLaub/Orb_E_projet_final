@@ -27,7 +27,7 @@ class Middleware
     public function accesMiddleware()
     {
         // Vérifie si un rôle "utilisateur" est défini dans la session
-        if (isset($_SESSION["role"]) && $_SESSION["role"] = "utilisateur") {
+        if (isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
             // Si l'utilisateur a un rôle "utilisateur", l'accès est autorisé
             return true;
         } else {

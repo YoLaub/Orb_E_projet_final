@@ -65,7 +65,7 @@ CREATE TABLE detail_commande(
 );
 
 CREATE TABLE commerce (
-    id_profil INT AUTO_INCREMENT PRIMARY KEY,
+    id_commerce INT AUTO_INCREMENT PRIMARY KEY,
     id_utilisateur INT UNIQUE NOT NULL,
     nom VARCHAR(50) NOT NULL,
     prenom VARCHAR(50),
@@ -101,9 +101,5 @@ CREATE TABLE reponses_contacts (
 -- Insertion automatique du produit par défaut
 INSERT INTO produits (nom, description, prix, photo)
 VALUES 
-('Drone Orbe', 'Un drone en forme de sphère avec IA intégrée', 1990.99, 'img1.jpg');
+('Drone Orbe', 'Un drone en forme de sphère avec IA intégrée', 1990.99, './publique/images/3.webp');
 
--- Insertion automatique de l’administrateur par défaut
-INSERT INTO utilisateurs (date_inscription, rôle, email, password)
-VALUES 
-('2025-03-03', 'admin', 'admin@example.com', 'Admin01!');

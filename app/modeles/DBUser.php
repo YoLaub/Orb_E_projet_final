@@ -29,6 +29,7 @@ class DBUser extends DbConnect
         $value["terme"] = $terme;
 
         $sql = "select 
+                u.id_utilisateur,
                 u.email,
                 c.nom,
                 c.prenom

@@ -1,6 +1,6 @@
 let country = [
   ["PARIS", "48.8534", "2.3488"],
-  ["MOSCOU", "18.1486", "-65.4327"],
+  ["MOSCOU", "55.7522", "37.6156"],
   ["TOKYO", "35.6895", "139.6917"],
   ["RIO", "-22.9064", "-43.1822"],
   ["JOHANNESBURG", "-26,2023", "28,0436"],
@@ -13,8 +13,6 @@ let weatherDataCache = null;
 
 export function updateCount(backgroundIndex) {
   if (city >= country.length) return;
-
-  console.log("Ville actuelle :", country[city][0]);
 
   city = backgroundIndex;
   weatherDataCache = null;
@@ -46,15 +44,6 @@ async function fetchUsers(url) {
   }
 }
 
-function getCurrentDate() {
-  let now = new Date();
-  let year = now.getFullYear();
-  let month = String(now.getMonth() + 1).padStart(2, '0'); // Les mois sont indexés à partir de 0
-  let day = String(now.getDate()).padStart(2, '0');
-
-
-  return `${year}-${month}-${day}`;
-}
 
 
 export async function getValueWeather() {
@@ -69,6 +58,7 @@ export async function getValueWeather() {
       // Récupérer les données météorologiques et les mettre en cache si nécessaire
       await fetchUsers(url);
       let dataResponse = weatherDataCache;
+      console.log(weatherDataCache)
 
 
       // let time = `${getCurrentDate()}T17:00`; // Formater la date du jour

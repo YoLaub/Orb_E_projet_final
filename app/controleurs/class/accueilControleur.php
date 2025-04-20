@@ -67,28 +67,31 @@ class AccueilControleur
 
         // Récupération de toutes les commandes
         $commande = $this->connexionCommande->getAllOrder();
-
-        // Regroupement des commandes par ID pour affichage structuré
         $commandesGroupées = [];
-        foreach ($commande as $ligne) {
-            $id = $ligne["id_commande"];
-            if (!isset($commandesGroupées[$id])) {
-                $commandesGroupées[$id] = [
-                    "date_heure" => $ligne["date_heure"],
-                    "montant_total" => $ligne["montant_total"],
-                    "statut" => $ligne["statut"],
-                    "produits" => []
+        // Regroupement des commandes par ID pour affichage structuré
+        if(!empty($commande)){
+           
+            foreach ($commande as $ligne) {
+                $id = $ligne["id_commande"];
+                if (!isset($commandesGroupées[$id])) {
+                    $commandesGroupées[$id] = [
+                        "date_heure" => $ligne["date_heure"],
+                        "montant_total" => $ligne["montant_total"],
+                        "statut" => $ligne["statut"],
+                        "produits" => []
+                    ];
+                }
+                // Ajout des produits associés à chaque commande
+                $commandesGroupées[$id]["produits"][] = [
+                    "nom" => $ligne["nom_produit"],
+                    "description" => $ligne["description"],
+                    "prix" => $ligne["prix"],
+                    "quantité" => $ligne["quantité"],
+                    "total" => $ligne["total_produit"]
                 ];
             }
-            // Ajout des produits associés à chaque commande
-            $commandesGroupées[$id]["produits"][] = [
-                "nom" => $ligne["nom_produit"],
-                "description" => $ligne["description"],
-                "prix" => $ligne["prix"],
-                "quantité" => $ligne["quantité"],
-                "total" => $ligne["total_produit"]
-            ];
         }
+       
 
         // Paramètres pour l'affichage des données back-office
         $table = 'commandes';

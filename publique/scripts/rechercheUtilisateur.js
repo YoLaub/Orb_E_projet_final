@@ -32,13 +32,12 @@ document.getElementById("rechercheUtilisateur").addEventListener("input", functi
         // Création d'un élément <div> pour chaque utilisateur
         const div = document.createElement("div");
         div.classList.add("user-card"); // Ajout d'une classe CSS pour le style
-
         // Insertion du contenu HTML dans la carte utilisateur
         div.innerHTML = `
           <p><strong>Email :</strong> ${utilisateur.email}</p>
           <p><strong>Nom :</strong> ${utilisateur.nom || "Non renseigné"}</p>
           <p><strong>Prénom :</strong> ${utilisateur.prenom || "Non renseigné"}</p>        
-          <form action="./?action=suppression" method="post" class="form-inline">
+          <form action="suppression" method="post" class="form-inline">
             <input type="hidden" name="id_utilisateur" value="${utilisateur.id_utilisateur}">
             <button type="submit">Supprimer</button>
           </form>
