@@ -20,7 +20,7 @@ class JeuControleur
         $this->connexion = new Middleware;                             // Initialisation du middleware pour vérifier les autorisations
         $this->partie = new DBParty;                                   // Accès aux méthodes de gestion des parties de jeu
         $this->infoJoueur = new DBOrder;                               // Accès aux données utilisateur liées à une commande
-        $this->params["infoProfil"] = $this->infoJoueur->infoUser($_SESSION["email"]); // Récupération des infos profil utilisateur
+        $this->params["infoProfil"] = $this->infoJoueur->infoUser($_SESSION["email"]) ?? ""; // Récupération des infos profil utilisateur
         $this->params["style"] = "orbe.css";                           // Feuille de style à charger pour le jeu
         $this->params["scripts"] = '<script type="module" src="./publique/scripts/orbe/ballRun.js" defer></script>
         <script src="./publique/scripts/orbe/fullscreen.js" defer></script>'; // Scripts JS nécessaires pour le jeu
@@ -34,7 +34,8 @@ class JeuControleur
     // Affiche la page de jeu et enregistre le score si une requête POST est reçue
     public function pageJeu()
     {
-        if ($this->connexion->accesMiddleware("jeu")) { // Vérifie que l'utilisateur est autorisé à accéder à la page
+        $zone = "jeu";
+        if ($this->connexion->accesMiddleware($zone)) { // Vérifie que l'utilisateur est autorisé à accéder à la page
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") { // Si l'utilisateur envoie une requête POST (soumission de score)
                 $idUtilisateur = $_SESSION["id"] ?? ""; // Récupération de l'id utilisateur depuis la session
