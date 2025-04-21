@@ -13,6 +13,7 @@
             </p>
             <p><strong>Disponibilité : </strong><?= $commande["Detail produit"][0]["disponibilite"] ?></p>
             <button><a href="<?= $keys[0] ?>"><?= $commande[$keys[0]] ?></a></button>
+            <a href="inscription"></a>
 
             <?= $commande["partage"] ?>
 
@@ -91,3 +92,19 @@
         </div>
     </article>
 </section>
+
+
+<!-- Modale de confirmation d'inscription -->
+<?php 
+if(isset($_SESSION["merci"])){
+  ?>
+    <div id="commandeModal" >
+        <div class="successModal-content">
+          <h2><?=$_SESSION["merci"]?></h2>
+        </div>
+    </div> 
+    <?php
+  // Supprimer la variable après affichage
+  unset($_SESSION["merci"]);
+} 
+?>

@@ -24,7 +24,7 @@ class Middleware
     }
 
     // Middleware pour vérifier l'accès pour un utilisateur connecté
-    public function accesMiddleware()
+    public function accesMiddleware($zone)
     {
         // Vérifie si un rôle "utilisateur" est défini dans la session
         if (isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
@@ -32,6 +32,14 @@ class Middleware
             return true;
         } else {
             // Si l'utilisateur n'a pas ce rôle, l'accès est refusé
+            if($zone == "jeu"){
+                $_SESSION["redirection"] = "Veuillez vous connecter pour jouer !";
+            }elseif($zone == "commande"){
+                $_SESSION["redirection"] = "Veuillez vous connecter pour commander !";
+            }elseif($zone == "profil"){
+                $_SESSION["redirection"] = "Veuillez créer un compte !";
+            }
+            
             return false;
         }
     }

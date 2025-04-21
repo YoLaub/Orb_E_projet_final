@@ -10,6 +10,21 @@
 
     <?= $commande["inscription"] ?>
 
-    <a href="inscription">S'inscrire</a>
+    <a href="inscription">Inscrivez vous ici !</a>
 
 </section>
+
+<!-- Modale de redirection -->
+<?php 
+if(isset($_SESSION["redirection"])){
+  ?>
+    <div id="gameModal" >
+        <div class="successModal-content">
+          <h2><?=$_SESSION["redirection"]?></h2>
+        </div>
+    </div> 
+    <?php
+  // Supprimer la variable après affichage
+  unset($_SESSION["redirection"]);
+} 
+?>

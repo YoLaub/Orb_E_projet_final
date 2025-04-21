@@ -33,8 +33,8 @@ class ProduitControleur
         $this->params["Detail produit"] = $this->detailsProduit;
         $this->params["meta"] = '<meta property="og:title" content="' . $this->detailsProduit[0]["nom"] . '" />
         <meta property="og:description" content="' . $this->detailsProduit[0]["description"] . '" />
-        <meta property="og:image" content="./publique/images/3.webp" />
-        <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/?action=produit" />
+        <meta property="og:image" content="./publique/images/commande_ex.webp" />
+        <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/produit" />
         <meta property="og:type" content="product" />';
 
         // Intègre un module de partage sur la page produit

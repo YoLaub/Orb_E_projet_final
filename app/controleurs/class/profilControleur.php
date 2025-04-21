@@ -46,7 +46,7 @@ class ProfilControleur
     // Affiche la page profil de l'utilisateur
     public function pageProfil()
     {
-        if ($this->connexion->accesMiddleware()) {
+        if ($this->connexion->accesMiddleware("profil")) {
 
             $action = "profile";
             $nom = $this->infoPerso[0]["nom"] ?? "";
@@ -77,10 +77,10 @@ class ProfilControleur
         }
     }
 
-    // Affiche la page commande de l'utilisateur
+    // Affiche la page commande
     public function pageCommande()
     {
-        if ($this->connexion->accesMiddleware()) {
+        if ($this->connexion->accesMiddleware("commande")) {
 
             $action = "commande";
             // Préparation des paramètres à passer à la vue commande
@@ -101,7 +101,7 @@ class ProfilControleur
         } else {
             // Redirige vers la page de connexion si l'accès est refusé
             $_SESSION["url"] = $_SERVER['REQUEST_URI'];
-            header("Location: ?action=connexion");
+            header("Location: connexion");
         }
     }
 
@@ -144,8 +144,8 @@ class ProfilControleur
 
                 // Si la mise à jour est réussie, on redirige sur la même page
                 if ($etat) {
-                    $_SESSION["message"] = "<p>Modification effectué !</p>";
-                    header("Location: ?action=" . $action);
+                    $_SESSION["message"] = "Modification effectué !";
+                    header("Location: " . $action);
                     exit;
                 } else {
                     // Sinon, on affiche un message d'erreur dans le formulaire
@@ -193,7 +193,7 @@ class ProfilControleur
                 if ($etat) {
                     unset($_SESSION["id_produit"]);
                     $_SESSION["merci"] = "Merci pour votre commande, nous vous contacterons dans les 48H";
-                    header("Location: ?action=produit");
+                    header("Location: produit");
                 } else {
                     // En cas d'échec, rechargement de la page commande
                     $content = "page_commande.php";
@@ -253,10 +253,6 @@ class ProfilControleur
             }
         }
 
-        // Réinitialise le message session s'il existe
-        if (isset($_SESSION["message"])) {
-            unset($_SESSION["message"]);
-        }
 
         // Affiche le formulaire par défaut avec un message
         $params["message"] = "Dites nous tous !";

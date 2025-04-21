@@ -26,7 +26,7 @@ class JeuControleur
         <script src="./publique/scripts/orbe/fullscreen.js" defer></script>'; // Scripts JS nécessaires pour le jeu
         $this->params["page"] = "Jouer";                               // Titre de la page
         $this->params["meta"] = '<meta property="og:title" content="Orbe" >
-        <meta property="og:image" content="./publique/images/mini_jeu1.webp" >
+        <meta property="og:image" content="./publique/images/commande_ex.webp" >
         <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/ >
         <meta property="og:type" content="game" >';                   // Métadonnées pour le partage sur les réseaux sociaux
     }
@@ -34,7 +34,7 @@ class JeuControleur
     // Affiche la page de jeu et enregistre le score si une requête POST est reçue
     public function pageJeu()
     {
-        if ($this->connexion->accesMiddleware()) { // Vérifie que l'utilisateur est autorisé à accéder à la page
+        if ($this->connexion->accesMiddleware("jeu")) { // Vérifie que l'utilisateur est autorisé à accéder à la page
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") { // Si l'utilisateur envoie une requête POST (soumission de score)
                 $idUtilisateur = $_SESSION["id"] ?? ""; // Récupération de l'id utilisateur depuis la session

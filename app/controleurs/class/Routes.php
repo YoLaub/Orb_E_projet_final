@@ -20,7 +20,7 @@ class Routes
             "defaut"  => self::DEFAULT_ROUTE,
             "accueil" => self::DEFAULT_ROUTE,
             "produit" => "ProduitControleur:pageProduit", // Affichage des produits
-            "commande" => "ProfilControleur:pageCommande", // Affichage des commandes
+            "commande" => "ProfilControleur:pageCommande", // Affichage du processus de commande
             "jeu" => "JeuControleur:pageJeu", // Page de jeu
             "save" => "JeuControleur:saveName", // Sauvegarde du nom dans le jeu
             "connexion" => "Connexion:connexionUtilisateur", // Connexion utilisateur

@@ -78,6 +78,17 @@ document.addEventListener("DOMContentLoaded", function () {
     select.appendChild(option);
   }
 
+let selector = document.getElementById("validation");
+
+  function hideModal(selector){
+    selector.style.display = "none";
+    
+}
+
+if(selector){
+    setTimeout(() => hideModal(selector), 2000);
+}
+
 
 
 });

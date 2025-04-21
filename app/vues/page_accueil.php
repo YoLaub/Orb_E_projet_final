@@ -95,7 +95,7 @@ if(isset($_SESSION["valide"]) && $_SESSION["valide"] == "ok"){
   ?>
     <div id="successModal" >
         <div class="successModal-content">
-          <h1>Inscription réussie !</h1>
+          <h2>Inscription réussie !</h2>
         </div>
     </div> 
     <?php
@@ -103,3 +103,5 @@ if(isset($_SESSION["valide"]) && $_SESSION["valide"] == "ok"){
   unset($_SESSION["valide"]);
 } 
 ?>
+
+

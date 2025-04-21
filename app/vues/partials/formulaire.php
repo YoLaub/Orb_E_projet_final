@@ -1,12 +1,6 @@
 <h2 class="titre_form">Vérifier vos informations</h2>
 
-<?php if (isset($commande["message"])) {
-    $commande["message"];
-}
-?>
-
-
-<form class="info-form" action="?action=<?= $commande["action"] ?>" method="post">
+<form class="info-form" action="<?= $commande["action"] ?>" method="post">
     <input type="text" name="nom" placeholder="Votre nom.." value="<?= $commande["informations"][0]["nom"] ?? "" ?>" aria-label ="nom" required><br>
     <input type="text" name="prenom" placeholder="Votre prénom.." value="<?= $commande["informations"][0]["prenom"] ?? "" ?>" aria-label ="prenom"><br>
     <input type="text" name="adresse" placeholder="Votre adresse.." value="<?=$commande["informations"][0]["adresse_livraison"] ?? "" ?>" aria-label ="adresse"><br>
@@ -29,3 +23,4 @@
     </select>
     <button type="submit" aria-label ="envoyer">Modifier</button>
 </form>
+

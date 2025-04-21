@@ -2,7 +2,7 @@
   <h1>Mon profile</h1>
   <article>
 
-  <!-- Affichage du score -->
+    <!-- Affichage du score -->
     <h2>Mon score</h2>
     <?php if (!empty($commande["score"])) : ?>
       <ul>
@@ -42,23 +42,27 @@
 
   <article>
 
-  <!-- Informations personnelle -->
+    <!-- Informations personnelle -->
     <div class="mesInfos">
       <h2>Mes informations</h2>
       <p><span>Email :</span> <?= $commande["email"]; ?></p>
       <p><span>Nom :</span> <?= $commande["informations"][0]["nom"] ?? $commande["email"];  ?></p>
-      <p><span>Prénom :</span> <?= $commande["informations"][0]["prenom"] ?? "" ;?></p>
+      <p><span>Prénom :</span> <?= $commande["informations"][0]["prenom"] ?? ""; ?></p>
       <p><span>Adresse :</span> <?= $commande["informations"][0]["adresse_livraison"] ?? ""; ?></p>
       <p><span>Ville :</span> <?= $commande["informations"][0]["ville"] ?? "" ?></p>
       <p><span>Code Postal :</span> <?= $commande["informations"][0]["code_postal"] ?? ""; ?></p>
       <p><span>Téléphone :</span> <?= $commande["informations"][0]["telephone"] ?? ""; ?></p>
-      <p><span>Paiement :</span> <?= $commande["informations"][0]["mode_paiement"] ?? "" ;?></p>
+      <p><span>Paiement :</span> <?= $commande["informations"][0]["mode_paiement"] ?? ""; ?></p>
 
     </div>
-
-
     <div>
       <button class="btn-modifier" data-modal-target="#modalInfos">Modifier mes informations</button>
+      <?php if ($_SESSION["message"] ?? "") {
+      ?><p id="validation"><?= $_SESSION["message"] ?></p>
+      <?php
+      
+        unset($_SESSION["message"]);
+      } ?>
 
       <div id="modalInfos" class="modal-overlay">
         <div class="modal-content">

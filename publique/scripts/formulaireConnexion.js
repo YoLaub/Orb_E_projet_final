@@ -45,4 +45,18 @@ document.addEventListener("DOMContentLoaded", function () {
             passwordError.style.display = "none";
         }
     });
+
+        //::::::::::::::::::::::::::::::::
+    // MODAL
+    //::::::::::::::::::::::::::::::::
+    let inscription = document.querySelector("#gameModal");
+
+    function hideModal(selector){
+        selector.style.display = "none";
+        
+    }
+
+    if(inscription){
+        setTimeout(() => hideModal(inscription), 1000);
+    }
 });
