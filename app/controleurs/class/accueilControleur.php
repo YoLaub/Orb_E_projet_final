@@ -8,6 +8,7 @@ use app\modeles\DBParty;
 
 class AccueilControleur
 {
+    
     // Attributs privés pour gérer les connexions aux différents modules
     private $pageLayout;              // Objet pour gérer le rendu de la page
     private $connexionUtilisateur;   // Connexion au modèle utilisateur
