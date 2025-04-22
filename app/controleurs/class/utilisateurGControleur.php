@@ -109,4 +109,54 @@ class UtilisateurGControleur
             return $this->pageLayout->render($content, $params, true);
         }
     }
+    // Gère l'inscription d'un administrateur
+    public function modifierPasswordAdmin()
+    {
+        $params = [
+            "action" => "utilisateur"
+        ];
+
+        // Si le formulaire a été soumis
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $email = trim($_POST["email"] ?? '');
+            $mdp = trim($_POST["mdp"] ?? '');
+            $newMdp = trim($_POST["newMdp"] ?? '');
+            $role = $_SESSION["role_visiteur"]; // rôle récupéré via la session
+
+            // Vérifie et hache le mot de passe
+            $mdpHache = $this->connexion->verifInfoAuth($email, $mdp);
+            $newMdpHache = password_hash($newMdp, PASSWORD_DEFAULT);
+
+            // Si les champs sont valides
+            if ($email && $mdpHache) {
+                // Tente l’ajout en base
+                $etat = $this->gestionProfil->updateAdmin($email, $newMdpHache, $role);
+
+                if ($etat) {
+                    $_SESSION["message"] = "Mot de pass modifié avec succès";
+                } else {
+                    $params["message"] = "Erreur lors de la modification !";
+                    $content = "partials/inscription.php";
+                    return $this->pageLayout->render($content, $params, true);
+                }
+
+                // Redirige vers la page utilisateur
+                header("Location: ?action=utilisateur");
+                exit();
+            } else {
+                $params["message"] = "Remplissez tous les champs !";
+                $content = "partials/inscription.php";
+                return $this->pageLayout->render($content, $params, true);
+            }
+        } 
+        // Si aucun formulaire soumis, affiche simplement le formulaire
+        else {
+            if (isset($_SESSION["message"])) {
+                unset($_SESSION["message"]);
+            }
+
+            $content = "partials/inscription.php";
+            return $this->pageLayout->render($content, $params, true);
+        }
+    }
 }

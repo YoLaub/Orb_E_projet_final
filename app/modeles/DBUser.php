@@ -202,6 +202,32 @@ class DBUser extends DbConnect
         }
     }
 
+        // Mise à jour de la fiche client
+        public static function updateAdmin($email, $mdp, $role)
+        {
+            $value = [
+                "email" => $email,
+                "mdp" => $mdp,
+                "role" => $role,
+                "theEmail" => $_SESSION["email"]
+               
+            ];
+    
+            try {
+                $sql = "update utilisateurs
+                        set utilisateurs.email = :email, 
+                            utilisateurs.password= :mdp, 
+                            utilisateurs.rôle = :role
+                        where utilisateurs.email = :theEmail";
+    
+                $req = self::executerRequete($sql, $value);
+    
+                return true;
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+    
 
     // Récupération des information personnel par email
     public static function getUserOrders($email)

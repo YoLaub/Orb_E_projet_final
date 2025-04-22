@@ -25,6 +25,7 @@ class RoutesPrive
             "messagerie" => "ContactControleur:pageContactBo", // Gestion de la messagerie back-office
             "connexion" => "Connexion:connexionUtilisateur", // Connexion administrateur
             "suppression" => "Connexion:suppressionUtilisateur", // Suppression d'utilisateur
+            "modifier" => "UtilisateurGControleur:modifierPasswordAdmin", // Suppression d'utilisateur
             "deconnexion" => "Connexion:deconnexion", // Déconnexion administrateur
             "rechercheU" => "UtilisateurGControleur:rechercheUtilisateur", // Recherche d'utilisateur
             "rechercheM" => "ContactControleur:rechercheMessage", // Recherche de message reçu

@@ -56,7 +56,7 @@ input[type="password"],
 input[type="text"]
 {
     padding: 8px 16px;
-    margin: 16px;
+    margin: 8px;
     border: 1px solid #ccc;
     border-radius: 6px;
 }
@@ -64,6 +64,7 @@ input[type="text"]
 button {
     background-color: var(--element);
     padding: 8px 16px;
+    margin: 8px;
     color: white;
     cursor: pointer;
     border: none;

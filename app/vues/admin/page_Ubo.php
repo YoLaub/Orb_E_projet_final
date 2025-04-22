@@ -24,6 +24,12 @@
                 <div class="user-card">
                     <p><strong>Email :</strong> <?= htmlspecialchars($admin["email"]) ?></p>
                     <p><strong>ID Admin :</strong> <?= $admin["id_utilisateur"] ?? "Non défini" ?></p>
+                    <form action="./?action=modifier" method="post" class="form-inline">
+                        <input type="hidden" name="email" value="<?= $admin["email"] ?>">
+                        <input type="text" name="mdp" placeholder="Votre password... ">
+                        <input type="text" name="newMdp" placeholder="Modifier le password">
+                        <button type="submit">Modifier password</button>
+                    </form>
                     <form action="./?action=suppression" method="post" class="form-inline">
                         <input type="hidden" name="id_admin" value="<?= $admin["id_utilisateur"] ?>">
                         <button type="submit">Supprimer</button>
