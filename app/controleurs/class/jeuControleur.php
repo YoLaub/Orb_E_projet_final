@@ -21,23 +21,24 @@ class JeuControleur
         $this->partie = new DBParty;                                   // Accès aux méthodes de gestion des parties de jeu
         $this->infoJoueur = new DBOrder;                               // Accès aux données utilisateur liées à une commande
 
-        
-        $this->params["infoProfil"] = isset($_SESSION["email"]) ? $this->infoJoueur->infoUser($_SESSION["email"]) : null; // Récupération des infos profil utilisateur
-        $this->params["style"] = "orbe.css";                           // Feuille de style à charger pour le jeu
-        $this->params["scripts"] = '<script type="module" src="./publique/scripts/orbe/ballRun.js" defer></script>
-        <script src="./publique/scripts/orbe/fullscreen.js" defer></script>'; // Scripts JS nécessaires pour le jeu
-        $this->params["page"] = "Jouer";                               // Titre de la page
-        $this->params["meta"] = '<meta property="og:title" content="Orbe" >
-        <meta property="og:image" content="./publique/images/commande_ex.webp" >
-        <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/ >
-        <meta property="og:type" content="game" >';                   // Métadonnées pour le partage sur les réseaux sociaux
-    }
+            }
 
     // Affiche la page de jeu et enregistre le score si une requête POST est reçue
     public function pageJeu()
     {
         $zone = "jeu";
         if ($this->connexion->accesMiddleware($zone)) { // Vérifie que l'utilisateur est autorisé à accéder à la page
+
+            $this->params["infoProfil"] = isset($_SESSION["email"]) ? $this->infoJoueur->infoUser($_SESSION["email"]) : null; // Récupération des infos profil utilisateur
+            $this->params["style"] = "orbe.css";                           // Feuille de style à charger pour le jeu
+            $this->params["scripts"] = '<script type="module" src="./publique/scripts/orbe/ballRun.js" defer></script>
+            <script src="./publique/scripts/orbe/fullscreen.js" defer></script>'; // Scripts JS nécessaires pour le jeu
+            $this->params["page"] = "Jouer";                               // Titre de la page
+            $this->params["meta"] = '<meta property="og:title" content="Orbe" >
+            <meta property="og:image" content="./publique/images/commande_ex.webp" >
+            <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/ >
+            <meta property="og:type" content="game" >';                   // Métadonnées pour le partage sur les réseaux sociaux
+    
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") { // Si l'utilisateur envoie une requête POST (soumission de score)
                 $idUtilisateur = $_SESSION["id"] ?? ""; // Récupération de l'id utilisateur depuis la session
