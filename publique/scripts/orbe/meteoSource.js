@@ -58,7 +58,6 @@ export async function getValueWeather() {
       // Récupérer les données météorologiques et les mettre en cache si nécessaire
       await fetchUsers(url);
       let dataResponse = weatherDataCache;
-      console.log(weatherDataCache)
 
 
       // let time = `${getCurrentDate()}T17:00`; // Formater la date du jour

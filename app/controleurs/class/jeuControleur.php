@@ -21,7 +21,7 @@ class JeuControleur
         $this->partie = new DBParty;                                   // Accès aux méthodes de gestion des parties de jeu
         $this->infoJoueur = new DBOrder;                               // Accès aux données utilisateur liées à une commande
 
-            }
+    }
 
     // Affiche la page de jeu et enregistre le score si une requête POST est reçue
     public function pageJeu()
@@ -38,16 +38,19 @@ class JeuControleur
             <meta property="og:image" content="./publique/images/commande_ex.webp" >
             <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/ >
             <meta property="og:type" content="game" >';                   // Métadonnées pour le partage sur les réseaux sociaux
-    
+
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") { // Si l'utilisateur envoie une requête POST (soumission de score)
                 $idUtilisateur = $_SESSION["id"] ?? ""; // Récupération de l'id utilisateur depuis la session
                 $data = json_decode(file_get_contents("php://input"), true); // Récupère les données JSON envoyées
                 $score = $data["score"] ?? ""; // Extraction du score
+                $date = $data["date"] ?? ""; // Extraction du score
                 $_SESSION["score"] = $score; // Stockage temporaire du score en session
 
-                // Si l'utilisateur est identifié et un score a bien été envoyé
-                if (!empty($idUtilisateur) && !empty($score)) {
+                if (empty($date)) {
+                    echo "TRICHEUR";
+                    die();
+                } elseif (!empty($idUtilisateur) && !empty($score)) {
                     $etat = $this->partie->saveScore($score, $idUtilisateur); // Sauvegarde du score dans la base de données
                     if ($etat) {
                         return $this->pageLayout->render("page_jeu.php", $this->params); // Affiche la page avec succès
@@ -91,27 +94,23 @@ class JeuControleur
             $paiement = $infoProfil[0]["prenom"] ?? "";
 
             // Si l'utilisateur est bien connecté
-            if (!empty($idUtilisateur)) {
-                // Si l'utilisateur n'a pas encore renseigné son nom
-                if (empty($infoProfil[0]["nom"])) {
-                    $etat =  $this->infoJoueur->createInfoUser($idUtilisateur, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement); // Enregistre les infos en base
-                    if ($etat) {
-                        header("Location: jeu"); // Redirige vers la page de jeu après succès
-                        exit();
-                    } else {
-                        $_SESSION["message"] = "Une erreur c'est produite !"; // Message d’erreur
-                        header("Location: jeu");
-                        exit();
-                    }
-                }
-                // Si le nom est déjà renseigné, affiche un message
-                $this->params["message"] = "Vous avez déjà entré votre nom !";
-                return $this->pageLayout->render("page_jeu.php", $this->params);
-            }
 
-            // Si aucune info utilisateur n'est trouvée, on recharge la page
-            $content = "page_jeu.php";
-            $this->pageLayout->render($content, $this->params);
+            // Si l'utilisateur n'a pas encore renseigné son nom
+            if (empty($infoProfil[0]["nom"])) {
+                $etat =  $this->infoJoueur->createInfoUser($idUtilisateur, $prenom, $nom, $adresse, $ville, $cp, $tel, $pays, $paiement); // Enregistre les infos en base
+                if ($etat) {
+                    header("Location: jeu"); // Redirige vers la page de jeu après succès
+                    exit();
+                } else {
+                    $_SESSION["message"] = "Une erreur c'est produite !"; // Message d’erreur
+                    header("Location: jeu");
+                    exit();
+                }
+            } else {
+                // Si le nom est déjà renseigné, affiche un message
+                header("Location: jeu");
+                exit();
+            }
         }
     }
 }

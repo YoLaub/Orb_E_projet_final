@@ -23,8 +23,6 @@ export function initializeAudio(backgroundMusic) {
 
         // Tableau pour stocker les données audio
         dataArray = new Uint8Array(analyser.frequencyBinCount);
-        
-        console.log('Données audio :', dataArray);
               
     }
     backgroundMusic.play();

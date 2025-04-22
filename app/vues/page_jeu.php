@@ -27,7 +27,7 @@
                         <h2>Bravo ! </h2>
                         <p>Tu as fait un score de <span id="final-score"></span> points !</p>
 
-                        <form action="?action=save" method="post">
+                        <form action="save" method="post">
                                 <input type="text" name="nom" placeholder="Votre nom.." value="<?= $commande["infoProfil"][0]["nom"] ?? "" ?>" aria-label="nom"><br>
                                 <div class="btn">
                                         <button id="share-btn">Partager</button>

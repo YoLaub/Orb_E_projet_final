@@ -17,7 +17,8 @@ import { Texte, openModal } from './texte.js';
 var canva = document.getElementById("gameCanvas");
 const context = canva.getContext("2d");
 
-var modeTest = false;
+var modeTest = true;
+var date = Date.now();
 
 //Gestion du score
 var score = 0;
@@ -199,7 +200,6 @@ var nebulositeData = null;
 async function pressure() {
   try {
     const weatherData = await getValueWeather();
-    console.log(weatherData);
     pressureData = weatherData.pressure;
     return pressureData;
   } catch (error) {
@@ -213,7 +213,6 @@ pressure();
 async function temperature() {
   try {
     const weatherData = await getValueWeather();
-    console.log(weatherData);
     temperatureData = weatherData.temperature;
     nebulositeData = weatherData.nebulosity;
     return temperatureData, nebulositeData;
@@ -229,7 +228,6 @@ temperature();
 async function nebulosity() {
   try {
     const weatherData = await getValueWeather();
-    console.log(weatherData);
     nebulositeData = weatherData.nebulosity;
     return nebulositeData;
   } catch (error) {
@@ -394,7 +392,7 @@ function drawCloud() {
 //=======================/////////======================
 //=======================/////////======================
 
-const backgroundMusic = new Audio("./publique/musique/test3.mp3");
+const backgroundMusic = new Audio("./publique/musique/test.mp3");
 backgroundMusic.volume = 1; // Ajuste le volume
 
 backgroundMusic.addEventListener("ended", () => {
@@ -707,7 +705,6 @@ function checkObstaclesCollision() {
         ballLeft < obstacleRight &&
         ballBottom > obstacleTop
       ) {
-        console.log("Collision détectée !");
         isGameOver = true; // Déclenche le Game Over
         scoreTab.push(score);
         gameOver++;
@@ -983,11 +980,12 @@ function stopGame() {
     },
     body: JSON.stringify({
       score: scoreToSave,
+      date: date
     }),
   })
     .then((response) => response.text())
     .then((data) => {
-      console.log("Score envoyé au serveur :", data);
+      console.log("Score :", data);
     })
     .catch((error) => {
       console.error("Erreur lors de l'envoi du score :", error);
@@ -1034,6 +1032,7 @@ function stopGame() {
 
 //Gestion du saut
 var doubleJumpAvailable = true;
+
 
 document.getElementById("jump").addEventListener("click", () => {
   if (ballY === groundY - 10 || isOnBlock) {
