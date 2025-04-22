@@ -21,7 +21,6 @@ var modeTest = false;
 
 //Gestion du score
 var score = 0;
-var scoreDisplay = 0;
 var scoreTab = [];
 
 //Debut de partie
@@ -104,6 +103,8 @@ var finishText = new Texte({
   color: themeVars.jeu,
   justify: "center"
 });
+
+
 
 
 
@@ -406,27 +407,57 @@ backgroundMusic.addEventListener("ended", () => {
 //=======================/////////======================
 
 //Generer les bonus
+
+const bonusImages = {
+  invincible: new Image(),
+  slow: new Image(),
+  addScoreBonus: new Image()
+};
+
+bonusImages.invincible.src = "./publique/images/orbe/rocket-takeoff.svg";
+bonusImages.slow.src = "./publique/images/orbe/bricks.svg";
+
+
+
+
 function generateBonus() {
   if (!messageFinActive) {
     bonus = {
       x: canva.width,
-      y: Math.random() * (groundY - 50), // Position aléatoire au-dessus du sol
-      width: 20,
-      height: 20,
+      y: Math.random() * (groundY - 60), // Position aléatoire au-dessus du sol
+      width: 30,
+      height: 30,
     };
   }
 }
 
 function drawBonus() {
   if (bonus && bonusType === "invincible") {
-    context.fillStyle = "gold";
-    context.fillRect(bonus.x, bonus.y, bonus.width, bonus.height);
-  } else if (bonus && bonusType === "slow") {
-    context.fillStyle = "red";
-    context.fillRect(bonus.x, bonus.y, bonus.width, bonus.height);
-  } else if (bonus && bonusType === "addScoreBonus") {
-    context.fillStyle = "blue";
-    context.fillRect(bonus.x, bonus.y, bonus.width, bonus.height);
+    context.drawImage(
+      bonusImages[bonusType],
+      bonus.x,
+      bonus.y,
+      bonus.width,
+      bonus.height);
+  }else if (bonus && bonusType === "slow") {
+    context.drawImage(
+      bonusImages[bonusType],
+      bonus.x,
+      bonus.y,
+      bonus.width,
+      bonus.height);
+    }else if (bonus && bonusType === "addScoreBonus") {
+    var bonusText = new Texte({
+      id: "bonusText",
+      text: "+30",
+      font: themeVars.jeu_texte,
+      size: 16,
+      x: bonus.x,
+      y: bonus.y,
+      color: themeVars.jeu,
+      justify: "center"
+    });
+    bonusText.draw(context);
   }
 }
 
@@ -461,7 +492,7 @@ function checkBonusCollision() {
       if (bonusType === "invincible") {
         activateInvincibility();
       } else if (bonusType === "addScoreBonus") {
-        scoreDisplay += 10;
+        score += 30;
       } else {
         activateSlow();
       }
@@ -645,9 +676,6 @@ function drawObstacles() {
     if (obstacle.x + obstacle.width < 0) {
       obstacles.splice(i, 1); // Retire l'obstacle du tableau
       score++;
-      if (score % 5 === 0) {
-        scoreDisplay++;
-      } // Incrémente le score
     }
   }
 }
@@ -681,7 +709,7 @@ function checkObstaclesCollision() {
       ) {
         console.log("Collision détectée !");
         isGameOver = true; // Déclenche le Game Over
-        scoreTab.push(scoreDisplay);
+        scoreTab.push(score);
         gameOver++;
         start = false;
         backgroundMusic.pause();
@@ -706,7 +734,7 @@ function drawEndMessage() {
     messageFinX + context.measureText(messageFinText).width <
     canva.width / 2
   ) {
-    scoreTab.push(scoreDisplay);
+    scoreTab.push(score);
     stopGame(); // Arrêter le jeu
 
   }
@@ -805,7 +833,7 @@ function updateGame() {
 
   //Collision avec le sol
   if (isInvincible) {
-    ballY = groundY - 150;
+    ballY = groundY - 250;
     velocityY = 0;
   } else {
     if (ballY > groundY - 10) {
@@ -818,7 +846,7 @@ function updateGame() {
   if (speed > 15) {
     speed = 15;
   } else {
-    speed = baseSpeed + 0.1 * Math.floor(scoreDisplay / 5);
+    speed = baseSpeed + 0.1 * Math.floor(score / 15);
   }
 
   if (!modeTest) {
@@ -838,11 +866,11 @@ function updateGame() {
     bonusType = "invincible";
     generateBonus();
   }
-  if (score >= 30 && score % 20 === 0 && !bonus) {
+  if (score >= 50 && score % 20 === 0 && !bonus) {
     bonusType = "slow";
     generateBonus();
   }
-  if (score >= 10 && score % 15 === 0 && !bonus) {
+  if (score >= 30 && score % 25 === 0 && !bonus) {
     bonusType = "addScoreBonus";
     generateBonus();
   }
@@ -913,7 +941,7 @@ function updateGame() {
 
   let scoreText = new Texte({
     id: "score",
-    text: `Score: ${scoreDisplay}`,
+    text: `Score: ${score}`,
     font: themeVars.jeu_texte,
     size: 16,
     x: 780,
@@ -1024,7 +1052,7 @@ document.getElementById("jump").addEventListener("click", () => {
 function restartGame() {
   //Réinitialise les variables
   score = 0;
-  scoreDisplay = 0;
+  score = 0;
   speed = baseSpeed;
   isGameOver = false;
   obstacles = [];

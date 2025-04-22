@@ -303,7 +303,7 @@ class DBUser extends DbConnect
     }
     public static function deleteUser($id_utilisateur)
     {
-        $admin_principal = 29; // ID de l'admin principal (à ajuster selon ton besoin)
+        $admin_principal = 28; // ID de l'admin principal (à ajuster selon ton besoin)
 
         try {
             $id_utilisateur = (int)$id_utilisateur;
