@@ -27,7 +27,7 @@ class MenuControleur
     public function prepareNav()
     {
         // Si l'utilisateur est un administrateur
-        if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+        if (isset($_SESSION["role_visiteur"]) && $_SESSION["role_visiteur"] == "admin") {
 
             $this->nav .= $this->addItem("accueilBo", "Tableau de bord");
             $this->nav .= $this->addItem("utilisateur", "Gestion utilisateur");

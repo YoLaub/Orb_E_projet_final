@@ -14,7 +14,7 @@ class Middleware
     public function authMiddleware()
     {
         // Vérifie si un rôle "admin" est défini dans la session
-        if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin" && $_SESSION["session"] ==  $_SESSION["id"] . "la_phrase_de_passe") {
+        if (isset($_SESSION["role_visiteur"]) && $_SESSION["role_visiteur"] == "admin") {
             // Si l'utilisateur est admin, retourne un objet de gestion des routes privées (back-office)
             return new RoutesPrive;
         } else {
@@ -27,7 +27,7 @@ class Middleware
     public function accesMiddleware($zone = null)
     {
         // Vérifie si un rôle "utilisateur" est défini dans la session
-        if (isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
+        if (isset($_SESSION["role_visiteur"]) && $_SESSION["role_visiteur"] == "utilisateur") {
             // Si l'utilisateur a un rôle "utilisateur", l'accès est autorisé
             return true;
         } else {

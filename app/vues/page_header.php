@@ -42,7 +42,7 @@
             </p>
 
             <!-- Zone de connexion/deconnexion/profil -->
-            <?php if (isset($_SESSION["id"]) && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") { ?>
+            <?php if (isset($_SESSION["id"]) && isset($_SESSION["role_visiteur"]) && $_SESSION["role_visiteur"] == "utilisateur") { ?>
                 <a class="profileHeader" href="./profile">
                     <svg width="32" height="32" fill="white" class="bi bi-person-badge" viewBox="0 0 16 16">
                         <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -56,7 +56,7 @@
                     </svg>
                 </a>
 
-            <?php } elseif (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") { ?>
+            <?php } elseif (isset($_SESSION["role_visiteur"]) && $_SESSION["role_visiteur"] == "admin") { ?>
                 <a class="deconnexionHeader" href="./deconnexion">
                     <svg width="32" height="32" fill="white" class="bi bi-door-closed" viewBox="0 0 16 16">
                         <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3zm1 13h8V2H4z" />

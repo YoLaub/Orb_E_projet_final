@@ -72,7 +72,7 @@ class UtilisateurGControleur
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $email = trim($_POST["email"] ?? '');
             $mdp = trim($_POST["mdp"] ?? '');
-            $role = $_SESSION["role"]; // rôle récupéré via la session
+            $role = $_SESSION["role_visiteur"]; // rôle récupéré via la session
 
             // Vérifie et hache le mot de passe
             $mdpHache = $this->connexion->verifInfoAuth($email, $mdp);

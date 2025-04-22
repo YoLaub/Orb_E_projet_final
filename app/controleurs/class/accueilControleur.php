@@ -40,12 +40,12 @@ class AccueilControleur
         $this->params["page"] = 'Accueil';
 
         // Si l'utilisateur est connecté
-        if (isset($_SESSION["role"])) {
+        if (isset($_SESSION["role_visiteur"])) {
             // Affichage selon le rôle
-            if ($_SESSION["role"] == "utilisateur") {
+            if ($_SESSION["role_visiteur"] == "utilisateur") {
                 $content = "page_accueil.php";
                 $this->pageLayout->render($content, $this->params);
-            } elseif ($_SESSION["role"] == "admin") {
+            } elseif ($_SESSION["role_visiteur"] == "admin") {
                 // Redirection vers l'accueil back-office
                 return $this->accueilBo();
             }

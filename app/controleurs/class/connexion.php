@@ -50,7 +50,7 @@ class Connexion
                 $estConnecte = self::verifInfoConn($email, $mdp);
 
                 // Redirection selon le rôle ou la page précédemment visitée
-                if ($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {
+                if ($estConnecte == true && isset($_SESSION["role_visiteur"]) && $_SESSION["role_visiteur"] == "utilisateur") {
                     if (isset($_SESSION["url"])) {
                         $url = $_SESSION["url"];
                         unset($_SESSION["url"]);
@@ -59,7 +59,7 @@ class Connexion
                     } else {
                         $this->home->accueil();
                     }
-                } elseif ($estConnecte == true && isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+                } elseif ($estConnecte == true && isset($_SESSION["role_visiteur"]) && $_SESSION["role_visiteur"] == "admin") {
                     $this->home->accueil();
                 } else {
                     $content = "page_connexion.php";
@@ -200,7 +200,7 @@ class Connexion
                 // Si le mot de passe est correct, on initialise la session
                 $_SESSION["email"] = $email;
                 $_SESSION["id"] = $utilisateur[0]["id_utilisateur"];
-                $_SESSION["role"] = $utilisateur[0]["rôle"];
+                $_SESSION["role_visiteur"] = $utilisateur[0]["rôle"];
                 return true;
             } else {
                 $erreur = "password invalid";
