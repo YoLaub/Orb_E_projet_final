@@ -89,8 +89,4 @@ modal.addEventListener("click", (e) => {
     }
 });
 
-// Gestion du clic sur le bouton "Rejouer"
-retryBtn.addEventListener("click", () => {
-    location.reload();  // recharge la page pour relancer le jeu
-    // possibilité ici de remplacer location.reload() par un appel à une fonction de réinitialisation du jeu
-});
+

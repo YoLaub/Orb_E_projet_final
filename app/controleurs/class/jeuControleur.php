@@ -39,38 +39,31 @@ class JeuControleur
             <meta property="og:url" content="https://stagiaires-kercode9.greta-bretagne-sud.org/yoann-laubert/Orb_E_projet_final/ >
             <meta property="og:type" content="game" >';                   // Métadonnées pour le partage sur les réseaux sociaux
 
+            // Traitement POST uniquement pour l'enregistrement de score
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                header('Content-Type: application/json');
 
-            if ($_SERVER["REQUEST_METHOD"] === "POST") { // Si l'utilisateur envoie une requête POST (soumission de score)
-                $idUtilisateur = $_SESSION["id"] ?? ""; // Récupération de l'id utilisateur depuis la session
-                $data = json_decode(file_get_contents("php://input"), true); // Récupère les données JSON envoyées
-                $score = $data["score"] ?? ""; // Extraction du score
-                $date = $data["date"] ?? ""; // Extraction du score
-                $_SESSION["score"] = $score; // Stockage temporaire du score en session
+                $idUtilisateur = $_SESSION["id"] ?? "";
+                $data = json_decode(file_get_contents("php://input"), true);
+                $score = $data["score"] ?? null;
 
-                if (empty($date)) {
-                    echo "TRICHEUR";
-                    die();
-                } elseif (!empty($idUtilisateur) && !empty($score)) {
-                    $etat = $this->partie->saveScore($score, $idUtilisateur); // Sauvegarde du score dans la base de données
-                    if ($etat) {
-                        return $this->pageLayout->render("page_jeu.php", $this->params); // Affiche la page avec succès
-                    } else {
-                        $this->params["message"] = "Une erreur c'est produite !"; // Message d'erreur si l'enregistrement échoue
-                        return $this->pageLayout->render("page_jeu.php", $this->params);
-                    }
-                    // Ce message n’est jamais atteint car le return ci-dessus sort de la méthode
-                    $this->params["message"] = "Vous n'êtes probablement pas autorisé à jouer, inscrivez vous !!";
-                    return $this->pageLayout->render("page_jeu.php", $this->params);
+                if (!empty($idUtilisateur) && !empty($score)) {
+                    $etat = $this->partie->saveScore($score, $idUtilisateur);
+                    echo json_encode(["success" => $etat]);
+                } else {
+                    echo json_encode(["success" => false, "message" => "Identifiant ou score manquant."]);
                 }
+
+                return; // Termine ici pour éviter de renvoyer le HTML
             }
 
-            // Affiche simplement la page de jeu (GET)
+            // Affiche simplement la page (GET uniquement)
             $content = "page_jeu.php";
             $this->pageLayout->render($content, $this->params);
         } else {
-            // Si l'utilisateur n'est pas connecté, stocke l'URL en session et redirige vers la page de connexion
             $_SESSION["url"] = $_SERVER['REQUEST_URI'];
             header("Location: connexion");
+            exit();
         }
     }
 

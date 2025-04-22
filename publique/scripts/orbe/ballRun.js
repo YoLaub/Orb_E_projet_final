@@ -17,8 +17,8 @@ import { Texte, openModal } from './texte.js';
 var canva = document.getElementById("gameCanvas");
 const context = canva.getContext("2d");
 
-var modeTest = true;
-var date = Date.now();
+var modeTest = false;
+var scoreEnvoye = false;
 
 //Gestion du score
 var score = 0;
@@ -392,7 +392,7 @@ function drawCloud() {
 //=======================/////////======================
 //=======================/////////======================
 
-const backgroundMusic = new Audio("./publique/musique/test.mp3");
+const backgroundMusic = new Audio("./publique/musique/test3.mp3");
 backgroundMusic.volume = 1; // Ajuste le volume
 
 backgroundMusic.addEventListener("ended", () => {
@@ -970,17 +970,19 @@ function updateGame() {
   }
 }
 
+
 function stopGame() {
+  if (scoreEnvoye) return;
+  scoreEnvoye = true;
   let scoreToSave = Math.max(...scoreTab);
 
   fetch("?action=jeu", {
     method: "POST",
-    header: {
+    headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      score: scoreToSave,
-      date: date
+      score: 50
     }),
   })
     .then((response) => response.text())
@@ -994,6 +996,7 @@ function stopGame() {
   openModal(scoreToSave);
   cancelAnimationFrame(animationId);
 
+  
 
 
   context.clearRect(0, 0, canva.width, canva.height);
@@ -1023,6 +1026,8 @@ function stopGame() {
   });
 
   failed.draw(context)
+
+  
 
 }
 
