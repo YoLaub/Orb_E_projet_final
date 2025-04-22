@@ -13,6 +13,7 @@ import { Texte, openModal } from './texte.js';
 // =======================////////////////======================
 
 
+
 var canva = document.getElementById("gameCanvas");
 const context = canva.getContext("2d");
 
@@ -26,6 +27,9 @@ var scoreTab = [];
 //Debut de partie
 var start = false;
 
+const fps = 60;
+const interval = 1000 / fps;
+let lastUpdateTime = performance.now();
 
 //Fin de partie
 var isGameOver = false;
@@ -933,7 +937,7 @@ function updateGame() {
   TempText.draw(context)
   cityText.draw(context);
 
-  animationId = requestAnimationFrame(updateGame);
+  
 
   if (messageFinActive) {
     drawEndMessage();
@@ -1027,9 +1031,17 @@ function restartGame() {
   ballY = groundY;
   velocityY = 0;
   isOnBlock = false;
-  updateGame();
+  requestAnimationFrame(gameLoop);
 }
 
+function gameLoop(currentTime) {
+  while (currentTime - lastUpdateTime >= interval) {
+    updateGame();
+    lastUpdateTime += interval;
+  }
+
+  animationId = requestAnimationFrame(gameLoop);
+}
 
 document.getElementById("start").addEventListener("click", () => {
   // Démarrer le jeu après interaction
@@ -1037,7 +1049,7 @@ document.getElementById("start").addEventListener("click", () => {
   document.getElementById("restart").style.display = "none";
   initializeAudio(backgroundMusic);
   updateCount(0);
-  updateGame();
+  requestAnimationFrame(gameLoop);
   generateClouds();
 });
 

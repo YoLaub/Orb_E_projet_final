@@ -1,7 +1,7 @@
 Options -Indexes
 
 RewriteEngine On
-RewriteBase /PHP/Orb_E_projet_final/
+RewriteBase /Orb_E_projet_final/
 
 
 #Redirige HTTP vers HTTPS
