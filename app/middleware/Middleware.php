@@ -24,7 +24,7 @@ class Middleware
     }
 
     // Middleware pour vérifier l'accès pour un utilisateur connecté
-    public function accesMiddleware($zone)
+    public function accesMiddleware($zone = null)
     {
         // Vérifie si un rôle "utilisateur" est défini dans la session
         if (isset($_SESSION["role"]) && $_SESSION["role"] == "utilisateur") {

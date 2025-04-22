@@ -20,7 +20,9 @@ class JeuControleur
         $this->connexion = new Middleware;                             // Initialisation du middleware pour vérifier les autorisations
         $this->partie = new DBParty;                                   // Accès aux méthodes de gestion des parties de jeu
         $this->infoJoueur = new DBOrder;                               // Accès aux données utilisateur liées à une commande
-        $this->params["infoProfil"] = $this->infoJoueur->infoUser($_SESSION["email"]) ?? ""; // Récupération des infos profil utilisateur
+
+        
+        $this->params["infoProfil"] = isset($_SESSION["email"]) ? $this->infoJoueur->infoUser($_SESSION["email"]) : null; // Récupération des infos profil utilisateur
         $this->params["style"] = "orbe.css";                           // Feuille de style à charger pour le jeu
         $this->params["scripts"] = '<script type="module" src="./publique/scripts/orbe/ballRun.js" defer></script>
         <script src="./publique/scripts/orbe/fullscreen.js" defer></script>'; // Scripts JS nécessaires pour le jeu
