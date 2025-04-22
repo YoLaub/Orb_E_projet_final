@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 18 avr. 2025 à 12:51
+-- Généré le : mar. 22 avr. 2025 à 07:16
 -- Version du serveur : 10.6.21-MariaDB
 -- Version de PHP : 8.3.19
 
@@ -41,7 +41,8 @@ CREATE TABLE `commandes` (
 
 INSERT INTO `commandes` (`id_commande`, `date_heure`, `montant_total`, `id_utilisateur`, `statut`) VALUES
 (33, '2025-04-17 18:09:58', 199.99, 22, 'en_attente_paiement'),
-(34, '2025-04-18 10:45:01', 399.98, 25, 'en_attente_paiement');
+(35, '2025-04-18 16:58:00', 1990.99, 26, 'en_attente_paiement'),
+(36, '2025-04-18 16:58:15', 1990.99, 26, 'en_attente_paiement');
 
 -- --------------------------------------------------------
 
@@ -67,10 +68,9 @@ CREATE TABLE `commerce` (
 --
 
 INSERT INTO `commerce` (`id_commerce`, `id_utilisateur`, `nom`, `prenom`, `adresse_livraison`, `ville`, `code_postal`, `pays`, `telephone`, `mode_paiement`) VALUES
-(7, 13, 'roberto', 'john', '1783 Rue de Paris', 'Rennes', '35000', 'France', '0123456789', 'carte'),
-(8, 22, 'Boby', '', '', '', '', '', '', ''),
-(9, 19, 'Toy', '', '', '', '', '', '', ''),
-(10, 25, 'TiBoued', 'Gus', '<script>alert(\"Plouf !\");</script>', 'Béganne', '56350', 'Finlande', '', 'carte');
+(7, 13, 'robertoto', 'john', '1783 Rue de Paris', 'Rennes', '35000', 'France', '0123456789', 'carte'),
+(8, 22, 'Boby', 'john', '2 place de la John', 'Saint-Brevin-les-Pins', '44250', 'France', '0723456789', 'autre'),
+(9, 19, 'Toy', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -101,8 +101,7 @@ INSERT INTO `contacts` (`id_contact`, `id_utilisateur`, `nom`, `email`, `message
 (13, 13, 'robertous', 'robert@sponge.us', 'Je m questionne à nouveau', '2025-04-02 11:42:45'),
 (19, 13, 'robertous', 'robert@sponge.us', 'tyjvhfcfy', '2025-04-02 12:01:13'),
 (20, NULL, 'bla Blo', 'monemasus@gmail.com', 'Ploplop\r\n\r\nToy toy toy\r\n\r\nxoxo\r\n\r\nm', '2025-04-12 15:57:02'),
-(21, 22, 'Boby', 'laubert.yoann@gmail.com', 'Heyheyhey', '2025-04-17 14:07:55'),
-(22, 25, 'TiBoued', 'thierry.bouedo@free.bzh', 'Alors ?', '2025-04-18 10:43:05');
+(21, 22, 'Boby', 'laubert.yoann@gmail.com', 'Heyheyhey', '2025-04-17 14:07:55');
 
 -- --------------------------------------------------------
 
@@ -122,7 +121,8 @@ CREATE TABLE `detail_commande` (
 
 INSERT INTO `detail_commande` (`id_commande`, `id_produit`, `quantité`) VALUES
 (33, 10, 1),
-(34, 10, 2);
+(35, 10, 1),
+(36, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -151,7 +151,13 @@ INSERT INTO `parties` (`id_partie`, `score`, `date_heure`, `id_utilisateur`) VAL
 (13, 74, '2025-04-17 14:07:33', 22),
 (14, 51, '2025-04-17 21:18:10', 19),
 (15, 113, '2025-04-17 21:27:14', 19),
-(16, 137, '2025-04-17 21:37:21', 13);
+(16, 137, '2025-04-17 21:37:21', 13),
+(17, 81, '2025-04-18 18:38:22', 19),
+(18, 90, '2025-04-18 18:45:50', 19),
+(20, 78, '2025-04-20 23:02:48', 13),
+(21, 88, '2025-04-21 10:32:45', 13),
+(22, 86, '2025-04-22 01:01:07', 22),
+(23, 115, '2025-04-22 01:11:02', 22);
 
 -- --------------------------------------------------------
 
@@ -173,7 +179,7 @@ CREATE TABLE `produits` (
 --
 
 INSERT INTO `produits` (`id_produit`, `nom`, `description`, `prix`, `photo`, `disponibilite`) VALUES
-(10, 'Orbe', 'Un drone en forme de sphère avec IA intégrée    test', 199.99, './publique/images/imports/67fa5777f3b64-3.webp', 'en_stock');
+(10, 'Orbe', 'Un drone en forme de sphère avec IA intégrée', 1990.99, './publique/images/imports/680251cc4e126-3.webp', 'en_stock');
 
 -- --------------------------------------------------------
 
@@ -188,17 +194,6 @@ CREATE TABLE `reponses_contacts` (
   `reponse` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `reponses_contacts`
---
-
-INSERT INTO `reponses_contacts` (`id_reponse`, `id_contact`, `id_admin`, `reponse`, `created_at`) VALUES
-(1, 1, 14, 'OK PAS DE SOUCIS', '2025-03-28 13:52:16'),
-(2, 12, 14, 'MOI AUSSI', '2025-03-28 14:11:09'),
-(3, 19, 14, 'jhygfhhj', '2025-04-02 21:10:17'),
-(4, 20, 14, 'bli blo blob blouuu', '2025-04-16 00:12:28'),
-(5, 22, 14, 'Bien reçu ;)', '2025-04-18 12:43:07');
 
 -- --------------------------------------------------------
 
@@ -220,15 +215,15 @@ CREATE TABLE `utilisateurs` (
 
 INSERT INTO `utilisateurs` (`id_utilisateur`, `date_inscription`, `rôle`, `email`, `password`) VALUES
 (13, '2025-03-26 18:21:59', 'utilisateur', 'robert@sponge.us', '$2y$10$PgXVIO7VikV0aOljA/t7D.b8eALFEJYD2AjY5n9mFaa2uTCMqdCKO'),
-(14, '2025-03-26 22:38:24', 'admin', 'johngreta904@gmail.com', '$2y$10$EhGq30v82MCJn04jfYPa..eTmNg4p/SYWi6rKgcN3u1o7x.6aZHze'),
-(18, '2025-04-09 08:46:05', 'admin', 'admin@exemple.com', '$2y$10$KNvtl7bqqFCSm9UHuOhNPe/HcXb6VX1iakFhV7RWMvSWbQWovkHu2'),
 (19, '2025-04-12 15:59:40', 'utilisateur', 'monemasus@gmail.com', '$2y$10$/I59d1RgBV6eimJiWrLT2e4AzY9NLbwu7QKNxzC8XbWAsR.VyNrpq'),
 (20, '2025-04-14 06:23:33', 'utilisateur', 'lucaskiller566@gmail.com', '$2y$10$Y1u3Ctdxh5xi/ehoDtUpUelFO2y02xlN4BOTW2ghjLAmDhT2wIUK2'),
 (21, '2025-04-15 21:01:28', 'utilisateur', 'a.hovelaque@gmail.com', '$2y$10$KMHJDpiLipfiUPMk/vkP5e5vkq.qGSvdrrD3unmzOFUK911L/LUt6'),
 (22, '2025-04-17 00:28:22', 'utilisateur', 'laubert.yoann@gmail.com', '$2y$10$jvSlXsPBsPpTvgID/lsBVuy2mDnoN6gonP1L2iPYAt4zRDrtXR0D2'),
 (23, '2025-04-17 18:59:12', 'utilisateur', 'nathalie.dorso@wanadoo.fr', '$2y$10$LBBuWSufQLaaVPUr60P2N.6T2/iFhcFuyDn1Lb3HDyO1DvBkv2j4i'),
 (24, '2025-04-17 19:37:17', 'utilisateur', 'steph56lebroc@gmail.com', '$2y$10$U2gZeGTPyZxAZSY5Xmxew.VoL5DLpZUUPWzojnwN/18a51lkc7UKi'),
-(25, '2025-04-18 10:40:45', 'utilisateur', 'thierry.bouedo@free.bzh', '$2y$10$Vgro42Q4ICJcO4lfJyoWeOJcnTbixge.2.26Z77EGbkfZtoj4OA2C');
+(26, '2025-04-18 16:55:56', 'utilisateur', 'Elonmusk@yahoo.fr', '$2y$10$EG8CmZjTTDAvjCsLxrrzAO25gt6tXkWD8bfdj8yGev64D9RWBcemO'),
+(27, '2025-04-20 23:05:34', 'utilisateur', 'blorg@test.com', '$2y$10$zfju1Xpg7c2JnP65.lqpO.Ut3rXnhDF0n8P9xQdgdbwVQYKqOvBUe'),
+(28, '2025-04-22 07:10:58', 'admin', 'johngreta904@gmail.com', '$2y$10$sEb5qSSSOshA/7HbxhfecuV61P1rxnHKmUrS1eV5wH7uRQJ8QM.6e');
 
 --
 -- Index pour les tables déchargées
@@ -298,7 +293,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT pour la table `commerce`
@@ -316,7 +311,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT pour la table `parties`
 --
 ALTER TABLE `parties`
-  MODIFY `id_partie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_partie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT pour la table `produits`
@@ -334,7 +329,7 @@ ALTER TABLE `reponses_contacts`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Contraintes pour les tables déchargées

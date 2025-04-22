@@ -17,6 +17,7 @@ use app\middleware\Middleware;
 // Démarrer la session si elle n'est pas déjà active
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+    $_SESSION["session"] = $_SESSION["id"] . "la_phrase_de_passe";
 }
 
 $controle = new Middleware;

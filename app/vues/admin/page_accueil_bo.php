@@ -1,5 +1,6 @@
 <section>
-    <h1>Accès BO OK</h1>
+
+    <h1>Tableau de bord</h1>
     <div class="utilisateur">
         <div>
             <svg viewBox="0 0 16 16">

@@ -35,6 +35,9 @@ Orb'E est un assistant personnel intelligent sous forme de sphère. Ce projet de
 5. **Lancer le serveur local**
    - Utiliser XAMPP ou un autre serveur PHP
 
-6. **Schema E/A**
+6. **Creer un admin**
+   -S'inscrire puis modifier le rôle dans la base donnée
+
+7. **Schema E/A**
 ![schema E/A](./publique/images/divers/E_A_Orbe.jpg "E/A") 
 
