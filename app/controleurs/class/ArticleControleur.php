@@ -54,7 +54,7 @@ class ArticleControleur
         public function pageRgpd()
         {
                 $this->params["page"] = "Politique de confidentialité";
-                $content = "page_rgpd.php";
+                $content = "page_Rgpd.php";
                 $this->pageLayout->render($content, $this->params);
         }
 }
