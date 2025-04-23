@@ -40,6 +40,13 @@
     font-size: 2rem;
 }
 
+iframe{
+    width: 340px;
+    height: 170px;
+    margin: 16px;
+}
+
+
 .produit-details{
     background-color: var(--ombre);
     color: var(--texte2);
@@ -255,6 +262,11 @@ article{
 
 
 @media (min-width: 768px) {
+
+    iframe{
+        width: 720px;
+        height: 400px;
+    }
 
     .contenaire{ 
         max-width: 1200px;

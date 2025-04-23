@@ -37,7 +37,7 @@ svgIcon[0].addEventListener("click", function () {
 
     } else {
         // Sinon, on l'affiche et on change l'icône en "−"
-        content[0].style.maxHeight = content[0].scrollHeight + "px";
+        content[0].style.maxHeight = "100%";
         svgIcon[0].innerHTML = svgIconMoins;
 
     }
